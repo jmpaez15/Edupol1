@@ -14,7 +14,7 @@ $(document).ready(function () {
             {
                 delay: 9000,
                 startheight: 427,
-                startwidth: 1020,
+                startwidth: 1200,
                 hideThumbs: 200,
                 thumbWidth: 100, // Thumb With and Height and Amount (only if navigation Tyope set to thumb !)
                 thumbHeight: 50,

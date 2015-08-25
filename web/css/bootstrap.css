@@ -226,10 +226,13 @@ textarea {
 .navbar-static-top .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
-    width: 940px;
+    width: 1150px;
 }
+/*.span13{
+    width: 1200px;
+}*/
 .span12 {
-    width: 940px;
+    width: 1150px;
 }
 .span11 {
     width: 860px;
