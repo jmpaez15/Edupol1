@@ -4,8 +4,10 @@ package com.ethos.control.general;
 import com.ethos.DAO.AbstractDAO;
 import com.ethos.DAO.TipoSolicitudDAO;
 import com.ethos.business.general.ActualizarDatos;
+import com.ethos.business.general.FuncionesGenerales;
 import com.ethos.model.ActualizaModel;
 import com.ethos.model.EstadoCivilModel;
+import com.ethos.model.ListasGeneralesModel;
 import com.ethos.model.TipoSolicitudModel;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -23,8 +25,8 @@ import javax.servlet.http.HttpSession;
 
 
 public class PreRegistroControl extends HttpServlet {
-    private ActualizarDatos actualizaDatos;
-    AbstractDAO tipoSolicitudDao;
+    private FuncionesGenerales funcionesGeneral;
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -51,15 +53,17 @@ public class PreRegistroControl extends HttpServlet {
             throws ServletException, IOException {
        HttpSession sesion = request.getSession();
         String json = "";
-        tipoSolicitudDao=new TipoSolicitudDAO();
-        List<TipoSolicitudModel> listTipoSolicitud;
+        ListasGeneralesModel listasGenerales;
+        funcionesGeneral=new FuncionesGenerales();
+                
+        
         
 
         try {
 //            System.out.println("idUser: "+sesion.getAttribute("codUser").toString());
             if (sesion.getAttribute("codUser") != null) {
-                listTipoSolicitud=tipoSolicitudDao.findAll();
-                json = new Gson().toJson(listTipoSolicitud);
+                listasGenerales=funcionesGeneral.obtenerDatosActualizar();
+                json = new Gson().toJson(listasGenerales);
                 
             }
                   System.out.println("json preregistro: " + json);

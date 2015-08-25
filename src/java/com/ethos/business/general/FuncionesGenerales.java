@@ -121,7 +121,7 @@ public class FuncionesGenerales {
     }
     /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
    
-     public ActualizaModel obtenerDatosActualizar(String idPersona) {
+     public ListasGeneralesModel obtenerDatosActualizar() {
     List<TipoIdentificacionModel>lisTipoIdentificacionModels;
     List<GeneroModel>lisGeneroModels;
     List<ProfesionesModel>lisProfesionesModels;
@@ -153,7 +153,15 @@ public class FuncionesGenerales {
     lisMediosMasivosModels=mediosMasivosDao.findAll();
     lisNivelEstudiosModels=nivelEstudiosDao.findAll();
     
-    listasGeneralModel.set
+    listasGeneralModel.setLisTipoIdentificacionModels(lisTipoIdentificacionModels);
+    listasGeneralModel.setLisGeneroModels(lisGeneroModels);
+    listasGeneralModel.setLisProfesionesModels(lisProfesionesModels);
+    listasGeneralModel.setLisEstadoCivilModels(lisEstadoCivilModels);
+    listasGeneralModel.setLisTipoSolicitudModels(lisTipoSolicitudModels);
+    listasGeneralModel.setLisCategoriaSisbenModels(lisCategoriaSisbenModels);
+    listasGeneralModel.setLisCiudadModels(lisCiudadModels);
+    listasGeneralModel.setLisMediosMasivosModels(lisMediosMasivosModels);
+    listasGeneralModel.setLisNivelEstudiosModels(lisNivelEstudiosModels);
         return listasGeneralModel;
     }
 }
