@@ -5,18 +5,59 @@
  */
 package com.ethos.business.general;
 
+import com.ethos.DAO.AbstractDAO;
+import com.ethos.DAO.CategoriaSisbenDAO;
+import com.ethos.DAO.CiudadesDAO;
+import com.ethos.DAO.EstadoCivilDAO;
+import com.ethos.DAO.GeneroDAO;
+import com.ethos.DAO.MedioMAsivoDAO;
+import com.ethos.DAO.NivelEstudiosDAO;
+import com.ethos.DAO.ProfesionesDAO;
+import com.ethos.DAO.TipoIdentificacionDAO;
+import com.ethos.DAO.TipoSolicitudDAO;
+import com.ethos.model.CategoriaSisbenModel;
+import com.ethos.model.CiudadModel;
+import com.ethos.model.EstadoCivilModel;
+import com.ethos.model.GeneroModel;
+import com.ethos.model.ListasGeneralesModel;
+import com.ethos.model.MediosMasivosModel;
+import com.ethos.model.NivelEstudiosModel;
+import com.ethos.model.ProfesionesModel;
+import com.ethos.model.TipoIdentificacionModel;
+import com.ethos.model.TipoSolicitudModel;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.List;
 
 /**
  *
  * @author operaciones
  */
 public class FuncionesGenerales {
+    
+    
+    
+    AbstractDAO ciudadesDao;
+    AbstractDAO estadoCivilDao;
+    AbstractDAO nivelEstudiosDao;
+    AbstractDAO tipoSolicitudDao;
+    AbstractDAO tipoIdentificacion;
+    AbstractDAO categoriaSisbenDao ;
+    AbstractDAO generoDAO;
+    AbstractDAO mediosMasivosDao;
+    AbstractDAO profesionesDAO;
+    
+    
+    ListasGeneralesModel listasGeneralModel;
+ 
+    
+    
+    
+   
 
     public FuncionesGenerales() {
     }
@@ -82,5 +123,40 @@ public class FuncionesGenerales {
         return sPalEncrip;
     }
     /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
+   
+     public ActualizaModel obtenerDatosActualizar(String idPersona) {
+    List<TipoIdentificacionModel>lisTipoIdentificacionModels;
+    List<GeneroModel>lisGeneroModels;
+    List<ProfesionesModel>lisProfesionesModels;
+    List<EstadoCivilModel>lisEstadoCivilModels;
+    List<TipoSolicitudModel>lisTipoSolicitudModels;
+    List<CategoriaSisbenModel>lisCategoriaSisbenModels;
+    List<CiudadModel>lisCiudadModels;
+    List<MediosMasivosModel>lisMediosMasivosModels;
+    List<NivelEstudiosModel>lisNivelEstudiosModels;
+    
+    tipoIdentificacion = new TipoIdentificacionDAO();
+    generoDAO= new GeneroDAO();
+    profesionesDAO= new ProfesionesDAO();
+    estadoCivilDao= new EstadoCivilDAO();
+    tipoSolicitudDao= new TipoSolicitudDAO();
+    categoriaSisbenDao=new CategoriaSisbenDAO();
+    ciudadesDao=new CiudadesDAO();
+    mediosMasivosDao=new MedioMAsivoDAO();
+    nivelEstudiosDao=new NivelEstudiosDAO();
+            
+    
+    lisTipoIdentificacionModels=tipoIdentificacion.findAll();
+    lisGeneroModels=generoDAO.findAll();
+    lisProfesionesModels=profesionesDAO.findAll();
+    lisEstadoCivilModels = estadoCivilDao.findAll();
+    lisTipoSolicitudModels = tipoSolicitudDao.findAll();
+    lisCategoriaSisbenModels=categoriaSisbenDao.findAll();
+    lisCiudadModels=ciudadesDao.findAll();
+    lisMediosMasivosModels=mediosMasivosDao.findAll();
+    lisNivelEstudiosModels=nivelEstudiosDao.findAll();
+    
+    listasGeneralModel.set
+        return listasGeneralModel;
+    }
 }

@@ -36,6 +36,10 @@
         <servlet-name>NavegaControl</servlet-name>
         <servlet-class>com.ethos.control.general.NavegaControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PreRegistroControl</servlet-name>
+        <servlet-class>com.ethos.control.general.PreRegistroControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginControl</servlet-name>
         <url-pattern>/LoginControl</url-pattern>
@@ -56,13 +60,17 @@
         <servlet-name>NavegaControl</servlet-name>
         <url-pattern>/NavegaControl</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PreRegistroControl</servlet-name>
+        <url-pattern>/PreRegistroControl</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>General/MenuOut.html</welcome-file>
+        <welcome-file>General/Login.html</welcome-file>
     </welcome-file-list>
     <resource-ref>
         <description>Resource reference to a factory for java.sql.Connection instances that may be used for talking to a particular database that is configured in the context configurartion for the web application.</description>
