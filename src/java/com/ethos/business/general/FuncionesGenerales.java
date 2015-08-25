@@ -90,6 +90,9 @@ public class FuncionesGenerales {
         return jObjData;
     }
 
+    
+    
+    
     public String encripta(String sPalabra, boolean bTipo) {
         String sAlfabeto = "abcdefghijklmnÃopqrstuvwxyz 1234567890()";
         String sPalClave = "ethos simco plus 7";

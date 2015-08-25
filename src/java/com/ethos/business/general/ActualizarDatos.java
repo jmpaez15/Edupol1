@@ -84,7 +84,7 @@ public class ActualizarDatos {
             }
         }
 
-        actualizaModel.setPersonaModel(personaModel);
+         actualizaModel.setPersonaModel(personaModel);
         actualizaModel.setListCiudadModel(listCiudades);
         actualizaModel.setListEstadoCivilModel(listEstadoCivil);
         actualizaModel.setListNivelEstudiosModel(listNivelEstudio);

@@ -70,7 +70,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>General/Login.html</welcome-file>
+        <welcome-file>General/MenuOut.html</welcome-file>
     </welcome-file-list>
     <resource-ref>
         <description>Resource reference to a factory for java.sql.Connection instances that may be used for talking to a particular database that is configured in the context configurartion for the web application.</description>
