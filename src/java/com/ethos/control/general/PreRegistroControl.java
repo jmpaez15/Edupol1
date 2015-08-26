@@ -1,17 +1,11 @@
  
 package com.ethos.control.general;
 
-import com.ethos.DAO.AbstractDAO;
-import com.ethos.DAO.TipoSolicitudDAO;
-import com.ethos.business.general.ActualizarDatos;
+
 import com.ethos.business.general.FuncionesGenerales;
-import com.ethos.model.ActualizaModel;
-import com.ethos.model.EstadoCivilModel;
 import com.ethos.model.ListasGeneralesModel;
-import com.ethos.model.TipoSolicitudModel;
 import com.google.gson.Gson;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -61,14 +55,14 @@ public class PreRegistroControl extends HttpServlet {
 
         try {
 //            System.out.println("idUser: "+sesion.getAttribute("codUser").toString());
-            if (sesion.getAttribute("codUser") != null) {
+            
                 listasGenerales=funcionesGeneral.obtenerDatosActualizar();
                 json = new Gson().toJson(listasGenerales);
                 
-            }
+            
                   System.out.println("json preregistro: " + json);
         } catch (Exception e) {
-            System.out.println("Exception in AuctalizarControl: " + e);
+            System.out.println("Exception in PreRegiStroControl: " + e);
         }
         response.setContentType("application/json;charset=Utf-8");
         response.getWriter().write(json);

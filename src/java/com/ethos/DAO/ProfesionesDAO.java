@@ -50,6 +50,7 @@ public class ProfesionesDAO extends AbstractDAO<ProfesionesModel>{
         String query;
         List<ProfesionesModel>profesionesModelLis=new ArrayList<>();
          try { 
+             profesionesModel=new ProfesionesModel();
              conn=getConnectionDB().getConnection();
              query=GeneralQuery.QUERY_PROFESIONES;
              psQuery=conn.prepareStatement(query);

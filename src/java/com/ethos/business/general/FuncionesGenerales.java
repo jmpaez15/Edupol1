@@ -124,7 +124,8 @@ public class FuncionesGenerales {
     }
     /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
    
-     public ListasGeneralesModel obtenerDatosActualizar() {
+    public ListasGeneralesModel obtenerDatosActualizar() {
+        
     List<TipoIdentificacionModel>lisTipoIdentificacionModels;
     List<GeneroModel>lisGeneroModels;
     List<ProfesionesModel>lisProfesionesModels;
@@ -135,6 +136,7 @@ public class FuncionesGenerales {
     List<MediosMasivosModel>lisMediosMasivosModels;
     List<NivelEstudiosModel>lisNivelEstudiosModels;
     
+    listasGeneralModel = new ListasGeneralesModel();
     tipoIdentificacion = new TipoIdentificacionDAO();
     generoDAO= new GeneroDAO();
     profesionesDAO= new ProfesionesDAO();

@@ -51,6 +51,7 @@ public class TipoIdentificacionDAO extends AbstractDAO<TipoIdentificacionModel>{
         String query;
         List<TipoIdentificacionModel> tipoIdentificacionList=new ArrayList<>();
         try {
+            tipoIdentificacionModel = new TipoIdentificacionModel();
             conn=getConnectionDB().getConnection();
             query=GeneralQuery.QUERY_GETTIPO_IDENTIFICACON;
             psQuery=conn.prepareStatement(query);
