@@ -54,6 +54,7 @@ public class GeneroDAO extends AbstractDAO<GeneroModel>{
             psQuery=conn.prepareStatement(query);
             rsT=psQuery.executeQuery();
             while(rsT.next()){
+                
                 generoModel.setiIdGenero(rsT.getInt(1));
                 generoModel.setsDescripcion(rsT.getString(2));
                 generoModel.setsInicial(rsT.getString(3));
