@@ -1,4 +1,4 @@
-var appLogin = angular.module('appLogin', []);
+var appLogin = angular.module('appLogin', ['ngAnimate']);
 
 appLogin.controller('loginController', ['$http','$window', validaUser]);
     
