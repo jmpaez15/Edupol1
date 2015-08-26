@@ -48,12 +48,12 @@ public class CategoriaSisbenDAO extends AbstractDAO<CategoriaSisbenModel> {
         String query;
         List<CategoriaSisbenModel> categoriaSisbenLis=new ArrayList<>();
         try {
-            categoriaSisbenModel =new CategoriaSisbenModel();
             conn=getConnectionDB().getConnection();
             query=GeneralQuery.QUERY_GET_CATEGORIA_GENERO;
             psQuery=conn.prepareStatement(query);
             rsT=psQuery.executeQuery();
             while(rsT.next()){
+                categoriaSisbenModel =new CategoriaSisbenModel();
                 categoriaSisbenModel.setiIdCategoriaSisben(rsT.getInt(1));
                 categoriaSisbenModel.setsDescripcionCategoriaSisben(rsT.getString(2));
                 categoriaSisbenLis.add(categoriaSisbenModel);

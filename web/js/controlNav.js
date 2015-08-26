@@ -35,7 +35,6 @@ function getMenu($http) {
 
         });
     };
-
 }
 ;
 

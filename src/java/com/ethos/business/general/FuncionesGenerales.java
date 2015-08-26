@@ -38,26 +38,18 @@ import java.util.List;
  * @author operaciones
  */
 public class FuncionesGenerales {
-    
-    
-    
+
     AbstractDAO ciudadesDao;
     AbstractDAO estadoCivilDao;
     AbstractDAO nivelEstudiosDao;
     AbstractDAO tipoSolicitudDao;
     AbstractDAO tipoIdentificacion;
-    AbstractDAO categoriaSisbenDao ;
+    AbstractDAO categoriaSisbenDao;
     AbstractDAO generoDAO;
     AbstractDAO mediosMasivosDao;
     AbstractDAO profesionesDAO;
-    
-    
+
     ListasGeneralesModel listasGeneralModel;
- 
-    
-    
-    
-   
 
     public FuncionesGenerales() {
     }
@@ -78,7 +70,7 @@ public class FuncionesGenerales {
         String line;
         JsonElement jelement;
         try {
-            
+
             while ((line = jsonRq.readLine()) != null) {
                 sb.append(line);
                 jelement = new JsonParser().parse(sb.toString());
@@ -90,9 +82,6 @@ public class FuncionesGenerales {
         return jObjData;
     }
 
-    
-    
-    
     public String encripta(String sPalabra, boolean bTipo) {
         String sAlfabeto = "abcdefghijklmnÃopqrstuvwxyz 1234567890()";
         String sPalClave = "ethos simco plus 7";
@@ -123,50 +112,49 @@ public class FuncionesGenerales {
         return sPalEncrip;
     }
     /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-   
+
     public ListasGeneralesModel obtenerDatosActualizar() {
-        
-    List<TipoIdentificacionModel>lisTipoIdentificacionModels;
-    List<GeneroModel>lisGeneroModels;
-    List<ProfesionesModel>lisProfesionesModels;
-    List<EstadoCivilModel>lisEstadoCivilModels;
-    List<TipoSolicitudModel>lisTipoSolicitudModels;
-    List<CategoriaSisbenModel>lisCategoriaSisbenModels;
-    List<CiudadModel>lisCiudadModels;
-    List<MediosMasivosModel>lisMediosMasivosModels;
-    List<NivelEstudiosModel>lisNivelEstudiosModels;
-    
-    listasGeneralModel = new ListasGeneralesModel();
-    tipoIdentificacion = new TipoIdentificacionDAO();
-    generoDAO= new GeneroDAO();
-    profesionesDAO= new ProfesionesDAO();
-    estadoCivilDao= new EstadoCivilDAO();
-    tipoSolicitudDao= new TipoSolicitudDAO();
-    categoriaSisbenDao=new CategoriaSisbenDAO();
-    ciudadesDao=new CiudadesDAO();
-    mediosMasivosDao=new MedioMAsivoDAO();
-    nivelEstudiosDao=new NivelEstudiosDAO();
-            
-    
-    lisTipoIdentificacionModels=tipoIdentificacion.findAll();
-    lisGeneroModels=generoDAO.findAll();
-    lisProfesionesModels=profesionesDAO.findAll();
-    lisEstadoCivilModels = estadoCivilDao.findAll();
-    lisTipoSolicitudModels = tipoSolicitudDao.findAll();
-    lisCategoriaSisbenModels=categoriaSisbenDao.findAll();
-    lisCiudadModels=ciudadesDao.findAll();
-    lisMediosMasivosModels=mediosMasivosDao.findAll();
-    lisNivelEstudiosModels=nivelEstudiosDao.findAll();
-    
-    listasGeneralModel.setLisTipoIdentificacionModels(lisTipoIdentificacionModels);
-    listasGeneralModel.setLisGeneroModels(lisGeneroModels);
-    listasGeneralModel.setLisProfesionesModels(lisProfesionesModels);
-    listasGeneralModel.setLisEstadoCivilModels(lisEstadoCivilModels);
-    listasGeneralModel.setLisTipoSolicitudModels(lisTipoSolicitudModels);
-    listasGeneralModel.setLisCategoriaSisbenModels(lisCategoriaSisbenModels);
-    listasGeneralModel.setLisCiudadModels(lisCiudadModels);
-    listasGeneralModel.setLisMediosMasivosModels(lisMediosMasivosModels);
-    listasGeneralModel.setLisNivelEstudiosModels(lisNivelEstudiosModels);
+
+        List<TipoIdentificacionModel> lisTipoIdentificacionModels;
+        List<GeneroModel> lisGeneroModels;
+        List<ProfesionesModel> lisProfesionesModels;
+        List<EstadoCivilModel> lisEstadoCivilModels;
+        List<TipoSolicitudModel> lisTipoSolicitudModels;
+        List<CategoriaSisbenModel> lisCategoriaSisbenModels;
+        List<CiudadModel> lisCiudadModels;
+        List<MediosMasivosModel> lisMediosMasivosModels;
+        List<NivelEstudiosModel> lisNivelEstudiosModels;
+
+        listasGeneralModel = new ListasGeneralesModel();
+        tipoIdentificacion = new TipoIdentificacionDAO();
+        generoDAO = new GeneroDAO();
+        profesionesDAO = new ProfesionesDAO();
+        estadoCivilDao = new EstadoCivilDAO();
+        tipoSolicitudDao = new TipoSolicitudDAO();
+        categoriaSisbenDao = new CategoriaSisbenDAO();
+        ciudadesDao = new CiudadesDAO();
+        mediosMasivosDao = new MedioMAsivoDAO();
+        nivelEstudiosDao = new NivelEstudiosDAO();
+
+        lisTipoIdentificacionModels = tipoIdentificacion.findAll();
+        lisGeneroModels = generoDAO.findAll();
+        lisProfesionesModels = profesionesDAO.findAll();
+        lisEstadoCivilModels = estadoCivilDao.findAll();
+        lisTipoSolicitudModels = tipoSolicitudDao.findAll();
+        lisCategoriaSisbenModels = categoriaSisbenDao.findAll();
+        lisCiudadModels = ciudadesDao.findAll();
+        lisMediosMasivosModels = mediosMasivosDao.findAll();
+        lisNivelEstudiosModels = nivelEstudiosDao.findAll();
+
+        listasGeneralModel.setLisTipoIdentificacionModels(lisTipoIdentificacionModels);
+        listasGeneralModel.setLisGeneroModels(lisGeneroModels);
+        listasGeneralModel.setLisProfesionesModels(lisProfesionesModels);
+        listasGeneralModel.setLisEstadoCivilModels(lisEstadoCivilModels);
+        listasGeneralModel.setLisTipoSolicitudModels(lisTipoSolicitudModels);
+        listasGeneralModel.setLisCategoriaSisbenModels(lisCategoriaSisbenModels);
+        listasGeneralModel.setLisCiudadModels(lisCiudadModels);
+        listasGeneralModel.setLisMediosMasivosModels(lisMediosMasivosModels);
+        listasGeneralModel.setLisNivelEstudiosModels(lisNivelEstudiosModels);
         return listasGeneralModel;
     }
 }
