@@ -1,4 +1,3 @@
- 
 package com.ethos.DAO;
 
 import com.ethos.model.ProfesionesModel;
@@ -14,19 +13,17 @@ import java.util.logging.Logger;
  *
  * @author Mary
  */
+public class ProfesionesDAO extends AbstractDAO<ProfesionesModel> {
 
-
-public class ProfesionesDAO extends AbstractDAO<ProfesionesModel>{
-    
     ProfesionesModel profesionesModel;
-    
-    public ProfesionesDAO(){
+
+    public ProfesionesDAO() {
         super(ProfesionesModel.class);
     }
 
     @Override
     public ProfesionesModel select(Object id) {
-     return null;
+        return null;
     }
 
     @Override
@@ -43,31 +40,29 @@ public class ProfesionesDAO extends AbstractDAO<ProfesionesModel>{
     public String delete(Object id) {
         return "";
     }
-        
 
     @Override
     public List<ProfesionesModel> findAll() {
         String query;
-        List<ProfesionesModel>profesionesModelLis=new ArrayList<>();
-         try { 
-             profesionesModel=new ProfesionesModel();
-             conn=getConnectionDB().getConnection();
-             query=GeneralQuery.QUERY_PROFESIONES;
-             psQuery=conn.prepareStatement(query);
-             rsT=psQuery.executeQuery();
-             while (rsT.next())
-             {
-               profesionesModel.setiIdProfesiones(rsT.getInt(1));
-               profesionesModel.setsNombreProfesiones(rsT.getString(2));
-               profesionesModelLis.add(profesionesModel);
-             }
+        List<ProfesionesModel> profesionesModelLis = new ArrayList<>();
+        try {
+            conn = getConnectionDB().getConnection();
+            query = GeneralQuery.QUERY_PROFESIONES;
+            psQuery = conn.prepareStatement(query);
+            rsT = psQuery.executeQuery();
+            while (rsT.next()) {
+                profesionesModel = new ProfesionesModel();
+                profesionesModel.setiIdProfesiones(rsT.getInt(1));
+                profesionesModel.setsNombreProfesiones(rsT.getString(2));
+                profesionesModelLis.add(profesionesModel);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ProfesionesDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-             closeConnection();
-         }
-         
-       return profesionesModelLis; 
+        } finally {
+            closeConnection();
+        }
+
+        return profesionesModelLis;
     }
 
     @Override
@@ -79,5 +74,5 @@ public class ProfesionesDAO extends AbstractDAO<ProfesionesModel>{
     public List<Object> queryAll(List<Object> parameters) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

@@ -50,7 +50,6 @@ public class TipoSolicitudDAO extends AbstractDAO<TipoSolicitudModel>{
             List<TipoSolicitudModel> tipoSolicitudList = new ArrayList<>();
         
         try {
-            tipoSolicitudModel = new TipoSolicitudModel();
             conn=getConnectionDB().getConnection();
             query=GeneralQuery.QUERY_GETTIPOSOLICITUD;
             psQuery=conn.prepareStatement(query);
