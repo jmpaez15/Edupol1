@@ -49,6 +49,7 @@ public class MedioMAsivoDAO extends AbstractDAO<MediosMasivosModel>{
        String query;
        List<MediosMasivosModel> mediosMasivosLis=new ArrayList<>();
         try {
+            medioMasivoModel =new MediosMasivosModel();
             conn=getConnectionDB().getConnection();
             query=GeneralQuery.QUERY_MEDIOS_MASIVOS;
             psQuery=conn.prepareStatement(query);

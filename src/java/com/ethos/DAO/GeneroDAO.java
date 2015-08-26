@@ -48,6 +48,7 @@ public class GeneroDAO extends AbstractDAO<GeneroModel>{
         String query;
         List<GeneroModel>generoModelLis=new ArrayList<>();
         try{
+            generoModel =new GeneroModel();
             conn=getConnectionDB().getConnection();
             query=GeneralQuery.QUERY_GET_GENERO;
             psQuery=conn.prepareStatement(query);

@@ -7,6 +7,7 @@ package com.ethos.DAO;
 
 import com.ethos.model.CiudadModel;
 import com.ethos.query.CiudadesQuery;
+import com.ethos.query.GeneralQuery;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,7 +20,7 @@ import java.util.List;
 public class CiudadesDAO extends AbstractDAO<CiudadModel> {
 
     CiudadModel ciudadModel;
-    private CiudadesQuery ciudadQuery;
+    
 
     public CiudadesDAO() {
         super(CiudadModel.class);
@@ -57,7 +58,7 @@ public class CiudadesDAO extends AbstractDAO<CiudadModel> {
         
         try {
             conn = getConnectionDB().getConnection();
-            query = CiudadesQuery.queryGetCiudades;
+            query = GeneralQuery.QUERY_GET_CIUDADES;
             psQuery = conn.prepareStatement(query);
             rsT = psQuery.executeQuery();
 
