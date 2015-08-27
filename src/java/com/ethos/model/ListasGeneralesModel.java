@@ -19,6 +19,9 @@ public class ListasGeneralesModel {
     List<CiudadModel>lisCiudadModels;
     List<MediosMasivosModel>lisMediosMasivosModels;
     List<NivelEstudiosModel>lisNivelEstudiosModels;
+    List<TipoSanguineoModel>listipoSanguineoModels;
+
+   
 
     public ListasGeneralesModel() {
     }
@@ -105,6 +108,14 @@ public class ListasGeneralesModel {
 
     public void setLisNivelEstudiosModels(List<NivelEstudiosModel> lisNivelEstudiosModels) {
         this.lisNivelEstudiosModels = lisNivelEstudiosModels;
+    }
+    
+     public List<TipoSanguineoModel> getListipoSanguineoModels() {
+        return listipoSanguineoModels;
+    }
+
+    public void setListipoSanguineoModels(List<TipoSanguineoModel> listipoSanguineoModels) {
+        this.listipoSanguineoModels = listipoSanguineoModels;
     }
 
     

@@ -14,6 +14,7 @@ import com.ethos.DAO.MedioMAsivoDAO;
 import com.ethos.DAO.NivelEstudiosDAO;
 import com.ethos.DAO.ProfesionesDAO;
 import com.ethos.DAO.TipoIdentificacionDAO;
+import com.ethos.DAO.TipoSanguineoDAO;
 import com.ethos.DAO.TipoSolicitudDAO;
 import com.ethos.model.CategoriaSisbenModel;
 import com.ethos.model.CiudadModel;
@@ -24,6 +25,7 @@ import com.ethos.model.MediosMasivosModel;
 import com.ethos.model.NivelEstudiosModel;
 import com.ethos.model.ProfesionesModel;
 import com.ethos.model.TipoIdentificacionModel;
+import com.ethos.model.TipoSanguineoModel;
 import com.ethos.model.TipoSolicitudModel;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -48,7 +50,8 @@ public class FuncionesGenerales {
     AbstractDAO generoDAO;
     AbstractDAO mediosMasivosDao;
     AbstractDAO profesionesDAO;
-
+    AbstractDAO tipoSanguineoDAO;
+    
     ListasGeneralesModel listasGeneralModel;
 
     public FuncionesGenerales() {
@@ -124,6 +127,7 @@ public class FuncionesGenerales {
         List<CiudadModel> lisCiudadModels;
         List<MediosMasivosModel> lisMediosMasivosModels;
         List<NivelEstudiosModel> lisNivelEstudiosModels;
+        List<TipoSanguineoModel> listTipoSanguineoModels; 
 
         listasGeneralModel = new ListasGeneralesModel();
         tipoIdentificacion = new TipoIdentificacionDAO();
@@ -135,6 +139,7 @@ public class FuncionesGenerales {
         ciudadesDao = new CiudadesDAO();
         mediosMasivosDao = new MedioMAsivoDAO();
         nivelEstudiosDao = new NivelEstudiosDAO();
+        tipoSanguineoDAO =new TipoSanguineoDAO();
 
         lisTipoIdentificacionModels = tipoIdentificacion.findAll();
         lisGeneroModels = generoDAO.findAll();
@@ -145,6 +150,7 @@ public class FuncionesGenerales {
         lisCiudadModels = ciudadesDao.findAll();
         lisMediosMasivosModels = mediosMasivosDao.findAll();
         lisNivelEstudiosModels = nivelEstudiosDao.findAll();
+        listTipoSanguineoModels=tipoSanguineoDAO.findAll();
 
         listasGeneralModel.setLisTipoIdentificacionModels(lisTipoIdentificacionModels);
         listasGeneralModel.setLisGeneroModels(lisGeneroModels);
@@ -155,6 +161,7 @@ public class FuncionesGenerales {
         listasGeneralModel.setLisCiudadModels(lisCiudadModels);
         listasGeneralModel.setLisMediosMasivosModels(lisMediosMasivosModels);
         listasGeneralModel.setLisNivelEstudiosModels(lisNivelEstudiosModels);
+        listasGeneralModel.setListipoSanguineoModels(listTipoSanguineoModels);
         return listasGeneralModel;
     }
 }

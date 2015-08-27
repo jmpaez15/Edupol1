@@ -58,19 +58,15 @@ public class CiudadesDAO extends AbstractDAO<CiudadModel> {
         
         try {
             conn = getConnectionDB().getConnection();
-            query = GeneralQuery.QUERY_GET_CIUDADES;
+            query =GeneralQuery.QUERY_GET_CIUDADES;
             psQuery = conn.prepareStatement(query);
             rsT = psQuery.executeQuery();
 
             while (rsT.next()) {
 
                 ciudadModel = new CiudadModel();
-                ciudadModel.setsCodigo(rsT.getString(1));
+                ciudadModel.setsCodigo(rsT.getInt(1));
                 ciudadModel.setsNombre(rsT.getString(2));
-                ciudadModel.setsNivel(rsT.getString(3));
-                ciudadModel.setsIndNal(rsT.getString(4));
-                ciudadModel.setsIndInternal(rsT.getString(5));
-                ciudadModel.setsUbicacion(rsT.getString(6));
                 ciudadesList.add(ciudadModel);
             }
 

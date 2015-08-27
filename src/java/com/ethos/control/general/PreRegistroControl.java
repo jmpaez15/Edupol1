@@ -49,13 +49,8 @@ public class PreRegistroControl extends HttpServlet {
         String json = "";
         ListasGeneralesModel listasGenerales;
         funcionesGeneral=new FuncionesGenerales();
-                
-        
-        
-
         try {
 //            System.out.println("idUser: "+sesion.getAttribute("codUser").toString());
-            
                 listasGenerales=funcionesGeneral.obtenerDatosActualizar();
                 json = new Gson().toJson(listasGenerales);
                 
