@@ -17,8 +17,8 @@ function getDataFromServer($http) {
     
     
     actualiza.save = function () {
-        actualiza.datos = actualiza.person.personaModel;
-        alert("Actualiza Datos:" + actualiza.person.personaModel.sNombre);
+        actualiza.datos = actualiza.person.estudiante;
+        alert("Actualiza Datos:" + actualiza.person.estudiante);
         $http({
             method: 'POST',
             url: "../PreRegistroControl",

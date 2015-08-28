@@ -5,6 +5,8 @@ package com.ethos.control.general;
 import com.ethos.business.general.FuncionesGenerales;
 import com.ethos.model.ListasGeneralesModel;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import java.io.BufferedReader;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -74,6 +76,22 @@ public class PreRegistroControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String json = null;
+        String respuesta;
+        FuncionesGenerales funcion = new FuncionesGenerales();
+        try {
+            BufferedReader reader = request.getReader();
+            JsonObject dataJson = funcion.recibirDatos(reader);
+            
+        //   json = new Gson().toJson(respuesta);
+          System.out.println("dataJason: " + dataJson);
+//            System.out.println("respJason: " + json);
+        } catch (Exception e) {
+            System.out.println("Error al obterner datos en Actualizar Control: " + e);
+        }
+        response.setContentType("application/json;charset=Utf-8");
+        response.getWriter().write(json);
         
     }
 
