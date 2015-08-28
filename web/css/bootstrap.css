@@ -553,7 +553,7 @@ textarea {
 }
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 select,
 textarea,
@@ -4206,7 +4206,7 @@ input[type="submit"].btn.btn-mini {
         width: 48%;
     }
     .col-sm-5 {
-        width: 30.667%;
+        width: 35.667%;
     }
     .col-sm-4 {
         width: 33.33333333%;

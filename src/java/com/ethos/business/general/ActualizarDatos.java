@@ -63,12 +63,12 @@ public class ActualizarDatos {
         listEstadoCivil = estadoCivilDao.findAll();
         listNivelEstudio = nivelEstudiosDao.findAll();
 
-        for (int i = 0; i < listCiudades.size(); i++) {
+     /*   for (int i = 0; i < listCiudades.size(); i++) {
             if (listCiudades.get(i).getsCodigo().equals(personaModel.getsCodCiudadRes())) {
                 personaModel.setmCiudadRes(listCiudades.get(i));
                 i = listCiudades.size();
             }
-        }
+        }*/
 
         for (int i = 0; i < listEstadoCivil.size(); i++) {
             if (listEstadoCivil.get(i).getsCodigoEstadoCivil().equals(personaModel.getsCodEstadoCivil())) {
