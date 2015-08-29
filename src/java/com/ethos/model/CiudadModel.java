@@ -11,7 +11,7 @@ package com.ethos.model;
  */
 public class CiudadModel {
 
-    private String sCodigo;
+    private int sCodigo;
     private String sNombre;
     private String sNivel;
     private String sIndNal;
@@ -22,7 +22,7 @@ public class CiudadModel {
     public CiudadModel() {
     }
 
-    public CiudadModel(String sCodigo, String sNombre, String sNivel, String sIndNal, String sIndInternal, String sUbicacion, String sCodSugef) {
+    public CiudadModel(int sCodigo, String sNombre, String sNivel, String sIndNal, String sIndInternal, String sUbicacion, String sCodSugef) {
         this.sCodigo = sCodigo;
         this.sNombre = sNombre;
         this.sNivel = sNivel;
@@ -32,11 +32,11 @@ public class CiudadModel {
         this.sCodSugef = sCodSugef;
     }
 
-    public String getsCodigo() {
+    public int getsCodigo() {
         return sCodigo;
     }
 
-    public void setsCodigo(String sCodigo) {
+    public void setsCodigo(int sCodigo) {
         this.sCodigo = sCodigo;
     }
 

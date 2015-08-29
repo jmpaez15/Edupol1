@@ -1,4 +1,3 @@
-
 package com.ethos.DAO;
 
 import com.ethos.model.GeneroModel;
@@ -12,57 +11,55 @@ import java.util.List;
  *
  * @author Mary
  */
+public class GeneroDAO extends AbstractDAO<GeneroModel> {
 
-
-public class GeneroDAO extends AbstractDAO<GeneroModel>{
-    
     GeneroModel generoModel;
-    
-    
-    public GeneroDAO(){
+
+    public GeneroDAO() {
         super(GeneroModel.class);
     }
 
     @Override
     public GeneroModel select(Object id) {
-       return null;
+        return null;
     }
 
     @Override
     public String insert(GeneroModel entityClass) {
-     return "";
+        return "";
     }
 
     @Override
     public boolean update(GeneroModel entityClass) {
-     return false;
+        return false;
     }
 
     @Override
     public String delete(Object id) {
-    return "";
+        return "";
     }
 
     @Override
     public List<GeneroModel> findAll() {
         String query;
-        List<GeneroModel>generoModelLis=new ArrayList<>();
-        try{
-            conn=getConnectionDB().getConnection();
-            query=GeneralQuery.QUERY_GET_GENERO;
-            psQuery=conn.prepareStatement(query);
-            rsT=psQuery.executeQuery();
-            while(rsT.next()){
+        List<GeneroModel> generoModelLis = new ArrayList<>();
+        try {
+            conn = getConnectionDB().getConnection();
+            query = GeneralQuery.QUERY_GET_GENERO;
+            psQuery = conn.prepareStatement(query);
+            rsT = psQuery.executeQuery();
+            while (rsT.next()) {
+                generoModel = new GeneroModel();
                 generoModel.setiIdGenero(rsT.getInt(1));
                 generoModel.setsDescripcion(rsT.getString(2));
                 generoModel.setsInicial(rsT.getString(3));
                 generoModelLis.add(generoModel);
-                
+
             }
-            
-        }catch(SQLException ex){
-            System.out.println("Exception "+ex);  
-        }finally{
+
+        } catch (SQLException ex) {
+            System.out.println("Exception " + ex);
+        } finally {
             closeConnection();
         }
         return generoModelLis;
@@ -77,6 +74,5 @@ public class GeneroDAO extends AbstractDAO<GeneroModel>{
     public List<Object> queryAll(List<Object> parameters) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
 }

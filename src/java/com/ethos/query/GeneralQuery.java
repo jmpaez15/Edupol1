@@ -20,4 +20,6 @@ public class GeneralQuery {
     public static final String QUERY_GETTIPO_IDENTIFICACON="SELECT * FROM tipos_iden ORDER BY I_CODIGO ASC";
     public static final String QUERY_MEDIOS_MASIVOS="SELECT * FROM MEDIOS_MASIVOS";
     public static final String QUERY_PROFESIONES="SELECT i_codigo,c_descripcion FROM PROFESIONES";
+    public static final String QUERY_GET_CIUDADES= "SELECT I_CODIGO,C_NOMBRE FROM CIUDADES WHERE I_NIVEL=1";
+    public static final String QUERY_GET_TIPO_SANGUINEO="SELECT* FROM  GRUPOS_SANGUINEO;";
 }

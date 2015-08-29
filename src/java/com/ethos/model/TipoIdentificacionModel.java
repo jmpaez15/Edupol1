@@ -12,8 +12,9 @@ package com.ethos.model;
 public class TipoIdentificacionModel {
       private int iId_Identificacion;
       private String sDescripcion;
-      
-    public TipoIdentificacionModel(){
+   
+
+    public TipoIdentificacionModel() {
     }
 
     public TipoIdentificacionModel(int iId_Identificacion, String sDescripcion) {
@@ -36,6 +37,7 @@ public class TipoIdentificacionModel {
     public void setsDescripcion(String sDescripcion) {
         this.sDescripcion = sDescripcion;
     }
-    
+
+   
     
 }

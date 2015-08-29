@@ -17,6 +17,7 @@ import java.util.List;
 public class CategoriaSisbenDAO extends AbstractDAO<CategoriaSisbenModel> {
     
  CategoriaSisbenModel  categoriaSisbenModel;
+
  
  public CategoriaSisbenDAO(){
      super(CategoriaSisbenModel.class);
@@ -52,6 +53,7 @@ public class CategoriaSisbenDAO extends AbstractDAO<CategoriaSisbenModel> {
             psQuery=conn.prepareStatement(query);
             rsT=psQuery.executeQuery();
             while(rsT.next()){
+                categoriaSisbenModel =new CategoriaSisbenModel();
                 categoriaSisbenModel.setiIdCategoriaSisben(rsT.getInt(1));
                 categoriaSisbenModel.setsDescripcionCategoriaSisben(rsT.getString(2));
                 categoriaSisbenLis.add(categoriaSisbenModel);

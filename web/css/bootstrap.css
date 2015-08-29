@@ -226,10 +226,13 @@ textarea {
 .navbar-static-top .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
-    width: 940px;
+    width: 1150px;
 }
+/*.span13{
+    width: 1200px;
+}*/
 .span12 {
-    width: 940px;
+    width: 1150px;
 }
 .span11 {
     width: 860px;
@@ -550,7 +553,7 @@ textarea {
 }
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 select,
 textarea,
@@ -4203,7 +4206,7 @@ input[type="submit"].btn.btn-mini {
         width: 48%;
     }
     .col-sm-5 {
-        width: 42.667%;
+        width: 35.667%;
     }
     .col-sm-4 {
         width: 33.33333333%;

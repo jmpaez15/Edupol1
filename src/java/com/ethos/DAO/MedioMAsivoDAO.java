@@ -1,7 +1,3 @@
-
-
-
-
 package com.ethos.DAO;
 
 import com.ethos.model.MediosMasivosModel;
@@ -14,10 +10,8 @@ import java.util.List;
  *
  * @author Mary
  */
+public class MedioMAsivoDAO extends AbstractDAO<MediosMasivosModel> {
 
-
-public class MedioMAsivoDAO extends AbstractDAO<MediosMasivosModel>{
-    
     MediosMasivosModel medioMasivoModel;
 
     public MedioMAsivoDAO() {
@@ -31,7 +25,7 @@ public class MedioMAsivoDAO extends AbstractDAO<MediosMasivosModel>{
 
     @Override
     public String insert(MediosMasivosModel entityClass) {
-    return "";
+        return "";
     }
 
     @Override
@@ -41,28 +35,28 @@ public class MedioMAsivoDAO extends AbstractDAO<MediosMasivosModel>{
 
     @Override
     public String delete(Object id) {
-       return "";
+        return "";
     }
 
     @Override
     public List<MediosMasivosModel> findAll() {
-       String query;
-       List<MediosMasivosModel> mediosMasivosLis=new ArrayList<>();
+        String query;
+        List<MediosMasivosModel> mediosMasivosLis = new ArrayList<>();
         try {
-            conn=getConnectionDB().getConnection();
-            query=GeneralQuery.QUERY_MEDIOS_MASIVOS;
-            psQuery=conn.prepareStatement(query);
-            rsT=psQuery.executeQuery();
-            while (rsT.next()){
+            conn = getConnectionDB().getConnection();
+            query = GeneralQuery.QUERY_MEDIOS_MASIVOS;
+            psQuery = conn.prepareStatement(query);
+            rsT = psQuery.executeQuery();
+            while (rsT.next()) {
+                medioMasivoModel = new MediosMasivosModel();
                 medioMasivoModel.setiIdMediosMasivos(rsT.getInt(1));
                 medioMasivoModel.setsNombreMedioMasivo(rsT.getString(2));
                 mediosMasivosLis.add(medioMasivoModel);
             }
-                    
-                    
+
         } catch (Exception e) {
-            System.out.println("Exception "+e);
-        }finally{
+            System.out.println("Exception " + e);
+        } finally {
             closeConnection();
         }
         return mediosMasivosLis;
@@ -77,7 +71,5 @@ public class MedioMAsivoDAO extends AbstractDAO<MediosMasivosModel>{
     public List<Object> queryAll(List<Object> parameters) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-    
+
 }

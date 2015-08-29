@@ -1,4 +1,4 @@
-var appLogin = angular.module('appLogin', []);
+var appLogin = angular.module('appLogin', ['ngAnimate']);
 
 appLogin.controller('loginController', ['$http','$window', validaUser]);
     
@@ -10,12 +10,12 @@ function validaUser($http, $window) {
 
         $http({
             method: 'POST',
-            url: "./LoginControl",
+            url: "../LoginControl",
             headers: {'Content-Type': 'application/json'},
             data: login.credencial
         }).success(function(data, status, headers, config) {
             if (data.toString() === "OK") {
-                 window.href = "./General/Menu.html";
+                 window.href = "../General/MenuIn.html";
             } else {
                 alert('Login: ' + data);
             }

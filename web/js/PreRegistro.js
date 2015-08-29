@@ -12,9 +12,13 @@ function getDataFromServer($http) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
     });
+    
+     
+    
+    
     actualiza.save = function () {
-        actualiza.datos = actualiza.person.personaModel;
-        alert("Actualiza Datos:" + actualiza.person.personaModel.sNombre);
+        actualiza.datos = actualiza.person.estudiante;
+        alert("Actualiza Datos:" + actualiza.person.estudiante);
         $http({
             method: 'POST',
             url: "../PreRegistroControl",

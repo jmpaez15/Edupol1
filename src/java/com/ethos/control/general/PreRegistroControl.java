@@ -1,15 +1,13 @@
  
 package com.ethos.control.general;
 
-import com.ethos.DAO.AbstractDAO;
-import com.ethos.DAO.TipoSolicitudDAO;
-import com.ethos.business.general.ActualizarDatos;
-import com.ethos.model.ActualizaModel;
-import com.ethos.model.EstadoCivilModel;
-import com.ethos.model.TipoSolicitudModel;
+
+import com.ethos.business.general.FuncionesGenerales;
+import com.ethos.model.ListasGeneralesModel;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,8 +21,8 @@ import javax.servlet.http.HttpSession;
 
 
 public class PreRegistroControl extends HttpServlet {
-    private ActualizarDatos actualizaDatos;
-    AbstractDAO tipoSolicitudDao;
+    private FuncionesGenerales funcionesGeneral;
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -51,19 +49,17 @@ public class PreRegistroControl extends HttpServlet {
             throws ServletException, IOException {
        HttpSession sesion = request.getSession();
         String json = "";
-        tipoSolicitudDao=new TipoSolicitudDAO();
-        List<TipoSolicitudModel> listTipoSolicitud;
-        
-
+        ListasGeneralesModel listasGenerales;
+        funcionesGeneral=new FuncionesGenerales();
         try {
 //            System.out.println("idUser: "+sesion.getAttribute("codUser").toString());
-            if (sesion.getAttribute("codUser") != null) {
-                listTipoSolicitud=tipoSolicitudDao.findAll();
-                json = new Gson().toJson(listTipoSolicitud);
-            }
+                listasGenerales=funcionesGeneral.obtenerDatosActualizar();
+                json = new Gson().toJson(listasGenerales);
+                
+            
                   System.out.println("json preregistro: " + json);
         } catch (Exception e) {
-            System.out.println("Exception in AuctalizarControl: " + e);
+            System.out.println("Exception in PreRegiStroControl: " + e);
         }
         response.setContentType("application/json;charset=Utf-8");
         response.getWriter().write(json);
@@ -80,6 +76,22 @@ public class PreRegistroControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String json = null;
+        String respuesta;
+        FuncionesGenerales funcion = new FuncionesGenerales();
+        try {
+            BufferedReader reader = request.getReader();
+            JsonObject dataJson = funcion.recibirDatos(reader);
+            
+        //   json = new Gson().toJson(respuesta);
+          System.out.println("dataJason: " + dataJson);
+//            System.out.println("respJason: " + json);
+        } catch (Exception e) {
+            System.out.println("Error al obterner datos en Actualizar Control: " + e);
+        }
+        response.setContentType("application/json;charset=Utf-8");
+        response.getWriter().write(json);
         
     }
 

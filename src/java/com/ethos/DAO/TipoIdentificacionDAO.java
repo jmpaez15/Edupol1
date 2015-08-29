@@ -1,7 +1,3 @@
-
-
-
-
 package com.ethos.DAO;
 
 import com.ethos.model.TipoIdentificacionModel;
@@ -11,18 +7,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
 /**
  *
  * @author Mary
  */
+public class TipoIdentificacionDAO extends AbstractDAO<TipoIdentificacionModel> {
 
-
-public class TipoIdentificacionDAO extends AbstractDAO<TipoIdentificacionModel>{
-    
     TipoIdentificacionModel tipoIdentificacionModel;
-    
-    public TipoIdentificacionDAO(){
+
+    public TipoIdentificacionDAO() {
         super(TipoIdentificacionModel.class);
     }
 
@@ -49,24 +42,27 @@ public class TipoIdentificacionDAO extends AbstractDAO<TipoIdentificacionModel>{
     @Override
     public List<TipoIdentificacionModel> findAll() {
         String query;
-        List<TipoIdentificacionModel> tipoIdentificacionList=new ArrayList<>();
+        List<TipoIdentificacionModel> tipoIdentificacionList = new ArrayList<>();
         try {
-            conn=getConnectionDB().getConnection();
-            query=GeneralQuery.QUERY_GETTIPO_IDENTIFICACON;
-            psQuery=conn.prepareStatement(query);
-            rsT=psQuery.executeQuery();
-            while(rsT.next()){
+            conn = getConnectionDB().getConnection();
+            query = GeneralQuery.QUERY_GETTIPO_IDENTIFICACON;
+            psQuery = conn.prepareStatement(query);
+            
+            rsT = psQuery.executeQuery();
+            
+            while (rsT.next()) {
+                tipoIdentificacionModel = new TipoIdentificacionModel();
                 tipoIdentificacionModel.setiId_Identificacion(rsT.getInt(1));
                 tipoIdentificacionModel.setsDescripcion(rsT.getString(2));
                 tipoIdentificacionList.add(tipoIdentificacionModel);
             }
         } catch (SQLException ex) {
-            System.out.println("exception "+ex);
-        }finally{
+            System.out.println("exception " + ex);
+        } finally {
             closeConnection();
         }
-      return tipoIdentificacionList;    
-  }
+        return tipoIdentificacionList;
+    }
 
     @Override
     public List<TipoIdentificacionModel> findWhere(HashMap<String, Object> parameters) {
@@ -76,5 +72,5 @@ public class TipoIdentificacionDAO extends AbstractDAO<TipoIdentificacionModel>{
     @Override
     public List<Object> queryAll(List<Object> parameters) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }   
+    }
 }
