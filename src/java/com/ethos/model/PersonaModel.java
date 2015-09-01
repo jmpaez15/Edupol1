@@ -5,6 +5,8 @@
  */
 package com.ethos.model;
 
+import java.util.Date;
+
 /**
  *
  * @author dmendez
@@ -17,10 +19,14 @@ public class PersonaModel {
 
     private String sCodPersona;
     private String sIden;
-    
+    private int iTipoIden;
+    private String stipoPersona; 
+    private Date dFechaExpedicion;
+    private Date dFechaNacimiento;
     private int idPerfil;
     private PerfilModel mPerfil;
     private String sCodCiudadRes;
+    private String sGenero;
     private CiudadModel mCiudadRes;
     private int iSalario;
     private String sCodCiudadNac;
@@ -53,7 +59,10 @@ public class PersonaModel {
     public PersonaModel() {
     }
 
-    public PersonaModel(String firstName, String lastName, String sCodPersona, String sIden, int idPerfil, PerfilModel mPerfil, String sCodCiudadRes, CiudadModel mCiudadRes, int iSalario, String sCodCiudadNac, String sNomCiudadNac, String sFecNac, String sCodCiudadExp, String sNomCiudadExp, String sFecExp, int iTipoActEcon, int iNivelEst, NivelEstudiosModel mNivelEstudios, int iNumPeraCargo, String sCodEstadoCivil, EstadoCivilModel mEstadoCivil, String sEstrato, String sCabezaFamilia, String sNombre, String sApellido, String sDirRes, String sTelRes, String sCelular, String sDirOfi, String sTelOfi, String sTelArr, String sBarrioOfi, String sCorreoPer, String sCorreoCor, String sClavePersona) {
+    public PersonaModel(Date dFechaNacimiento,String sGenero,int iTipoIden,String stipoPersona, String firstName, String lastName, String sCodPersona, String sIden, int idPerfil, PerfilModel mPerfil, String sCodCiudadRes, CiudadModel mCiudadRes, int iSalario, String sCodCiudadNac, String sNomCiudadNac, String sFecNac, String sCodCiudadExp, String sNomCiudadExp, String sFecExp, int iTipoActEcon, int iNivelEst, NivelEstudiosModel mNivelEstudios, int iNumPeraCargo, String sCodEstadoCivil, EstadoCivilModel mEstadoCivil, String sEstrato, String sCabezaFamilia, String sNombre, String sApellido, String sDirRes, String sTelRes, String sCelular, String sDirOfi, String sTelOfi, String sTelArr, String sBarrioOfi, String sCorreoPer, String sCorreoCor, String sClavePersona) {
+        this.sGenero=sGenero;
+        this.iTipoIden=iTipoIden;
+        this.stipoPersona=stipoPersona;
         this.firstName = firstName;
         this.lastName = lastName;
         this.sCodPersona = sCodPersona;
@@ -108,7 +117,7 @@ public class PersonaModel {
     }
 
     public String getsCodPersona() {
-        return sCodPersona;
+        return  sCodPersona;
     }
 
     public void setsCodPersona(String sCodPersona) {
@@ -370,4 +379,47 @@ public class PersonaModel {
     public void setsClavePersona(String sClavePersona) {
         this.sClavePersona = sClavePersona;
     }
+    
+    public String getStipoPersona() {
+        return stipoPersona;
+    }
+
+    public void setStipoPersona(String stipoPersona) {
+        this.stipoPersona = stipoPersona;
+    }
+    
+    
+    public int getiTipoIden() {
+        return iTipoIden;
+    }
+
+    public void setiTipoIden(int iTipoIden) {
+        this.iTipoIden = iTipoIden;
+    }
+
+    public Date getdFechaExpedicion() {
+        return dFechaExpedicion;
+    }
+
+    public void setdFechaExpedicion(Date dFechaExpedicion) {
+        this.dFechaExpedicion = dFechaExpedicion;
+    }
+
+    public String getsGenero() {
+        return sGenero;
+    }
+
+    public void setsGenero(String sGenero) {
+        this.sGenero = sGenero;
+    }
+
+    public Date getdFechaNacimiento() {
+        return dFechaNacimiento;
+    }
+
+    public void setdFechaNacimiento(Date dFechaNacimiento) {
+        this.dFechaNacimiento = dFechaNacimiento;
+    }
+    
+    
 }

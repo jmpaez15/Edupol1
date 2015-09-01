@@ -2,6 +2,7 @@
 package com.ethos.control.general;
 
 
+import com.ethos.business.general.FuncionesEstudiantes;
 import com.ethos.business.general.FuncionesGenerales;
 import com.ethos.model.ListasGeneralesModel;
 import com.google.gson.Gson;
@@ -80,9 +81,11 @@ public class PreRegistroControl extends HttpServlet {
         String json = null;
         String respuesta;
         FuncionesGenerales funcion = new FuncionesGenerales();
+        FuncionesEstudiantes funcionEstudiantes= new FuncionesEstudiantes();
         try {
             BufferedReader reader = request.getReader();
             JsonObject dataJson = funcion.recibirDatos(reader);
+            respuesta=funcionEstudiantes.guardarPreRegistro(dataJson);
             
         //   json = new Gson().toJson(respuesta);
           System.out.println("dataJason: " + dataJson);

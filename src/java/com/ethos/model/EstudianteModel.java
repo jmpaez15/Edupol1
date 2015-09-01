@@ -12,86 +12,97 @@ import java.util.Date;
  * @author operaciones
  */
 public class EstudianteModel {
- 
-    String sTipoSolicitud;
+
+   
+    private int iCodigoEst;
+    private int iTipoSolicitud;
+
     String sTipoRol;
     String sTipoPersona; 
-    String sTipoIdentificacion;
-    String sNumeroIdentificacion;
+    private int iTipoIdentificacion;
+    private int iNumeroIdentificacion;
     String sPaisExpedicion;
-    String sCiudadExpedicion;
-    Date dFechaExpedicion;
+    String sLugarExpedicion;
+    private Date dFechaExpedicion;
     String sFechaExpedicion;
     String sPrimerNombre;
     String sSegundoNombre;
     String sPrimerApellido;
     String sSegundoApellido;
-    String sGenero;
-    String sCategoriaSisben;
-    String sNacionalidad;
-    String sPaisResidencia;
-    String sDepartamentoResidencia;
-    String sCiudadResidencia;
+    private int iGenero;
+    private int iCategoriaSisben;
+    private int iNacionalidad;
+    private int iPaisResidencia;
+    private int iDepartamentoResidencia;
+    private int  iCiudadResidencia;
     String sLocalidadResidencia;
     String sDireccionResidencia;
     String sBarrioResidencia;
-    Date dFechaNacimiento;
+    private Date dFechaNacimiento;
     String sFechaNacimiento;
-    String sPaisNacimiento;
-    String sCiudadNacimiento;
-    String sGrupoSaniguineo;
+    private String sLugarNacimiento;
+    private String sCiudadNacimiento;
+    private int iGrupoSaniguineo;
     Date dFechaInscripcion;
     String sFechaInscripcion; //Fecha de inscripcion o de actualizacion de datos
     String sEstadoCivil;
-    String sLibretaMilitar;
+    private int iLibretaMilitar;
     String sNumeroLibretaMilitar;
-    String sNivelEducativo;
+    private int iNivelEducativo;
 
     public EstudianteModel() {
     }
 
-    public EstudianteModel(String sTipoSolicitud, String sTipoRol, String sTipoPersona, String sTipoIdentificacion, String sNumeroIdentificacion, String sPaisExpedicion, String sCiudadExpedicion, Date dFechaExpedicion, String sFechaExpedicion, String sPrimerNombre, String sSegundoNombre, String sPrimerApellido, String sSegundoApellido, String sGenero, String sCategoriaSisben, String sNacionalidad, String sPaisResidencia, String sDepartamentoResidencia, String sCiudadResidencia, String sLocalidadResidencia, String sDireccionResidencia, String sBarrioResidencia, Date dFechaNacimiento, String sFechaNacimiento, String sPaisNacimiento, String sCiudadNacimiento, String sGrupoSaniguineo, Date dFechaInscripcion, String sFechaInscripcion, String sEstadoCivil, String sLibretaMilitar, String sNumeroLibretaMilitar, String sNivelEducativo) {
-        this.sTipoSolicitud = sTipoSolicitud;
+    public EstudianteModel(int iTipoSolicitud, String sTipoRol, String sTipoPersona, int iTipoIdentificacion, int iNumeroIdentificacion, String sPaisExpedicion, String sLugarExpedicion, Date dFechaExpedicion, String sFechaExpedicion, String sPrimerNombre, String sSegundoNombre, String sPrimerApellido, String sSegundoApellido, int iGenero, int iCategoriaSisben, int iNacionalidad, int iPaisResidencia, int iDepartamentoResidencia, int iCiudadResidencia, String sLocalidadResidencia, String sDireccionResidencia, String sBarrioResidencia, Date dFechaNacimiento, String sFechaNacimiento, String sLugarNacimiento, String sCiudadNacimiento, int iGrupoSaniguineo, Date dFechaInscripcion, String sFechaInscripcion, String sEstadoCivil, int iLibretaMilitar, String sNumeroLibretaMilitar, int iNivelEducativo) {
+        this.iTipoSolicitud = iTipoSolicitud;
         this.sTipoRol = sTipoRol;
         this.sTipoPersona = sTipoPersona;
-        this.sTipoIdentificacion = sTipoIdentificacion;
-        this.sNumeroIdentificacion = sNumeroIdentificacion;
+        this.iTipoIdentificacion = iTipoIdentificacion;
+        this.iNumeroIdentificacion = iNumeroIdentificacion;
         this.sPaisExpedicion = sPaisExpedicion;
-        this.sCiudadExpedicion = sCiudadExpedicion;
+        this.sLugarExpedicion = sLugarExpedicion;
         this.dFechaExpedicion = dFechaExpedicion;
         this.sFechaExpedicion = sFechaExpedicion;
         this.sPrimerNombre = sPrimerNombre;
         this.sSegundoNombre = sSegundoNombre;
         this.sPrimerApellido = sPrimerApellido;
         this.sSegundoApellido = sSegundoApellido;
-        this.sGenero = sGenero;
-        this.sCategoriaSisben = sCategoriaSisben;
-        this.sNacionalidad = sNacionalidad;
-        this.sPaisResidencia = sPaisResidencia;
-        this.sDepartamentoResidencia = sDepartamentoResidencia;
-        this.sCiudadResidencia = sCiudadResidencia;
+        this.iGenero = iGenero;
+        this.iCategoriaSisben = iCategoriaSisben;
+        this.iNacionalidad = iNacionalidad;
+        this.iPaisResidencia = iPaisResidencia;
+        this.iDepartamentoResidencia = iDepartamentoResidencia;
+        this.iCiudadResidencia = iCiudadResidencia;
         this.sLocalidadResidencia = sLocalidadResidencia;
         this.sDireccionResidencia = sDireccionResidencia;
         this.sBarrioResidencia = sBarrioResidencia;
         this.dFechaNacimiento = dFechaNacimiento;
         this.sFechaNacimiento = sFechaNacimiento;
-        this.sPaisNacimiento = sPaisNacimiento;
+        this.sLugarNacimiento = sLugarNacimiento;
         this.sCiudadNacimiento = sCiudadNacimiento;
-        this.sGrupoSaniguineo = sGrupoSaniguineo;
+        this.iGrupoSaniguineo = iGrupoSaniguineo;
         this.dFechaInscripcion = dFechaInscripcion;
         this.sFechaInscripcion = sFechaInscripcion;
         this.sEstadoCivil = sEstadoCivil;
-        this.sLibretaMilitar = sLibretaMilitar;
+        this.iLibretaMilitar = iLibretaMilitar;
         this.sNumeroLibretaMilitar = sNumeroLibretaMilitar;
-        this.sNivelEducativo = sNivelEducativo;
+        this.iNivelEducativo = iNivelEducativo;
     }
 
-    public String getsTipoSolicitud() {
-        return sTipoSolicitud;
+     public int getiCodigoEst() {
+        return iCodigoEst;
     }
 
-    public void setsTipoSolicitud(String sTipoSolicitud) {
-        this.sTipoSolicitud = sTipoSolicitud;
+    public void setiCodigoEst(int iCodigoEst) {
+        this.iCodigoEst = iCodigoEst;
+    }
+    
+    public int getiTipoSolicitud() {
+        return iTipoSolicitud;
+    }
+
+    public void setiTipoSolicitud(int iTipoSolicitud) {
+        this.iTipoSolicitud = iTipoSolicitud;
     }
 
     public String getsTipoRol() {
@@ -110,20 +121,20 @@ public class EstudianteModel {
         this.sTipoPersona = sTipoPersona;
     }
 
-    public String getsTipoIdentificacion() {
-        return sTipoIdentificacion;
+    public int getiTipoIdentificacion() {
+        return iTipoIdentificacion;
     }
 
-    public void setsTipoIdentificacion(String sTipoIdentificacion) {
-        this.sTipoIdentificacion = sTipoIdentificacion;
+    public void setiTipoIdentificacion(int iTipoIdentificacion) {
+        this.iTipoIdentificacion = iTipoIdentificacion;
     }
 
-    public String getsNumeroIdentificacion() {
-        return sNumeroIdentificacion;
+    public int getiNumeroIdentificacion() {
+        return iNumeroIdentificacion;
     }
 
-    public void setsNumeroIdentificacion(String sNumeroIdentificacion) {
-        this.sNumeroIdentificacion = sNumeroIdentificacion;
+    public void setiNumeroIdentificacion(int iNumeroIdentificacion) {
+        this.iNumeroIdentificacion = iNumeroIdentificacion;
     }
 
     public String getsPaisExpedicion() {
@@ -134,12 +145,12 @@ public class EstudianteModel {
         this.sPaisExpedicion = sPaisExpedicion;
     }
 
-    public String getsCiudadExpedicion() {
-        return sCiudadExpedicion;
+    public String getsLugarExpedicion() {
+        return sLugarExpedicion;
     }
 
-    public void setsCiudadExpedicion(String sCiudadExpedicion) {
-        this.sCiudadExpedicion = sCiudadExpedicion;
+    public void setsLugarExpedicion(String sLugarExpedicion) {
+        this.sLugarExpedicion = sLugarExpedicion;
     }
 
     public Date getdFechaExpedicion() {
@@ -190,52 +201,52 @@ public class EstudianteModel {
         this.sSegundoApellido = sSegundoApellido;
     }
 
-    public String getsGenero() {
-        return sGenero;
+    public int getiGenero() {
+        return iGenero;
     }
 
-    public void setsGenero(String sGenero) {
-        this.sGenero = sGenero;
+    public void setiGenero(int iGenero) {
+        this.iGenero = iGenero;
     }
 
-    public String getsCategoriaSisben() {
-        return sCategoriaSisben;
+    public int getiCategoriaSisben() {
+        return iCategoriaSisben;
     }
 
-    public void setsCategoriaSisben(String sCategoriaSisben) {
-        this.sCategoriaSisben = sCategoriaSisben;
+    public void setiCategoriaSisben(int iCategoriaSisben) {
+        this.iCategoriaSisben = iCategoriaSisben;
     }
 
-    public String getsNacionalidad() {
-        return sNacionalidad;
+    public int getiNacionalidad() {
+        return iNacionalidad;
     }
 
-    public void setsNacionalidad(String sNacionalidad) {
-        this.sNacionalidad = sNacionalidad;
+    public void setiNacionalidad(int iNacionalidad) {
+        this.iNacionalidad = iNacionalidad; 
     }
 
-    public String getsPaisResidencia() {
-        return sPaisResidencia;
+    public int getiPaisResidencia() {
+        return iPaisResidencia;
     }
 
-    public void setsPaisResidencia(String sPaisResidencia) {
-        this.sPaisResidencia = sPaisResidencia;
+    public void setiPaisResidencia(int iPaisResidencia) {
+        this.iPaisResidencia = iPaisResidencia;
     }
 
-    public String getsDepartamentoResidencia() {
-        return sDepartamentoResidencia;
+    public int getiDepartamentoResidencia() {
+        return iDepartamentoResidencia;
     }
 
-    public void setsDepartamentoResidencia(String sDepartamentoResidencia) {
-        this.sDepartamentoResidencia = sDepartamentoResidencia;
+    public void setiDepartamentoResidencia(int iDepartamentoResidencia) {
+        this.iDepartamentoResidencia = iDepartamentoResidencia;
     }
 
-    public String getsCiudadResidencia() {
-        return sCiudadResidencia;
+    public int getiCiudadResidencia() {
+        return iCiudadResidencia;
     }
 
-    public void setsCiudadResidencia(String sCiudadResidencia) {
-        this.sCiudadResidencia = sCiudadResidencia;
+    public void setiCiudadResidencia(int iCiudadResidencia) {
+        this.iCiudadResidencia = iCiudadResidencia;
     }
 
     public String getsLocalidadResidencia() {
@@ -278,12 +289,12 @@ public class EstudianteModel {
         this.sFechaNacimiento = sFechaNacimiento;
     }
 
-    public String getsPaisNacimiento() {
-        return sPaisNacimiento;
+    public String getsLugarNacimiento() {
+        return sLugarNacimiento;
     }
 
-    public void setsPaisNacimiento(String sPaisNacimiento) {
-        this.sPaisNacimiento = sPaisNacimiento;
+    public void setsLugarNacimiento(String sLugarNacimiento) {
+        this.sLugarNacimiento = sLugarNacimiento;
     }
 
     public String getsCiudadNacimiento() {
@@ -294,12 +305,12 @@ public class EstudianteModel {
         this.sCiudadNacimiento = sCiudadNacimiento;
     }
 
-    public String getsGrupoSaniguineo() {
-        return sGrupoSaniguineo;
+    public int getiGrupoSaniguineo() {
+        return iGrupoSaniguineo;
     }
 
-    public void setsGrupoSaniguineo(String sGrupoSaniguineo) {
-        this.sGrupoSaniguineo = sGrupoSaniguineo;
+    public void setiGrupoSaniguineo(int iGrupoSaniguineo) {
+        this.iGrupoSaniguineo = iGrupoSaniguineo;
     }
 
     public Date getdFechaInscripcion() {
@@ -326,12 +337,12 @@ public class EstudianteModel {
         this.sEstadoCivil = sEstadoCivil;
     }
 
-    public String getsLibretaMilitar() {
-        return sLibretaMilitar;
+    public int getiLibretaMilitar() {
+        return iLibretaMilitar;
     }
 
-    public void setsLibretaMilitar(String sLibretaMilitar) {
-        this.sLibretaMilitar = sLibretaMilitar;
+    public void setiLibretaMilitar(int iLibretaMilitar) {
+        this.iLibretaMilitar = iLibretaMilitar;
     }
 
     public String getsNumeroLibretaMilitar() {
@@ -342,12 +353,12 @@ public class EstudianteModel {
         this.sNumeroLibretaMilitar = sNumeroLibretaMilitar;
     }
 
-    public String getsNivelEducativo() {
-        return sNivelEducativo;
+    public int getiNivelEducativo() {
+        return iNivelEducativo;
     }
 
-    public void setsNivelEducativo(String sNivelEducativo) {
-        this.sNivelEducativo = sNivelEducativo;
+    public void setiNivelEducativo(int iNivelEducativo) {
+        this.iNivelEducativo = iNivelEducativo;
     }
 
     
