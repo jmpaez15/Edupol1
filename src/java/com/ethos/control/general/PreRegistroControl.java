@@ -78,7 +78,7 @@ public class PreRegistroControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String json = null;
+        String json = "";
         String respuesta;
         FuncionesGenerales funcion = new FuncionesGenerales();
         FuncionesEstudiantes funcionEstudiantes= new FuncionesEstudiantes();
