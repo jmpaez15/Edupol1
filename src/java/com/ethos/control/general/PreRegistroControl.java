@@ -23,6 +23,7 @@ import javax.servlet.http.HttpSession;
 
 public class PreRegistroControl extends HttpServlet {
     private FuncionesGenerales funcionesGeneral;
+    private ListasGeneralesModel listasGenerales;
     
 
     /**
@@ -50,7 +51,6 @@ public class PreRegistroControl extends HttpServlet {
             throws ServletException, IOException {
        HttpSession sesion = request.getSession();
         String json = "";
-        ListasGeneralesModel listasGenerales;
         funcionesGeneral=new FuncionesGenerales();
         try {
 //            System.out.println("idUser: "+sesion.getAttribute("codUser").toString());
@@ -85,11 +85,18 @@ public class PreRegistroControl extends HttpServlet {
         try {
             BufferedReader reader = request.getReader();
             JsonObject dataJson = funcion.recibirDatos(reader);
-            respuesta=funcionEstudiantes.guardarPreRegistro(dataJson);
-            
-        //   json = new Gson().toJson(respuesta);
-          System.out.println("dataJason: " + dataJson);
-//            System.out.println("respJason: " + json);
+            switch(dataJson.get("condicion").getAsInt()){
+                case 0:
+                    respuesta=funcionEstudiantes.guardarPreRegistro(dataJson);
+                    break;
+                case 1:
+                    listasGenerales=funcionEstudiantes.obtenerDependenciasUniversidades(dataJson);
+                    break;
+                case 2:
+                 listasGenerales=funcionEstudiantes.dependenciasPais(dataJson);
+                    break;
+            }
+            json = new Gson().toJson(listasGenerales);
         } catch (Exception e) {
             System.out.println("Error al obterner datos en Actualizar Control: " + e);
         }

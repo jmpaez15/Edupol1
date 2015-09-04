@@ -20,13 +20,15 @@ public class ListasGeneralesModel {
     List<MediosMasivosModel>lisMediosMasivosModels;
     List<NivelEstudiosModel>lisNivelEstudiosModels;
     List<TipoSanguineoModel>listipoSanguineoModels;
-
-   
+    List<UniversidadesModel>lisUniversidadesModels;
+    List<NivelFormacionModel>listNivelFormacionModels;
+    List<GrupoProgramasModel>listGrupoProgramasModels;
+    List<ProgramasModel>listProgramasModels;
 
     public ListasGeneralesModel() {
     }
 
-    public ListasGeneralesModel(List<TipoIdentificacionModel> lisTipoIdentificacionModels, List<GeneroModel> lisGeneroModels, List<ProfesionesModel> lisProfesionesModels, List<EstadoCivilModel> lisEstadoCivilModels, List<TipoSolicitudModel> lisTipoSolicitudModels, List<CategoriaSisbenModel> lisCategoriaSisbenModels, List<CiudadModel> lisCiudadModels, List<MediosMasivosModel> lisMediosMasivosModels, List<NivelEstudiosModel> lisNivelEstudiosModels) {
+    public ListasGeneralesModel(List<TipoIdentificacionModel> lisTipoIdentificacionModels, List<GeneroModel> lisGeneroModels, List<ProfesionesModel> lisProfesionesModels, List<EstadoCivilModel> lisEstadoCivilModels, List<TipoSolicitudModel> lisTipoSolicitudModels, List<CategoriaSisbenModel> lisCategoriaSisbenModels, List<CiudadModel> lisCiudadModels, List<MediosMasivosModel> lisMediosMasivosModels, List<NivelEstudiosModel> lisNivelEstudiosModels, List<TipoSanguineoModel> listipoSanguineoModels, List<UniversidadesModel> lisUniversidadesModels, List<NivelFormacionModel> listNivelFormacionModels, List<GrupoProgramasModel> listGrupoProgramasModels, List<ProgramasModel> listProgramasModels) {
         this.lisTipoIdentificacionModels = lisTipoIdentificacionModels;
         this.lisGeneroModels = lisGeneroModels;
         this.lisProfesionesModels = lisProfesionesModels;
@@ -36,6 +38,11 @@ public class ListasGeneralesModel {
         this.lisCiudadModels = lisCiudadModels;
         this.lisMediosMasivosModels = lisMediosMasivosModels;
         this.lisNivelEstudiosModels = lisNivelEstudiosModels;
+        this.listipoSanguineoModels = listipoSanguineoModels;
+        this.lisUniversidadesModels = lisUniversidadesModels;
+        this.listNivelFormacionModels = listNivelFormacionModels;
+        this.listGrupoProgramasModels = listGrupoProgramasModels;
+        this.listProgramasModels = listProgramasModels;
     }
 
     public List<TipoIdentificacionModel> getLisTipoIdentificacionModels() {
@@ -109,8 +116,8 @@ public class ListasGeneralesModel {
     public void setLisNivelEstudiosModels(List<NivelEstudiosModel> lisNivelEstudiosModels) {
         this.lisNivelEstudiosModels = lisNivelEstudiosModels;
     }
-    
-     public List<TipoSanguineoModel> getListipoSanguineoModels() {
+
+    public List<TipoSanguineoModel> getListipoSanguineoModels() {
         return listipoSanguineoModels;
     }
 
@@ -118,5 +125,38 @@ public class ListasGeneralesModel {
         this.listipoSanguineoModels = listipoSanguineoModels;
     }
 
-    
+    public List<UniversidadesModel> getLisUniversidadesModels() {
+        return lisUniversidadesModels;
     }
+
+    public void setLisUniversidadesModels(List<UniversidadesModel> lisUniversidadesModels) {
+        this.lisUniversidadesModels = lisUniversidadesModels;
+    }
+
+    public List<NivelFormacionModel> getListNivelFormacionModels() {
+        return listNivelFormacionModels;
+    }
+
+    public void setListNivelFormacionModels(List<NivelFormacionModel> listNivelFormacionModels) {
+        this.listNivelFormacionModels = listNivelFormacionModels;
+    }
+
+    public List<GrupoProgramasModel> getListGrupoProgramasModels() {
+        return listGrupoProgramasModels;
+    }
+
+    public void setListGrupoProgramasModels(List<GrupoProgramasModel> listGrupoProgramasModels) {
+        this.listGrupoProgramasModels = listGrupoProgramasModels;
+    }
+
+    public List<ProgramasModel> getListProgramasModels() {
+        return listProgramasModels;
+    }
+
+    public void setListProgramasModels(List<ProgramasModel> listProgramasModels) {
+        this.listProgramasModels = listProgramasModels;
+    }
+
+    
+    
+}

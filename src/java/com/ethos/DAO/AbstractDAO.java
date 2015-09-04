@@ -44,6 +44,8 @@ public abstract class AbstractDAO<T> {
     public abstract List<T> findWhere(HashMap<String,Object> parameters);
     
     public abstract List<Object> queryAll(List<Object> parameters);
+    
+    public abstract List<T> findAll(Object id); 
 
     public Class<T> getEntityClass() {
         return entityClass;

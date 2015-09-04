@@ -8,8 +8,8 @@ package com.ethos.DAO;
 import com.ethos.model.PersonaModel;
 import com.ethos.query.FunctionsDB;
 import com.ethos.query.PersonasQuery;
-import java.util.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -92,6 +92,8 @@ public class PersonasDAO extends AbstractDAO<PersonaModel> {
 
     @Override
     public String insert(PersonaModel entityClass) {
+        SimpleDateFormat fecha=new SimpleDateFormat("yyyy/MM/dd");
+        String resultado ="NOK";
         String query;
         int rs=0;
        try {
@@ -103,22 +105,27 @@ public class PersonasDAO extends AbstractDAO<PersonaModel> {
         psQuery.setString(3,entityClass.getsIden());
         psQuery.setInt(4,entityClass.getiTipoIden());
         psQuery.setInt(5,entityClass.getIdPerfil());
-        psQuery.setString(6,entityClass.getdFechaExpedicion().toString());
+        psQuery.setString(6,fecha.format(entityClass.getdFechaExpedicion()));
         psQuery.setString(7,entityClass.getsApellido());
         psQuery.setString(8,entityClass.getsNombre());
         psQuery.setString(9,entityClass.getsGenero());
-        psQuery.setString(10,  entityClass.getdFechaNacimiento().toString());
+        psQuery.setString(10,fecha.format(entityClass.getdFechaNacimiento()));
         psQuery.setString(11,entityClass.getsCodEstadoCivil());
+        psQuery.setInt(12,entityClass.getiNivelEst());
         rs=psQuery.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("SQLException " +ex);
-         
-        }catch(Exception e){
-            System.out.println("Exception " + e );
+        }finally {
+            closeConnection();
         }
+        if(rs > 0){
+            resultado = "OK";
+        }else{
+            System.out.println("¡No se realizo la insercion en la tabla 'PERSONAS'!");
+        }
+        return resultado;
         
         
-        return "";
     }
 
     @Override
@@ -208,5 +215,10 @@ public class PersonasDAO extends AbstractDAO<PersonaModel> {
 
     public String getTipoConn() {
         return tipoConn;
+    }
+
+    @Override
+    public List<PersonaModel> findAll(Object id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
