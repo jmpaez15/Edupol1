@@ -26,6 +26,7 @@
         <script src="../js/PreRegistro.js"></script>
         <script src="../js/layout.js"></script>
         <script src="../libs/jquery.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.9/css/dataTables.bootstrap.min.css"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script src="../libs/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
         <script src="../libs/prettyphoto/jquery.prettyphoto.js"></script>
@@ -81,7 +82,7 @@
                                             <div class="form-group ">
                                                 <label class="col-sm-5">Tipo de Solicitud:</label>
                                                 <div class="col-sm-6">
-                                                    <select ng-model="actualiza.person.PreRegistro.estudiante.TipoSol" ng-options="TipoSol as TipoSol.sNombreSolicitud for TipoSol in actualiza.person.lisTipoSolicitudModels track by TipoSol.iId_tipoSolicitud" convert-to-number>
+                                                    <select ng-model="actualiza.person.PreRegistro.estudiante.TipoSol" ng-options="TipoSol as TipoSol.sNombreSolicitud for TipoSol in actualiza.person.lisTipoSolicitudModels track by TipoSol.iId_tipoSolicitud" ng-change="'function(actualiza.person.PreRegistro.estudiante.TipoSol)'"  convert-to-number>
                                                         <option value="">Seleccione un tipo de solicitud</option>
                                                     </select>
                                                 </div>

@@ -185,3 +185,13 @@ blockquote {
     background: #3498db;
   }
 }
+
+.panel.panel-default {
+    width: 87%; background-color: whitesmoke;
+    border-color: rgb(243, 247, 251);
+    border-radius: 5px;
+    border-style: solid;
+    padding: 2%;
+    margin: 0.1%;
+    width: 94%;
+}

@@ -33,11 +33,6 @@
         <script src="../libs/jquery.scrollto-1.4.3.1-min.js"></script>
         <script src="../libs/custom.js"></script>
         <script src="../libs/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-        <!--<script src="../js/ui-bootstrap-tpls-0.13.0.js"></script>-->
-        <!--<script src="../libs/bootstrap/js/bootstrap-transition.js"></script>-->
-        <!--<script src="../libs/bootstrap/js/bootstrap-collapse.js"></script>-->
-        <!--<script src="../libs/bootstrap/js/bootstrap-dropdown.js"></script>-->
-        <!--<script src="../libs/retina/retina.js"></script>-->
 
 
     </head>
@@ -62,623 +57,607 @@
                     </div>
                 </div>
             </section>
+
             <section id="includeLayout" class="section">
-                <div id="formInclude" data-ng-controller="RegistroController as registro"> 
-                    <form class="form-horizontal" ng-class="" data-ng-init="getDataFromServer()">
-                        <div>
-                            <div id="registro" class="carousel slide" data-ride="carousel" data-interval="false">
+                <div class="container">
 
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner" role="listbox">
+                    <div class="panel-group" id="accordion">
 
-                                    <div class="item active ">
-                                        <h1>DATOS COMPLEMENTARIOS DEL ESTUDIANTE</h1>
-                                        <br/>
-                                        <br/>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">DATOS COMPLEMENTARIOS DEL ESTUDIANTE</a>
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse in">
+                                <br/>
+                                <br/>
+                                <div class="panel-body">
 
-                                        <div class="col-sm-6">
-
-                                            <div class="form-group ">
-                                                <label class="col-sm-5">Periodo Académico Activo:</label>
-                                                <div class="col-sm-6">
-                                                    <select ng-model="registro.person.estudianteModel.sTipoSolicitud" ng-options="TipoSol as TipoSol.sNombreSolicitud for TipoSol in actualiza.person.lisTipoSolicitudModels track by TipoSol.iId_tipoSolicitud" convert-to-number>
-                                                        <option value="">Seleccione un tipo de solicitud</option>
-                                                    </select>
-                                                </div>
-                                            </div> 
-
-                                            <div class="form-group">
-                                                <label class="col-sm-5">País Escuela Secundaria:</label>
-                                                <div class="col-sm-6">
-                                                    <select ng-model="estudiantes.estudiante.estudianteModel" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
-                                                        <option value="">Seleccione tipo de identificacion</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Primer Nombre:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" id="sPrimerNombre" name="sPrimerNombre" ng-model="estudiantes.estudiante.estudianteModel.sPrimerNombre" ng-disabled="edit" placeholder="Primer Nombre">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Primer Apellido:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" id="sPrimerApellido" name="sPrimerApellido" ng-model="estudiantes.estudiante.estudianteModel.sPrimerApellido" ng-disabled="edit" placeholder="Primer Apellido"  >
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-5">País de Expedición:</label>
-                                                <div class="col-sm-6">
-                                                    <select ng-model="estudiantes.estudiante.estudianteModel.mPaisExp" ng-options="pais as pais.sNombre for pais in actualiza.person.lisCiudadModels track by pais.sCodigo" convert-to-number>
-                                                        <option value="">Seleccione un país</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-5">País de Nacimiento:</label>
-                                                <div class="col-sm-6">
-                                                    <select ng-model="estudiantes.estudiante.estudianteModel.sPaisNacimiento" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
-                                                        <option value="">Seleccione un país</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Nacionalidad:</label>
-                                                <div class="col-sm-6">
-                                                    <select ng-model="estudiantes.estudiante.estudianteModel.sNacionalidad" ng-options="ciudad as ciudad.sNombre for ciudad in estudiantes.estudiante.listNacionalidadModel track by ciudad.sCodigo" convert-to-number>
-                                                        <option value="">Seleccione su Nacionalidad</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Genero:</label>
-                                                <div class="col-sm-6">
-                                                    <label class="radio-inline col-sm-6"><input type="radio" id="sGeneroM" name="sGenero" ng-model="estudiantes.estudiante.estudianteModel.sGenero" ng-disabled="edit" value="M">Masculino</label>
-                                                    <label class="radio-inline col-sm-6"><input type="radio" id="sGeneroF" name="sGenero" ng-model="estudiantes.estudiante.estudianteModel.sGenero" ng-disabled="edit" value="F">Femenino</label>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-5">País Residencia:</label>
-                                                <div class="col-sm-6">
-                                                    <select ng-model="estudiantes.estudiante.estudianteModel.sPaisResidencia" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
-                                                        <option value="">Seleccione una país</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Depatamento Residencia:</label>
-                                                <div class="col-sm-6">
-                                                    <select ng-model="estudiantes.estudiante.estudianteModel.sDepartamentoResidencia" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
-                                                        <option value="">Seleccione un Departamento</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Localidad Residencia:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" id="sLocalidadResidencia" name="sLocalidadResidencia" ng-model="estudiantes.estudiante.estudianteModel.sLocalidadResidencia" ng-disabled="edit"  placeholder="Localidad Residencia">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Libreta Militar:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" id="sNumeroLibretaMilitar" name="sNumeroLibretaMilitar" ng-model="estudiantes.estudiante.estudianteModel.sNumeroLibretaMilitar" ng-disabled="edit" placeholder="Libreta Tarjeta">
-                                                </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Tipo Identificacion:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                    <option value="">Seleccione tipo de identificacion</option>
+                                                </select>
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6">
-
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Fecha Inscripción:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" id="sFechaInscripcion" name="sFechaInscripcion" ng-model="estudiantes.estudiante.estudianteMode.sFechaInscripcion" ng-disabled="edit" placeholder="dd/mm/yyyy" >
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Fecha Expedición:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sFechaExpedicion" name="sFechaExpedicion" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="dd/mm/yyyy" >
                                             </div>
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Número de identificación:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" id="sNumeroIdentificacion" name="sNumeroIdentificacion" ng-model="estudiantes.estudiante.estudianteModel.sNumeroIdentificacion" ng-disabled="edit" placeholder="Número Identifiación" >
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Primer Nombre:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sPrimerNombre" name="sPrimerNombre" ng-model="actualiza.person.PreRegistro.acudiente.priNombre" ng-disabled="edit" placeholder="Primer Nombre">
                                             </div>
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Segundo Nombre:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" id="sSegundoNombre" name="sSegundoNombre" ng-model="estudiantes.estudiante.estudianteMode.sSegundoNombre" ng-disabled="edit" placeholder="Segundo Nombre" >
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Primer Apellido:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sPrimerApellido" name="sPrimerApellido" ng-model="actualiza.person.PreRegistro.acudiente.priApellido" ng-disabled="edit" placeholder="Primer Apellido"  >
                                             </div>
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Segundo Apellido:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" id="sSegundoApellido" name="sSegundoApellido" ng-model="estudiantes.estudiante.estudianteModel.sSegundoApellido" ng-disabled="edit" placeholder="Segundo Apellido">
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5">País Residencia:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione su Nacionalidad</option>
+                                                </select>
                                             </div>
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Fecha Expedición:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" id="sFechaExpedicion" name="sFechaExpedicion" ng-model="estudiantes.estudiante.estudianteMode.sFechaExpedicion" ng-disabled="edit" placeholder="dd/mm/yyyy" >
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Ciudad Residencia:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione una Ciudad</option>
+                                                </select>
                                             </div>
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Fecha Naciemiento:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" id="sFechaNacimiento" name="sFechaNacimiento" ng-model="estudiantes.estudiante.estudianteModel.sFechaNacimiento" ng-disabled="edit" placeholder="dd/mm/yyyy">
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Teléfono Fijo</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sTelefonoFijo" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.acudiente.telFij" ng-disabled="edit" placeholder="Teléfono Fijo">
                                             </div>
+                                        </div>
 
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Ciudad de Nacimiento:</label>
-                                                <div class="col-sm-6">
-                                                    <select ng-model="estudiantes.estudiante.estudianteMode.sCiudadNacimiento" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.listCiudadModel track by ciudad.sCodigo" convert-to-number>
-                                                        <option value="">Seleccione una ciudad</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Categoria Sisben:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" id="sCategoriaSisben" name="sCategoriaSisben" ng-model="estudiantes.estudiante.estudianteModel.sCategoriaSisben" ng-disabled="edit" placeholder="Categoria Sisben">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Dirección Residencia:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" id="sDireccionResidencia" name="sDireccionResidencia" ng-model="estudiantes.estudiante.estudianteModel.sLocalidadResidencia" ng-disabled="edit" placeholder="Direccion Residencia">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Barrio Residencia:</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" id="sBarrioResidencia" name="sBarrioResidencia" ng-model="estudiantes.estudiante.estudianteModel.sBarrioResidencia" ng-disabled="edit" placeholder="Barrio Residencia">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Estado Civil:</label>
-                                                <div class="col-sm-6">
-                                                    <select ng-model="estudiantes.estudiante.estudianteModel.mEstadoCivil" ng-options="estado as estado.sDescripcionEstCivil for estado in actualiza.person.listEstadoCivilModel track by estado.sCodigoEstadoCivil" convert-to-number>
-                                                        <option value="">Seleccione un estado civil</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-5">Nivel Educativo:</label>
-                                                <div class="col-sm-6">
-                                                    <select ng-model="actualiza.person.personaModel.mNivelEstudios" ng-options="nivelEstudios as nivelEstudios.sDescripcion for nivelEstudios in actualiza.person.listNivelEstudiosModel track by nivelEstudios.sCodigo" convert-to-number>
-                                                        <option value="">Seleccione su nivel de estudios</option>
-                                                    </select>
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Email</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sEmail" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.acudiente.email" ng-disabled="edit" placeholder="Email">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- --------------------------------------------------------------------------------------------------------------------------------------- -->
-
-                                    <div class="item">
-                                        <h1>DATOS ACUDIENTE</h1>
-                                        <br/>
-                                        <br/>
-
-                                        <fieldset>
-                                            <legend>Información Personal</legend>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Número de identificación:</label>
                                             <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Tipo Identificacion:</label>
-                                                    <div class="col-sm-6">
-                                                        <select ng-model="acudientes.acudiente.acudienteModel.sTipoIdentificacion"  convert-to-number>
-                                                            <option value="">Seleccione tipo de identificacion</option>
-                                                            <option value="1">Cedula de ciudadania</option>
-                                                            <option value="2">Cedula de extranjeria</option>
-                                                            <option value="3">Pasaporte</option>
-                                                            <option value="4">Tajeta de identidad</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">    
-                                                    <label class="col-sm-5">Primer Nombre:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="sPrimerNombre" name="sPrimerNombre" ng-model="estudiantes.estudiante.estudianteModel.sPrimerNombre" ng-disabled="edit" placeholder="Primer Nombre">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Primer Apellido:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="sPrimerApellido" name="sPrimerApellido" ng-model="estudiantes.estudiante.estudianteModel.sPrimerApellido" ng-disabled="edit" placeholder="Primer Apellido"  >
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Teléfono Fijo:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="iTelefonoFijo" name="iTelefonoFijo" ng-model="estudiantes.estudiante.estudianteModel.iTelefonoFijo" ng-disabled="edit" placeholder="Teléfono Fijo">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Correo:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="email" id="sCorreo" name="sCorreo" ng-model="estudiantes.estudiante.estudianteModel.sCorreo" ng-disabled="edit" placeholder="Correo Electronico">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Genero:</label>
-                                                    <div class="col-sm-6">
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sGeneroM" name="sGenero" ng-model="estudiantes.estudiante.estudianteModel.sGenero" ng-disabled="edit" value="M">Masculino</label>
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sGeneroF" name="sGenero" ng-model="estudiantes.estudiante.estudianteModel.sGenero" ng-disabled="edit" value="F">Femenino</label>
-                                                    </div>
-                                                </div>
+                                                <input type="text" id="sNumeroIdentificacion" name="sNumeroIdentificacion" ng-model="actualiza.person.PreRegistro.acudiente.numIden" ng-disabled="edit" placeholder="Número Identifiación" >
                                             </div>
+                                        </div>
 
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Genero:</label>
                                             <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Fecha Expedición:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="sFechaExpedicion" name="sFechaExpedicion" ng-model="estudiantes.estudiante.estudianteMode.sFechaExpedicion" ng-disabled="edit" placeholder="dd/mm/yyyy" >
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Segundo Nombre:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="sSegundoNombre" name="sSegundoNombre" ng-model="estudiantes.estudiante.estudianteMode.sSegundoNombre" ng-disabled="edit" placeholder="Segundo Nombre" >
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Segundo Apellido:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="sSegundoApellido" name="sSegundoApellido" ng-model="estudiantes.estudiante.estudianteModel.sSegundoApellido" ng-disabled="edit" placeholder="Segundo Apellido">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Número Celular:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="iTelefonoMovil" name="iTelefonoMovil" ng-model="estudiantes.estudiante.estudianteModel.iTelefonoMovil" ng-disabled="edit" placeholder="Número Celular"  >
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Confirmar Correo:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="email" id="sCorreo" name="sCorreo" ng-model="estudiantes.estudiante.estudianteModel.sCorreo" ng-disabled="edit" placeholder="Correo Electronico">
-                                                    </div>
-                                                </div>
-                                            </div>    
-                                        </fieldset>
-
-                                        <fieldset>
-                                            <legend>Información Adicional</legend>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Trabaja Actualmente:</label>
-                                                    <div class="col-sm-6">
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sTrabajaActual" name="sTrabajaActual" ng-model="estudiantes.estudiante.estudianteModel.sTrabajaActual" ng-disabled="edit" value="S">Si</label>
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sNoTrabajaActual" name="sTrabajaActual" ng-model="estudiantes.estudiante.estudianteModel.sTrabajaActual" ng-disabled="edit" value="N">No</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Tiempo Trabajando:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="number" id="sTipoContrato" name="sTipoContrato" ng-model="actualiza.person.personaModel.sTipoContrato" ng-disabled="edit" placeholder="Años.meses.dias">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Tipo Vivienda:</label>
-                                                    <div class="col-sm-6">
-                                                        <select ng-model="acudientes.acudiente.acudienteModel.sTipoVivienda"  convert-to-number>
-                                                            <option value="">Seleccione tipo de vivienda</option>
-                                                            <option value="1">Propia</option>
-                                                            <option value="2">Familiar</option>
-                                                            <option value="3">Arriendo</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Vehículo:</label>
-                                                    <div class="col-sm-6">
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sVehiculo" name="sVehiculo" ng-model="estudiantes.estudiante.estudianteModel.sVehiculo" ng-disabled="edit" value="S">Si</label>
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sNoVehiculo" name="sVehiculo" ng-model="estudiantes.estudiante.estudianteModel.sVehiculo" ng-disabled="edit" value="N">No</label>
-                                                    </div>
-                                                </div>
-
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.genero" ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero">
+                                                    <option value="">Seleccione Genero</option>
+                                                </select>
                                             </div>
+                                        </div>
 
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Segundo Nombre:</label>
                                             <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Ocupación:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="sOcupacion" name="sOcupacion" ng-model="estudiantes.estudiante.estudianteModel.sOcupacion" ng-disabled="edit" placeholder="Ocupación">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Trabaja como:</label>
-                                                    <div class="col-sm-6">
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sEmpleado" name="sEmpleado" ng-model="estudiantes.estudiante.estudianteModel.sEmpleado" ng-disabled="edit" value="E">Empleado</label>
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sDesEmpleado" name="sEmpleado" ng-model="estudiantes.estudiante.estudianteModel.sEmpleado" ng-disabled="edit" value="I">Indepdte</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Tipo de Contrato:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="sTipoContrato" name="sTipoContrato" ng-model="estudiantes.estudiante.estudianteModel.sTipoContrato" ng-disabled="edit" placeholder="Tipo de contrato">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">¿Cúal?:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="sVehiculo" name="sVehiculo" ng-model="estudiantes.estudiante.estudianteModel.sVehiculo" ng-disabled="edit" placeholder="¿Cúal Vehículo?">
-                                                    </div>
-                                                </div>
+                                                <input type="text" id="sSegundoNombre" name="sSegundoNombre" ng-model="actualiza.person.PreRegistro.acudiente.segNombre" ng-disabled="edit" placeholder="Segundo Nombre" >
                                             </div>
-                                        </fieldset>
-                                    </div>  
+                                        </div>
 
-                                    <div class="item">
-                                        <h1>DATOS ACUDIENTE</h1>
-                                        <br/>
-                                        <br/>
-
-                                        <fieldset>
-                                            <legend>Ingresos y Egresos</legend>
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Segundo Apellido:</label>
                                             <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Créditos Actuales:</label>
-                                                    <div class="col-sm-6">
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sCreditoActual" name="sTipoCredito" ng-model="estudiantes.estudiante.estudianteModel.sTipoCredito" ng-disabled="edit" value="S">Si</label>
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sNoCreditoActual" name="sTipoCredito" ng-model="estudiantes.estudiante.estudianteModel.sTipoCredito" ng-disabled="edit" value="N">No</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Tarjeta de Crédito:</label>
-                                                    <div class="col-sm-6">
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sTarjetaCredito" name="sTipoCredito" ng-model="estudiantes.estudiante.estudianteModel.sTarjetaCredito" ng-disabled="edit" value="S">Si</label>
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sNoTarjetaCredito" name="sTipoCredito" ng-model="estudiantes.estudiante.estudianteModel.sTarjetaCredito" ng-disabled="edit" value="N">No</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Valor Obligaciones:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="dValorObligaciones" name="dValorObligaciones" ng-model="estudiantes.estudiante.estudianteModel.dValorObligaciones" ng-disabled="edit" placeholder="Valor Obligación">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Valor Ingresos Pensión:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="dIngPension" name="dIngPension" ng-model="estudiantes.estudiante.estudianteModel.dIngPension" ng-disabled="edit" placeholder="Valor Pensión">
-                                                    </div>
-                                                </div>
-
-
+                                                <input type="text" id="sSegundoApellido" name="sSegundoApellido" ng-model="actualiza.person.PreRegistro.acudiente.segApellido" ng-disabled="edit" placeholder="Segundo Apellido">
                                             </div>
+                                        </div>
 
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Depatamento Residencia:</label>
                                             <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">¿Cúal?:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="sOcupacion" name="sOcupacion" ng-model="estudiantes.estudiante.estudianteModel.sOcupacion" ng-disabled="edit">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">¿Cúal?:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="sOcupacion" name="sOcupacion" ng-model="estudiantes.estudiante.estudianteModel.sOcupacion" ng-disabled="edit">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Valor Ingresos Arrendamiento:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="dIngArrendamiento" name="dIngArrendamiento" ng-model="estudiantes.estudiante.estudianteModel.dIngArrendamiento" ng-disabled="edit" placeholder="Tipo de contrato">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">¿Cúal?:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" id="sVehiculo" name="sVehiculo" ng-model="estudiantes.estudiante.estudianteModel.sVehiculo" ng-disabled="edit" >
-                                                    </div>
-                                                </div>
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.depRes" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione un Departamento</option>
+                                                </select>
                                             </div>
-                                        </fieldset>
+                                        </div>
 
-                                        <h1>DATOS ACADÉMICOS</h1>
-                                        <br/>
-                                        <br/>
 
-                                        <fieldset>
-                                            <legend>Información Académica</legend>
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Dirección Residencia:</label>
                                             <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Estado del Estudiante:</label>
-                                                    <div class="col-sm-6">
-                                                        <select ng-model="acudientes.acudiente.acudienteModel.sTipoIdentificacion"  convert-to-number>
-                                                            <option value="">Seleccione un estado</option>
-                                                            <option value="1">Activo</option>
-                                                            <option value="2">Inactivo</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">País donde desea estudiar:</label>
-                                                    <div class="col-sm-6">
-                                                        <select ng-model="estudiantes.estudiante.estudianteModel.sPaisNacimiento" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
-                                                            <option value="">Seleccione un país</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Ciudad donde desea estudiar:</label>
-                                                    <div class="col-sm-6">
-                                                        <select ng-model="estudiantes.estudiante.estudianteModel.sPaisNacimiento" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
-                                                            <option value="">Seleccione una ciudad</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Universidad:</label>
-                                                    <div class="col-sm-6">
-                                                        <select ng-model="estudiantes.estudiante.estudianteModel.sPaisNacimiento" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
-                                                            <option value="">Seleccione una ciudad</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Universidad:</label>
-                                                    <div class="col-sm-6">
-                                                        <select ng-model="estudiantes.estudiante.estudianteModel.sPaisNacimiento" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
-                                                            <option value="">Seleccione una ciudad</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Tipo de Estudio</label>
-                                                    <div class="col-sm-6">
-                                                        <select ng-model="estudiantes.estudiante.estudianteModel.sPaisNacimiento" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
-                                                            <option value="">Seleccione un tipo de estudio</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                <input type="text" id="sDireccionResidencia" name="sDireccionResidencia" ng-model="actualiza.person.PreRegistro.acudiente.dirRes" ng-disabled="edit" placeholder="Direccion Residencia">
                                             </div>
+                                        </div>
 
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Teléfono Móvil</label>
                                             <div class="col-sm-6">
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Tipo de Estudiante:</label>
-                                                    <div class="col-sm-6">
-                                                        <select ng-model="acudientes.acudiente.acudienteModel.sTipoIdentificacion"  convert-to-number>
-                                                            <option value="">Seleccione un tipo</option>
-                                                            <option value="1">Activo</option>
-                                                            <option value="2">Inactivo</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Departamento donde desea estudiar:</label>
-                                                    <div class="col-sm-6">
-                                                        <select ng-model="estudiantes.estudiante.estudianteModel.sPaisNacimiento" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
-                                                            <option value="">Seleccione un departamento</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Centro Asociado:</label>
-                                                    <div class="col-sm-6">
-                                                        <select ng-model="estudiantes.estudiante.estudianteModel.sPaisNacimiento" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
-                                                            <option value="">Seleccione un centro</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Nivel de Formación:</label>
-                                                    <div class="col-sm-6">
-                                                        <select ng-model="estudiantes.estudiante.estudianteModel.sPaisNacimiento" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
-                                                            <option value="">Seleccione un nivel</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Programa Académico:</label>
-                                                    <div class="col-sm-6">
-                                                        <select ng-model="estudiantes.estudiante.estudianteModel.sPaisNacimiento" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
-                                                            <option value="">Seleccione un programa</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Estrato:</label>
-                                                    <div class="col-sm-6">
-                                                        <input type="number" id="sSegundoApellido" name="sSegundoApellido" ng-model="estudiantes.estudiante.estudianteModel.sSegundoApellido" ng-disabled="edit" placeholder="Estrato">
-                                                    </div>
-                                                </div>
-                                            </div>    
-                                        </fieldset>
-
-                                        <fieldset>
-                                            <legend>Información Edupol</legend>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">¿Como se enteró de Edupol?:</label>
-                                                    <div class="col-sm-6">
-                                                        <select ng-model="estudiantes.estudiante.estudianteModel.sPaisNacimiento" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
-                                                            <option value="">Seleccione una opción</option>
-                                                            <option value="1">Vendedor Edupol</option>
-                                                            <option value="2">Medio Masivo</option>
-                                                            <option value="3">Bolsa de Amigos</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
                                             </div>
-                                        </fieldset>
-                                    </div>
+                                        </div>
+                                    </div> 
 
-                                    <!-- Indicators -->
                                 </div>
-                                <ol class="carousel-indicators">
-                                    <li data-target="#preRegistro" data-slide-to="0" class="active"></li>
-                                    <li data-target="#preRegistro" data-slide-to="1"></li>
-                                    <li data-target="#preRegistro" data-slide-to="2"></li>
-                                </ol>
-
-                                <!-- Left and right controls -->
                             </div>
                         </div>
-                    </form>
 
-                    <a class="left carousel-control" href="#preRegistro" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only"></span>
-                    </a>
-                    <a class="right carousel-control" href="#preRegistro" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only"></span>
-                    </a>
-                    <br/>
 
-                    <button class="btn btn-success" ng-disabled="error || incomplete">
-                        Registrar Datos
-                    </button>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">DATOS SOCIOECONOMICOS</a>
+                                </h4>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse">
+                                <br/>
+                                <br/>
+                                <div class="panel-body">
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Tipo Identificacion:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                    <option value="">Seleccione tipo de identificacion</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Fecha Expedición:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sFechaExpedicion" name="sFechaExpedicion" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="dd/mm/yyyy" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Primer Nombre:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sPrimerNombre" name="sPrimerNombre" ng-model="actualiza.person.PreRegistro.acudiente.priNombre" ng-disabled="edit" placeholder="Primer Nombre">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Primer Apellido:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sPrimerApellido" name="sPrimerApellido" ng-model="actualiza.person.PreRegistro.acudiente.priApellido" ng-disabled="edit" placeholder="Primer Apellido"  >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">País Residencia:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione su Nacionalidad</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Ciudad Residencia:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione una Ciudad</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Teléfono Fijo</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sTelefonoFijo" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.acudiente.telFij" ng-disabled="edit" placeholder="Teléfono Fijo">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Email</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sEmail" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.acudiente.email" ng-disabled="edit" placeholder="Email">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Número de identificación:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sNumeroIdentificacion" name="sNumeroIdentificacion" ng-model="actualiza.person.PreRegistro.acudiente.numIden" ng-disabled="edit" placeholder="Número Identifiación" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Genero:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.genero" ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero">
+                                                    <option value="">Seleccione Genero</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Segundo Nombre:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sSegundoNombre" name="sSegundoNombre" ng-model="actualiza.person.PreRegistro.acudiente.segNombre" ng-disabled="edit" placeholder="Segundo Nombre" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Segundo Apellido:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sSegundoApellido" name="sSegundoApellido" ng-model="actualiza.person.PreRegistro.acudiente.segApellido" ng-disabled="edit" placeholder="Segundo Apellido">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Depatamento Residencia:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.depRes" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione un Departamento</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Dirección Residencia:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sDireccionResidencia" name="sDireccionResidencia" ng-model="actualiza.person.PreRegistro.acudiente.dirRes" ng-disabled="edit" placeholder="Direccion Residencia">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Teléfono Móvil</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                            </div>
+                                        </div>
+                                    </div> 
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">DATOS ICFES</a>
+                                </h4>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse">
+                                <br/>
+                                <br/>
+                                <div class="panel-body">
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Tipo Identificacion:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                    <option value="">Seleccione tipo de identificacion</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Fecha Expedición:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sFechaExpedicion" name="sFechaExpedicion" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="dd/mm/yyyy" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Primer Nombre:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sPrimerNombre" name="sPrimerNombre" ng-model="actualiza.person.PreRegistro.acudiente.priNombre" ng-disabled="edit" placeholder="Primer Nombre">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Primer Apellido:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sPrimerApellido" name="sPrimerApellido" ng-model="actualiza.person.PreRegistro.acudiente.priApellido" ng-disabled="edit" placeholder="Primer Apellido"  >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">País Residencia:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione su Nacionalidad</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Ciudad Residencia:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione una Ciudad</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Teléfono Fijo</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sTelefonoFijo" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.acudiente.telFij" ng-disabled="edit" placeholder="Teléfono Fijo">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Email</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sEmail" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.acudiente.email" ng-disabled="edit" placeholder="Email">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Número de identificación:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sNumeroIdentificacion" name="sNumeroIdentificacion" ng-model="actualiza.person.PreRegistro.acudiente.numIden" ng-disabled="edit" placeholder="Número Identifiación" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Genero:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.genero" ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero">
+                                                    <option value="">Seleccione Genero</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Segundo Nombre:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sSegundoNombre" name="sSegundoNombre" ng-model="actualiza.person.PreRegistro.acudiente.segNombre" ng-disabled="edit" placeholder="Segundo Nombre" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Segundo Apellido:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sSegundoApellido" name="sSegundoApellido" ng-model="actualiza.person.PreRegistro.acudiente.segApellido" ng-disabled="edit" placeholder="Segundo Apellido">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Depatamento Residencia:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.depRes" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione un Departamento</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Dirección Residencia:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sDireccionResidencia" name="sDireccionResidencia" ng-model="actualiza.person.PreRegistro.acudiente.dirRes" ng-disabled="edit" placeholder="Direccion Residencia">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Teléfono Móvil</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                            </div>
+                                        </div>
+                                    </div> 
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">PLAN DE PAGOS</a>
+                                </h4>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse">
+                                <br/>
+                                <br/>
+                                <div class="panel-body">
+
+                                    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>UNIVERSIDAD</th>
+                                                <th>PROGRAMA</th>
+                                                <th>PERIODO ACADEMICO</th>
+                                                <th>FECHA INICIO</th>
+                                                <th>FECHA FIN</th>
+                                                <th>PLAZO</th>
+                                                <th>ESTADO ESTUDIANTE</th>
+                                                <th>PERIODO CURSADO</th>
+                                                <th>PRECIO PROGRAMA</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tfoot>
+                                            <tr>
+                                                <th>UNIVERSIDAD</th>
+                                                <th>PROGRAMA</th>
+                                                <th>PERIODO ACADEMICO</th>
+                                                <th>FECHA INICIO</th>
+                                                <th>FECHA FIN</th>
+                                                <th>PLAZO</th>
+                                                <th>ESTADO ESTUDIANTE</th>
+                                                <th>PERIODO CURSADO</th>
+                                                <th>PRECIO PROGRAMA</th>
+                                            </tr>
+                                        </tfoot>
+
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <option value="">Seleccionar Universidad</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <option value="">Seleccionar Programa</option>
+                                                    </select>
+                                                </td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Tipo Identificacion:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                    <option value="">Seleccione tipo de identificacion</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Fecha Expedición:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sFechaExpedicion" name="sFechaExpedicion" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="dd/mm/yyyy" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Primer Nombre:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sPrimerNombre" name="sPrimerNombre" ng-model="actualiza.person.PreRegistro.acudiente.priNombre" ng-disabled="edit" placeholder="Primer Nombre">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Primer Apellido:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sPrimerApellido" name="sPrimerApellido" ng-model="actualiza.person.PreRegistro.acudiente.priApellido" ng-disabled="edit" placeholder="Primer Apellido"  >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">País Residencia:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione su Nacionalidad</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Ciudad Residencia:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione una Ciudad</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Teléfono Fijo</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sTelefonoFijo" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.acudiente.telFij" ng-disabled="edit" placeholder="Teléfono Fijo">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Email</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sEmail" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.acudiente.email" ng-disabled="edit" placeholder="Email">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Número de identificación:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sNumeroIdentificacion" name="sNumeroIdentificacion" ng-model="actualiza.person.PreRegistro.acudiente.numIden" ng-disabled="edit" placeholder="Número Identifiación" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Genero:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.genero" ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero">
+                                                    <option value="">Seleccione Genero</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Segundo Nombre:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sSegundoNombre" name="sSegundoNombre" ng-model="actualiza.person.PreRegistro.acudiente.segNombre" ng-disabled="edit" placeholder="Segundo Nombre" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Segundo Apellido:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sSegundoApellido" name="sSegundoApellido" ng-model="actualiza.person.PreRegistro.acudiente.segApellido" ng-disabled="edit" placeholder="Segundo Apellido">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Depatamento Residencia:</label>
+                                            <div class="col-sm-6">
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.depRes" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione un Departamento</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Dirección Residencia:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sDireccionResidencia" name="sDireccionResidencia" ng-model="actualiza.person.PreRegistro.acudiente.dirRes" ng-disabled="edit" placeholder="Direccion Residencia">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Teléfono Móvil</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                            </div>
+                                        </div>
+
+                                    </div> 
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
                 </div>
             </section>
             <section id="prefooter" class="section" ng-include="'PreFooter.html'"></section>

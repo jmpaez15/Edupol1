@@ -7,18 +7,19 @@ function getDataFromServer($http) {
         headers: {'Content-Type': 'application/json'}
     }).success(function (data, status, headers, config) {
         actualiza.person = data;
-       
+
     }).error(function (data, status, headers, config) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
     });
-    
-     
-    
-    
+
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+
     actualiza.save = function () {
         actualiza.datos = actualiza.person.PreRegistro;
-        alert("Actualiza Datos:" +actualiza.person.PreRegistro);
+        alert("Actualiza Datos:" + actualiza.person.PreRegistro);
         $http({
             method: 'POST',
             url: "../PreRegistroControl",
