@@ -22,4 +22,5 @@ public class GeneralQuery {
     public static final String QUERY_PROFESIONES="SELECT i_codigo,c_descripcion FROM PROFESIONES";
     public static final String QUERY_GET_CIUDADES= "SELECT I_CODIGO,C_NOMBRE FROM CIUDADES WHERE I_NIVEL=1";
     public static final String QUERY_GET_TIPO_SANGUINEO="SELECT* FROM  GRUPOS_SANGUINEO;";
+    public static final String QUERY_GET_DEPENDENCIAS_CIUDADES="SELECT I_CODIGO,C_NOMBRE FROM CIUDADES where I_UBICACION=?;";
 }

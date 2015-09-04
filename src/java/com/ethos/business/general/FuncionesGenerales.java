@@ -16,6 +16,7 @@ import com.ethos.DAO.ProfesionesDAO;
 import com.ethos.DAO.TipoIdentificacionDAO;
 import com.ethos.DAO.TipoSanguineoDAO;
 import com.ethos.DAO.TipoSolicitudDAO;
+import com.ethos.DAO.UniversidadDAO;
 import com.ethos.model.CategoriaSisbenModel;
 import com.ethos.model.CiudadModel;
 import com.ethos.model.EstadoCivilModel;
@@ -27,6 +28,7 @@ import com.ethos.model.ProfesionesModel;
 import com.ethos.model.TipoIdentificacionModel;
 import com.ethos.model.TipoSanguineoModel;
 import com.ethos.model.TipoSolicitudModel;
+import com.ethos.model.UniversidadesModel;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -51,6 +53,7 @@ public class FuncionesGenerales {
     AbstractDAO mediosMasivosDao;
     AbstractDAO profesionesDAO;
     AbstractDAO tipoSanguineoDAO;
+    AbstractDAO universidadDAO;
     
     ListasGeneralesModel listasGeneralModel;
 
@@ -127,7 +130,8 @@ public class FuncionesGenerales {
         List<CiudadModel> lisCiudadModels;
         List<MediosMasivosModel> lisMediosMasivosModels;
         List<NivelEstudiosModel> lisNivelEstudiosModels;
-        List<TipoSanguineoModel> listTipoSanguineoModels; 
+        List<TipoSanguineoModel> listTipoSanguineoModels;
+        List<UniversidadesModel> listUniversidadesModel;
 
         listasGeneralModel = new ListasGeneralesModel();
         tipoIdentificacion = new TipoIdentificacionDAO();
@@ -140,6 +144,7 @@ public class FuncionesGenerales {
         mediosMasivosDao = new MedioMAsivoDAO();
         nivelEstudiosDao = new NivelEstudiosDAO();
         tipoSanguineoDAO =new TipoSanguineoDAO();
+        universidadDAO=new UniversidadDAO();
 
         lisTipoIdentificacionModels = tipoIdentificacion.findAll();
         lisGeneroModels = generoDAO.findAll();
@@ -151,6 +156,7 @@ public class FuncionesGenerales {
         lisMediosMasivosModels = mediosMasivosDao.findAll();
         lisNivelEstudiosModels = nivelEstudiosDao.findAll();
         listTipoSanguineoModels=tipoSanguineoDAO.findAll();
+        listUniversidadesModel=universidadDAO.findAll();
 
         listasGeneralModel.setLisTipoIdentificacionModels(lisTipoIdentificacionModels);
         listasGeneralModel.setLisGeneroModels(lisGeneroModels);
@@ -162,6 +168,7 @@ public class FuncionesGenerales {
         listasGeneralModel.setLisMediosMasivosModels(lisMediosMasivosModels);
         listasGeneralModel.setLisNivelEstudiosModels(lisNivelEstudiosModels);
         listasGeneralModel.setListipoSanguineoModels(listTipoSanguineoModels);
+        listasGeneralModel.setLisUniversidadesModels(listUniversidadesModel);
         return listasGeneralModel;
     }
 }

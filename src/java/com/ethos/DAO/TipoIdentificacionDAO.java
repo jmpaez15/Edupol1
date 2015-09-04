@@ -73,4 +73,9 @@ public class TipoIdentificacionDAO extends AbstractDAO<TipoIdentificacionModel> 
     public List<Object> queryAll(List<Object> parameters) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<TipoIdentificacionModel> findAll(Object id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

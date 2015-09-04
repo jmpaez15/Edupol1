@@ -86,6 +86,31 @@ public class CiudadesDAO extends AbstractDAO<CiudadModel> {
 
     @Override
     public List<Object> queryAll(List<Object> parameters) {
+         String query;
+        List<Object>listCiudadesModels=new ArrayList<>();
+        
+       
+        try {
+             conn=getConnectionDB().getConnection();
+             query=GeneralQuery.QUERY_GET_DEPENDENCIAS_CIUDADES;
+             psQuery=conn.prepareStatement(query);
+             psQuery.setInt(1,(int)parameters.get(0));
+             rsT=psQuery.executeQuery();
+             while(rsT.next()){
+                 ciudadModel=new CiudadModel();
+                 ciudadModel.setsCodigo(rsT.getInt(1));
+                 ciudadModel.setsNombre(rsT.getString(2));
+                 listCiudadesModels.add(ciudadModel);
+                 
+             }
+             } catch (SQLException ex) {
+              System.out.println("SQLException "+ex);
+        }
+        return listCiudadesModels;
+    }
+
+    @Override
+    public List<CiudadModel> findAll(Object id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

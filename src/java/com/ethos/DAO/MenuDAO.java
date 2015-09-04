@@ -111,4 +111,9 @@ public class MenuDAO extends AbstractDAO<MenuModel>{
         }
         return listPaginas;
     }
+
+    @Override
+    public List<MenuModel> findAll(Object id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

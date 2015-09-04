@@ -75,4 +75,9 @@ public class ProfesionesDAO extends AbstractDAO<ProfesionesModel> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public List<ProfesionesModel> findAll(Object id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

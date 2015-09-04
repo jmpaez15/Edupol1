@@ -84,4 +84,9 @@ public class TelefonosDAO extends AbstractDAO<TelefonosModel>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public List<TelefonosModel> findAll(Object id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

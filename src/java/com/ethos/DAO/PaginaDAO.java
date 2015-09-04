@@ -90,4 +90,9 @@ public class PaginaDAO extends AbstractDAO<PaginaModel>{
     public List<Object> queryAll(List<Object> parameters) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<PaginaModel> findAll(Object id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

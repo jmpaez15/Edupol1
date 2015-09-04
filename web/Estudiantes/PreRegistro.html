@@ -147,7 +147,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">País Residencia:</label>
                                                 <div class="col-sm-6">
-                                                    <select ng-model="actualiza.person.PreRegistro.estudiante.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                    <select ng-model="actualiza.person.PreRegistro.estudiante.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" ng-change="actualiza.listasPais(1,1)" convert-to-number>
                                                         <option value="">Seleccione su Nacionalidad</option>
                                                     </select>
                                                 </div>
@@ -267,7 +267,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Departamento Residencia:</label>
                                                 <div class="col-sm-6">
-                                                    <select ng-model="actualiza.person.PreRegistro.estudiante.depRes" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
+                                                    <select ng-model="actualiza.person.PreRegistro.estudiante.depRes" ng-options="depto as depto.sNombre for depto in actualiza.Departamento.lisCiudadModels track by depto.sCodigo" convert-to-number>
                                                         <option value="">Seleccione un Departamento</option>
                                                     </select>
                                                 </div>
@@ -507,32 +507,32 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Ingresos por arrendamiento</label>
                                                     <div class="col-sm-6">
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sVehiculo" name="sVehiculo" ng-model="actualiza.person.PreRegistro.acudiente.arrendamiendo" ng-disabled="edit" value="S">Si</label>
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sNoVehiculo" name="sVehiculo" ng-model="actualiza.person.PreRegistro.acudiente.arrendamiendo" ng-disabled="edit" value="N">No</label>
+                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sIngresoArriendo" name="sIngresoArriendo" ng-model="actualiza.person.PreRegistro.acudiente.arrendamiendo" ng-disabled="edit" value="S">Si</label>
+                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sNoIngresoArriendo" name="sIngresoArriendo" ng-model="actualiza.person.PreRegistro.acudiente.arrendamiendo" ng-disabled="edit" value="N">No</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Ingresos por pensión</label>
                                                     <div class="col-sm-6">
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sVehiculo" name="sVehiculo" ng-model="actualiza.person.PreRegistro.acudiente.pension" ng-disabled="edit" value="S">Si</label>
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sNoVehiculo" name="sVehiculo" ng-model="actualiza.person.PreRegistro.acudiente.pension" ng-disabled="edit" value="N">No</label>
+                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sPension" name="sPension" ng-model="actualiza.person.PreRegistro.acudiente.pension" ng-disabled="edit" value="S">Si</label>
+                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sNoPension" name="sPension" ng-model="actualiza.person.PreRegistro.acudiente.pension" ng-disabled="edit" value="N">No</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Otros Ingresos</label>
                                                     <div class="col-sm-6">
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sVehiculo" name="sVehiculo" ng-model="actualiza.person.PreRegistro.acudiente.otros" ng-disabled="edit" value="S">Si</label>
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sNoVehiculo" name="sVehiculo" ng-model="actualiza.person.PreRegistro.acudiente.otros" ng-disabled="edit" value="N">No</label>
+                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sOtrosIngresos" name="sOtrosIngresos" ng-model="actualiza.person.PreRegistro.acudiente.otros" ng-disabled="edit" value="S">Si</label>
+                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sNoOtrosIngresos" name="sOtrosIngresos" ng-model="actualiza.person.PreRegistro.acudiente.otros" ng-disabled="edit" value="N">No</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Tarjeta de crédito</label>
                                                     <div class="col-sm-6">
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sVehiculo" name="sVehiculo" ng-model="actualiza.person.PreRegistro.acudiente.tarjetaCredito" ng-disabled="edit" value="S">Si</label>
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sNoVehiculo" name="sVehiculo" ng-model="actualiza.person.PreRegistro.acudiente.tarjetaCredito" ng-disabled="edit" value="N">No</label>
+                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sTarCredito" name="sTarCredito" ng-model="actualiza.person.PreRegistro.acudiente.tarjetaCredito" ng-disabled="edit" value="S">Si</label>
+                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sNoTarCredito" name="sTarCredito" ng-model="actualiza.person.PreRegistro.acudiente.tarjetaCredito" ng-disabled="edit" value="N">No</label>
                                                     </div>
                                                 </div>
 
@@ -541,8 +541,8 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Crédito Actules</label>
                                                     <div class="col-sm-6">
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sVehiculo" name="sVehiculo" ng-model="actualiza.person.PreRegistro.acudiente.creditosAct" ng-disabled="edit" value="S">Si</label>
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sNoVehiculo" name="sVehiculo" ng-model="actualiza.person.PreRegistro.acudiente.creditosAct" ng-disabled="edit" value="N">No</label>
+                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sCreditoActual" name="sCreditoActual" ng-model="actualiza.person.PreRegistro.acudiente.creditosAct" ng-disabled="edit" value="S">Si</label>
+                                                        <label class="radio-inline col-sm-6"><input type="radio" id="sNoCreditoActual" name="sCreditoActual" ng-model="actualiza.person.PreRegistro.acudiente.creditosAct" ng-disabled="edit" value="N">No</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -656,7 +656,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">País donde desea estudiar:</label>
                                                     <div class="col-sm-6">
-                                                        <select ng-model="actualiza.person.PreRegistro.estudiante.paisEstudio" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                        <select ng-model="actualiza.person.PreRegistro.estudiante.paisEstudio" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" ng-change="actualiza.listasPais(1)"convert-to-number>
                                                             <option value="">Seleccione su Nacionalidad</option>
                                                         </select>
                                                     </div>
@@ -674,7 +674,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Universidad:</label>
                                                     <div class="col-sm-6">
-                                                        <select ng-model="actualiza.person.PreRegistro.estudiante.Universidad" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <select ng-model="actualiza.person.PreRegistro.estudiante.infoUni.Universidad"    ng-options="universidad as universidad.sDescripcion for universidad in actualiza.person.lisUniversidadesModels track by universidad.iCodUniversidad" ng-change="actualiza.actualizaUni(1)" convert-to-number>
                                                             <option value="">Seleccione una ciudad</option>
                                                         </select>
                                                     </div>
@@ -683,8 +683,17 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Tipo de Estudio</label>
                                                     <div class="col-sm-6">
-                                                        <select ng-model="actualiza.person.PreRegistro.estudiante.tipEstudio" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <select ng-model="actualiza.person.PreRegistro.estudiante.infoUni.tipEstudio" ng-options="tipEstudio as tipEstudio.sDescripcion for tipEstudio in actualiza.nivelEstudio.lisNivelEstudiosModels track by tipEstudio.sCodigo" ng-change="actualiza.actualizaUni(3)" convert-to-number>
                                                             <option value="">Seleccione un tipo de estudio</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label class="col-sm-5">Programa Académico:</label>
+                                                    <div class="col-sm-6">
+                                                        <select ng-model="actualiza.person.PreRegistro.estudiante.infoUni.ProgramaAcademico" ng-options="programa as programa.sDescripcion for programa in actualiza.programas.listProgramasModels track by programa.iCodPrograma" convert-to-number>
+                                                            <option value="">Seleccione un programa</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -715,16 +724,16 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Nivel de Formación:</label>
                                                     <div class="col-sm-6">
-                                                        <select ng-model="actualiza.person.PreRegistro.estudiante.NivelFormacion" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <select ng-model="actualiza.person.PreRegistro.estudiante.infoUni.NivelFormacion" ng-options="nivelFormacion as nivelFormacion.descripcion for nivelFormacion in actualiza.nivelFormacio.listNivelFormacionModels track by nivelFormacion.iCod_NivelFormacion" ng-change="actualiza.actualizaUni(2)" convert-to-number>
                                                             <option value="">Seleccione un nivel</option>
                                                         </select>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="col-sm-5">Programa Académico:</label>
+                                                    <label class="col-sm-5">Grupo Programa Académico:</label>
                                                     <div class="col-sm-6">
-                                                        <select ng-model="actualiza.person.PreRegistro.estudiante.ProgramaAcademico" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <select ng-model="actualiza.person.PreRegistro.estudiante.infoUni.GrupoProgramaAcademico" ng-options="grupoPrograma as grupoPrograma.sDescripcion for grupoPrograma in actualiza.grupoPrograma.listGrupoProgramasModels track by grupoPrograma.iIdGrupo" ng-change="actualiza.actualizaUni(4)" convert-to-number>
                                                             <option value="">Seleccione un programa</option>
                                                         </select>
                                                     </div>
