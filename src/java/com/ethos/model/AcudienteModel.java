@@ -13,6 +13,7 @@ import java.util.Date;
  */
 public class AcudienteModel {
 
+    private int iCodAcudiente;
     String sTipoIdentificacion; //Identificacion Acudiente
     Date dFechaExpedicion;  //Fecha de expedicion del documento del acudiente
     String sFechaExpedicion; //Fecha de expedicion del documento del acudiente
@@ -29,7 +30,7 @@ public class AcudienteModel {
     double dIngArrendamiento; //Valor Ingresos Arrendamiento
     double dIngPension; //Valor Ingresos por pension
     double dOtrosIngresos1; // Valor Otros Ingresos
-    double dOtrosIngresos2; // Valor Otros Ingresos
+    String sNombreOtrosIngresos; // Valor Otros Ingresos
     double dOtrosIngresos3; // Valor Otros Ingresos
     String sTipoVivienda; // Vivienda PROPIA/FAMILIAR/ARRIENDO
     String sVehiculo; //Tiene Vehiculo SI/NO - Cual
@@ -38,13 +39,26 @@ public class AcudienteModel {
     String sTarjetaCredito; // Tarjeta de Credito SI/NO -cual
     int iTelefonoFijo;
     int iTelefonoMovil;
-    String sCorreo; // Correo Electronico
+    String sCorreo;
+    private String sPaisResidencia;
+    private String sCiudadResidencia;
+    private String sDepartamento;
+    private String sNombreEmpresa;
+    private String sCreditoActual;
+   
+    // Correo Electronico
 
     public AcudienteModel() {
     }
     
-    public AcudienteModel(String sTipoIdentificacion, Date dFechaExpedicion, String sFechaExpedicion, String sPrimerNombre, String sSegundoNombre, String sGenero, String sMedioEdupol, String sTipoContrato, String sTrabajaActual, String sTiempoTrabajando, String sOcupacion, double dSalario, String sEmpleado, double dIngArrendamiento, double dIngPension, double dOtrosIngresos1, double dOtrosIngresos2, double dOtrosIngresos3, String sTipoVivienda, String sVehiculo, String sTipoCredito, double dValorObligaciones, String sTarjetaCredito, int iTelefonoFijo, int iTelefonoMovil, String sCorreo) {
+    public AcudienteModel(int iCodAcudiente,String sCreditoActual,String sNombreEmpresa,String sDepartamento, String sCiudadResidencia, String sPaisResidencia, String sTipoIdentificacion, Date dFechaExpedicion, String sFechaExpedicion, String sPrimerNombre, String sSegundoNombre, String sGenero, String sMedioEdupol, String sTipoContrato, String sTrabajaActual, String sTiempoTrabajando, String sOcupacion, double dSalario, String sEmpleado, double dIngArrendamiento, double dIngPension, double dOtrosIngresos1,String sNombreOtrosIngresos , double dOtrosIngresos3, String sTipoVivienda, String sVehiculo, String sTipoCredito, double dValorObligaciones, String sTarjetaCredito, int iTelefonoFijo, int iTelefonoMovil, String sCorreo) {
+        this.sCreditoActual = sCreditoActual;
+        this.iCodAcudiente = iCodAcudiente;
+        this.sNombreEmpresa = sNombreEmpresa;
+        this.sDepartamento = sDepartamento;
+        this.sCiudadResidencia = sCiudadResidencia;
         this.sTipoIdentificacion = sTipoIdentificacion;
+        this.sPaisResidencia = sPaisResidencia;
         this.dFechaExpedicion = dFechaExpedicion;
         this.sFechaExpedicion = sFechaExpedicion;
         this.sPrimerNombre = sPrimerNombre;
@@ -60,7 +74,7 @@ public class AcudienteModel {
         this.dIngArrendamiento = dIngArrendamiento;
         this.dIngPension = dIngPension;
         this.dOtrosIngresos1 = dOtrosIngresos1;
-        this.dOtrosIngresos2 = dOtrosIngresos2;
+        this.sNombreOtrosIngresos = sNombreOtrosIngresos;
         this.dOtrosIngresos3 = dOtrosIngresos3;
         this.sTipoVivienda = sTipoVivienda;
         this.sVehiculo = sVehiculo;
@@ -70,6 +84,55 @@ public class AcudienteModel {
         this.iTelefonoFijo = iTelefonoFijo;
         this.iTelefonoMovil = iTelefonoMovil;
         this.sCorreo = sCorreo;
+        
+    }
+
+    public int getiCodAcudiente() {
+        return iCodAcudiente;
+    }
+
+    public void setiCodAcudiente(int iCodAcudiente) {
+        this.iCodAcudiente = iCodAcudiente;
+    }
+
+    public String getsCreditoActual() {
+        return sCreditoActual;
+    }
+
+    public void setsCreditoActual(String sCreditoActual) {
+        this.sCreditoActual = sCreditoActual;
+    }
+
+    public String getsNombreEmpresa() {
+        return sNombreEmpresa;
+    }
+
+    public void setsNombreEmpresa(String sNombreEmpresa) {
+        this.sNombreEmpresa = sNombreEmpresa;
+    }
+
+    public String getsPaisResidencia() {
+        return sPaisResidencia;
+    }
+
+    public void setsPaisResidencia(String sPaisResidencia) {
+        this.sPaisResidencia = sPaisResidencia;
+    }
+
+    public String getsCiudadResidencia() {
+        return sCiudadResidencia;
+    }
+
+    public void setsCiudadResidencia(String sCiudadResidencia) {
+        this.sCiudadResidencia = sCiudadResidencia;
+    }
+
+    public String getsDepartamento() {
+        return sDepartamento;
+    }
+
+    public void setsDepartamento(String sDepartamento) {
+        this.sDepartamento = sDepartamento;
     }
 
     public String getsTipoIdentificacion() {
@@ -200,13 +263,15 @@ public class AcudienteModel {
         this.dOtrosIngresos1 = dOtrosIngresos1;
     }
 
-    public double getdOtrosIngresos2() {
-        return dOtrosIngresos2;
+    public String getsNombreOtrosIngresos() {
+        return sNombreOtrosIngresos;
     }
 
-    public void setdOtrosIngresos2(double dOtrosIngresos2) {
-        this.dOtrosIngresos2 = dOtrosIngresos2;
+    public void setsNombreOtrosIngresos(String sNombreOtrosIngresos) {
+        this.sNombreOtrosIngresos = sNombreOtrosIngresos;
     }
+
+   
 
     public double getdOtrosIngresos3() {
         return dOtrosIngresos3;

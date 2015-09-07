@@ -20,14 +20,14 @@ function getDataFromServer($http) {
     actualiza.save = function () {
         actualiza.person.PreRegistro.condicion=0;
         actualiza.datos = actualiza.person.PreRegistro;
-        alert("Actualiza Datos:" + actualiza.person.PreRegistro);
+        alert("Por favor espere un momento");
         $http({
             method: 'POST',
             url: "../PreRegistroControl",
             headers: {'Content-Type': 'application/json;charset=Utf-8'},
             data: actualiza.datos
         }).success(function (data, status, headers, config) {
-            alert("Actualiza Datos: " + data);
+            alert("se realizo la inscripcion satisfactoriamente");
         }).error(function (data, status, headers, config) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
@@ -38,7 +38,6 @@ function getDataFromServer($http) {
         actualiza.person.PreRegistro.estudiante.infoUni.condicion=1;
         actualiza.person.PreRegistro.estudiante.infoUni.indiceUni=indice;
         actualiza.datos= actualiza.person.PreRegistro.estudiante.infoUni
-        alert("Actualiza Datos:" +actualiza.datos);
         $http({
             method: 'POST',
             url: "../PreRegistroControl",
@@ -59,7 +58,7 @@ function getDataFromServer($http) {
                       actualiza.programas=data;
               }
             
-            alert(actualiza.infoUniversidad)
+            
         }).error(function (data, status, headers, config) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
@@ -69,37 +68,100 @@ function getDataFromServer($http) {
     actualiza.listasPais = function (indice,indicePersona) {
         switch (indicePersona){
             case 1:
-                actualiza.person.PreRegistro.estudiante.paisRes.condicion=2;
-                actualiza.datos= actualiza.person.PreRegistro.estudiante.paisRes;
+                switch (indice){
+                    case 1:
+                          actualiza.person.PreRegistro.estudiante.paisRes.condicion=2;
+                          actualiza.person.PreRegistro.estudiante.paisRes.indice=indice;
+                          actualiza.datos= actualiza.person.PreRegistro.estudiante.paisRes;
+                        break;
+                    case 2:
+                          actualiza.person.PreRegistro.estudiante.depRes.condicion=2;
+                          actualiza.person.PreRegistro.estudiante.depRes.indice=indice;
+                          actualiza.datos=actualiza.person.PreRegistro.estudiante.depRes;
+                        break;
+                }
                 break;
             case 2:
-                actualiza.person.PreRegistro.acudiente.paisRes.condicion=2;
-                actualiza.datos=actualiza.person.PreRegistro.acudiente.paisRes;
+                switch (indice){
+                    case 1: 
+                          actualiza.person.PreRegistro.acudiente.paisRes.condicion=2;
+                          actualiza.person.PreRegistro.acudiente.paisRes.indice=indice
+                          actualiza.datos=actualiza.person.PreRegistro.acudiente.paisRes;
+                        break;
+                    case 2:
+                          actualiza.person.PreRegistro.acudiente.depRes.condicion=2;
+                          actualiza.person.PreRegistro.acudiente.depRes.indice=indice
+                          actualiza.datos=actualiza.person.PreRegistro.acudiente.depRes;
+                          break;
+                }
+               
+                break;
+            case 3:
+                 switch (indice){
+                    case 1: 
+                          actualiza.person.PreRegistro.estudiante.paisEstudio.condicion=2;
+                          actualiza.person.PreRegistro.estudiante.paisEstudio.indice=indice;
+                          actualiza.datos=actualiza.person.PreRegistro.estudiante.paisEstudio;
+                        break;
+                    case 2:
+                          actualiza.person.PreRegistro.estudiante.depEstudio.condicion=2;
+                          actualiza.person.PreRegistro.estudiante.depEstudio.indice=indice;
+                          actualiza.datos=actualiza.person.PreRegistro.estudiante.depEstudio;
+                        break;
+                    case 3:
+                          actualiza.person.PreRegistro.estudiante.ciudadEstudio.condicion=2;
+                          actualiza.person.PreRegistro.estudiante.ciudadEstudio.indice=indice;
+                          actualiza.datos=actualiza.person.PreRegistro.estudiante.ciudadEstudio;
+                          break;
+                }
+               
                 break;
         }
        
-        alert("Actualiza Datos:" +actualiza.datos);
+        
         $http({
             method: 'POST',
             url: "../PreRegistroControl",
             headers: {'Content-Type': 'application/json;charset=Utf-8'},
             data: actualiza.datos
           }).success(function (data, status, headers, config) {
-              switch (indice){
-                  case 1:
-                      actualiza.Departamento=data;
-                      break;
-                  case 2: 
-                      actualiza.ciudad=data;
-                      break;
-                  case 3:
-                      actualiza.grupoPrograma=data;
-                      break;
-                  case 4:
-                      actualiza.programas=data;
-              }
-            
-            alert(actualiza.infoUniversidad)
+                switch (indicePersona){
+                 
+                    case 1:
+                          switch (indice){
+                              case 1:
+                                  actualiza.Departamento=data;
+                                  break;
+                              case 2: 
+                                  actualiza.ciudad=data;
+                                  break;
+                            }
+                          break;
+                      case 2:
+                          switch (indice){
+                              case 1:
+                                  actualiza.DepartamentoAcudiente=data;
+                                  break;
+                              case 2: 
+                                  actualiza.ciudadAcudiente=data;
+                                  break;
+                            }
+                          break;
+                      case 3:
+                          case 2:
+                          switch (indice){
+                              case 1:
+                                  actualiza.DepartamentoEstudio=data;
+                                  break;
+                              case 2: 
+                                  actualiza.ciudadEstudio=data;
+                                  break;
+                              case 3:
+                                  actualiza.centroAsociado=data;
+                            }
+                          break;
+                }
+           
         }).error(function (data, status, headers, config) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.

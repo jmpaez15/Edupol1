@@ -24,11 +24,12 @@ public class ListasGeneralesModel {
     List<NivelFormacionModel>listNivelFormacionModels;
     List<GrupoProgramasModel>listGrupoProgramasModels;
     List<ProgramasModel>listProgramasModels;
+    List<CentroAsociadoModel>listCentroAsociadoModels;
 
     public ListasGeneralesModel() {
     }
 
-    public ListasGeneralesModel(List<TipoIdentificacionModel> lisTipoIdentificacionModels, List<GeneroModel> lisGeneroModels, List<ProfesionesModel> lisProfesionesModels, List<EstadoCivilModel> lisEstadoCivilModels, List<TipoSolicitudModel> lisTipoSolicitudModels, List<CategoriaSisbenModel> lisCategoriaSisbenModels, List<CiudadModel> lisCiudadModels, List<MediosMasivosModel> lisMediosMasivosModels, List<NivelEstudiosModel> lisNivelEstudiosModels, List<TipoSanguineoModel> listipoSanguineoModels, List<UniversidadesModel> lisUniversidadesModels, List<NivelFormacionModel> listNivelFormacionModels, List<GrupoProgramasModel> listGrupoProgramasModels, List<ProgramasModel> listProgramasModels) {
+    public ListasGeneralesModel(List<TipoIdentificacionModel> lisTipoIdentificacionModels, List<GeneroModel> lisGeneroModels, List<ProfesionesModel> lisProfesionesModels, List<EstadoCivilModel> lisEstadoCivilModels, List<TipoSolicitudModel> lisTipoSolicitudModels, List<CategoriaSisbenModel> lisCategoriaSisbenModels, List<CiudadModel> lisCiudadModels, List<MediosMasivosModel> lisMediosMasivosModels, List<NivelEstudiosModel> lisNivelEstudiosModels, List<TipoSanguineoModel> listipoSanguineoModels, List<UniversidadesModel> lisUniversidadesModels, List<NivelFormacionModel> listNivelFormacionModels, List<GrupoProgramasModel> listGrupoProgramasModels, List<ProgramasModel> listProgramasModels,List<CentroAsociadoModel>listCentroAsociadoModels) {
         this.lisTipoIdentificacionModels = lisTipoIdentificacionModels;
         this.lisGeneroModels = lisGeneroModels;
         this.lisProfesionesModels = lisProfesionesModels;
@@ -43,6 +44,7 @@ public class ListasGeneralesModel {
         this.listNivelFormacionModels = listNivelFormacionModels;
         this.listGrupoProgramasModels = listGrupoProgramasModels;
         this.listProgramasModels = listProgramasModels;
+        this.listCentroAsociadoModels=listCentroAsociadoModels;
     }
 
     public List<TipoIdentificacionModel> getLisTipoIdentificacionModels() {
@@ -155,6 +157,14 @@ public class ListasGeneralesModel {
 
     public void setListProgramasModels(List<ProgramasModel> listProgramasModels) {
         this.listProgramasModels = listProgramasModels;
+    }
+
+    public List<CentroAsociadoModel> getListCentroAsociadoModels() {
+        return listCentroAsociadoModels;
+    }
+
+    public void setListCentroAsociadoModels(List<CentroAsociadoModel> listCentroAsociadoModels) {
+        this.listCentroAsociadoModels = listCentroAsociadoModels;
     }
 
     
