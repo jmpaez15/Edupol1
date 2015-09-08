@@ -29,6 +29,7 @@
         <script src="../js/PreRegistro.js"></script>
         <script src="../js/layout.js"></script>
         <script src="../libs/jquery.min.js"></script>
+
         <script src="../js/bootstrap.min.js"></script>
         <script src="../libs/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
         <script src="../libs/prettyphoto/jquery.prettyphoto.js"></script>
@@ -46,44 +47,40 @@
         <!--<script src="../libs/bootstrap/js/bootstrap-collapse.js"></script>-->
         <!--<script src="../libs/bootstrap/js/bootstrap-dropdown.js"></script>-->
         <!--<script src="../libs/retina/retina.js"></script>-->
-        
-     
-       
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $(".calendario").datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-60:+30'});
-               // $("#sFechaExpedicion").datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-60:+30'});
-                 //$("#sFechaExpedicion").datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-60:+30'});
-                }); 
 
-            function isNumberKey(evt)
-      {
-         var charCode = (evt.which) ? evt.which : event.keyCode
-         if (charCode > 31 && (charCode < 48 || charCode > 57))
-            return false;
- 
-         return true;
-      }
-           
-           function validar(){
-           if(calcular() < 18){
-              $("#FormularioAcudiente").show();
-           }
-           else {
-                $("#FormularioAcudiente").hide();
-           }
-           }
-                
+
+
+        <script type="text/javascript">
+                    $(document).ready(function() {
+            $(".calendario").datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-60:+30'});
+                    // $("#sFechaExpedicion").datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-60:+30'});
+                    //$("#sFechaExpedicion").datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-60:+30'});
+            });
+                    function isNumberKey(evt)
+                    {
+                    var charCode = (evt.which) ? evt.which : event.keyCode
+                            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                            return false;
+                            return true;
+                    }
+
+            function validar(){
+            if (calcular() < 18){
+            $("#FormularioAcudiente").show();
+            }
+            else {
+            $("#FormularioAcudiente").hide();
+            }
+            }
+
         </script>
 
         <style type="text/css">
-             #ConEdupol{
+            #ConEdupol{
                 margin-left: 180px;
-             }   
+            }   
         </style>
-        
-    
-        
+
     </head>
     <body>
         <div class="wrapper" >
@@ -121,6 +118,7 @@
                                         <br/>
 
                                         <div class="col-sm-6">
+
                                             <div class="form-group ">
                                                 <label class="col-sm-5">Tipo de Solicitud:</label>
                                                 <div class="col-sm-6">
@@ -142,7 +140,9 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Lugar de Nacimiento:</label>
                                                 <div class="col-sm-6" >
-                                                      <input class="DatosAlum" type="text" id="sLugarNac"  name="sLugarNac"   ng-model="actualiza.person.PreRegistro.estudiante.lugarNacimiento" ng-disabled="edit" placeholder="Lugar de Nacimiento"  >                                        
+                                                    
+                                                    <input class="DatosAlum" type="text" id="sLugarNac"  name="sLugarNac"   ng-model="actualiza.person.PreRegistro.estudiante.lugarNacimiento" ng-disabled="edit" placeholder="Lugar de Nacimiento"  >                                        
+                                               
                                                 </div>
                                             </div>
 
@@ -159,7 +159,6 @@
                                                 <label class="col-sm-5">Lugar de Expedición:</label>
                                                 <div class="col-sm-6" >
                                                     <input class="DatosAlum" type="text"  id="sLugarExped"  name="sLugarExped" ng-model="actualiza.person.PreRegistro.estudiante.LugarExp" ng-disabled="edit" placeholder="Lugar de Expedición" >
-
                                                 </div>
                                             </div>
 
@@ -189,7 +188,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">País Residencia:</label>
                                                 <div class="col-sm-6">
-                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" ng-change="actualiza.listasPais(1,1)" convert-to-number>
                                                         <option value="">Seleccione su Nacionalidad</option>
                                                     </select>
                                                 </div>
@@ -198,7 +197,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Ciudad Residencia:</label>
                                                 <div class="col-sm-6">
-                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.ciudadRes" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.ciudadRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.ciudad.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
                                                         <option value="">Seleccione una Ciudad</option>
                                                     </select>
                                                 </div>
@@ -246,7 +245,9 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Ciudad de Nacimiento:</label>
                                                 <div class="col-sm-6">
+
                                                     <input class="DatosAlum" type="text" id="sCiudadNacimiento" name="sCiudadNacimiento" ng-model="actualiza.person.PreRegistro.estudiante.ciudadNacimiento" ng-disabled="edit" placeholder="Ciudad de Nacimiento" >
+
                                                 </div>
                                             </div>
 
@@ -307,7 +308,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Departamento Residencia:</label>
                                                 <div class="col-sm-6">
-                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.depRes" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
+                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.depRes" ng-options="depto as depto.sNombre for depto in actualiza.Departamento.lisCiudadModels track by depto.sCodigo" ng-change="actualiza.listasPais(2,1)" convert-to-number>
                                                         <option value="">Seleccione un Departamento</option>
                                                     </select>
                                                 </div>
@@ -361,7 +362,9 @@
                                     </div>
 
                                     <!-- --------------------------------------------------------------------------------------------------------------------------------------- -->
-                                        
+
+
+
                                     <!--ng-if="actualiza.edad < 18"-->
                                     <div  id="FormularioAcudiente" class="item"  >
                                         <h1>DATOS ACUDIENTE</h1>
@@ -371,6 +374,9 @@
                                         <fieldset>
                                             <legend>Información Personal</legend>
                                             <div class="col-sm-6">
+
+
+
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Tipo Identificacion:</label>
                                                     <div class="col-sm-6">
@@ -404,7 +410,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">País Residencia:</label>
                                                     <div class="col-sm-6">
-                                                        <select class="DatosAcud" id="PaisResidenciaA" ng-model="actualiza.person.PreRegistro.acudiente.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                        <select class="DatosAcud" id="PaisResidenciaA" ng-model="actualiza.person.PreRegistro.acudiente.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" ng-change="actualiza.listasPais(1,2)" convert-to-number>
                                                             <option value="" >Seleccione su Nacionalidad</option>
                                                         </select>
                                                     </div>
@@ -413,7 +419,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Ciudad Residencia:</label>
                                                     <div class="col-sm-6">
-                                                        <select class="DatosAcud" id="CiudadA" ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <select class="DatosAcud" id="CiudadA" ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.ciudadAcudiente.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
                                                             <option value="">Seleccione una Ciudad</option>
                                                         </select>
                                                     </div>
@@ -435,6 +441,10 @@
                                             </div>
 
                                             <div class="col-sm-6">
+
+
+
+
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Número de identificación:</label>
                                                     <div class="col-sm-6">
@@ -468,7 +478,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Depatamento Residencia:</label>
                                                     <div class="col-sm-6">
-                                                        <select class="DatosAcud" id="DepartamentoResiAc" ng-model="actualiza.person.PreRegistro.acudiente.depRes" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
+                                                        <select class="DatosAcud" id="DepartamentoResiAc" ng-model="actualiza.person.PreRegistro.acudiente.depRes" ng-options="depto as depto.sNombre for depto in actualiza.DepartamentoAcudiente.lisCiudadModels track by depto.sCodigo" ng-change="actualiza.listasPais(2,2)" convert-to-number>
                                                             <option value="">Seleccione un Departamento</option>
                                                         </select>
                                                     </div>
@@ -640,7 +650,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">¿Cuanto?</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="number" id="sPensioSalario" name="sPensioSalario" ng-model="actualiza.person.PreRegistro.acudiente.ingresosArriendo" ng-disabled="edit" placeholder="Ingresos por Pensión">
+                                                        <input class="DatosAcud" type="number" id="sPensioSalario" name="sPensioSalario" ng-model="actualiza.person.PreRegistro.acudiente.ingresosPension" ng-disabled="edit" placeholder="Ingresos por Pensión">
                                                     </div>
                                                 </div>
 
@@ -669,14 +679,16 @@
                                                     <label class="col-sm-5">Como se entero de Edupol:</label>
                                                     <div class="col-sm-6">
                                                         <select id="ConocimientoEdupol" class="DatosAcud"  ng-model="actualiza.person.PreRegistro.acudiente.medioMasivo"  ng-options='medioMasivo as medioMasivo.sNombreMedioMasivo for medioMasivo in actualiza.person.lisMediosMasivosModels track by medioMasivo.iIdMediosMasivos' convert-to-number>
-                                                            <option value="">Seleccione tipo de vivienda</option>
+                                                            <option value="">Seleccione medio Masivo</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                         </fieldset>
                                     </div>  
-                         <!-- --------------------------------------------------------------------------------- -->
+
+
+                                    <!-- --------------------------------------------------------------------------------- -->
                                     <div  class="item" >
                                         <h1>DATOS ACADÉMICOS</h1>
                                         <br/>
@@ -690,7 +702,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">País donde desea estudiar:</label>
                                                     <div class="col-sm-6">
-                                                        <select class="DatAcade" id="PaisEStudiar" ng-model="actualiza.person.PreRegistro.estudiante.paisEstudio" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                        <select class="DatAcade" id="PaisEStudiar" ng-model="actualiza.person.PreRegistro.estudiante.paisEstudio" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" ng-change="actualiza.listasPais(1,3)" convert-to-number>
                                                             <option value="">Seleccione su Nacionalidad</option>
                                                         </select>
                                                     </div>
@@ -699,7 +711,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Ciudad donde desea estudiar:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="CiudadEStudiar" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.ciudadEstudio" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <select id="CiudadEStudiar" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.ciudadEstudio" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.ciudadEstudio.lisCiudadModels track by ciudad.sCodigo" ng-change="actualiza.listasPais(3,3)" convert-to-number>
                                                             <option value="">Seleccione una ciudad</option>
                                                         </select>
                                                     </div>
@@ -708,7 +720,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Universidad:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="Universidad" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.Universidad" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <select id="Universidad" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.infoUni.Universidad" ng-options="universidad as universidad.sDescripcion for universidad in actualiza.person.lisUniversidadesModels track by universidad.iCodUniversidad" ng-change="actualiza.actualizaUni(1)" convert-to-number>
                                                             <option value="">Seleccione una ciudad</option>
                                                         </select>
                                                     </div>
@@ -717,9 +729,24 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Tipo de Estudio</label>
                                                     <div class="col-sm-6">
-                                                        <select tipo="TipoEStudio" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.tipEstudio" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <select tipo="TipoEStudio" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.infoUni.tipEstudio" ng-options="tipEstudio as tipEstudio.sDescripcion for tipEstudio in actualiza.nivelEstudio.lisNivelEstudiosModels track by tipEstudio.sCodigo" ng-change="actualiza.actualizaUni(3)" convert-to-number>
                                                             <option value="">Seleccione un tipo de estudio</option>
                                                         </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-5">Programa Académico:</label>
+                                                    <div class="col-sm-6">
+                                                        <select ng-model="actualiza.person.PreRegistro.estudiante.infoUni.ProgramaAcademico" ng-options="programa as programa.sDescripcion for programa in actualiza.programas.listProgramasModels track by programa.iCodPrograma" convert-to-number>
+                                                            <option value="">Seleccione un programa</option>
+                                                        </select>
+                                            </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-5">Contraseña:</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="password" id="sContraseña" name="sContraseña" ng-model="actualiza.person.PreRegistro.estudiante.Contrasena" ng-disabled="edit" placeholder="Contraseña">
                                                     </div>
                                                 </div>
                                             </div>
@@ -731,7 +758,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Departamento donde desea estudiar:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="DepEstudio" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.depEstudio" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <select id="DepEstudio" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.depEstudio" ng-options="depEst as depEst.sNombre for depEst in actualiza.DepartamentoEstudio.lisCiudadModels track by depEst.sCodigo" ng-change="actualiza.listasPais(2,3)" convert-to-number>
                                                             <option value="">Seleccione un departamento</option>
                                                         </select>
                                                     </div>
@@ -740,7 +767,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Centro Asociado:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="CentrosAsociados" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.centroAsociado" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <select id="CentrosAsociados" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.centroAsociado" ng-options="centroAsociado as centroAsociado.sDescipcion for centroAsociado in actualiza.centroAsociado.listCentroAsociadoModels track by centroAsociado.iCodCentroAsociado" convert-to-number>
                                                             <option value="">Seleccione un centro</option>
                                                         </select>
                                                     </div>
@@ -749,16 +776,16 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Nivel de Formación:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="NivelFormacion" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.NivelFormacion" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <select id="NivelFormacion" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.infoUni.NivelFormacion" ng-options="nivelFormacion as nivelFormacion.descripcion for nivelFormacion in actualiza.nivelFormacio.listNivelFormacionModels track by nivelFormacion.iCod_NivelFormacion" ng-change="actualiza.actualizaUni(2)" convert-to-number>
                                                             <option value="">Seleccione un nivel</option>
                                                         </select>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="col-sm-5">Programa Académico:</label>
+                                                    <label class="col-sm-5">Grupo Programa Académico:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="ProgramaAcademico" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.ProgramaAcademico" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <select id="ProgramaAcademico" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.infoUni.GrupoProgramaAcademico" ng-options="grupoPrograma as grupoPrograma.sDescripcion for grupoPrograma in actualiza.grupoPrograma.listGrupoProgramasModels track by grupoPrograma.iIdGrupo" ng-change="actualiza.actualizaUni(4)" convert-to-number>
                                                             <option value="">Seleccione un programa</option>
                                                         </select>
                                                     </div>
@@ -770,6 +797,12 @@
                                                         <input id="EstratoAc" class="DatAcade" type="number"  name="sSegundoApellido" ng-model="actualiza.person.PreRegistro.estudiante.estrato" ng-disabled="edit" placeholder="Estrato">
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-5">Confirmar Contraseña:</label>
+                                                    <div class="col-sm-6">
+                                                        <input  type="password" id="sconfContraseña1" name="sconfContraseña"  ng-disabled="edit" placeholder="Confirmar Contraseña">
+                                            </div>    
+                                                </div>
                                             </div>    
                                         </fieldset>
 
@@ -779,24 +812,12 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">¿Como se enteró de Edupol?:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="ConocimientoEdupol" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.infoEdupol" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <select id="ConocimientoEdupol" class="DatAcade" ng-model="actualiza.person.PreRegistro.estudiante.infoEdupol" ng-options="medioMasivo as medioMasivo.sNombreMedioMasivo for medioMasivo in actualiza.person.lisMediosMasivosModels track by medioMasivo.iIdMediosMasivos" convert-to-number>
                                                             <option value="">Seleccione una opción</option>
-                                                            <option value="1">Vendedor Edupol</option>
-                                                            <option value="2">Medio Masivo</option>
-                                                            <option value="3">Bolsa de Amigos</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="form-group">
-                                                    <div class="col-sm-6">
-                                                        <select class="DatAcade" id="ConEdupol" ng-model="actualiza.person.PreRegistro.estudiante.infoEdupol" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
-                                                            <option value="">Seleccione una opción</option>
-                                                            
-                                                        </select>
-                                                    </div>
-                                                </div>
                                         </fieldset>
                                     </div>
 
@@ -834,3 +855,26 @@
         <!--<script src="../js/layout.js"></script>-->
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

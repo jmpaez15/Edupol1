@@ -49,11 +49,23 @@ public class EstudianteModel {
     private int iLibretaMilitar;
     String sNumeroLibretaMilitar;
     private int iNivelEducativo;
+    private String sFotografia;
+    private int iCodAcudiente;
+    private int iPaisEstudio;
+    private int iDepartamentoEstudio;
+    private int iCiudadEstudio;
+    private int iEstrato;
 
     public EstudianteModel() {
     }
 
-    public EstudianteModel(int iTipoSolicitud, String sTipoRol, String sTipoPersona, int iTipoIdentificacion, int iNumeroIdentificacion, String sPaisExpedicion, String sLugarExpedicion, Date dFechaExpedicion, String sFechaExpedicion, String sPrimerNombre, String sSegundoNombre, String sPrimerApellido, String sSegundoApellido, int iGenero, int iCategoriaSisben, int iNacionalidad, int iPaisResidencia, int iDepartamentoResidencia, int iCiudadResidencia, String sLocalidadResidencia, String sDireccionResidencia, String sBarrioResidencia, Date dFechaNacimiento, String sFechaNacimiento, String sLugarNacimiento, String sCiudadNacimiento, int iGrupoSaniguineo, Date dFechaInscripcion, String sFechaInscripcion, String sEstadoCivil, int iLibretaMilitar, String sNumeroLibretaMilitar, int iNivelEducativo) {
+    public EstudianteModel(int iEstrato,int iCiudadEstudio,int iDepartamentoEstudio,int iPaisEstudio,int iCodAcudiente,String sFotografia,int iTipoSolicitud, String sTipoRol, String sTipoPersona, int iTipoIdentificacion, int iNumeroIdentificacion, String sPaisExpedicion, String sLugarExpedicion, Date dFechaExpedicion, String sFechaExpedicion, String sPrimerNombre, String sSegundoNombre, String sPrimerApellido, String sSegundoApellido, int iGenero, int iCategoriaSisben, int iNacionalidad, int iPaisResidencia, int iDepartamentoResidencia, int iCiudadResidencia, String sLocalidadResidencia, String sDireccionResidencia, String sBarrioResidencia, Date dFechaNacimiento, String sFechaNacimiento, String sLugarNacimiento, String sCiudadNacimiento, int iGrupoSaniguineo, Date dFechaInscripcion, String sFechaInscripcion, String sEstadoCivil, int iLibretaMilitar, String sNumeroLibretaMilitar, int iNivelEducativo) {
+        this.iEstrato=iEstrato;
+        this.iPaisEstudio=iPaisEstudio;
+        this.iDepartamentoEstudio=iDepartamentoEstudio;
+        this.iCiudadEstudio=iCiudadEstudio;
+        this.iCodAcudiente=iCodAcudiente;
+        this.sFotografia=sFotografia;
         this.iTipoSolicitud = iTipoSolicitud;
         this.sTipoRol = sTipoRol;
         this.sTipoPersona = sTipoPersona;
@@ -87,6 +99,54 @@ public class EstudianteModel {
         this.iLibretaMilitar = iLibretaMilitar;
         this.sNumeroLibretaMilitar = sNumeroLibretaMilitar;
         this.iNivelEducativo = iNivelEducativo;
+    }
+
+    public int getiEstrato() {
+        return iEstrato;
+    }
+
+    public void setiEstrato(int iEstrato) {
+        this.iEstrato = iEstrato;
+    }
+
+    public int getiPaisEstudio() {
+        return iPaisEstudio;
+    }
+
+    public void setiPaisEstudio(int iPaisEstudio) {
+        this.iPaisEstudio = iPaisEstudio;
+    }
+
+    public int getiDepartamentoEstudio() {
+        return iDepartamentoEstudio;
+    }
+
+    public void setiDepartamentoEstudio(int iDepartamentoEstudio) {
+        this.iDepartamentoEstudio = iDepartamentoEstudio;
+    }
+
+    public int getiCiudadEstudio() {
+        return iCiudadEstudio;
+    }
+
+    public void setiCiudadEstudio(int iCiudadEstudio) {
+        this.iCiudadEstudio = iCiudadEstudio;
+    }
+
+    public int getiCodAcudiente() {
+        return iCodAcudiente;
+    }
+
+    public void setiCodAcudiente(int iCodAcudiente) {
+        this.iCodAcudiente = iCodAcudiente;
+    }
+
+    public String getsFotografia() {
+        return sFotografia;
+    }
+
+    public void setsFotografia(String sFotografia) {
+        this.sFotografia = sFotografia;
     }
 
      public int getiCodigoEst() {
