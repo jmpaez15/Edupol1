@@ -17,4 +17,9 @@ public class DireccionesQuery {
             + "	C_BARRIO = ?"
             + " WHERE I_CLIENTE = ?"
             + " AND I_TIPO_DIR = ?;";
+    
+    public static final String QUERY_ULTIMO_CODIGO="select max(i_codigo) from DIRECCIONES";
+    
+    public static final String QUERY_GUARDAR_DIRRECCIONES="INSERT INTO Edupol.dbo.DIRECCIONES(I_CODIGO, I_CLIENTE, I_TIPO_DIR, C_DIRECCION)VALUES"
+                        +"(?,?,?,?)";
 }

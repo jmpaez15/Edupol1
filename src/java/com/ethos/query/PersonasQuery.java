@@ -31,9 +31,9 @@ public class PersonasQuery {
             + " FROM PERSONAS"
             + " WHERE C_IDENTIFICACION= ?; ";
     
-    public static final String QUERY_GUARDAR_DATOS="INSERT INTO PERSONAS (i_codigo,c_tipo_person,c_identificacion,i_tipo_iden,i_tipo_cliente,f_fecha_exp,c_apellidos,c_nombres,c_sexo,f_fec_nacimiento,c_estado_civil,I_NIVEL_ESTUDIO)\n" +
-                                                    "values(?,?,?,?,?,?,?,?,?,?,?,?)";
-
+    public static final String QUERY_GUARDAR_DATOS="INSERT INTO PERSONAS (i_codigo,c_tipo_person,c_identificacion,i_tipo_iden,i_tipo_cliente,f_fecha_exp,c_apellidos,c_nombres,c_sexo,f_fec_nacimiento,c_estado_civil,I_NIVEL_ESTUDIO,C_CLAVE)\n" +
+                                                    "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    public static final String QUERY_ULTIMO_CODIGO="select max(i_codigo) from PERSONAS";
     /**
      * ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
      *

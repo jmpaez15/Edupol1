@@ -32,7 +32,37 @@ public class TelefonosDAO extends AbstractDAO<TelefonosModel>{
 
     @Override
     public String insert(TelefonosModel entityClass) {
-        return "";
+        int IdTelefonos=1;
+        String resultado ="NOK";
+        String query;
+        int rs=0;
+       try {
+        conn=getConnectionDB().getConnection();
+        psQuery=conn.prepareStatement(TelefonosQuery.QUERY_ULTIMO_CODIGO);
+        rsT=psQuery.executeQuery();
+        while(rsT.next()){
+        IdTelefonos+=rsT.getInt(1);
+        }
+        psQuery=null;
+        query=TelefonosQuery.QUERY_GUARDAR_TELEFONOS;
+        psQuery=conn.prepareStatement(query);
+        psQuery.setInt(1,IdTelefonos);
+        psQuery.setString(2,entityClass.getsIdPersona());
+        psQuery.setString(3,entityClass.getsTipoTel());
+        psQuery.setString(4,entityClass.getsNumero());
+        rs=psQuery.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("SQLException " +ex);
+        }finally {
+            closeConnection();
+        }
+        if(rs > 0){
+            resultado = "OK";
+        }else{
+            System.out.println("¡No se realizo la insercion en la tabla 'PERSONAS'!");
+        }
+        return resultado;
+        
     }
 
     @Override
