@@ -94,6 +94,7 @@ public class FuncionesEstudiantes {
         personaEstudianteModel = new PersonaModel();
       //  telefonoModel = new TelefonosModel();
       //  direccionesModel = new DireccionesModel();
+        FuncionesGenerales funcionesGenerales=new FuncionesGenerales();
         
         estudianteJObject = preRegistro.get("estudiante").getAsJsonObject();
         tipoSolJObject = estudianteJObject.getAsJsonObject("TipoSol");
@@ -114,7 +115,8 @@ public class FuncionesEstudiantes {
         
                 
         
-        
+        String contraseña=funcionesGenerales.encripta(estudianteJObject.get("Contrasena").getAsString(), true);
+        personaEstudianteModel.setsClavePersona(contraseña);
         personaEstudianteModel.setsCodPersona(estudianteJObject.get("NumIdentificacion").getAsString());
         personaEstudianteModel.setStipoPersona("N");
         personaEstudianteModel.setIdPerfil(1);
@@ -131,6 +133,7 @@ public class FuncionesEstudiantes {
         personaEstudianteModel.setsGenero(generoJsonObject.get("sInicial").getAsString());
         personaEstudianteModel.setsCodEstadoCivil(estadoCivilJsonObject.get("sCodigoEstadoCivil").getAsString());
         personaEstudianteModel.setiNivelEst(nivelEducativoObject.get("sCodigo").getAsInt());
+       
         estudianteModel.setiCodigoEst(estudianteJObject.get("NumIdentificacion").getAsInt());
         estudianteModel.setiTipoSolicitud(tipoSolJObject.get("iId_tipoSolicitud").getAsInt());
         estudianteModel.setiNacionalidad(nacionalidadObject.get("sCodigo").getAsInt());

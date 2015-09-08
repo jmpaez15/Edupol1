@@ -499,7 +499,7 @@ $(function() {
 			$("#ConocimientoEdupol").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
 		}
-                
+             
                 
         });
         
@@ -507,3 +507,4 @@ $(function() {
      
         
 });
+
