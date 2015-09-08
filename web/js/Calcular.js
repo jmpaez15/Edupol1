@@ -26,20 +26,20 @@ function calcular (){
    	if (isNaN(dia)) 
       	return false 
    	//resto los años de las dos fechas 
-   	actualiza.edad=hoy.getFullYear()- ano - 1; //-1 porque no se si ha cumplido años ya este año 
+   	edad=hoy.getFullYear()- ano - 1; //-1 porque no se si ha cumplido años ya este año 
 
    	//si resto los meses y me da menor que 0 entonces no ha cumplido años. Si da mayor si ha cumplido 
    	if (hoy.getMonth() + 1 - mes < 0) //+ 1 porque los meses empiezan en 0 
         
-      	return actualiza.edad 
+      	return edad 
    	if (hoy.getMonth() + 1 - mes > 0) 
-      	return actualiza.edad+1 
+      	return edad+1 
    	//entonces es que eran iguales. miro los dias 
    	//si resto los dias y me da menor que 0 entonces no ha cumplido años. Si da mayor o igual si ha cumplido 
    	if (hoy.getUTCDate() - dia >= 0) 
-      	return actualiza.edad + 1 
+      	return edad + 1 
 
-   	return actualiza.edad;
+   	return edad;
 }
     
 
