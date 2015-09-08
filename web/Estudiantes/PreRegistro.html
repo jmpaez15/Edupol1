@@ -51,6 +51,7 @@
 
 
         <script type="text/javascript">
+            $(".error").fadeOut().remove();
                     $(document).ready(function() {
             $(".calendario").datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-60:+30'});
                     // $("#sFechaExpedicion").datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-60:+30'});
@@ -66,13 +67,14 @@
 
             function validar(){
             if (calcular() < 18){
-            $("#FormularioAcudiente").show();
+                $("#FormularioAcudiente").show();
+            
             }
             else {
-            $("#FormularioAcudiente").hide();
+                $("#FormularioAcudiente").hide();
             }
             }
-
+        
         </script>
 
         <style type="text/css">
@@ -746,7 +748,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Contraseña:</label>
                                                     <div class="col-sm-6">
-                                                        <input type="password" id="sContraseña" name="sContraseña" ng-model="actualiza.person.PreRegistro.estudiante.Contrasena" ng-disabled="edit" placeholder="Contraseña">
+                                                        <input type="password" id="sContraseña" name="sContraseña" ng-model="actualiza.person.PreRegistro.estudiante.Contrasena" ng-disabled="edit" placeholder="Contraseña" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -800,7 +802,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Confirmar Contraseña:</label>
                                                     <div class="col-sm-6">
-                                                        <input  type="password" id="sconfContraseña1" name="sconfContraseña"  ng-disabled="edit" placeholder="Confirmar Contraseña">
+                                                        <input  type="password" id="sconfContraseña1" name="sconfContraseña"  ng-disabled="edit" placeholder="Confirmar Contraseña"  >
                                             </div>    
                                                 </div>
                                             </div>    

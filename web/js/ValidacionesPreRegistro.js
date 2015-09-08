@@ -8,7 +8,7 @@ $(function() {
         $("#sCualTargeta").hide();
         $("#sCualCredito").hide();
         
-     
+        
         $("input[name='sVehiculo']").click(function(){
             if($("input[name='sVehiculo']:checked").val() =="S" ){
                   $("#sCualVehiculo").show();
