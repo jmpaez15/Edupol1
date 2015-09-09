@@ -18,11 +18,14 @@ function getDataFromServer($http) {
     });
 
     actualiza.save = function () {
+        var edad=calcular();
+        var mayorEdad=(edad>=18)?true:false;
         if(!document.getElementById("sFechaExpedicionAcu").value==""){
             actualiza.person.PreRegistro.acudiente.fechExp=document.getElementById("sFechaExpedicionAcu").value;
         }
         actualiza.person.PreRegistro.estudiante.fechaExp=document.getElementById("sFechaExpedicionEst").value;
         actualiza.person.PreRegistro.estudiante.FechaNac=document.getElementById("sFechaNacimiento").value;
+        actualiza.person.PreRegistro.estudiante.mayorEdad=mayorEdad;
         actualiza.person.PreRegistro.condicion=0;
         actualiza.datos = actualiza.person.PreRegistro;
         alert("Por favor espere un momento");
@@ -32,7 +35,11 @@ function getDataFromServer($http) {
             headers: {'Content-Type': 'application/json;charset=Utf-8'},
             data: actualiza.datos
         }).success(function (data, status, headers, config) {
+            if(data=="OK"){
             alert("se realizo la inscripcion satisfactoriamente");
+            }else if(data=="NOK") {
+            alert("Se presento un problema,intente mas tarde o comuniquese con el adminitrador");
+            }
         }).error(function (data, status, headers, config) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.

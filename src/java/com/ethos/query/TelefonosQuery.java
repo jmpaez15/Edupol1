@@ -19,6 +19,6 @@ public class TelefonosQuery {
     
     public static final String QUERY_ULTIMO_CODIGO="select max(i_codigo) from TELEFONOS";
     
-    public static final String QUERY_GUARDAR_TELEFONOS="INSERT INTO Edupol.dbo.TELEFONOS(I_CODIGO, I_CLIENTE, I_TIPO_TEL,C_NUMERO,)VALUES \n" +
+    public static final String QUERY_GUARDAR_TELEFONOS="INSERT INTO Edupol.dbo.TELEFONOS(I_CODIGO, I_CLIENTE, I_TIPO_TEL,C_NUMERO)VALUES \n" +
     "(?,?,?,?);";
 }

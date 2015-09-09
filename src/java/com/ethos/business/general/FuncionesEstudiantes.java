@@ -14,6 +14,7 @@ import com.ethos.DAO.NivelFormacionDAO;
 import com.ethos.DAO.PersonasDAO;
 import com.ethos.DAO.ProfesionesDAO;
 import com.ethos.DAO.ProgramasDAO;
+import com.ethos.DAO.RegistroEstudianteDAO;
 import com.ethos.DAO.TelefonosDAO;
 import com.ethos.model.AcudienteModel;
 import com.ethos.model.DireccionesModel;
@@ -24,6 +25,7 @@ import com.ethos.model.NivelEstudiosModel;
 import com.ethos.model.NivelFormacionModel;
 import com.ethos.model.PersonaModel;
 import com.ethos.model.ProgramasModel;
+import com.ethos.model.RegistroEstudianteModel;
 import com.ethos.model.TelefonosModel;
 import com.google.gson.JsonObject;
 import java.text.ParseException;
@@ -50,6 +52,7 @@ public class FuncionesEstudiantes {
     AbstractDAO programasDAO;
     AbstractDAO ciudadesDAO;
     AbstractDAO centroAsociadoDAO;
+    AbstractDAO registroEstudianteDAO;
     
     PersonaModel personaEstudianteModel;
     PersonaModel personaAcudienteModel;
@@ -59,14 +62,16 @@ public class FuncionesEstudiantes {
     TelefonosModel telefonoEstModel;
     DireccionesModel direccionesModel;
     DireccionesModel direccionesAcudienteModel;
+    DireccionesModel EmailAcudienteModel;
     TelefonosModel telefonoMovilAcudeienteModel;
     TelefonosModel telefonoAcudiente;
     ListasGeneralesModel listasGeneralesModel;
+    RegistroEstudianteModel registroEstudianteModel;
      
     
     
      public String guardarPreRegistro(JsonObject preRegistro) throws ParseException {
-
+        boolean datosGuardadosAcu=false;
         String resultado = "NOK";
         JsonObject estudianteJObject;
         JsonObject acudienteObject;
@@ -81,7 +86,7 @@ public class FuncionesEstudiantes {
         JsonObject ciudadResJsonObject;
         JsonObject estadoCivilJsonObject;
         JsonObject grupoSanquineoJsonObject;
-        SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatoFecha=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         
         JsonObject tipoIdenAcudienteJsonObject;
         JsonObject generoAcudienteJsonObject;
@@ -89,10 +94,21 @@ public class FuncionesEstudiantes {
         JsonObject paisResAcuJsonObject;
         JsonObject departamentoResAcuJsonObject;
         JsonObject ciudadResAcuJsonObject;
+        
+        JsonObject universidadJsonObject;
+        JsonObject nivelFormacionJsonObject;
+        JsonObject tipoEstudioJsonObject;
+        JsonObject grupoProgramaJsonObject;
+        JsonObject programaJsonObject;
+        JsonObject centroAsociadoJsonObject;
+        JsonObject informacionUniversidadJsonObject;
+                
 
         estudianteDAO = new EstudiantesDAO();
         personasDAO = new PersonasDAO();                
-      //  acudienteDAO = new TelefonosDAO();
+        telefonosDAO = new TelefonosDAO();
+        direccionesDAO = new DireccionesDAO();
+        registroEstudianteDAO= new RegistroEstudianteDAO();
         
 
         estudianteModel = new EstudianteModel();
@@ -113,6 +129,14 @@ public class FuncionesEstudiantes {
         ciudadResJsonObject=estudianteJObject.getAsJsonObject("ciudadRes");
         estadoCivilJsonObject=estudianteJObject.getAsJsonObject("estCivil");
         grupoSanquineoJsonObject=estudianteJObject.getAsJsonObject("rh");
+        informacionUniversidadJsonObject=estudianteJObject.getAsJsonObject("infoUni");
+        universidadJsonObject=informacionUniversidadJsonObject.getAsJsonObject("Universidad");
+        nivelFormacionJsonObject=informacionUniversidadJsonObject.getAsJsonObject("NivelFormacion");
+        tipoEstudioJsonObject=informacionUniversidadJsonObject.getAsJsonObject("tipEstudio");
+        grupoProgramaJsonObject=informacionUniversidadJsonObject.getAsJsonObject("GrupoProgramaAcademico");
+        programaJsonObject=informacionUniversidadJsonObject.getAsJsonObject("ProgramaAcademico");
+        centroAsociadoJsonObject=estudianteJObject.getAsJsonObject("centroAsociado");
+                
         
                 
         
@@ -133,8 +157,18 @@ public class FuncionesEstudiantes {
          }
         personaEstudianteModel.setiTipoIden(tipoIdenJsonObject.get("iId_Identificacion").getAsInt());
         personaEstudianteModel.setsIden(estudianteJObject.get("NumIdentificacion").getAsString());
-        personaEstudianteModel.setsNombre(estudianteJObject.get("PriNombre").getAsString()+" "+estudianteJObject.get("segNombre").getAsString());
-        personaEstudianteModel.setsApellido(estudianteJObject.get("PriApellido").getAsString()+" "+estudianteJObject.get("SegApellido").getAsString());
+        if(estudianteJObject.has("segNombre")==true){
+        String nombre=(estudianteJObject.get("segNombre").getAsString().equals(""))?estudianteJObject.get("PriNombre").getAsString():estudianteJObject.get("PriNombre").getAsString()+" "+estudianteJObject.get("segNombre").getAsString();
+        personaEstudianteModel.setsNombre(nombre);
+        }else{
+         personaEstudianteModel.setsNombre(estudianteJObject.get("PriNombre").getAsString());
+        }
+        if(estudianteJObject.has("segNombre")==true){
+        String apellido=(estudianteJObject.get("PriApellido").getAsString().equals(""))?estudianteJObject.get("PriApellido").getAsString():estudianteJObject.get("PriApellido").getAsString()+" "+estudianteJObject.get("SegApellido").getAsString();
+         personaEstudianteModel.setsApellido(apellido);
+        }else{
+          personaEstudianteModel.setsApellido(estudianteJObject.get("PriApellido").getAsString());  
+        }
         personaEstudianteModel.setsGenero(generoJsonObject.get("sInicial").getAsString());
         personaEstudianteModel.setsCodEstadoCivil(estadoCivilJsonObject.get("sCodigoEstadoCivil").getAsString());
         personaEstudianteModel.setiNivelEst(nivelEducativoObject.get("sCodigo").getAsInt());
@@ -174,6 +208,13 @@ public class FuncionesEstudiantes {
         telefonoEstModel.setsIdPersona(estudianteJObject.get("NumIdentificacion").getAsString());
         telefonoEstModel.setsNumero(estudianteJObject.get("tel").getAsString());
         
+        registroEstudianteModel = new RegistroEstudianteModel();
+        registroEstudianteModel.setiCodUniversidadPrograma(iCodUniversidadPrograma);
+        registroEstudianteModel.setiCodCentroAsociado(centroAsociadoJsonObject.get("iCodCentroAsociado").getAsInt());
+        registroEstudianteModel.setiEstadoRegistro(1);
+        Date fecha = new Date();
+        registroEstudianteModel.setFechaIncripcion(formatoFecha.format(fecha));
+        if(estudianteJObject.get("mayorEdad").getAsBoolean()){
         acudienteObject=preRegistro.get("acudiente").getAsJsonObject();
         paisResAcuJsonObject= acudienteObject.get("paisRes").getAsJsonObject();
         departamentoResAcuJsonObject= acudienteObject.get("depRes").getAsJsonObject();
@@ -190,9 +231,18 @@ public class FuncionesEstudiantes {
         personaAcudienteModel.setsIden(acudienteObject.get("numIden").getAsString());
         personaAcudienteModel.setdFechaExpedicion(formatoFecha.parse(acudienteObject.get("fechExp").getAsString()));
         personaAcudienteModel.setsGenero(generoAcudienteJsonObject.get("iIdGenero").getAsString());
-        personaAcudienteModel.setsNombre(acudienteObject.get("priNombre").getAsString()+" "+acudienteObject.get("segNombre").getAsString());
-        personaAcudienteModel.setsApellido(acudienteObject.get("priApellido").getAsString()+" "+acudienteObject.get("segApellido").getAsString());
-           
+        if(estudianteJObject.has("segNombre")==true){
+        String nombre=(acudienteObject.get("segNombre").getAsString().equals(""))?acudienteObject.get("priNombre").getAsString():acudienteObject.get("priNombre").getAsString()+" "+acudienteObject.get("segNombre").getAsString();
+        personaAcudienteModel.setsNombre(nombre);
+        }else{
+        personaAcudienteModel.setsNombre(acudienteObject.get("priNombre").getAsString()); 
+        }
+        if(estudianteJObject.has("segApellido")==true){
+         String apellido=(acudienteObject.get("segApellido").getAsString().equals(""))?acudienteObject.get("priApellido").getAsString():acudienteObject.get("priApellido").getAsString()+" "+acudienteObject.get("segApellido").getAsString();
+         personaAcudienteModel.setsApellido(apellido);
+        }else{
+          personaAcudienteModel.setsApellido(acudienteObject.get("priApellido").getAsString());  
+        }           
         
         acudienteModel = new AcudienteModel();
         acudienteModel.setsPaisResidencia(paisResAcuJsonObject.get("sCodigo").getAsString());
@@ -205,17 +255,36 @@ public class FuncionesEstudiantes {
         acudienteModel.setsOcupacion(acudienteObject.get("ocupacion").getAsString());
         acudienteModel.setsTipoVivienda(acudienteObject.get("tipVivienda").getAsString());
         acudienteModel.setdSalario(acudienteObject.get("salario").getAsDouble());
-        acudienteModel.setsVehiculo(acudienteObject.get("vehiculo").getAsString());
-        acudienteModel.setdIngArrendamiento(acudienteObject.get("IngresosArr").getAsDouble());
-        acudienteModel.setdIngPension(acudienteObject.get("ingresosPension").getAsDouble());
-        acudienteModel.setdOtrosIngresos1(acudienteObject.get("otrosIngresos").getAsDouble());
-        acudienteModel.setsNombreOtrosIngresos(acudienteObject.get("nombreIngresos").getAsString());
-        acudienteModel.setsTarjetaCredito(acudienteObject.get("nomTarjeta").getAsString());
-        acudienteModel.setsCreditoActual(acudienteObject.get("nomCredito").getAsString());
-        acudienteModel.setdValorObligaciones(acudienteObject.get("valorObli").getAsDouble());
+        if(estudianteJObject.has("vehiculo")==true){
+           acudienteModel.setsVehiculo(acudienteObject.get("vehiculo").getAsString()); 
+        }
+        if(estudianteJObject.has("IngresosArr")==true){
+           acudienteModel.setdIngArrendamiento(acudienteObject.get("IngresosArr").getAsDouble());
+        }
+        if(estudianteJObject.has("ingresosPension")==true){
+          acudienteModel.setdIngPension(acudienteObject.get("ingresosPension").getAsDouble());
+        }
+        if(estudianteJObject.has("otrosIngresos")==true){
+           acudienteModel.setdOtrosIngresos1(acudienteObject.get("otrosIngresos").getAsDouble());
+        }
+     
+         if(estudianteJObject.has("nombreIngresos")==true){
+          acudienteModel.setsNombreOtrosIngresos(acudienteObject.get("nombreIngresos").getAsString());
+        }
+         
+        if(estudianteJObject.has("nomTarjeta")==true){
+           acudienteModel.setsTarjetaCredito(acudienteObject.get("nomTarjeta").getAsString());
+        }
+     
+        if(estudianteJObject.has("nomCredito")==true){
+           acudienteModel.setsCreditoActual(acudienteObject.get("nomCredito").getAsString());
+        }
+        if(estudianteJObject.has("valorObli")==true){
+           acudienteModel.setdValorObligaciones(acudienteObject.get("valorObli").getAsDouble());
+        }
         acudienteModel.setsMedioEdupol(MedioMasivoJsonObject.get("iIdMediosMasivos").getAsString());
         
-        telefonosDAO = new TelefonosDAO();
+        
         telefonoAcudiente = new TelefonosModel();
         telefonoAcudiente.setsTipoTel("1");
         telefonoAcudiente.setsNumero(acudienteObject.get("telFij").getAsString());
@@ -225,33 +294,49 @@ public class FuncionesEstudiantes {
         telefonoMovilAcudeienteModel.setsTipoTel(acudienteObject.get("telMovil").getAsString());
         telefonoMovilAcudeienteModel.setsIdPersona(acudienteObject.get("numIden").getAsString());
        
-        direccionesDAO = new DireccionesDAO();
+        
         direccionesAcudienteModel = new DireccionesModel();
         direccionesAcudienteModel.setsTipoDir("2");
         direccionesAcudienteModel.setsDireccion(acudienteObject.get("dirRes").getAsString());
         direccionesAcudienteModel.setsCliente(acudienteObject.get("numIden").getAsString());
         
-        direccionesAcudienteModel = new DireccionesModel();
-        direccionesAcudienteModel.setsTipoDir("3");
-        direccionesAcudienteModel.setsDireccion(acudienteObject.get("email").getAsString());
-        direccionesAcudienteModel.setsCliente(acudienteObject.get("numIden").getAsString());
+        EmailAcudienteModel = new DireccionesModel();
+        EmailAcudienteModel.setsTipoDir("3");
+        EmailAcudienteModel.setsDireccion(acudienteObject.get("email").getAsString());
+        EmailAcudienteModel.setsCliente(acudienteObject.get("numIden").getAsString());
+        String guardarPersonaAcudiente = personasDAO.insert(personaAcudienteModel);
+        acudienteModel.setiCodAcudiente(Integer.parseInt(guardarPersonaAcudiente));
+        String guardarAcudiente=acudienteDAO.insert(acudienteModel);
+        String guardarTelMovil = telefonosDAO.insert(telefonoMovilAcudeienteModel);
+        String guardarTel=telefonosDAO.insert(telefonoAcudiente);
+        String guardarDirAcu=direccionesDAO.insert(direccionesAcudienteModel);
+        String guardarEmailAcu=direccionesDAO.insert(EmailAcudienteModel);
+        if((!guardarPersonaAcudiente.equals("NOK"))&& (!guardarAcudiente.equals("NOK"))&&(!guardarTelMovil.equals("NOK"))&& (!guardarTel.equals("NOK"))&& (!guardarDirAcu.equals("NOK"))&&(!guardarEmailAcu.equals("NOK"))){
+            datosGuardadosAcu=true;
+        }
         
+        }
         try {   
                 
                 String guardarPersonaEstu = personasDAO.insert(personaEstudianteModel);
                 estudianteModel.setiCodigoEst(Integer.parseInt(guardarPersonaEstu));
                 String guardarEstudiante = estudianteDAO.insert(estudianteModel);
-                String guardarPersonaAcudiente = personasDAO.insert(personaAcudienteModel);
-                acudienteModel.setiCodAcudiente(Integer.parseInt(guardarPersonaAcudiente));
-                String guardarAcudiente=acudienteDAO.insert(acudienteModel);
+                registroEstudianteModel.setiCodEstudiente(Integer.parseInt(guardarPersonaEstu));
+                String guardarRegistro=RegistroEstudianteDAO.insert(registroEstudianteModel)
                 String guardarTelMovil = telefonosDAO.insert(telefonoMovilEstModel);
                 String guardarTel=telefonosDAO.insert(telefonoEstModel);
                 String guardarDir=direccionesDAO.insert(direccionesModel);
-              if((!guardarPersonaEstu.equals("NOK"))&& (!guardarEstudiante.equals("NOK"))&& (!guardarPersonaAcudiente.equals("NOK"))&& (!guardarAcudiente.equals("NOK"))&&(!guardarTelMovil.equals("NOK"))&& (!guardarTel.equals("NOK"))&& (!guardarDir.equals("NOK"))){
-                  resultado = "OK";
-              }  
+              if(estudianteJObject.get("mayorEdad").getAsBoolean()){
+                  if(datosGuardadosAcu &&(!guardarPersonaEstu.equals("NOK"))&& (!guardarEstudiante.equals("NOK"))&& (!guardarTelMovil.equals("NOK"))&& (!guardarTel.equals("NOK"))&& (!guardarDir.equals("NOK"))){
+                       resultado = "OK";
+                   }
+              }else{
+                   if((!guardarPersonaEstu.equals("NOK"))&& (!guardarEstudiante.equals("NOK"))&& (!guardarTelMovil.equals("NOK"))&& (!guardarTel.equals("NOK"))&& (!guardarDir.equals("NOK"))){
+                       resultado = "OK"; 
+                   }
+                  }
          } catch (Exception e) {
-            System.out.println("Error durante actualizacion de datos: " + e);
+            System.out.println("Error al guardar los datos: " + e);
         }
         return resultado;
     }
