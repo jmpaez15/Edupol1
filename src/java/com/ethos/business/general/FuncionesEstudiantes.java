@@ -6,6 +6,7 @@ import com.ethos.DAO.AbstractDAO;
 import com.ethos.DAO.AcudienteDAO;
 import com.ethos.DAO.CentroAsociadoDAO;
 import com.ethos.DAO.CiudadesDAO;
+import com.ethos.DAO.DireccionesDAO;
 import com.ethos.DAO.EstudiantesDAO;
 import com.ethos.DAO.GrupoProgramasDAO;
 import com.ethos.DAO.NivelEstudiosDAO;
@@ -13,6 +14,7 @@ import com.ethos.DAO.NivelFormacionDAO;
 import com.ethos.DAO.PersonasDAO;
 import com.ethos.DAO.ProfesionesDAO;
 import com.ethos.DAO.ProgramasDAO;
+import com.ethos.DAO.TelefonosDAO;
 import com.ethos.model.AcudienteModel;
 import com.ethos.model.DireccionesModel;
 import com.ethos.model.EstudianteModel;
@@ -84,6 +86,9 @@ public class FuncionesEstudiantes {
         JsonObject tipoIdenAcudienteJsonObject;
         JsonObject generoAcudienteJsonObject;
         JsonObject MedioMasivoJsonObject;
+        JsonObject paisResAcuJsonObject;
+        JsonObject departamentoResAcuJsonObject;
+        JsonObject ciudadResAcuJsonObject;
 
         estudianteDAO = new EstudiantesDAO();
         personasDAO = new PersonasDAO();                
@@ -134,7 +139,7 @@ public class FuncionesEstudiantes {
         personaEstudianteModel.setsCodEstadoCivil(estadoCivilJsonObject.get("sCodigoEstadoCivil").getAsString());
         personaEstudianteModel.setiNivelEst(nivelEducativoObject.get("sCodigo").getAsInt());
        
-        estudianteModel.setiCodigoEst(estudianteJObject.get("NumIdentificacion").getAsInt());
+        
         estudianteModel.setiTipoSolicitud(tipoSolJObject.get("iId_tipoSolicitud").getAsInt());
         estudianteModel.setiNacionalidad(nacionalidadObject.get("sCodigo").getAsInt());
         estudianteModel.setsCiudadNacimiento(estudianteJObject.get("ciudadNacimiento").getAsString());
@@ -170,6 +175,9 @@ public class FuncionesEstudiantes {
         telefonoEstModel.setsNumero(estudianteJObject.get("tel").getAsString());
         
         acudienteObject=preRegistro.get("acudiente").getAsJsonObject();
+        paisResAcuJsonObject= acudienteObject.get("paisRes").getAsJsonObject();
+        departamentoResAcuJsonObject= acudienteObject.get("depRes").getAsJsonObject();
+        ciudadResAcuJsonObject= acudienteObject.get("ciudRes").getAsJsonObject();
         tipoIdenAcudienteJsonObject= acudienteObject.get("tipIden").getAsJsonObject();
         generoAcudienteJsonObject=acudienteObject.get("genero").getAsJsonObject();
         MedioMasivoJsonObject=acudienteObject.get("medioMasivo").getAsJsonObject();
@@ -180,17 +188,16 @@ public class FuncionesEstudiantes {
         personaAcudienteModel.setsCodPersona(acudienteObject.get("numIden").getAsString());
         personaAcudienteModel.setiTipoIden(tipoIdenAcudienteJsonObject.get("iId_Identificacion").getAsInt());
         personaAcudienteModel.setsIden(acudienteObject.get("numIden").getAsString());
-        personaAcudienteModel.setsFecExp(acudienteObject.get("fechExp").getAsString());
+        personaAcudienteModel.setdFechaExpedicion(formatoFecha.parse(acudienteObject.get("fechExp").getAsString()));
         personaAcudienteModel.setsGenero(generoAcudienteJsonObject.get("iIdGenero").getAsString());
         personaAcudienteModel.setsNombre(acudienteObject.get("priNombre").getAsString()+" "+acudienteObject.get("segNombre").getAsString());
         personaAcudienteModel.setsApellido(acudienteObject.get("priApellido").getAsString()+" "+acudienteObject.get("segApellido").getAsString());
            
         
         acudienteModel = new AcudienteModel();
-        acudienteModel.setiCodAcudiente(acudienteObject.get("numIden").getAsInt());
-        acudienteModel.setsPaisResidencia(acudienteObject.get("paisRes").getAsString());
-        acudienteModel.setsCiudadResidencia(acudienteObject.get("ciudRes").getAsString());
-        acudienteModel.setsDepartamento(acudienteObject.get("depRes").getAsString());
+        acudienteModel.setsPaisResidencia(paisResAcuJsonObject.get("sCodigo").getAsString());
+        acudienteModel.setsCiudadResidencia(ciudadResAcuJsonObject.get("sCodigo").getAsString());
+        acudienteModel.setsDepartamento(departamentoResAcuJsonObject.get("sCodigo").getAsString());
         acudienteModel.setsTrabajaActual(acudienteObject.get("tipTrabajo").getAsString());
         acudienteModel.setsTiempoTrabajando(acudienteObject.get("tiempoTrabajo").getAsString());
         acudienteModel.setsNombreEmpresa(acudienteObject.get("nomEmpresa").getAsString());
@@ -208,7 +215,7 @@ public class FuncionesEstudiantes {
         acudienteModel.setdValorObligaciones(acudienteObject.get("valorObli").getAsDouble());
         acudienteModel.setsMedioEdupol(MedioMasivoJsonObject.get("iIdMediosMasivos").getAsString());
         
-                      
+        telefonosDAO = new TelefonosDAO();
         telefonoAcudiente = new TelefonosModel();
         telefonoAcudiente.setsTipoTel("1");
         telefonoAcudiente.setsNumero(acudienteObject.get("telFij").getAsString());
@@ -217,7 +224,8 @@ public class FuncionesEstudiantes {
         telefonoMovilAcudeienteModel = new  TelefonosModel();
         telefonoMovilAcudeienteModel.setsTipoTel(acudienteObject.get("telMovil").getAsString());
         telefonoMovilAcudeienteModel.setsIdPersona(acudienteObject.get("numIden").getAsString());
-        
+       
+        direccionesDAO = new DireccionesDAO();
         direccionesAcudienteModel = new DireccionesModel();
         direccionesAcudienteModel.setsTipoDir("2");
         direccionesAcudienteModel.setsDireccion(acudienteObject.get("dirRes").getAsString());
@@ -228,15 +236,20 @@ public class FuncionesEstudiantes {
         direccionesAcudienteModel.setsDireccion(acudienteObject.get("email").getAsString());
         direccionesAcudienteModel.setsCliente(acudienteObject.get("numIden").getAsString());
         
-        try {
-                String GuardarPersonaEstu = personasDAO.insert(personaEstudianteModel);
-                String GuardarEstudiante = estudianteDAO.insert(estudianteModel);
-                String GuardarPersonaAcudiente = personasDAO.insert(personaAcudienteModel);
-                String GuardarAcudiente=acudienteDAO.insert(acudienteModel);
-                String GuardarTelMovil = telefonosDAO.insert(telefonoMovilEstModel);
-                String GuardarTel=telefonosDAO.insert(telefonoEstModel);
-                String GuardarDir=direccionesDAO.insert(direccionesModel);
+        try {   
                 
+                String guardarPersonaEstu = personasDAO.insert(personaEstudianteModel);
+                estudianteModel.setiCodigoEst(Integer.parseInt(guardarPersonaEstu));
+                String guardarEstudiante = estudianteDAO.insert(estudianteModel);
+                String guardarPersonaAcudiente = personasDAO.insert(personaAcudienteModel);
+                acudienteModel.setiCodAcudiente(Integer.parseInt(guardarPersonaAcudiente));
+                String guardarAcudiente=acudienteDAO.insert(acudienteModel);
+                String guardarTelMovil = telefonosDAO.insert(telefonoMovilEstModel);
+                String guardarTel=telefonosDAO.insert(telefonoEstModel);
+                String guardarDir=direccionesDAO.insert(direccionesModel);
+              if((!guardarPersonaEstu.equals("NOK"))&& (!guardarEstudiante.equals("NOK"))&& (!guardarPersonaAcudiente.equals("NOK"))&& (!guardarAcudiente.equals("NOK"))&&(!guardarTelMovil.equals("NOK"))&& (!guardarTel.equals("NOK"))&& (!guardarDir.equals("NOK"))){
+                  resultado = "OK";
+              }  
          } catch (Exception e) {
             System.out.println("Error durante actualizacion de datos: " + e);
         }

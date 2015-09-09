@@ -88,15 +88,18 @@ public class PreRegistroControl extends HttpServlet {
             switch(dataJson.get("condicion").getAsInt()){
                 case 0:
                     respuesta=funcionEstudiantes.guardarPreRegistro(dataJson);
+                    json = new Gson().toJson(respuesta);
                     break;
                 case 1:
                     listasGenerales=funcionEstudiantes.obtenerDependenciasUniversidades(dataJson);
+                    json = new Gson().toJson(listasGenerales);
                     break;
                 case 2:
-                 listasGenerales=funcionEstudiantes.dependenciasPais(dataJson);
+                    listasGenerales=funcionEstudiantes.dependenciasPais(dataJson);
+                    json = new Gson().toJson(listasGenerales);
                     break;
             }
-            json = new Gson().toJson(listasGenerales);
+            
         } catch (Exception e) {
             System.out.println("Error al obterner datos en Actualizar Control: " + e);
         }

@@ -37,7 +37,6 @@ public class PersonasDAO extends AbstractDAO<PersonaModel> {
      *----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
     @Override
     public PersonaModel select(Object idPersona) {
-
         personaModel = new PersonaModel();
         personaQuery = new PersonasQuery();
         String query;
@@ -86,6 +85,7 @@ public class PersonasDAO extends AbstractDAO<PersonaModel> {
         } finally {
             closeConnection();
         }
+      
         return personaModel;
     }
     /*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -93,14 +93,21 @@ public class PersonasDAO extends AbstractDAO<PersonaModel> {
     @Override
     public String insert(PersonaModel entityClass) {
         SimpleDateFormat fecha=new SimpleDateFormat("yyyy/MM/dd");
+        int IdPersonas=1;
         String resultado ="NOK";
         String query;
         int rs=0;
        try {
         conn=getConnectionDB().getConnection();
+        psQuery=conn.prepareStatement(PersonasQuery.QUERY_ULTIMO_CODIGO);
+        rsT=psQuery.executeQuery();
+        while(rsT.next()){
+        IdPersonas+=rsT.getInt(1);
+        }
+        psQuery=null;
         query=PersonasQuery.QUERY_GUARDAR_DATOS;
         psQuery=conn.prepareStatement(query);
-        psQuery.setInt(1,Integer.parseInt(entityClass.getsCodPersona()));
+        psQuery.setInt(1,IdPersonas);
         psQuery.setString(2,entityClass.getStipoPersona());
         psQuery.setString(3,entityClass.getsIden());
         psQuery.setInt(4,entityClass.getiTipoIden());
@@ -109,9 +116,14 @@ public class PersonasDAO extends AbstractDAO<PersonaModel> {
         psQuery.setString(7,entityClass.getsApellido());
         psQuery.setString(8,entityClass.getsNombre());
         psQuery.setString(9,entityClass.getsGenero());
+        if (entityClass.getdFechaNacimiento()!=null){
         psQuery.setString(10,fecha.format(entityClass.getdFechaNacimiento()));
+        }else{
+        psQuery.setString(10,"");
+        }
         psQuery.setString(11,entityClass.getsCodEstadoCivil());
         psQuery.setInt(12,entityClass.getiNivelEst());
+        psQuery.setString(13,entityClass.getsClavePersona());
         rs=psQuery.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("SQLException " +ex);
@@ -119,7 +131,7 @@ public class PersonasDAO extends AbstractDAO<PersonaModel> {
             closeConnection();
         }
         if(rs > 0){
-            resultado = "OK";
+            resultado = String.valueOf(IdPersonas);
         }else{
             System.out.println("¡No se realizo la insercion en la tabla 'PERSONAS'!");
         }
@@ -212,7 +224,7 @@ public class PersonasDAO extends AbstractDAO<PersonaModel> {
 
         return null;
     }
-
+    
     public String getTipoConn() {
         return tipoConn;
     }

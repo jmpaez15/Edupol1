@@ -29,7 +29,37 @@ public class DireccionesDAO extends AbstractDAO<DireccionesModel>{
 
     @Override
     public String insert(DireccionesModel entityClass) {
-        return "";
+        int IdDirreciones=1;
+        String resultado ="NOK";
+        String query;
+        int rs=0;
+       try {
+        conn=getConnectionDB().getConnection();
+        psQuery=conn.prepareStatement(DireccionesQuery.QUERY_ULTIMO_CODIGO);
+        rsT=psQuery.executeQuery();
+        while(rsT.next()){
+        IdDirreciones+=rsT.getInt(1);
+        }
+        psQuery=null;
+        query=DireccionesQuery.QUERY_GUARDAR_DIRRECCIONES;
+        psQuery=conn.prepareStatement(query);
+        psQuery.setInt(1,IdDirreciones);
+        psQuery.setString(2,entityClass.getsCliente());
+        psQuery.setString(3,entityClass.getsTipoDir());
+        psQuery.setString(4,entityClass.getsDireccion());
+        rs=psQuery.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("SQLException " +ex);
+        }finally {
+            closeConnection();
+        }
+        if(rs > 0){
+            resultado = "OK";
+        }else{
+            System.out.println("¡No se realizo la insercion en la tabla 'PERSONAS'!");
+        }
+        return resultado;
+        
     }
 
     @Override

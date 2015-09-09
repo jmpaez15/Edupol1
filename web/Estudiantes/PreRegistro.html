@@ -79,7 +79,7 @@
 
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner" role="listbox">
-
+                                        
                                     <div id="pantallaEstudiantes" class="item active ">
                                         <h1>INFORMACION PERSONAL</h1>
                                         <br/>
@@ -317,7 +317,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Grupos Sanguineo(RH)</label>
                                                 <div class="col-sm-6">
-                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.rh" ng-options="rh as rh.sNombreSangre for rh in actualiza.person.listipoSanguineoModels track by rh.iCodigoTipoSangre" convert-to-number>
+                                                    <select class="DatosAlum" id="GrupoSanguineo" ng-model="actualiza.person.PreRegistro.estudiante.rh" ng-options="rh as rh.sNombreSangre for rh in actualiza.person.listipoSanguineoModels track by rh.iCodigoTipoSangre" convert-to-number>
                                                         <option value="">Seleccione un Grupo Sanguineo</option>
                                                     </select>
                                                 </div>                                                
@@ -485,7 +485,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Tiempo Trabajando:</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="number" id="sTiempoContrato" name="sTiempoContrato" ng-model="actualiza.person.PreRegistro.acudiente.tiempoTrabajo" ng-disabled="edit" placeholder="Años.meses.dias">
+                                                        <input class="DatosAcud" type="text" id="sTiempoContrato" name="sTiempoContrato" ng-model="actualiza.person.PreRegistro.acudiente.tiempoTrabajo" ng-disabled="edit" placeholder="Años.meses.dias">
                                                     </div>
                                                 </div>
 
@@ -596,7 +596,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Salario</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="number" id="sSalario" name="sSalario" ng-model="actualiza.person.PreRegistro.acudiente.salario" ng-disabled="edit" placeholder="Salario">
+                                                        <input class="DatosAcud" type="text" id="sSalario" name="sSalario" ng-model="actualiza.person.PreRegistro.acudiente.salario" ng-disabled="edit" placeholder="Salario">
                                                     </div>
                                                 </div>
 
@@ -611,14 +611,14 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">¿Cuanto?</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="number" id="sCuantoSalario" name="sCuantoSalario" ng-model="actualiza.person.PreRegistro.acudiente.IngresosArr" ng-disabled="edit" placeholder="Ingresos por Arriendo">
+                                                        <input class="DatosAcud" type="text" id="sCuantoSalario" name="sCuantoSalario" ng-model="actualiza.person.PreRegistro.acudiente.IngresosArr" ng-disabled="edit" placeholder="Ingresos por Arriendo">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">¿Cuanto?</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="number" id="sPensioSalario" name="sPensioSalario" ng-model="actualiza.person.PreRegistro.acudiente.ingresosPension" ng-disabled="edit" placeholder="Ingresos por Pensión">
+                                                        <input class="DatosAcud" type="text" id="sPensioSalario" name="sPensioSalario" ng-model="actualiza.person.PreRegistro.acudiente.ingresosPension" ng-disabled="edit" placeholder="Ingresos por Pensión">
                                                     </div>
                                                 </div>
 
@@ -626,7 +626,7 @@
                                                     <label class="col-sm-5">¿Cúal y Cuánto?:</label>
                                                     <div class="col-sm-6">
                                                         <input type="text" class="DatosAcud" id="sOtroIngresoCu" name="ssOtroIngresoCu" ng-model="actualiza.person.PreRegistro.acudiente.nombreIngresos" ng-disabled="edit" placeholder="¿Cúal Ingreso?">
-                                                        <input type="number" class="DatosAcud" id="sCuantoIngreso" name="sCuandtoIngreso" ng-model="actualiza.person.PreRegistro.acudiente.otrosIngresos" ng-disabled="edit" placeholder="¿Cuánto?">
+                                                        <input type="text" class="DatosAcud" id="sCuantoIngreso" name="sCuandtoIngreso" ng-model="actualiza.person.PreRegistro.acudiente.otrosIngresos" ng-disabled="edit" placeholder="¿Cuánto?">
                                                     </div>
                                                 </div>
                                                 <div class="form-group" style="margin-top: 5%;">
@@ -793,7 +793,7 @@
                                 </div>
                                 <ol class="carousel-indicators">
                                     <li data-target="#preRegistro" data-slide-to="0" ></li>
-                                    <li data-target="#preRegistro" data-slide-to="1"  id="ValidEstu" onclick="validar()" ></li>
+                                    <li data-target="#preRegistro" data-slide-to="1"  id="ValidEstu" ></li>
                                     <li data-target="#preRegistro" data-slide-to="2"   id="ValidAcu" ></li>
                                 </ol>
 
@@ -812,7 +812,7 @@
                     </a>
                     <br/>
 
-                    <button type="submit" id="enviar" class="btn btn-success " ng-click="actualiza.save()" ng-disabled="error || incomplete" >
+                    <button type="submit" id="enviar" class="btn btn-success " ng-click="actualiza.save()" >
                         Registrar Datos
                     </button>
                 </div>

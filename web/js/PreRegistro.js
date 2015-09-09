@@ -18,6 +18,11 @@ function getDataFromServer($http) {
     });
 
     actualiza.save = function () {
+        if(!document.getElementById("sFechaExpedicionAcu").value==""){
+            actualiza.person.PreRegistro.acudiente.fechExp=document.getElementById("sFechaExpedicionAcu").value;
+        }
+        actualiza.person.PreRegistro.estudiante.fechaExp=document.getElementById("sFechaExpedicionEst").value;
+        actualiza.person.PreRegistro.estudiante.FechaNac=document.getElementById("sFechaNacimiento").value;
         actualiza.person.PreRegistro.condicion=0;
         actualiza.datos = actualiza.person.PreRegistro;
         alert("Por favor espere un momento");
