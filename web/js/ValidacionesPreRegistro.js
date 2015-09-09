@@ -1,4 +1,5 @@
 $(function() { 
+
     
 	var emailreg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;	
         var cambioId ="ValidAcu";
@@ -691,7 +692,7 @@ $(function() {
              
                 
                 
-          datosAcade=true;      
+          datosAcade=true;  
         });
         
         
