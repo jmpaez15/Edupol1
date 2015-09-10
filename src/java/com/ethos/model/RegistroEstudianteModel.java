@@ -16,17 +16,29 @@ public class RegistroEstudianteModel {
     private int iCodCentroAsociado;
     private int iEstadoRegistro;
     private String FechaIncripcion;
+    
+    private int iCodUni;
+    private int iNivelFormacion;
+    private int iTipoEstudio;
+    private int iGrupoPrograma;
+    private int iPrograma;
+    
 
     public RegistroEstudianteModel() {
     }
 
-    public RegistroEstudianteModel(int iCodRegistro, int iCodEstudiente, int iCodUniversidadPrograma, int iCodCentroAsociado, int iEstadoRegistro, String FechaIncripcion) {
+    public RegistroEstudianteModel(int iCodRegistro, int iCodEstudiente, int iCodUniversidadPrograma, int iCodCentroAsociado, int iEstadoRegistro, String FechaIncripcion, int iCodUni, int iNivelFormacion, int iTipoEstudio, int iGrupoPrograma, int iPrograma) {
         this.iCodRegistro = iCodRegistro;
         this.iCodEstudiente = iCodEstudiente;
         this.iCodUniversidadPrograma = iCodUniversidadPrograma;
         this.iCodCentroAsociado = iCodCentroAsociado;
         this.iEstadoRegistro = iEstadoRegistro;
         this.FechaIncripcion = FechaIncripcion;
+        this.iCodUni = iCodUni;
+        this.iNivelFormacion = iNivelFormacion;
+        this.iTipoEstudio = iTipoEstudio;
+        this.iGrupoPrograma = iGrupoPrograma;
+        this.iPrograma = iPrograma;
     }
 
     public int getiCodRegistro() {
@@ -76,7 +88,47 @@ public class RegistroEstudianteModel {
     public void setFechaIncripcion(String FechaIncripcion) {
         this.FechaIncripcion = FechaIncripcion;
     }
+
+    public int getiCodUni() {
+        return iCodUni;
+    }
+
+    public void setiCodUni(int iCodUni) {
+        this.iCodUni = iCodUni;
+    }
+
+    public int getiNivelFormacion() {
+        return iNivelFormacion;
+    }
+
+    public void setiNivelFormacion(int iNivelFormacion) {
+        this.iNivelFormacion = iNivelFormacion;
+    }
+
+    public int getiTipoEstudio() {
+        return iTipoEstudio;
+    }
+
+    public void setiTipoEstudio(int iTipoEstudio) {
+        this.iTipoEstudio = iTipoEstudio;
+    }
+
+    public int getiGrupoPrograma() {
+        return iGrupoPrograma;
+    }
+
+    public void setiGrupoPrograma(int iGrupoPrograma) {
+        this.iGrupoPrograma = iGrupoPrograma;
+    }
+
+    public int getiPrograma() {
+        return iPrograma;
+    }
+
+    public void setiPrograma(int iPrograma) {
+        this.iPrograma = iPrograma;
+    }
     
     
-    
+
 }

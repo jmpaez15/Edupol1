@@ -2,7 +2,7 @@ $(function() {
 
     
 	var emailreg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;	
-        var cambioId ="ValidAcu";
+        var cambioId ;
         var datosEstu = false;
         var datosAcudi = false;
         var datosAcade = false;
@@ -100,15 +100,15 @@ $(function() {
        $("#ValidEstu").click(function(){  
 		$(".error").fadeOut().remove();
 		
-      /*       if ($("#TipoSolicitud").val() == "" ) {
+             if ($("#TipoSolicitud").val() == "" ) {
 			$("#TipoSolicitud").focus().after('<span class="error">Campo Obligatorio</span>');  
 			return false; 
-                }*/
+                }
                     
-       /*      if ($("#Nacionalidad").val() == "" ) {
+            if ($("#Nacionalidad").val() == "" ) {
 			$("#Nacionalidad").focus().after('<span class="error">Campo Obligatorio</span>');  
 			return false;   
-                }*/
+                }
                     
                 if ($("#sLugarNac").val() == "") {  
 			$("#sLugarNac").focus().after('<span class="error">Campo Obligatorio</span>');  
@@ -122,11 +122,11 @@ $(function() {
                       
                 }
                 
-        /*     if ($("#TipoIdentificacion").val() == "") {  
+              if ($("#TipoIdentificacion").val() == "") {  
 			$("#TipoIdentificacion").focus().after('<span class="error">Campo Obligatorio</span>');  
 			return false;  
                            
-                }  */
+                }  
                 if ($("#sLugarExped").val() == "" ) {
 			$("#sLugarExped").focus().after('<span class="error">Campo Obligatorio</span>');  
 			return false;  
@@ -163,21 +163,21 @@ $(function() {
                       
                 }
                 
-            /* if ($("#Genero").val() == "") {  
+             if ($("#Genero").val() == "") {  
 			$("#Genero").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
-		}*/
+		}
                 
       
-            /* if ($("#paisRes").val() == "") {  
+             if ($("#paisRes").val() == "") {  
 			$("#paisRes").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
-		}  */
+		}  
                 
-            /* if ($("#CiudadRes").val() == "") {  
+             if ($("#CiudadRes").val() == "") {  
 			$("#CiudadRes").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
-		}     */   
+		}        
            
               if ($("#sBarrioResidencia").val() == "") {  
 			$("#sBarrioResidencia").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -227,10 +227,10 @@ $(function() {
                       
                 }
                 
-            /* if ($("#NivelEduc").val() == "") {  
+             if ($("#NivelEduc").val() == "") {  
 			$("#NivelEduc").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
-		} */
+		} 
                 
                if ($("#sCiudadNacimiento").val() == "") {  
 			$("#sCiudadNacimiento").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -328,15 +328,15 @@ $(function() {
                       
                 }
                 
-             /*if ($("#CategoriaSisben").val() == "") {  
+             if ($("#CategoriaSisben").val() == "") {  
 			$("#CategoriaSisben").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
-		}   */ 
+		}  
                 
-             /*if ($("#DepartamentoRes").val() == "") {  
+           if ($("#DepartamentoRes").val() == "") {  
 			$("#DepartamentoRes").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
-		}*/
+		}
                 
                if ($("#sLocalidadResidencia").val() == "") {  
 			$("#sLocalidadResidencia").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -380,11 +380,11 @@ $(function() {
                       
                 }
                 
-              /* if ($("#GrupoSanguineo").val() == "") {  
+              if ($("#GrupoSanguineo").val() == "") {  
 			$("#GrupoSanguineo").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false; 
                        
-		} */
+		} 
                 
                 
                 
@@ -393,7 +393,7 @@ $(function() {
                   $("#FormularioAcudiente").css("visibility", "hidden");
                       $("#FormularioAcudiente").css("height", "2px");
                       cambioId ="cambio";
-                         alert(cambioId);
+                        
                    }
                 if ( calcular() < 18 && calcular() >0 ){
                     $("#FormularioAcudiente").css("visibility", "visible");
@@ -405,10 +405,10 @@ $(function() {
                     
                   
             
-       //      if ($("#").val() == "") {  
-			//$("#").focus().after('<span class="error">Campo Obligatorio</span>');   
-			//return false;  
-		//}  
+             if ($("#").val() == "") {  
+			$("#").focus().after('<span class="error">Campo Obligatorio</span>');   
+			return false;  
+		}  
      
                    
           datosEstu =true;               
@@ -430,16 +430,16 @@ $(function() {
           
                $(".error").fadeOut().remove(); 
                 
-               /*if ($("#TipoIdAcu").val() == "") {  
+               if ($("#TipoIdAcu").val() == "") {  
 			$("#TipoIdAcu").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
-		}*/
+		}
                      
                      
-               /*if ($("#sFechaExpedicionAcu").val() == "") {  
+               if ($("#sFechaExpedicionAcu").val() == "") {  
 			$("#sFechaExpedicionAcu").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
-		}*/
+		}
                 
                 if ($("#sPrimerNombreA").val() == "") {  
 			$("#sPrimerNombreA").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -451,15 +451,15 @@ $(function() {
 			return false;  
 		}
                 
-                /*if ($("#PaisResidenciaA").val() == "") {  
+                if ($("#PaisResidenciaA").val() == "") {  
 			$("#PaisResidenciaA").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
-		}*/
+		}
                 
-                /*if ($("#CiudadA").val() == "") {  
+                if ($("#CiudadA").val() == "") {  
 			$("#CiudadA").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
-		}*/
+		}
                 
                 if ($("#sTelefonoFijoA").val() == "") {  
 			$("#sTelefonoFijoA").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -476,10 +476,10 @@ $(function() {
 			return false;  
 		}
                 
-               /* if ($("#generoA").val() == "") {  
+                if ($("#generoA").val() == "") {  
 			$("#generoA").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
-		}*/
+		}
                 
                 if ($("#sSegundoNombreA").val() == "") {  
 			$("#sSegundoNombreA").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -491,10 +491,10 @@ $(function() {
 			return false;  
 		}
                 
-                /*if ($("#DepartamentoResiAc").val() == "") {  
+                if ($("#DepartamentoResiAc").val() == "") {  
 			$("#DepartamentoResiAc").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
-		}*/
+		}
                 
                 if ($("#sDireccionResidenciaA").val() == "") {  
 			$("#sDireccionResidenciaA").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -525,10 +525,10 @@ $(function() {
 			return false;  
 		}
                 
-               /* if ($("#TipoVivienda").val() == "") {  
+                if ($("#TipoVivienda").val() == "") {  
 			$("#TipoVivienda").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
-		}*/
+		}
                 
                 if (!$("input[name='sVehiculo']").is(':checked')) {  
 			$("#sVehiculo").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -599,10 +599,10 @@ $(function() {
                 
                
                 
-               /* if ($("#").val() == "") {  
+                if ($("#").val() == "") {  
 			$("#").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
-		}*/
+		}
                 
               datosAcudi=true; 
        });
@@ -618,12 +618,12 @@ $(function() {
     });
 	/////////////////////Datos academicos/////////////////////////////
          
-         if(datosEstu == false && datosAcudi==false){
-             $("#enviar").attr('disabled','disabled');
-         }
-         else{
-              $("#enviar").removeAttr("disabled");
-         }
+       //  if(datosEstu == false && datosAcudi==false){
+       //      $("#enviar").attr('disabled','disabled');
+       //  }
+       //  else{
+       //       $("#enviar").removeAttr("disabled");
+       //  }
          
         $("#enviar").click(function(){
             $(".error").fadeOut().remove(); 

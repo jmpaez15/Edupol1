@@ -92,7 +92,7 @@ public class PersonasDAO extends AbstractDAO<PersonaModel> {
 
     @Override
     public String insert(PersonaModel entityClass) {
-        SimpleDateFormat fecha=new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
         int IdPersonas=1;
         String resultado ="NOK";
         String query;

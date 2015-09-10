@@ -33,24 +33,30 @@ public class RegistroEstudianteDAO extends AbstractDAO<RegistroEstudianteModel>{
     public String insert(RegistroEstudianteModel entityClass) {
         String query;
         String resultado="NOK";
-        int idRegistro=1;
+        int idUniversidadPrograma=0;
         int rs=0;
         try {
             conn=getConnectionDB().getConnection();
-            psQuery=conn.prepareStatement(RegistroEstudianteQuery.QUERY_ULTIMO_CODIGO);
+            psQuery=conn.prepareStatement(RegistroEstudianteQuery.QUERY_GET_CODIGO_UNIVERSIDADES_PROGRAMAS);
+            psQuery.setInt(1,entityClass.getiCodUni());
+            psQuery.setInt(2,entityClass.getiNivelFormacion());
+            psQuery.setInt(3,entityClass.getiTipoEstudio());
+            psQuery.setInt(4,entityClass.getiGrupoPrograma());
+            psQuery.setInt(5,entityClass.getiPrograma());
             rsT=psQuery.executeQuery();
             while(rsT.next()){
-                idRegistro+=rsT.getInt(1);
+              idUniversidadPrograma=rsT.getInt(1);
             }
             psQuery=null;
             query=RegistroEstudianteQuery.QUERY_GUARDAR_REGISTRO;
             psQuery=conn.prepareStatement(query);
-            psQuery.setInt(1, idRegistro);
-            psQuery.setInt(2, entityClass.getiCodEstudiente());
-            psQuery.setInt(3, entityClass.getiCodUniversidadPrograma());
-            psQuery.setInt(4, entityClass.getiCodCentroAsociado());
-            psQuery.setInt(5, entityClass.getiEstadoRegistro());
-            psQuery.setString(6, entityClass.getFechaIncripcion());
+            psQuery.setInt(1, entityClass.getiCodEstudiente());
+            if(idUniversidadPrograma!=0) {
+                psQuery.setInt(2, idUniversidadPrograma);
+            }
+            psQuery.setInt(3, entityClass.getiCodCentroAsociado());
+            psQuery.setInt(4, entityClass.getiEstadoRegistro());
+            psQuery.setString(5, entityClass.getFechaIncripcion());
             rs=psQuery.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("SQLException "+ex);

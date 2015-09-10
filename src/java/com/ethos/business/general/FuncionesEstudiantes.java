@@ -86,7 +86,7 @@ public class FuncionesEstudiantes {
         JsonObject ciudadResJsonObject;
         JsonObject estadoCivilJsonObject;
         JsonObject grupoSanquineoJsonObject;
-        SimpleDateFormat formatoFecha=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/yyyy");
         
         JsonObject tipoIdenAcudienteJsonObject;
         JsonObject generoAcudienteJsonObject;
@@ -209,12 +209,16 @@ public class FuncionesEstudiantes {
         telefonoEstModel.setsNumero(estudianteJObject.get("tel").getAsString());
         
         registroEstudianteModel = new RegistroEstudianteModel();
-        registroEstudianteModel.setiCodUniversidadPrograma(iCodUniversidadPrograma);
+        registroEstudianteModel.setiCodUni(universidadJsonObject.get("iCodUniversidad").getAsInt());
+        registroEstudianteModel.setiNivelFormacion(nivelFormacionJsonObject.get("iCod_NivelFormacion").getAsInt());
+        registroEstudianteModel.setiTipoEstudio(tipoEstudioJsonObject.get("sCodigo").getAsInt());
+        registroEstudianteModel.setiGrupoPrograma(grupoProgramaJsonObject.get("iIdGrupo").getAsInt());
+        registroEstudianteModel.setiPrograma(programaJsonObject.get("iCodPrograma").getAsInt());
         registroEstudianteModel.setiCodCentroAsociado(centroAsociadoJsonObject.get("iCodCentroAsociado").getAsInt());
         registroEstudianteModel.setiEstadoRegistro(1);
         Date fecha = new Date();
         registroEstudianteModel.setFechaIncripcion(formatoFecha.format(fecha));
-        if(estudianteJObject.get("mayorEdad").getAsBoolean()){
+        if(!estudianteJObject.get("mayorEdad").getAsBoolean()){
         acudienteObject=preRegistro.get("acudiente").getAsJsonObject();
         paisResAcuJsonObject= acudienteObject.get("paisRes").getAsJsonObject();
         departamentoResAcuJsonObject= acudienteObject.get("depRes").getAsJsonObject();
@@ -322,16 +326,16 @@ public class FuncionesEstudiantes {
                 estudianteModel.setiCodigoEst(Integer.parseInt(guardarPersonaEstu));
                 String guardarEstudiante = estudianteDAO.insert(estudianteModel);
                 registroEstudianteModel.setiCodEstudiente(Integer.parseInt(guardarPersonaEstu));
-                String guardarRegistro=RegistroEstudianteDAO.insert(registroEstudianteModel)
+                String guardarRegistro=registroEstudianteDAO.insert(registroEstudianteModel);
                 String guardarTelMovil = telefonosDAO.insert(telefonoMovilEstModel);
                 String guardarTel=telefonosDAO.insert(telefonoEstModel);
                 String guardarDir=direccionesDAO.insert(direccionesModel);
-              if(estudianteJObject.get("mayorEdad").getAsBoolean()){
-                  if(datosGuardadosAcu &&(!guardarPersonaEstu.equals("NOK"))&& (!guardarEstudiante.equals("NOK"))&& (!guardarTelMovil.equals("NOK"))&& (!guardarTel.equals("NOK"))&& (!guardarDir.equals("NOK"))){
+              if(!estudianteJObject.get("mayorEdad").getAsBoolean()){
+                  if(datosGuardadosAcu &&(!guardarRegistro.equals("NOK"))&&(!guardarPersonaEstu.equals("NOK"))&& (!guardarEstudiante.equals("NOK"))&& (!guardarTelMovil.equals("NOK"))&& (!guardarTel.equals("NOK"))&& (!guardarDir.equals("NOK"))){
                        resultado = "OK";
                    }
               }else{
-                   if((!guardarPersonaEstu.equals("NOK"))&& (!guardarEstudiante.equals("NOK"))&& (!guardarTelMovil.equals("NOK"))&& (!guardarTel.equals("NOK"))&& (!guardarDir.equals("NOK"))){
+                   if((!guardarRegistro.equals("NOK"))&&(!guardarPersonaEstu.equals("NOK"))&& (!guardarEstudiante.equals("NOK"))&& (!guardarTelMovil.equals("NOK"))&& (!guardarTel.equals("NOK"))&& (!guardarDir.equals("NOK"))){
                        resultado = "OK"; 
                    }
                   }

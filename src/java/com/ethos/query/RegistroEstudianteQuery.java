@@ -11,6 +11,7 @@ package com.ethos.query;
  */
 public class RegistroEstudianteQuery {
     
-    public static final String QUERY_GUARDAR_REGISTRO="INSERT INTO Edupol.dbo.REGISTRO_ESTUDIANTE (ID_REGISTO, ID_ESTUDIANTE, ID_UNIVERSIDAD_PROGRAMA, ID_CENTRO_ASOCIADO, ID_ESTADO_REGISTRO, FECHA_INSCRIPCION) VALUES (?,?,?,?,?,convert(datetime,?))"; 
+    public static final String QUERY_GUARDAR_REGISTRO="INSERT INTO Edupol.dbo.REGISTRO_ESTUDIANTE ( ID_ESTUDIANTE, ID_UNIVERSIDAD_PROGRAMA, ID_CENTRO_ASOCIADO, ID_ESTADO_REGISTRO, FECHA_INSCRIPCION) VALUES (?,?,?,?,convert(datetime,?))"; 
     public static final String QUERY_ULTIMO_CODIGO="select max(id_registo)from REGISTRO_ESTUDIANTE";
+    public static final String QUERY_GET_CODIGO_UNIVERSIDADES_PROGRAMAS="SELECT	ID_COD_UNI_PRO 	FROM UNIVERSIDAD_PROGRAMA where I_COD_UNIV=? and I_COD_NIV_FOR=? and I_COD_NIV_EST=? and  I_COD_GRUPO=? and I_COD_PROGRAMA=?";
 }
