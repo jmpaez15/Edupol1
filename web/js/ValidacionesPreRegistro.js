@@ -95,7 +95,7 @@ $(function() {
 	
         });
         
-      
+        
        $("#ValidEstu").click(function(){  
 		$(".error").fadeOut().remove();
 		
