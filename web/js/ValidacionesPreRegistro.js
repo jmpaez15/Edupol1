@@ -1,5 +1,15 @@
 $(function() { 
+
+    
 	var emailreg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;	
+        var cambioId ="ValidAcu";
+        var datosEstu = false;
+        var datosAcudi = false;
+        var datosAcade = false;
+        
+        
+        $(".calendario").datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-60:+30'});
+             
         $("#sCualVehiculo").hide();
         $("#sCuantoSalario").hide();
         $("#sPensioSalario").hide();
@@ -8,6 +18,19 @@ $(function() {
         $("#sCualTargeta").hide();
         $("#sCualCredito").hide();
         
+                   
+         $("#sconfContraseña").blur(function(){
+          var pass = document.getElementById("sContraseña").value;
+          var pass2 = document.getElementById("sconfContraseña").value;
+                if(pass2!=pass){
+                     $("#sconfContraseña").focus().after('<span class="error">Contraseña No Coincide</span>');
+                }
+                else{
+                   
+                      $(".error").fadeOut();
+                          
+                }
+           });
         
         $("input[name='sVehiculo']").click(function(){
             if($("input[name='sVehiculo']:checked").val() =="S" ){
@@ -87,11 +110,18 @@ $(function() {
 			return false;   
                 }*/
                     
-               if ($("#sLugarNac").val() == "") {  
+                if ($("#sLugarNac").val() == "") {  
 			$("#sLugarNac").focus().after('<span class="error">Campo Obligatorio</span>');  
 			return false; 
                       
                 }        
+                
+                if ($("#sLugarNac").val().length > 25) {  
+			$("#sLugarNac").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
+                
         /*     if ($("#TipoIdentificacion").val() == "") {  
 			$("#TipoIdentificacion").focus().after('<span class="error">Campo Obligatorio</span>');  
 			return false;  
@@ -101,18 +131,37 @@ $(function() {
 			$("#sLugarExped").focus().after('<span class="error">Campo Obligatorio</span>');  
 			return false;  
                        
-		}  
+		} 
+                
+                if ($("#sLugarExped").val().length > 25) {  
+			$("#sLugarExped").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
         
                 if ($("#sPrimerNombre").val() == "") {  
 			$("#sPrimerNombre").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
                        
-		}  
+		}
+                
+                if ($("#sPrimerNombre").val().length > 25) {  
+			$("#sPrimerNombre").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
+                
                 if ($("#sPrimerApellido").val() == "") {  
 			$("#sPrimerApellido").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
                         
 		} 
+                
+                if ($("#sPrimerApellido").val().length > 25) {  
+			$("#sPrimerApellido").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
                 
             /* if ($("#Genero").val() == "") {  
 			$("#Genero").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -130,17 +179,29 @@ $(function() {
 			return false;  
 		}     */   
            
-               if ($("#sBarrioResidencia").val() == "") {  
+              if ($("#sBarrioResidencia").val() == "") {  
 			$("#sBarrioResidencia").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;
                        
 		}   
+                
+                if ($("#sBarrioResidencia").val().length > 25) {  
+			$("#sBarrioResidencia").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
          
                if ($("#sNumeroLibretaMilitar").val() == "") {  
 			$("#sNumeroLibretaMilitar").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;
                         
-		}    
+		} 
+                
+                if ($("#sNumeroLibretaMilitar").val().length > 15) {  
+			$("#sNumeroLibretaMilitar").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
         
                if ($("#sTelefonoFijo").val() == "") {  
 			$("#sTelefonoFijo").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -148,11 +209,23 @@ $(function() {
                         
 		}
                 
+                if ($("#sTelefonoFijo").val().length > 15) {  
+			$("#sTelefonoFijo").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
+                
                if ($("#sEmail").val() == "" || !emailreg.test($("#sEmail").val())) {  
 			$("#sEmail").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;
                         
 		}  
+                
+                if ($("#sEmail").val().length > 25) {  
+			$("#sEmail").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
                 
             /* if ($("#NivelEduc").val() == "") {  
 			$("#NivelEduc").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -165,23 +238,71 @@ $(function() {
                         
 		}  
                 
+                if ($("#sCiudadNacimiento").val().length > 25) {  
+			$("#sCiudadNacimiento").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
+          
                if ($("#sFechaNacimiento").val() == "") {  
 			$("#sFechaNacimiento").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;
                       
-		}        
+		}  
+                
+                if ($("#sFechaNacimiento").val().length > 10) {  
+			$("#sFechaNacimiento").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
+                
+                if ($("#sFechaNacimiento").val().length < 10) {  
+			$("#sFechaNacimiento").focus().after('<span class="error">Fecha Incorrecta</span>');  
+			return false; 
+                      
+                }
+                
+                if (calcular() < 0 || calcular() > 80 ) {  
+			$("#sFechaNacimiento").focus().after('<span class="error">Fecha Incorrecta</span>');  
+			return false; 
+                      
+                }
             
                if ($("#sNumeroIdentificacion").val() == "") {  
 			$("#sNumeroIdentificacion").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false; 
                         
-		}  
+		} 
+                
+                if ($("#sNumeroIdentificacion").val().length > 15) {  
+			$("#sNumeroIdentificacion").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
                 
                if ($("#sFechaExpedicionEst").val() == "") {  
 			$("#sFechaExpedicionEst").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false; 
                         
-		}  
+		} 
+                
+                if ($("#sFechaExpedicionEst").val().length > 10) {  
+			$("#sFechaExpedicionEst").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
+                
+                if ($("#sFechaExpedicionEst").val().length < 10) {  
+			$("#sFechaExpedicionEst").focus().after('<span class="error">Fecha Incorrecta</span>');  
+			return false; 
+                      
+                }
+                
+                if (calcular() < 0 ||calcular() > 80 ) {  
+			$("#sFechaExpedicionEst").focus().after('<span class="error">Fecha Incorrecta</span>');  
+			return false; 
+                      
+                }
                 
                if ($("#sSegundoNombre").val() == "") {  
 			$("#sSegundoNombre").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -189,11 +310,23 @@ $(function() {
                         
 		} 
                 
+                if ($("#sSegundoNombre").val().length > 25) {  
+			$("#sSegundoNombre").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
+                
                if ($("#sSegundoApellido").val() == "") {  
 			$("#sSegundoApellido").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false; 
                         
 		}
+                
+                if ($("#sSegundoApellido").val().length > 25) {  
+			$("#sSegundoApellido").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
                 
              /*if ($("#CategoriaSisben").val() == "") {  
 			$("#CategoriaSisben").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -209,13 +342,25 @@ $(function() {
 			$("#sLocalidadResidencia").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false; 
                         
-		}  
+		}
+                
+                if ($("#sLocalidadResidencia").val().length > 25) {  
+			$("#sLocalidadResidencia").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
                 
                if ($("#sDireccionResidencia").val() == "") {  
 			$("#sDireccionResidencia").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false; 
                        
-		}        
+		}       
+                
+                if ($("#sDireccionResidencia").val().length > 25) {  
+			$("#sDireccionResidencia").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
             
                if ($("#EstadoCivil").val() == "") {  
 			$("#EstadoCivil").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -229,21 +374,44 @@ $(function() {
                         
 		}   
                 
-               if ($("#GrupoSanguineo").val() == "") {  
+                if ($("#sTelefonoMovil").val().length > 15) {  
+			$("#sTelefonoMovil").focus().after('<span class="error">Excede el Tamaño</span>');  
+			return false; 
+                      
+                }
+                
+              /* if ($("#GrupoSanguineo").val() == "") {  
 			$("#GrupoSanguineo").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false; 
                        
-		} 
+		} */
                 
-              
+                
+                
+              if ( calcular() > 18){
+                  
+                  $("#FormularioAcudiente").css("visibility", "hidden");
+                      $("#FormularioAcudiente").css("height", "2px");
+                      cambioId ="cambio";
+                         alert(cambioId);
+                   }
+                if ( calcular() < 18 && calcular() >0 ){
+                    $("#FormularioAcudiente").css("visibility", "visible");
+                     $("#FormularioAcudiente").css("height", "100%");
+                         
+                         cambioId ="ValidAcu";
+                         
+                    }
+                    
+                  
             
        //      if ($("#").val() == "") {  
 			//$("#").focus().after('<span class="error">Campo Obligatorio</span>');   
 			//return false;  
 		//}  
      
- 
-                         
+                   
+          datosEstu =true;               
         });  
     
         $(".DatosAlum,#sFechaNacimiento,#sFechaExpedicionEst").keyup(function(){
@@ -255,9 +423,11 @@ $(function() {
         
     
 
-       ////////////////////datos acudiente///////////////////////
+       ////////////////////datos acudiente//'#"+cambioId+"'/////////////////////
         
-        $("#ValidAcu").click(function(){ 
+        
+        $("#"+cambioId).click(function(){ 
+          
                $(".error").fadeOut().remove(); 
                 
                /*if ($("#TipoIdAcu").val() == "") {  
@@ -434,10 +604,10 @@ $(function() {
 			return false;  
 		}*/
                 
-      
+              datosAcudi=true; 
        });
        
-      
+        
     
         
         $(".DatosAcud,sFechaExpedicionAcu").keyup(function(){
@@ -447,6 +617,14 @@ $(function() {
         }
     });
 	/////////////////////Datos academicos/////////////////////////////
+         
+         if(datosEstu == false && datosAcudi==false){
+             $("#enviar").attr('disabled','disabled');
+         }
+         else{
+              $("#enviar").removeAttr("disabled");
+         }
+         
         $("#enviar").click(function(){
             $(".error").fadeOut().remove(); 
             
@@ -499,8 +677,22 @@ $(function() {
 			$("#ConocimientoEdupol").focus().after('<span class="error">Campo Obligatorio</span>');   
 			return false;  
 		}
+                
+            if ($("#sContraseña").val() == "") {  
+			$("#sContraseña").focus().after('<span class="error">Campo Obligatorio</span>');   
+			return false;  
+		}
+                
+            if ($("#sconfContraseña").val() == "") {  
+			$("#sconfContraseña").focus().after('<span class="error">Campo Obligatorio</span>');   
+			return false;  
+		}    
+                
+                
              
                 
+                
+          datosAcade=true;  
         });
         
         
