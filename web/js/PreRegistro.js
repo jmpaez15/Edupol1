@@ -196,7 +196,7 @@ function getDataFromServer($http) {
             }
 
 
-            /*if ($("#PaisEStudiar").val() == "") {
+            if ($("#PaisEStudiar").val() == "") {
              $("#PaisEStudiar").focus().after('<span class="error">Campo Obligatorio</span>');
              return false;
              }
@@ -244,7 +244,7 @@ function getDataFromServer($http) {
              if ($("#ConocimientoEdupol").val() == "") {
              $("#ConocimientoEdupol").focus().after('<span class="error">Campo Obligatorio</span>');
              return false;
-             }*/
+             }
 
             if ($("#sContraseña").val() == "") {
                 $("#sContraseña").focus().after('<span class="error">Campo Obligatorio</span>');
