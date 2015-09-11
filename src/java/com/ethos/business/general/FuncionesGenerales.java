@@ -8,6 +8,7 @@ package com.ethos.business.general;
 import com.ethos.DAO.AbstractDAO;
 import com.ethos.DAO.CategoriaSisbenDAO;
 import com.ethos.DAO.CiudadesDAO;
+import com.ethos.DAO.ComunidadDAO;
 import com.ethos.DAO.EstadoCivilDAO;
 import com.ethos.DAO.GeneroDAO;
 import com.ethos.DAO.MedioMAsivoDAO;
@@ -19,6 +20,7 @@ import com.ethos.DAO.TipoSolicitudDAO;
 import com.ethos.DAO.UniversidadDAO;
 import com.ethos.model.CategoriaSisbenModel;
 import com.ethos.model.CiudadModel;
+import com.ethos.model.ComunidadModel;
 import com.ethos.model.EstadoCivilModel;
 import com.ethos.model.GeneroModel;
 import com.ethos.model.ListasGeneralesModel;
@@ -54,6 +56,7 @@ public class FuncionesGenerales {
     AbstractDAO profesionesDAO;
     AbstractDAO tipoSanguineoDAO;
     AbstractDAO universidadDAO;
+    AbstractDAO comunidadDAO;
     
     ListasGeneralesModel listasGeneralModel;
 
@@ -132,6 +135,7 @@ public class FuncionesGenerales {
         List<NivelEstudiosModel> lisNivelEstudiosModels;
         List<TipoSanguineoModel> listTipoSanguineoModels;
         List<UniversidadesModel> listUniversidadesModel;
+        List<ComunidadModel> listComunidadModels;
 
         listasGeneralModel = new ListasGeneralesModel();
         tipoIdentificacion = new TipoIdentificacionDAO();
@@ -145,6 +149,7 @@ public class FuncionesGenerales {
         nivelEstudiosDao = new NivelEstudiosDAO();
         tipoSanguineoDAO =new TipoSanguineoDAO();
         universidadDAO=new UniversidadDAO();
+        comunidadDAO=new ComunidadDAO();
 
         lisTipoIdentificacionModels = tipoIdentificacion.findAll();
         lisGeneroModels = generoDAO.findAll();
@@ -157,6 +162,7 @@ public class FuncionesGenerales {
         lisNivelEstudiosModels = nivelEstudiosDao.findAll();
         listTipoSanguineoModels=tipoSanguineoDAO.findAll();
         listUniversidadesModel=universidadDAO.findAll();
+        listComunidadModels=comunidadDAO.findAll();
 
         listasGeneralModel.setLisTipoIdentificacionModels(lisTipoIdentificacionModels);
         listasGeneralModel.setLisGeneroModels(lisGeneroModels);
@@ -169,6 +175,7 @@ public class FuncionesGenerales {
         listasGeneralModel.setLisNivelEstudiosModels(lisNivelEstudiosModels);
         listasGeneralModel.setListipoSanguineoModels(listTipoSanguineoModels);
         listasGeneralModel.setLisUniversidadesModels(listUniversidadesModel);
+        listasGeneralModel.setListComunidadModels(listComunidadModels);
         return listasGeneralModel;
     }
 }

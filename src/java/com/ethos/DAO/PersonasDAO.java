@@ -37,7 +37,19 @@ public class PersonasDAO extends AbstractDAO<PersonaModel> {
      *----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
     @Override
     public PersonaModel select(Object idPersona) {
-        personaModel = new PersonaModel();
+         String query;
+         personaModel = new PersonaModel();
+         try {
+         conn=getConnectionDB().getConnection();
+         query=PersonasQuery.QUERY_PERSONA_EXISTE;
+         psQuery=conn.prepareStatement(query);
+         psQuery.setString(1, String.valueOf(idPersona));
+         rsT=psQuery.executeQuery();
+         while(rsT.next()){
+            personaModel.setsIden(rsT.getString(1));
+         }
+        
+        /* personaModel = new PersonaModel();
         personaQuery = new PersonasQuery();
         String query;
         
@@ -78,7 +90,7 @@ public class PersonasDAO extends AbstractDAO<PersonaModel> {
                 personaModel.setsTelOfi(rsT.getString(24));
                 personaModel.setsTelRes(rsT.getString(25));
                 personaModel.setsCelular(rsT.getString(26));
-            }
+            }*/
 
         } catch (SQLException ex) {
             System.out.println("Error" + ex);

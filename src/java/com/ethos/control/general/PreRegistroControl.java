@@ -102,6 +102,7 @@ public class PreRegistroControl extends HttpServlet {
             
         } catch (Exception e) {
             System.out.println("Error al obterner datos en Actualizar Control: " + e);
+            json = new Gson().toJson("NOK");
         }
         response.setContentType("application/json;charset=Utf-8");
         response.getWriter().write(json);

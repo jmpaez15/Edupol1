@@ -74,6 +74,8 @@ public class CentroAsociadoDAO extends AbstractDAO<CentroAsociadoModel>{
         }
         } catch (SQLException ex) {
             Logger.getLogger(CentroAsociadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            closeConnection();
         }
         
       return listObjects;

@@ -39,6 +39,8 @@ function getDataFromServer($http) {
             alert("se realizo la inscripcion satisfactoriamente");
             }else if(data=="NOK") {
             alert("Se presento un problema,intente mas tarde o comuniquese con el adminitrador");
+            }else if(data=="Existe"){
+                alert("El usuario ya existe");                
             }
         }).error(function (data, status, headers, config) {
             // called asynchronously if an error occurs
@@ -47,6 +49,9 @@ function getDataFromServer($http) {
     };
     
     actualiza.actualizaUni = function (indice) {
+        if(indice==1){
+            actualiza.nivelFormacio=null;
+        }
         actualiza.person.PreRegistro.estudiante.infoUni.condicion=1;
         actualiza.person.PreRegistro.estudiante.infoUni.indiceUni=indice;
         actualiza.datos= actualiza.person.PreRegistro.estudiante.infoUni
@@ -58,6 +63,10 @@ function getDataFromServer($http) {
           }).success(function (data, status, headers, config) {
               switch (indice){
                   case 1:
+                      
+                      actualiza.nivelEstudio=null;
+                      actualiza.grupoPrograma=null;
+                      actualiza.programas=null;
                       actualiza.nivelFormacio=data;
                       break;
                   case 2: 

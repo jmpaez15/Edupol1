@@ -542,12 +542,12 @@ $(function() {
        
 	/////////////////////Datos academicos/////////////////////////////
          
-         if(datosEstu == false && datosAcudi==false){
+         /**if(datosEstu == false && datosAcudi==false){
              $("#enviar").attr('disabled','disabled');
          }
          else{
               $("#enviar").removeAttr("disabled");
-         }
+         }*/
          
         $("#enviar").click(function(){
             $(".error").fadeOut().remove(); 

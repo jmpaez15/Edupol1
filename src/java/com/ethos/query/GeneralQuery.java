@@ -25,4 +25,5 @@ public class GeneralQuery {
     public static final String QUERY_GET_DEPENDENCIAS_CIUDADES="SELECT I_CODIGO,C_NOMBRE FROM CIUDADES where I_UBICACION=? ORDER BY C_NOMBRE ASC;";
     public static final String QUERY_GET_CENTRO_ASOCIADOS="SELECT I_CODIGO,C_NOMBRES\n" +
                                                           "FROM PERSONAS where I_TIPO_CLIENTE=7 and I_CIUDAD_RES=? ORDER BY  I_CODIGO ASC";
+    public static final String QUERY_GET_COMUNIDAD="SELECT*FROM COMUNIDAD";
 }

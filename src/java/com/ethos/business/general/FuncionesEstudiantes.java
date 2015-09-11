@@ -136,19 +136,16 @@ public class FuncionesEstudiantes {
         grupoProgramaJsonObject=informacionUniversidadJsonObject.getAsJsonObject("GrupoProgramaAcademico");
         programaJsonObject=informacionUniversidadJsonObject.getAsJsonObject("ProgramaAcademico");
         centroAsociadoJsonObject=estudianteJObject.getAsJsonObject("centroAsociado");
-                
         
-                
-        
-        
-        
-                
-        
+        personaAcudienteModel=(PersonaModel) personasDAO.select(estudianteJObject.get("NumIdentificacion").getAsString());           
+        if(personaAcudienteModel.getsIden()!=null){
+          resultado="Existe";
+        }else{
         String contraseña=funcionesGenerales.encripta(estudianteJObject.get("Contrasena").getAsString(), true);
         personaEstudianteModel.setsClavePersona(contraseña);
         personaEstudianteModel.setsCodPersona(estudianteJObject.get("NumIdentificacion").getAsString());
         personaEstudianteModel.setStipoPersona("N");
-        personaEstudianteModel.setIdPerfil(1);
+        personaEstudianteModel.setIdPerfil(2);
                  try {
             personaEstudianteModel.setdFechaNacimiento(formatoFecha.parse(estudianteJObject.get("FechaNac").getAsString()));
             personaEstudianteModel.setdFechaExpedicion(formatoFecha.parse(estudianteJObject.get("fechaExp").getAsString()));
@@ -235,13 +232,13 @@ public class FuncionesEstudiantes {
         personaAcudienteModel.setsIden(acudienteObject.get("numIden").getAsString());
         personaAcudienteModel.setdFechaExpedicion(formatoFecha.parse(acudienteObject.get("fechExp").getAsString()));
         personaAcudienteModel.setsGenero(generoAcudienteJsonObject.get("iIdGenero").getAsString());
-        if(estudianteJObject.has("segNombre")==true){
+        if(acudienteObject.has("segNombre")==true){
         String nombre=(acudienteObject.get("segNombre").getAsString().equals(""))?acudienteObject.get("priNombre").getAsString():acudienteObject.get("priNombre").getAsString()+" "+acudienteObject.get("segNombre").getAsString();
         personaAcudienteModel.setsNombre(nombre);
         }else{
         personaAcudienteModel.setsNombre(acudienteObject.get("priNombre").getAsString()); 
         }
-        if(estudianteJObject.has("segApellido")==true){
+        if(acudienteObject.has("segApellido")==true){
          String apellido=(acudienteObject.get("segApellido").getAsString().equals(""))?acudienteObject.get("priApellido").getAsString():acudienteObject.get("priApellido").getAsString()+" "+acudienteObject.get("segApellido").getAsString();
          personaAcudienteModel.setsApellido(apellido);
         }else{
@@ -259,31 +256,31 @@ public class FuncionesEstudiantes {
         acudienteModel.setsOcupacion(acudienteObject.get("ocupacion").getAsString());
         acudienteModel.setsTipoVivienda(acudienteObject.get("tipVivienda").getAsString());
         acudienteModel.setdSalario(acudienteObject.get("salario").getAsDouble());
-        if(estudianteJObject.has("vehiculo")==true){
+        if(acudienteObject.has("vehiculo")==true){
            acudienteModel.setsVehiculo(acudienteObject.get("vehiculo").getAsString()); 
         }
-        if(estudianteJObject.has("IngresosArr")==true){
+        if(acudienteObject.has("IngresosArr")==true){
            acudienteModel.setdIngArrendamiento(acudienteObject.get("IngresosArr").getAsDouble());
         }
-        if(estudianteJObject.has("ingresosPension")==true){
+        if(acudienteObject.has("ingresosPension")==true){
           acudienteModel.setdIngPension(acudienteObject.get("ingresosPension").getAsDouble());
         }
-        if(estudianteJObject.has("otrosIngresos")==true){
+        if(acudienteObject.has("otrosIngresos")==true){
            acudienteModel.setdOtrosIngresos1(acudienteObject.get("otrosIngresos").getAsDouble());
         }
      
-         if(estudianteJObject.has("nombreIngresos")==true){
+         if(acudienteObject.has("nombreIngresos")==true){
           acudienteModel.setsNombreOtrosIngresos(acudienteObject.get("nombreIngresos").getAsString());
         }
          
-        if(estudianteJObject.has("nomTarjeta")==true){
+        if(acudienteObject.has("nomTarjeta")==true){
            acudienteModel.setsTarjetaCredito(acudienteObject.get("nomTarjeta").getAsString());
         }
      
-        if(estudianteJObject.has("nomCredito")==true){
+        if(acudienteObject.has("nomCredito")==true){
            acudienteModel.setsCreditoActual(acudienteObject.get("nomCredito").getAsString());
         }
-        if(estudianteJObject.has("valorObli")==true){
+        if(acudienteObject.has("valorObli")==true){
            acudienteModel.setdValorObligaciones(acudienteObject.get("valorObli").getAsDouble());
         }
         acudienteModel.setsMedioEdupol(MedioMasivoJsonObject.get("iIdMediosMasivos").getAsString());
@@ -341,6 +338,7 @@ public class FuncionesEstudiantes {
                   }
          } catch (Exception e) {
             System.out.println("Error al guardar los datos: " + e);
+        }
         }
         return resultado;
     }
