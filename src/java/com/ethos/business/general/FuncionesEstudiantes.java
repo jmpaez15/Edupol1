@@ -182,7 +182,9 @@ public class FuncionesEstudiantes {
         estudianteModel.setiCiudadResidencia(ciudadResJsonObject.get("sCodigo").getAsInt());
         estudianteModel.setsLocalidadResidencia(estudianteJObject.get("locRes").getAsString());
         estudianteModel.setsBarrioResidencia(estudianteJObject.get("BarrioRes").getAsString());
+        if(estudianteJObject.has("LibretaMilitar")==true){
         estudianteModel.setiLibretaMilitar(estudianteJObject.get("LibretaMilitar").getAsInt());
+        }
         estudianteModel.setiGrupoSaniguineo(grupoSanquineoJsonObject.get("iCodigoTipoSangre").getAsInt());
          
         direccionesModel= new DireccionesModel();
