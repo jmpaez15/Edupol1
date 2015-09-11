@@ -41,7 +41,7 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
         <!-- los dos ultimos script son para el funcionamiento del calendario -->
         <script src="../js/ValidacionesPreRegistro.js"></script> <!--  valida todos los capos del prerregistro -->
-       
+       <script src="../js/ValidarBotones.js"></script> 
         <script src="../js/VAlidarTextoNumeros.js"></script> 
         <!--<script src="../js/ui-bootstrap-tpls-0.13.0.js"></script>-->
         <!--<script src="../libs/bootstrap/js/bootstrap-transition.js"></script>-->
@@ -90,7 +90,7 @@
                                             <div class="form-group ">
                                                 <label class="col-sm-5">Tipo de Solicitud:</label>
                                                 <div class="col-sm-6">
-                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.TipoSol" ng-options="TipoSol as TipoSol.sNombreSolicitud for TipoSol in actualiza.person.lisTipoSolicitudModels track by TipoSol.iId_tipoSolicitud" convert-to-number >
+                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.TipoSol" ng-options="TipoSol as TipoSol.sNombreSolicitud for TipoSol in actualiza.person.lisTipoSolicitudModels track by TipoSol.iId_tipoSolicitud" convert-to-number required>
                                                         <option value="">Seleccione un tipo de solicitud</option>
                                                     </select>
                                                 </div>
@@ -99,7 +99,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Nacionalidad:</label>
                                                 <div class="col-sm-6">
-                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.Nacionalidad" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.Nacionalidad" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number required>
                                                         <option value="">Seleccione su Nacionalidad</option>
                                                     </select>
                                                 </div>
@@ -109,7 +109,7 @@
                                                 <label class="col-sm-5">Lugar de Nacimiento:</label>
                                                 <div class="col-sm-6" >
                                                     
-                                                    <input class="DatosAlum" type="text" id="sLugarNac"  name="sLugarNac"   ng-model="actualiza.person.PreRegistro.estudiante.lugarNacimiento" ng-disabled="edit"  placeholder="Lugar de Nacimiento" onkeypress="return soloLetras(event)" maxlength="25">                                        
+                                                    <input class="DatosAlum" type="text" id="sLugarNac"  name="sLugarNac"   ng-model="actualiza.person.PreRegistro.estudiante.lugarNacimiento" ng-disabled="edit"  placeholder="Lugar de Nacimiento" onkeypress="return soloLetras(event)" maxlength="25" required>                                        
                                                
                                                 </div>
                                             </div>
@@ -117,7 +117,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Tipo Identificacion:</label>
                                                 <div class="col-sm-6">
-                                                    <select class="DatosAlum" name="TipoIdentificacion" id="TipoIdentificacion" ng-model="actualiza.person.PreRegistro.estudiante.Tipoiden"  ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                    <select class="DatosAlum" name="TipoIdentificacion" id="TipoIdentificacion" ng-model="actualiza.person.PreRegistro.estudiante.Tipoiden"  ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number required>
                                                         <option value="">Seleccione tipo de identificacion</option>
                                                     </select>
                                                 </div>
@@ -126,28 +126,28 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Lugar de Expedición:</label>
                                                 <div class="col-sm-6" >
-                                                    <input class="DatosAlum" type="text"  id="sLugarExped"  name="sLugarExped" ng-model="actualiza.person.PreRegistro.estudiante.LugarExp" ng-disabled="edit" placeholder="Lugar de Expedición" onkeypress="return soloLetras(event)" maxlength="25">
+                                                    <input class="DatosAlum" type="text"  id="sLugarExped"  name="sLugarExped" ng-model="actualiza.person.PreRegistro.estudiante.LugarExp" ng-disabled="edit" placeholder="Lugar de Expedición" onkeypress="return soloLetras(event)" maxlength="25" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-5">Primer Nombre:</label>
                                                 <div class="col-sm-6">
-                                                    <input class="DatosAlum" type="text"   id="sPrimerNombre" name="sPrimerNombre" ng-model="actualiza.person.PreRegistro.estudiante.PriNombre" ng-disabled="edit" placeholder="Primer Nombre" onkeypress="return soloLetras(event)" maxlength="25" >
+                                                    <input class="DatosAlum" type="text"   id="sPrimerNombre" name="sPrimerNombre" ng-model="actualiza.person.PreRegistro.estudiante.PriNombre" ng-disabled="edit" placeholder="Primer Nombre" onkeypress="return soloLetras(event)" maxlength="25" required >
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-5">Primer Apellido:</label>
                                                 <div class="col-sm-6">
-                                                    <input class="DatosAlum" type="text"  id="sPrimerApellido" name="sPrimerApellido"  ng-model="actualiza.person.PreRegistro.estudiante.PriApellido" ng-disabled="edit" placeholder="Primer Apellido" onkeypress="return soloLetras(event)" maxlength="25" >
+                                                    <input class="DatosAlum" type="text"  id="sPrimerApellido" name="sPrimerApellido"  ng-model="actualiza.person.PreRegistro.estudiante.PriApellido" ng-disabled="edit" placeholder="Primer Apellido" onkeypress="return soloLetras(event)" maxlength="25" required >
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-5">Genero:</label>
                                                 <div class="col-sm-6">
-                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.genero" ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero">
+                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.genero" ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero" required>
                                                         <option value="">Seleccione Genero</option>
                                                     </select>
                                                 </div>
@@ -156,7 +156,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">País Residencia:</label>
                                                 <div class="col-sm-6">
-                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" ng-change="actualiza.listasPais(1,1)" convert-to-number>
+                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" ng-change="actualiza.listasPais(1,1)" convert-to-number required>
                                                         <option value="">Seleccione su Nacionalidad</option>
                                                     </select>
                                                 </div>
@@ -165,7 +165,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Ciudad Residencia:</label>
                                                 <div class="col-sm-6">
-                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.ciudadRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.ciudad.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.ciudadRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.ciudad.lisCiudadModels track by ciudad.sCodigo" convert-to-number required>
                                                         <option value="">Seleccione una Ciudad</option>
                                                     </select>
                                                 </div>
@@ -174,28 +174,28 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Barrio Residencia:</label>
                                                 <div class="col-sm-6">
-                                                    <input class="DatosAlum" type="text" id="sBarrioResidencia" name="sBarrioResidencia" ng-model="actualiza.person.PreRegistro.estudiante.BarrioRes" ng-disabled="edit" placeholder="Barrio Residencia" maxlength="25">
+                                                    <input class="DatosAlum" type="text" id="sBarrioResidencia" name="sBarrioResidencia" ng-model="actualiza.person.PreRegistro.estudiante.BarrioRes" ng-disabled="edit" placeholder="Barrio Residencia" maxlength="25" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-5">Libreta Militar:</label>
                                                 <div class="col-sm-6">
-                                                    <input class="DatosAlum" type="text" id="sNumeroLibretaMilitar" name="sNumeroLibretaMilitar" ng-model="actualiza.person.PreRegistro.estudiante.LibretaMilitar" ng-disabled="edit" placeholder="Libreta Tarjeta" onkeypress="return isNumberKey(event)" maxlength="15">
+                                                    <input class="DatosAlum" type="text" id="sNumeroLibretaMilitar" name="sNumeroLibretaMilitar" ng-model="actualiza.person.PreRegistro.estudiante.LibretaMilitar" ng-disabled="edit" placeholder="Libreta Tarjeta" onkeypress="return isNumberKey(event)" maxlength="15" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-5">Teléfono Fijo</label>
                                                 <div class="col-sm-6">
-                                                    <input class="DatosAlum" type="text" id="sTelefonoFijo" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.estudiante.tel" ng-disabled="edit" placeholder="Teléfono Fijo" onkeypress="return isNumberKey(event)" maxlength="15">
+                                                    <input class="DatosAlum" type="text" id="sTelefonoFijo" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.estudiante.tel" ng-disabled="edit" placeholder="Teléfono Fijo" onkeypress="return isNumberKey(event)" maxlength="15" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-5">Email</label>
                                                 <div class="col-sm-6">
-                                                    <input class="DatosAlum" type="text" id="sEmail" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.estudiante.email" ng-disabled="edit" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9]+.+[a-zA-Z0-9]" placeholder="Email" maxlength="25">
+                                                    <input class="DatosAlum" type="text" id="sEmail" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.estudiante.email" ng-disabled="edit" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9]+.+[a-zA-Z0-9]" placeholder="Email" maxlength="35" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -204,7 +204,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Nivel Educativo:</label>
                                                 <div class="col-sm-6">
-                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.NivelEducativo" ng-options="nivelEstudios as nivelEstudios.sDescripcion for nivelEstudios in actualiza.person.lisNivelEstudiosModels track by nivelEstudios.sCodigo" convert-to-number>
+                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.NivelEducativo" ng-options="nivelEstudios as nivelEstudios.sDescripcion for nivelEstudios in actualiza.person.lisNivelEstudiosModels track by nivelEstudios.sCodigo" convert-to-number required>
                                                         <option value="">Seleccione su nivel de estudios</option>
                                                     </select>
                                                 </div>
@@ -214,7 +214,7 @@
                                                 <label class="col-sm-5">Ciudad de Nacimiento:</label>
                                                 <div class="col-sm-6">
 
-                                                    <input class="DatosAlum" type="text" id="sCiudadNacimiento" name="sCiudadNacimiento" ng-model="actualiza.person.PreRegistro.estudiante.ciudadNacimiento" ng-disabled="edit" placeholder="Ciudad de Nacimiento" onkeypress="return soloLetras(event)" maxlength="25">
+                                                    <input class="DatosAlum" type="text" id="sCiudadNacimiento" name="sCiudadNacimiento" ng-model="actualiza.person.PreRegistro.estudiante.ciudadNacimiento" ng-disabled="edit" placeholder="Ciudad de Nacimiento" onkeypress="return soloLetras(event)" maxlength="25" required>
 
                                                 </div>
                                             </div>
@@ -222,35 +222,35 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Fecha Nacimiento:</label>
                                                 <div class="col-sm-6">
-                                                    <input  type="text" class="calendario" id="sFechaNacimiento" name="sFechaNacimiento" ng-model="actualiza.person.PreRegistro.estudiante.FechaNac" ng-disabled="edit" placeholder="dd/mm/yyyy" >
+                                                    <input  type="text" class="calendario" id="sFechaNacimiento" name="sFechaNacimiento" ng-model="actualiza.person.PreRegistro.estudiante.FechaNac" ng-disabled="edit" placeholder="dd/mm/yyyy" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-5">Número de identificación:</label>
                                                 <div class="col-sm-6">
-                                                    <input class="DatosAlum" type="text" id="sNumeroIdentificacion" name="sNumeroIdentificacion" ng-model="actualiza.person.PreRegistro.estudiante.NumIdentificacion" ng-disabled="edit" placeholder="Número Identifiación" onkeypress="return isNumberKey(event)" maxlength="15">
+                                                    <input class="DatosAlum" type="text" id="sNumeroIdentificacion" name="sNumeroIdentificacion" ng-model="actualiza.person.PreRegistro.estudiante.NumIdentificacion" ng-disabled="edit" placeholder="Número Identifiación" onkeypress="return isNumberKey(event)" maxlength="15" required >
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-5">Fecha Expedición:</label>
                                                 <div class="col-sm-6">
-                                                    <input  type="text" class="calendario" id="sFechaExpedicionEst" name="sFechaExpedicionEst" ng-model="actualiza.person.PreRegistro.estudiante.fechaExp" ng-disabled="edit" placeholder="dd/mm/yyyy" >
+                                                    <input  type="text" class="calendario" id="sFechaExpedicionEst" name="sFechaExpedicionEst" ng-model="actualiza.person.PreRegistro.estudiante.fechaExp" ng-disabled="edit" placeholder="dd/mm/yyyy" required >
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-5">Segundo Nombre:</label>
                                                 <div class="col-sm-6">
-                                                    <input class="DatosAlum" type="text" id="sSegundoNombre" name="sSegundoNombre" ng-model="actualiza.person.PreRegistro.estudiante.segNombre" ng-disabled="edit" placeholder="Segundo Nombre" onkeypress="return soloLetras(event)" maxlength="25">
+                                                    <input class="DatosAlum" type="text" id="sSegundoNombre" name="sSegundoNombre" ng-model="actualiza.person.PreRegistro.estudiante.segNombre" ng-disabled="edit" placeholder="Segundo Nombre" onkeypress="return soloLetras(event)" maxlength="25" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-5">Segundo Apellido:</label>
                                                 <div class="col-sm-6">
-                                                    <input class="DatosAlum" type="text" id="sSegundoApellido" name="sSegundoApellido" ng-model="actualiza.person.PreRegistro.estudiante.SegApellido" ng-disabled="edit" placeholder="Segundo Apellido" onkeypress="return soloLetras(event)" maxlength="25">
+                                                    <input class="DatosAlum" type="text" id="sSegundoApellido" name="sSegundoApellido" ng-model="actualiza.person.PreRegistro.estudiante.SegApellido" ng-disabled="edit" placeholder="Segundo Apellido" onkeypress="return soloLetras(event)" maxlength="25" required>
                                                 </div>
                                             </div>
 
@@ -265,7 +265,7 @@
                                                 <div class="col-sm-6">
 
 
-                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.categoriaSisben" ng-options="sisben as sisben.sDescripcionCategoriaSisben for sisben in actualiza.person.lisCategoriaSisbenModels track by sisben.iIdCategoriaSisben" convert-to-number onkeypress="return isNumberKey(event)"> 
+                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.categoriaSisben" ng-options="sisben as sisben.sDescripcionCategoriaSisben for sisben in actualiza.person.lisCategoriaSisbenModels track by sisben.iIdCategoriaSisben" convert-to-number onkeypress="return isNumberKey(event)" required> 
                                                         <option value="">Seleccione una categoria</option>
                                                     </select>
 
@@ -276,7 +276,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Departamento Residencia:</label>
                                                 <div class="col-sm-6">
-                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.depRes" ng-options="depto as depto.sNombre for depto in actualiza.Departamento.lisCiudadModels track by depto.sCodigo" ng-change="actualiza.listasPais(2,1)" convert-to-number>
+                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.depRes" ng-options="depto as depto.sNombre for depto in actualiza.Departamento.lisCiudadModels track by depto.sCodigo" ng-change="actualiza.listasPais(2,1)" convert-to-number required>
                                                         <option value="">Seleccione un Departamento</option>
                                                     </select>
                                                 </div>
@@ -285,14 +285,14 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Localidad Residencia:</label>
                                                 <div class="col-sm-6">
-                                                    <input class="DatosAlum" type="text" id="sLocalidadResidencia" name="sLocalidadResidencia" ng-model="actualiza.person.PreRegistro.estudiante.locRes" ng-disabled="edit"  placeholder="Localidad Residencia" onkeypress="return soloLetras(event)" maxlength="25">
+                                                    <input class="DatosAlum" type="text" id="sLocalidadResidencia" name="sLocalidadResidencia" ng-model="actualiza.person.PreRegistro.estudiante.locRes" ng-disabled="edit"  placeholder="Localidad Residencia" onkeypress="return soloLetras(event)" maxlength="25" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-5">Dirección Residencia:</label>
                                                 <div class="col-sm-6">
-                                                    <input class="DatosAlum" type="text"  id="sDireccionResidencia" name="sDireccionResidencia" ng-model="actualiza.person.PreRegistro.estudiante.dirRes" ng-disabled="edit" placeholder="Direccion Residencia" maxlength="25">
+                                                    <input class="DatosAlum" type="text"  id="sDireccionResidencia" name="sDireccionResidencia" ng-model="actualiza.person.PreRegistro.estudiante.dirRes" ng-disabled="edit" placeholder="Direccion Residencia" maxlength="25" required>
                                                 </div>
                                             </div>
 
@@ -301,7 +301,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Estado Civil:</label>
                                                 <div class="col-sm-6">
-                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.estCivil" ng-options="estado as estado.sDescripcionEstCivil for estado in actualiza.person.lisEstadoCivilModels track by estado.sCodigoEstadoCivil" convert-to-number>
+                                                    <select class="DatosAlum" ng-model="actualiza.person.PreRegistro.estudiante.estCivil" ng-options="estado as estado.sDescripcionEstCivil for estado in actualiza.person.lisEstadoCivilModels track by estado.sCodigoEstadoCivil" convert-to-number required>
                                                         <option value="">Seleccione un estado civil</option>
                                                     </select>
                                                 </div>
@@ -310,14 +310,14 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Teléfono Móvil</label>
                                                 <div class="col-sm-6">
-                                                    <input class="DatosAlum" type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.estudiante.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil" onkeypress="return isNumberKey(event)" maxlength="15" >
+                                                    <input class="DatosAlum" type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.estudiante.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil" onkeypress="return isNumberKey(event)" maxlength="15" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-5">Grupos Sanguineo(RH)</label>
                                                 <div class="col-sm-6">
-                                                    <select class="DatosAlum" id="GrupoSanguineo" ng-model="actualiza.person.PreRegistro.estudiante.rh" ng-options="rh as rh.sNombreSangre for rh in actualiza.person.listipoSanguineoModels track by rh.iCodigoTipoSangre" convert-to-number>
+                                                    <select class="DatosAlum" id="GrupoSanguineo" ng-model="actualiza.person.PreRegistro.estudiante.rh" ng-options="rh as rh.sNombreSangre for rh in actualiza.person.listipoSanguineoModels track by rh.iCodigoTipoSangre" convert-to-number required>
                                                         <option value="">Seleccione un Grupo Sanguineo</option>
                                                     </select>
                                                 </div>                                                
@@ -348,7 +348,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Tipo Identificacion:</label>
                                                     <div class="col-sm-6">
-                                                        <select class="DatosAcud" id="TipoIdAcu" ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <select class="DatosAcud" id="TipoIdAcu" ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number required>
                                                             <option value="" class="D_acu">Seleccione tipo de identificacion</option>
                                                         </select>
                                                     </div>
@@ -357,28 +357,28 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Fecha Expedición:</label>
                                                     <div class="col-sm-6">
-                                                        <input  type="text" class="calendario" id="sFechaExpedicionAcu" name="sFechaExpedicionAcu" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="dd/mm/yyyy" >
+                                                        <input  type="text" class="calendario" id="sFechaExpedicionAcu" name="sFechaExpedicionAcu" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="dd/mm/yyyy" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Primer Nombre:</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text"  id="sPrimerNombre" name="sPrimerNombreA" ng-model="actualiza.person.PreRegistro.acudiente.priNombre" ng-disabled="edit" placeholder="Primer Nombre" onkeypress="return soloLetras(event)" maxlength="25">
+                                                        <input class="DatosAcud" type="text"  id="sPrimerNombre" name="sPrimerNombreA" ng-model="actualiza.person.PreRegistro.acudiente.priNombre" ng-disabled="edit" placeholder="Primer Nombre" onkeypress="return soloLetras(event)" maxlength="25" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Primer Apellido:</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text"  id="sPrimerApellidoA" name="sPrimerApellidoA" ng-model="actualiza.person.PreRegistro.acudiente.priApellido" ng-disabled="edit" placeholder="Primer Apellido" onkeypress="return soloLetras(event)" maxlength="25" >
+                                                        <input class="DatosAcud" type="text"  id="sPrimerApellidoA" name="sPrimerApellidoA" ng-model="actualiza.person.PreRegistro.acudiente.priApellido" ng-disabled="edit" placeholder="Primer Apellido" onkeypress="return soloLetras(event)" maxlength="25" required >
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">País Residencia:</label>
                                                     <div class="col-sm-6">
-                                                        <select class="DatosAcud" id="PaisResidenciaA" ng-model="actualiza.person.PreRegistro.acudiente.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" ng-change="actualiza.listasPais(1,2)" convert-to-number>
+                                                        <select class="DatosAcud" id="PaisResidenciaA" ng-model="actualiza.person.PreRegistro.acudiente.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" ng-change="actualiza.listasPais(1,2)" convert-to-number required>
                                                             <option value="" >Seleccione su Nacionalidad</option>
                                                         </select>
                                                     </div>
@@ -387,7 +387,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Ciudad Residencia:</label>
                                                     <div class="col-sm-6">
-                                                        <select class="DatosAcud" id="CiudadA" ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.ciudadAcudiente.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                        <select class="DatosAcud" id="CiudadA" ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.ciudadAcudiente.lisCiudadModels track by ciudad.sCodigo" convert-to-number required>
                                                             <option value="">Seleccione una Ciudad</option>
                                                         </select>
                                                     </div>
@@ -396,14 +396,14 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Teléfono Fijo</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text" id="sTelefonoFijoA" name="sTelefonoFijoA" ng-model="actualiza.person.PreRegistro.acudiente.telFij" ng-disabled="edit" placeholder="Teléfono Fijo" onkeypress="return isNumberKey(event)" maxlength="15">
+                                                        <input class="DatosAcud" type="text" id="sTelefonoFijoA" name="sTelefonoFijoA" ng-model="actualiza.person.PreRegistro.acudiente.telFij" ng-disabled="edit" placeholder="Teléfono Fijo" onkeypress="return isNumberKey(event)" maxlength="15" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Email</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text"  id="sEmailA" name="sTelefonoFijoA" ng-model="actualiza.person.PreRegistro.acudiente.email" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9]+.+[a-zA-Z0-9]" ng-disabled="edit" placeholder="Email" maxlength="25">
+                                                        <input class="DatosAcud" type="text"  id="sEmailA" name="sTelefonoFijoA" ng-model="actualiza.person.PreRegistro.acudiente.email" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9]+.+[a-zA-Z0-9]" ng-disabled="edit" placeholder="Email" maxlength="35" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -416,14 +416,14 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Número de identificación:</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text"  id="sNumeroIdentificacionA" name="sNumeroIdentificacionA" ng-model="actualiza.person.PreRegistro.acudiente.numIden" ng-disabled="edit" placeholder="Número Identifiación" onkeypress="return isNumberKey(event)" maxlength="15">
+                                                        <input class="DatosAcud" type="text"  id="sNumeroIdentificacionA" name="sNumeroIdentificacionA" ng-model="actualiza.person.PreRegistro.acudiente.numIden" ng-disabled="edit" placeholder="Número Identifiación" onkeypress="return isNumberKey(event)" maxlength="15" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Genero:</label>
                                                     <div class="col-sm-6">
-                                                        <select class="DatosAcud" id="generoA" ng-model="actualiza.person.PreRegistro.acudiente.genero" ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero">
+                                                        <select class="DatosAcud" id="generoA" ng-model="actualiza.person.PreRegistro.acudiente.genero" ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero" required>
                                                             <option value="" >Seleccione Genero</option>
                                                         </select>
                                                     </div>
@@ -432,21 +432,21 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Segundo Nombre:</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text"  id="sSegundoNombreA" name="sSegundoNombreA" ng-model="actualiza.person.PreRegistro.acudiente.segNombre" ng-disabled="edit" placeholder="Segundo Nombre" onkeypress="return soloLetras(event)" maxlength="25" >
+                                                        <input class="DatosAcud" type="text"  id="sSegundoNombreA" name="sSegundoNombreA" ng-model="actualiza.person.PreRegistro.acudiente.segNombre" ng-disabled="edit" placeholder="Segundo Nombre" onkeypress="return soloLetras(event)" maxlength="25" required >
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Segundo Apellido:</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text"  id="sSegundoApellidoA" name="sSegundoApellidoA" ng-model="actualiza.person.PreRegistro.acudiente.segApellido" ng-disabled="edit" placeholder="Segundo Apellido" onkeypress="return soloLetras(event)" maxlength="25">
+                                                        <input class="DatosAcud" type="text"  id="sSegundoApellidoA" name="sSegundoApellidoA" ng-model="actualiza.person.PreRegistro.acudiente.segApellido" ng-disabled="edit" placeholder="Segundo Apellido" onkeypress="return soloLetras(event)" maxlength="25" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Depatamento Residencia:</label>
                                                     <div class="col-sm-6">
-                                                        <select class="DatosAcud" id="DepartamentoResiAc" ng-model="actualiza.person.PreRegistro.acudiente.depRes" ng-options="depto as depto.sNombre for depto in actualiza.DepartamentoAcudiente.lisCiudadModels track by depto.sCodigo" ng-change="actualiza.listasPais(2,2)" convert-to-number>
+                                                        <select class="DatosAcud" id="DepartamentoResiAc" ng-model="actualiza.person.PreRegistro.acudiente.depRes" ng-options="depto as depto.sNombre for depto in actualiza.DepartamentoAcudiente.lisCiudadModels track by depto.sCodigo" ng-change="actualiza.listasPais(2,2)" convert-to-number required>
                                                             <option value="">Seleccione un Departamento</option>
                                                         </select>
                                                     </div>
@@ -456,14 +456,14 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Dirección Residencia:</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text" id="sDireccionResidenciaA" name="sDireccionResidenciaA" ng-model="actualiza.person.PreRegistro.acudiente.dirRes" ng-disabled="edit" placeholder="Direccion Residencia" maxlength="25">
+                                                        <input class="DatosAcud" type="text" id="sDireccionResidenciaA" name="sDireccionResidenciaA" ng-model="actualiza.person.PreRegistro.acudiente.dirRes" ng-disabled="edit" placeholder="Direccion Residencia" maxlength="25" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Teléfono Móvil</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text"  id="sTelefonoMovilA" name="sTelefonoMovilA" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil" onkeypress="return isNumberKey(event)" maxlength="15">
+                                                        <input class="DatosAcud" type="text"  id="sTelefonoMovilA" name="sTelefonoMovilA" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil" onkeypress="return isNumberKey(event)" maxlength="15" required>
                                                     </div>
                                                 </div>
 
@@ -485,14 +485,14 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Tiempo Trabajando:</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text" id="sTiempoContrato" name="sTiempoContrato" ng-model="actualiza.person.PreRegistro.acudiente.tiempoTrabajo" ng-disabled="edit" placeholder="Meses" onkeypress="return isNumberKey(event)" maxlength="3">
+                                                        <input class="DatosAcud" type="text" id="sTiempoContrato" name="sTiempoContrato" ng-model="actualiza.person.PreRegistro.acudiente.tiempoTrabajo" ng-disabled="edit" placeholder="Meses" onkeypress="return isNumberKey(event)" maxlength="3" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Tipo de Contrato:</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text" id="sTipoContrato" name="sTipoContrato" ng-model="actualiza.person.PreRegistro.acudiente.tipContrato" ng-disabled="edit" placeholder="Tipo de contrato" onkeypress="return soloLetras(event)" maxlength="25">
+                                                        <input class="DatosAcud" type="text" id="sTipoContrato" name="sTipoContrato" ng-model="actualiza.person.PreRegistro.acudiente.tipContrato" ng-disabled="edit" placeholder="Tipo de contrato" onkeypress="return soloLetras(event)" maxlength="25" required>
                                                     </div>
                                                 </div>
 
@@ -560,7 +560,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">valor obligaciones financieras:</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text" id="sObligacionesFinan" name="sObligacionesFinan" ng-model="actualiza.person.PreRegistro.acudiente.valorObli" ng-disabled="edit" placeholder="Tipo de contrato" onkeypress="return isNumberKey(event)" maxlength="15">
+                                                        <input class="DatosAcud" type="text" id="sObligacionesFinan" name="sObligacionesFinan" ng-model="actualiza.person.PreRegistro.acudiente.valorObli" ng-disabled="edit" placeholder="Tipo de contrato" onkeypress="return isNumberKey(event)" maxlength="15" required>
                                                     </div>
                                                 </div>
 
@@ -582,13 +582,13 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Empresa en la que trabaja</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text" id="sNombreEmp" name="sNombreEmp" ng-model="actualiza.person.PreRegistro.acudiente.nomEmpresa" ng-disabled="edit" placeholder="Empresa en la que trabaja" onkeypress="return soloLetras(event)" maxlength="25">
+                                                        <input class="DatosAcud" type="text" id="sNombreEmp" name="sNombreEmp" ng-model="actualiza.person.PreRegistro.acudiente.nomEmpresa" ng-disabled="edit" placeholder="Empresa en la que trabaja" onkeypress="return soloLetras(event)" maxlength="25" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Ocupación:</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text" id="sOcupacion" name="sOcupacion" ng-model="actualiza.person.PreRegistro.acudiente.ocupacion" ng-disabled="edit" placeholder="Ocupación" onkeypress="return soloLetras(event)" maxlength="25">
+                                                        <input class="DatosAcud" type="text" id="sOcupacion" name="sOcupacion" ng-model="actualiza.person.PreRegistro.acudiente.ocupacion" ng-disabled="edit" placeholder="Ocupación" onkeypress="return soloLetras(event)" maxlength="25" required>
                                                     </div>
                                                 </div>
 
@@ -596,7 +596,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Salario</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text" id="sSalario" name="sSalario" ng-model="actualiza.person.PreRegistro.acudiente.salario" ng-disabled="edit" placeholder="Salario" onkeypress="return isNumberKey(event)" maxlength="15">
+                                                        <input class="DatosAcud" type="text" id="sSalario" name="sSalario" ng-model="actualiza.person.PreRegistro.acudiente.salario" ng-disabled="edit" placeholder="Salario" onkeypress="return isNumberKey(event)" maxlength="15" required>
                                                     </div>
                                                 </div>
 
@@ -604,49 +604,49 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">¿Cúal?:</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text" id="sCualVehiculo" name="sCualVehiculo" ng-model="actualiza.person.PreRegistro.acudiente.vehiculo" ng-disabled="edit" placeholder="¿Cúal Vehículo?" onkeypress="return soloLetras(event)" maxlength="25">
+                                                        <input class="DatosAcud" type="text" id="sCualVehiculo" name="sCualVehiculo" ng-model="actualiza.person.PreRegistro.acudiente.vehiculo" ng-disabled="edit" placeholder="¿Cúal Vehículo?" onkeypress="return soloLetras(event)" maxlength="25" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">¿Cuanto?</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text" id="sCuantoSalario" name="sCuantoSalario" ng-model="actualiza.person.PreRegistro.acudiente.IngresosArr" ng-disabled="edit" placeholder="Ingresos por Arriendo" onkeypress="return isNumberKey(event)" maxlength="15">
+                                                        <input class="DatosAcud" type="text" id="sCuantoSalario" name="sCuantoSalario" ng-model="actualiza.person.PreRegistro.acudiente.IngresosArr" ng-disabled="edit" placeholder="Ingresos por Arriendo" onkeypress="return isNumberKey(event)" maxlength="15" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">¿Cuanto?</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text" id="sPensioSalario" name="sPensioSalario" ng-model="actualiza.person.PreRegistro.acudiente.ingresosPension" ng-disabled="edit" placeholder="Ingresos por Pensión" onkeypress="return isNumberKey(event)" maxlength="15">
+                                                        <input class="DatosAcud" type="text" id="sPensioSalario" name="sPensioSalario" ng-model="actualiza.person.PreRegistro.acudiente.ingresosPension" ng-disabled="edit" placeholder="Ingresos por Pensión" onkeypress="return isNumberKey(event)" maxlength="15" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group" >
                                                     <label class="col-sm-5">¿Cúal y Cuánto?:</label>
                                                     <div class="col-sm-6">
-                                                        <input type="text" class="DatosAcud" id="sOtroIngresoCu" name="ssOtroIngresoCu" ng-model="actualiza.person.PreRegistro.acudiente.nombreIngresos" ng-disabled="edit" placeholder="¿Cúal Ingreso?" onkeypress="return soloLetras(event)" maxlength="25">
-                                                        <input type="text" class="DatosAcud" id="sCuantoIngreso" name="sCuandtoIngreso" ng-model="actualiza.person.PreRegistro.acudiente.otrosIngresos" ng-disabled="edit" placeholder="¿Cuánto?" onkeypress="return isNumberKey(event)" maxlength="15">
+                                                        <input type="text" class="DatosAcud" id="sOtroIngresoCu" name="ssOtroIngresoCu" ng-model="actualiza.person.PreRegistro.acudiente.nombreIngresos" ng-disabled="edit" placeholder="¿Cúal Ingreso?" onkeypress="return soloLetras(event)" maxlength="25" required>
+                                                        <input type="text" class="DatosAcud" id="sCuantoIngreso" name="sCuandtoIngreso" ng-model="actualiza.person.PreRegistro.acudiente.otrosIngresos" ng-disabled="edit" placeholder="¿Cuánto?" onkeypress="return isNumberKey(event)" maxlength="15" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group" style="margin-top: 5%;">
                                                     <label class="col-sm-5">¿Cúal?:</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text" id="sCualTargeta" name="sCualTargeta" ng-model="actualiza.person.PreRegistro.acudiente.nomTarjeta" ng-disabled="edit" placeholder="¿Cúal tarjeta?" onkeypress="return soloLetras(event)" maxlength="25">
+                                                        <input class="DatosAcud" type="text" id="sCualTargeta" name="sCualTargeta" ng-model="actualiza.person.PreRegistro.acudiente.nomTarjeta" ng-disabled="edit" placeholder="¿Cúal tarjeta?" onkeypress="return soloLetras(event)" maxlength="25" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group" >
                                                     <label class="col-sm-5">¿Cúal?:</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text" id="sCualCredito" name="ssCualCredito" ng-model="actualiza.person.PreRegistro.acudiente.nomCredito" ng-disabled="edit" placeholder="¿Cúal credito?" onkeypress="return soloLetras(event)" maxlength="25">
+                                                        <input class="DatosAcud" type="text" id="sCualCredito" name="ssCualCredito" ng-model="actualiza.person.PreRegistro.acudiente.nomCredito" ng-disabled="edit" placeholder="¿Cúal credito?" onkeypress="return soloLetras(event)" maxlength="25" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Como se entero de Edupol:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="ConocimientoEdupol" class="DatosAcud"  ng-model="actualiza.person.PreRegistro.acudiente.medioMasivo"  ng-options='medioMasivo as medioMasivo.sNombreMedioMasivo for medioMasivo in actualiza.person.lisMediosMasivosModels track by medioMasivo.iIdMediosMasivos' convert-to-number>
+                                                        <select id="ConocimientoEdupol" class="DatosAcud"  ng-model="actualiza.person.PreRegistro.acudiente.medioMasivo"  ng-options='medioMasivo as medioMasivo.sNombreMedioMasivo for medioMasivo in actualiza.person.lisMediosMasivosModels track by medioMasivo.iIdMediosMasivos' convert-to-number required>
                                                             <option value="">Seleccione medio Masivo</option>
                                                         </select>
                                                     </div>
@@ -667,7 +667,7 @@
                                             <div class="col-sm-6">
 
 
-                                                <div class="form-group">
+                                                <div class="form-group">--
                                                     <label class="col-sm-5">País donde desea estudiar:</label>
                                                     <div class="col-sm-6">
                                                         <select class="DatAcade" id="PaisEStudiar" ng-model="actualiza.person.PreRegistro.estudiante.paisEstudio" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" ng-change="actualiza.listasPais(1,3)" convert-to-number>
@@ -762,7 +762,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Estrato:</label>
                                                     <div class="col-sm-6">
-                                                        <input id="EstratoAc" class="DatAcade" type="text"  name="sSegundoApellido" ng-model="actualiza.person.PreRegistro.estudiante.estrato" ng-disabled="edit" placeholder="Estrato" onkeypress="return isNumberKey(event)" maxlength="15">
+                                                        <input id="EstratoAc" class="DatAcade" type="text"  name="sSegundoApellido" ng-model="actualiza.person.PreRegistro.estudiante.estrato" ng-disabled="edit" placeholder="Estrato" onkeypress="return isNumberKey(event)" maxlength="1">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -792,9 +792,9 @@
                                     <!-- Indicators -->
                                 </div>
                                 <ol class="carousel-indicators">
-                                    <li data-target="#preRegistro" data-slide-to="0" ></li>
-                                    <li data-target="#preRegistro" data-slide-to="1"  id="ValidEstu" ></li>
-                                    <li data-target="#preRegistro" data-slide-to="2"   id="ValidAcu" ></li>
+                                    <li  data-target="#preRegistro" data-slide-to="0" id="princi" ></li>
+                                    <li  data-target="#preRegistro" data-slide-to="1"  id="ValidEstu" ></li>
+                                    <li  data-target="#preRegistro" data-slide-to="2"   id="ValidAcu" ></li>
                                 </ol>
 
                                 <!-- Left and right controls -->
@@ -806,7 +806,7 @@
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" ></span>
                         <span class="sr-only"></span>
                     </a>
-                    <a class="right carousel-control" href="#preRegistro"  role="button" data-slide="next" >
+                    <a class="right carousel-control" href="#preRegistro"  role="button" id="next" data-slide="next" >
                         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                         <span class="sr-only"></span>
                     </a>
