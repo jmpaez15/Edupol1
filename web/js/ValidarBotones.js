@@ -2,8 +2,7 @@ $(function() {
 
     var emailreg = /[a-zA-Z0-9._-]+@[a-zA-Z0-9]+.+[a-zA-Z0-9]/;
    
-   var datosEstu = false;
-    var datosAcudi = false;
+   
 
 
 
@@ -236,7 +235,7 @@ $(function() {
          
          } */
 
-         datosEstu = true;
+
         
          if (calcular() >= 18) {
        
@@ -257,7 +256,7 @@ $(function() {
             
             ////////////////////datos acudiente///////////////////////
             
-                
+
     $("#ValidAcu").click ( function() {
 
         $(".error").fadeOut().remove();
@@ -428,12 +427,9 @@ $(function() {
          return false;  
          }*/
 
-         datosAcudi = true;
 
-         if (datosEstu == true && datosAcudi == true) {
-        $("#enviar").removeAttr('disabled');
-        
-    }
+
+
   
 
     
