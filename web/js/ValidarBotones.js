@@ -1,94 +1,13 @@
 $(function() {
 
     var emailreg = /[a-zA-Z0-9._-]+@[a-zA-Z0-9]+.+[a-zA-Z0-9]/;
-    var cambioId;
-    var datosEstu = false;
+   
+   var datosEstu = false;
     var datosAcudi = false;
-    var datosAcade = false;
 
 
-    $(".calendario").datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-60:+30'});
 
-    $("#sCualVehiculo").hide();
-    $("#sCuantoSalario").hide();
-    $("#sPensioSalario").hide();
-    $("#sOtroIngresoCu").hide();
-    $("#sCuantoIngreso").hide();
-    $("#sCualTargeta").hide();
-    $("#sCualCredito").hide();
-    $("#enviar").attr('disabled', true);
-
-
-    $("#sFechaNacimiento").change(function() {
-        calcular();
-    });
-
-    $("input[name='sVehiculo']").click(function() {
-        if ($("input[name='sVehiculo']:checked").val() == "S") {
-            $("#sCualVehiculo").show();
-        }
-        else {
-            $("#sCualVehiculo").hide();
-        }
-
-    });
-
-    $("input[name='sIngresoArrendamiento']").click(function() {
-        if ($("input[name='sIngresoArrendamiento']:checked").val() == "S") {
-            $("#sCuantoSalario").show();
-        }
-        else {
-            $("#sCuantoSalario").hide();
-        }
-
-    });
-
-    $("input[name='sIngresoPension']").click(function() {
-        if ($("input[name='sIngresoPension']:checked").val() == "S") {
-            $("#sPensioSalario").show();
-        }
-        else {
-            $("#sPensioSalario").hide();
-        }
-
-    });
-
-    $("input[name='sOtrosIngresos']").click(function() {
-        if ($("input[name='sOtrosIngresos']:checked").val() == "S") {
-            $("#sOtroIngresoCu").show();
-            $("#sCuantoIngreso").show();
-        }
-        else {
-            $("#sOtroIngresoCu").hide();
-            $("#sCuantoIngreso").hide();
-        }
-
-    });
-
-    $("input[name='sTargetaCredito']").click(function() {
-        if ($("input[name='sTargetaCredito']:checked").val() == "S") {
-            $("#sCualTargeta").show();
-
-        }
-        else {
-            $("#sCualTargeta").hide();
-
-        }
-
-    });
-
-    $("input[name='sCreditoActual']").click(function() {
-        if ($("input[name='sCreditoActual']:checked").val() == "S") {
-            $("#sCualCredito").show();
-        }
-        else {
-            $("#sCualCredito").hide();
-        }
-
-    });
-
-
-    $("#next").bind("click", function() {
+    $("#ValidEstu").click( function() {
         $(".error").fadeOut().remove();
 
         /*       if ($("#TipoSolicitud").val() == "" ) {
@@ -317,70 +236,29 @@ $(function() {
          
          } */
 
+         datosEstu = true;
         
-        if (calcular() >= 18) {
-
-            $("#FormularioAcudiente").css("visibility", "hidden");
-            $("#FormularioAcudiente").css("height", "2px");
-            alert("mayor de edad");
-            $("#ValidAcu").click();   
-            $("#enviar").removeAttr('disabled');
-
-
-
-        }
-        else {
-            if (calcular() < 18 && calcular() > 0) {
-                $("#FormularioAcudiente").css("visibility", "visible");
-                $("#FormularioAcudiente").css("height", "100%");
-
-                ////////////////////datos acudiente///////////////////////
-                $("#ValidEstu").click();
-
-            }
-        }
-
-
-
-
-
-
-        $(".DatosAcud,sFechaExpedicionAcu").keyup(function() {
-            if ($(this).val() != "") {
-                $(".error").fadeOut();
-                return false;
-            }
-        });
-
-
-        //} //if edad menor
-
-        //  } //else edad mayor     
-
-
-        datosEstu = true;
-
-
-    });
-
-    $(".DatosAlum,#sFechaNacimiento,#sFechaExpedicionEst").keyup(function() {
-        if ($(this).val() != "") {
-            $(".error").fadeOut();
-            return false;
-        }
-    });
-
-
-
-
-
-
-    /////////////////////Datos academicos/////////////////////////////
-
-
-
-
-    $("#next").bind("click", function() {
+         if (calcular() >= 18) {
+       
+        $("#FormularioAcudiente").css("visibility", "hidden");
+        $("#FormularioAcudiente").css("height", "2px");
+        $("#ValidAcu").click();
+        
+        $("#enviar").removeAttr('disabled');
+         
+         
+        
+        
+    }
+    else {
+        if (calcular() < 18 && calcular() > 0) {
+            $("#FormularioAcudiente").css("visibility", "visible");
+            $("#FormularioAcudiente").css("height", "100%");
+            
+            ////////////////////datos acudiente///////////////////////
+            
+                
+    $("#ValidAcu").click ( function() {
 
         $(".error").fadeOut().remove();
 
@@ -550,20 +428,52 @@ $(function() {
          return false;  
          }*/
 
+         datosAcudi = true;
 
-
-
-        datosAcudi = true;
-        if (datosEstu == true && datosAcudi == true) {
+         if (datosEstu == true && datosAcudi == true) {
         $("#enviar").removeAttr('disabled');
         
     }
-        $("#ValidAcu").click();
-
-
-    });
+  
 
     
+
+    });
+    
+            
+            
+            
+        }
+    }
+
+
+        
+
+
+        $(".DatosAcud,sFechaExpedicionAcu").keyup(function() {
+            if ($(this).val() != "") {
+                $(".error").fadeOut();
+                return false;
+            }
+        });
+
+   
+    });
+
+    $(".DatosAlum,#sFechaNacimiento,#sFechaExpedicionEst").keyup(function() {
+        if ($(this).val() != "") {
+            $(".error").fadeOut();
+            return false;
+        }
+    });
+
+
+
+
+
+
+    /////////////////////Datos academicos/////////////////////////////
+
 
 
 

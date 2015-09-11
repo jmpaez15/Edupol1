@@ -18,9 +18,9 @@ function getDataFromServer($http) {
     });
 
     actualiza.save = function() {
-        
-        
-        if (actualiza.validaCampos()) {
+
+        if (validaCampos()) {
+
             if (!document.getElementById("sFechaExpedicionAcu").value == "") {
                 actualiza.person.PreRegistro.acudiente.fechExp = document.getElementById("sFechaExpedicionAcu").value;
             }
@@ -178,73 +178,73 @@ function getDataFromServer($http) {
     };
 
     actualiza.validaCampos = function() {
-       
-       
+
+
+        $("#enviar").click(function() {
             $(".error").fadeOut().remove();
-            alert("boton enviar");
-            
-          var pass = document.getElementById("sContraseña").value;
-          var pass2 = document.getElementById("sconfContraseña").value;
-                if(pass2!=pass){
-                     $("#sconfContraseña").focus().after('<span class="error">Contraseña No Coincide</span>');
-                     return false;
-                }
-                else{
-                   
-                      $(".error").fadeOut();
-                          
-                }
-          
-            
+
+            var pass = document.getElementById("sContraseña").value;
+            var pass2 = document.getElementById("sconfContraseña").value;
+            if (pass2 != pass) {
+                $("#sconfContraseña").focus().after('<span class="error">Contraseña No Coincide</span>');
+                return false;
+            }
+            else {
+
+                $(".error").fadeOut();
+
+            }
+
+
             /*if ($("#PaisEStudiar").val() == "") {
-                $("#PaisEStudiar").focus().after('<span class="error">Campo Obligatorio</span>');
-                return false;
-            }
-
-            if ($("#CiudadEStudiar").val() == "") {
-                $("#CiudadEStudiar").focus().after('<span class="error">Campo Obligatorio</span>');
-                return false;
-            }
-
-            if ($("#Universidad").val() == "") {
-                $("#Universidad").focus().after('<span class="error">Campo Obligatorio</span>');
-                return false;
-            }
-
-            if ($("#TipoEStudio").val() == "") {
-                $("#TipoEStudio").focus().after('<span class="error">Campo Obligatorio</span>');
-                return false;
-            }
-
-            if ($("#DepEstudio").val() == "") {
-                $("#DepEstudio").focus().after('<span class="error">Campo Obligatorio</span>');
-                return false;
-            }
-
-            if ($("#CentrosAsociados").val() == "") {
-                $("#CentrosAsociados").focus().after('<span class="error">Campo Obligatorio</span>');
-                return false;
-            }
-
-            if ($("#NivelFormacion").val() == "") {
-                $("#NivelFormacion").focus().after('<span class="error">Campo Obligatorio</span>');
-                return false;
-            }
-
-            if ($("#ProgramaAcademico").val() == "") {
-                $("#ProgramaAcademico").focus().after('<span class="error">Campo Obligatorio</span>');
-                return false;
-            }
-
-            if ($("#EstratoAc").val() == "") {
-                $("#EstratoAc").focus().after('<span class="error">Campo Obligatorio</span>');
-                return false;
-            }
-
-            if ($("#ConocimientoEdupol").val() == "") {
-                $("#ConocimientoEdupol").focus().after('<span class="error">Campo Obligatorio</span>');
-                return false;
-            }*/
+             $("#PaisEStudiar").focus().after('<span class="error">Campo Obligatorio</span>');
+             return false;
+             }
+             
+             if ($("#CiudadEStudiar").val() == "") {
+             $("#CiudadEStudiar").focus().after('<span class="error">Campo Obligatorio</span>');
+             return false;
+             }
+             
+             if ($("#Universidad").val() == "") {
+             $("#Universidad").focus().after('<span class="error">Campo Obligatorio</span>');
+             return false;
+             }
+             
+             if ($("#TipoEStudio").val() == "") {
+             $("#TipoEStudio").focus().after('<span class="error">Campo Obligatorio</span>');
+             return false;
+             }
+             
+             if ($("#DepEstudio").val() == "") {
+             $("#DepEstudio").focus().after('<span class="error">Campo Obligatorio</span>');
+             return false;
+             }
+             
+             if ($("#CentrosAsociados").val() == "") {
+             $("#CentrosAsociados").focus().after('<span class="error">Campo Obligatorio</span>');
+             return false;
+             }
+             
+             if ($("#NivelFormacion").val() == "") {
+             $("#NivelFormacion").focus().after('<span class="error">Campo Obligatorio</span>');
+             return false;
+             }
+             
+             if ($("#ProgramaAcademico").val() == "") {
+             $("#ProgramaAcademico").focus().after('<span class="error">Campo Obligatorio</span>');
+             return false;
+             }
+             
+             if ($("#EstratoAc").val() == "") {
+             $("#EstratoAc").focus().after('<span class="error">Campo Obligatorio</span>');
+             return false;
+             }
+             
+             if ($("#ConocimientoEdupol").val() == "") {
+             $("#ConocimientoEdupol").focus().after('<span class="error">Campo Obligatorio</span>');
+             return false;
+             }*/
 
             if ($("#sContraseña").val() == "") {
                 $("#sContraseña").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -256,9 +256,11 @@ function getDataFromServer($http) {
                 return false;
             }
 
-       
 
-        return true;
+
+            return true;
+        });
+
     };
 
 }

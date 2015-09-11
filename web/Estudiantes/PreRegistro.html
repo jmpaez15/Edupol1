@@ -41,7 +41,7 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
         <!-- los dos ultimos script son para el funcionamiento del calendario -->
         <script src="../js/ValidacionesPreRegistro.js"></script> <!--  valida todos los capos del prerregistro -->
-       
+       <script src="../js/ValidarBotones.js"></script> 
         <script src="../js/VAlidarTextoNumeros.js"></script> 
         <!--<script src="../js/ui-bootstrap-tpls-0.13.0.js"></script>-->
         <!--<script src="../libs/bootstrap/js/bootstrap-transition.js"></script>-->
@@ -195,7 +195,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Email</label>
                                                 <div class="col-sm-6">
-                                                    <input class="DatosAlum" type="text" id="sEmail" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.estudiante.email" ng-disabled="edit" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9]+.+[a-zA-Z0-9]" placeholder="Email" maxlength="25" required>
+                                                    <input class="DatosAlum" type="text" id="sEmail" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.estudiante.email" ng-disabled="edit" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9]+.+[a-zA-Z0-9]" placeholder="Email" maxlength="35" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -403,7 +403,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Email</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAcud" type="text"  id="sEmailA" name="sTelefonoFijoA" ng-model="actualiza.person.PreRegistro.acudiente.email" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9]+.+[a-zA-Z0-9]" ng-disabled="edit" placeholder="Email" maxlength="25" required>
+                                                        <input class="DatosAcud" type="text"  id="sEmailA" name="sTelefonoFijoA" ng-model="actualiza.person.PreRegistro.acudiente.email" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9]+.+[a-zA-Z0-9]" ng-disabled="edit" placeholder="Email" maxlength="35" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -667,7 +667,7 @@
                                             <div class="col-sm-6">
 
 
-                                                <div class="form-group">
+                                                <div class="form-group">--
                                                     <label class="col-sm-5">País donde desea estudiar:</label>
                                                     <div class="col-sm-6">
                                                         <select class="DatAcade" id="PaisEStudiar" ng-model="actualiza.person.PreRegistro.estudiante.paisEstudio" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" ng-change="actualiza.listasPais(1,3)" convert-to-number>
@@ -762,7 +762,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Estrato:</label>
                                                     <div class="col-sm-6">
-                                                        <input id="EstratoAc" class="DatAcade" type="number"  name="sSegundoApellido" ng-model="actualiza.person.PreRegistro.estudiante.estrato" ng-disabled="edit" placeholder="Estrato" onkeypress="return isNumberKey(event)" maxlength="15">
+                                                        <input id="EstratoAc" class="DatAcade" type="text"  name="sSegundoApellido" ng-model="actualiza.person.PreRegistro.estudiante.estrato" ng-disabled="edit" placeholder="Estrato" onkeypress="return isNumberKey(event)" maxlength="1">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -792,9 +792,9 @@
                                     <!-- Indicators -->
                                 </div>
                                 <ol class="carousel-indicators">
-                                    <li data-target="#preRegistro" data-slide-to="0" ></li>
-                                    <li data-target="#preRegistro" data-slide-to="1"  id="ValidEstu" ></li>
-                                    <li data-target="#preRegistro" data-slide-to="2"   id="ValidAcu" ></li>
+                                    <li  data-target="#preRegistro" data-slide-to="0" id="princi" ></li>
+                                    <li  data-target="#preRegistro" data-slide-to="1"  id="ValidEstu" ></li>
+                                    <li  data-target="#preRegistro" data-slide-to="2"   id="ValidAcu" ></li>
                                 </ol>
 
                                 <!-- Left and right controls -->
@@ -806,7 +806,7 @@
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" ></span>
                         <span class="sr-only"></span>
                     </a>
-                    <a class="right carousel-control" href="#preRegistro"  role="button" data-slide="next" >
+                    <a class="right carousel-control" href="#preRegistro"  role="button" id="next" data-slide="next" >
                         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                         <span class="sr-only"></span>
                     </a>
