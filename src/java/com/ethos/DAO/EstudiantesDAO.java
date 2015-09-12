@@ -57,6 +57,9 @@ public class EstudiantesDAO extends AbstractDAO<EstudianteModel>{
             psQuery.setInt(14,entityClass.getiDepartamentoEstudio());
             psQuery.setInt(15,entityClass.getiCiudadEstudio());
             psQuery.setInt(16,entityClass.getiEstrato());
+            psQuery.setInt(17,entityClass.getiTipoSolicitud());
+            psQuery.setString(18,entityClass.getsCiudadNacimiento());
+            psQuery.setString(19,entityClass.getsLugarNacimiento());
             rs=psQuery.executeUpdate();
              
         } catch (SQLException ex) {

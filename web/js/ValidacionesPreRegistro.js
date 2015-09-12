@@ -16,13 +16,12 @@ $(function() {
     $("#sCuantoIngreso").hide();
     $("#sCualTargeta").hide();
     $("#sCualCredito").hide();
-    $("#enviar").attr('disabled', true);
+    //$("#enviar").attr('disabled', true);
 
-
-    $("#sFechaNacimiento").change(function() {
-        calcular();
-    });
-
+    $("#sFechaNacimiento").change(function(){
+        calcular();            
+        });
+        
     $("input[name='sVehiculo']").click(function() {
         if ($("input[name='sVehiculo']:checked").val() == "S") {
             $("#sCualVehiculo").show();
@@ -160,11 +159,11 @@ $(function() {
 
 
 
-       if ($("#sNumeroLibretaMilitar").val() == "") {
+      /* if ($("#sNumeroLibretaMilitar").val() == "") {
             $("#sNumeroLibretaMilitar").focus().after('<span class="error">Campo Obligatorio</span>');
             return false;
 
-        }
+        } */
 
 
         if ($("#sTelefonoFijo").val() == "") {
@@ -318,28 +317,6 @@ $(function() {
          } 
 
         
-        if (calcular() >= 18) {
-
-            $("#FormularioAcudiente").css("visibility", "hidden");
-            $("#FormularioAcudiente").css("height", "2px");
-            
-            $("#ValidAcu").click();   
-            $("#enviar").removeAttr('disabled');
-
-
-
-        }
-        else {
-            if (calcular() < 18 && calcular() > 0) {
-                $("#FormularioAcudiente").css("visibility", "visible");
-                $("#FormularioAcudiente").css("height", "100%");
-
-                ////////////////////datos acudiente///////////////////////
-                $("#ValidEstu").click();
-
-            }
-        }
-
 
 
 
@@ -352,7 +329,27 @@ $(function() {
             }
         });
 
+        if (calcular() >= 18) {
+            
+            $("#FormularioAcudiente").css("visibility", "hidden");
+            $("#FormularioAcudiente").css("height", "2px");
+            
+            $("#ValidAcu").click();   
+            
 
+
+
+        }
+        else {
+            if (calcular() < 18 && calcular() > 0) {
+                $("#FormularioAcudiente").css("visibility", "visible");
+                $("#FormularioAcudiente").css("height", "100%");
+                $("#ValidEstu").click();
+                ////////////////////datos acudiente///////////////////////
+                
+
+            }
+        }
         //} //if edad menor
 
         //  } //else edad mayor     

@@ -20,6 +20,6 @@ public class DireccionesQuery {
     
     public static final String QUERY_ULTIMO_CODIGO="select max(i_codigo) from DIRECCIONES";
     
-    public static final String QUERY_GUARDAR_DIRRECCIONES="INSERT INTO Edupol.dbo.DIRECCIONES(I_CODIGO, I_CLIENTE, I_TIPO_DIR, C_DIRECCION)VALUES"
+    public static final String QUERY_GUARDAR_DIRRECCIONES="INSERT INTO DIRECCIONES(I_CODIGO, I_CLIENTE, I_TIPO_DIR, C_DIRECCION)VALUES"
                         +"(?,?,?,?)";
 }

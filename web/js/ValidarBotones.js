@@ -1,23 +1,113 @@
 $(function() {
 
-    var emailreg = /[a-zA-Z0-9._-]+@[a-zA-Z0-9]+.+[a-zA-Z0-9]/;
+    var emailreg = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
    
    
+    var cambioId;
+    var datosEstu = false;
+    var datosAcudi = false;
+    var datosAcade = false;
+
+
+    $(".calendario").datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-60:+30'});
+
+    $("#sCualVehiculo").hide();
+    $("#sCuantoSalario").hide();
+    $("#sPensioSalario").hide();
+    $("#sOtroIngresoCu").hide();
+    $("#sCuantoIngreso").hide();
+    $("#sCualTargeta").hide();
+    $("#sCualCredito").hide();
+   // $("#ValidAcu").hide();
 
 
 
-    $("#ValidEstu").click( function() {
+
+    $("input[name='sVehiculo']").click(function() {
+        if ($("input[name='sVehiculo']:checked").val() == "S") {
+            $("#sCualVehiculo").show();
+        }
+        else {
+            $("#sCualVehiculo").hide();
+        }
+
+    });
+
+    $("input[name='sIngresoArrendamiento']").click(function() {
+        if ($("input[name='sIngresoArrendamiento']:checked").val() == "S") {
+            $("#sCuantoSalario").show();
+        }
+        else {
+            $("#sCuantoSalario").hide();
+        }
+
+    });
+
+    $("input[name='sIngresoPension']").click(function() {
+        if ($("input[name='sIngresoPension']:checked").val() == "S") {
+            $("#sPensioSalario").show();
+        }
+        else {
+            $("#sPensioSalario").hide();
+        }
+
+    });
+
+    $("input[name='sOtrosIngresos']").click(function() {
+        if ($("input[name='sOtrosIngresos']:checked").val() == "S") {
+            $("#sOtroIngresoCu").show();
+            $("#sCuantoIngreso").show();
+        }
+        else {
+            $("#sOtroIngresoCu").hide();
+            $("#sCuantoIngreso").hide();
+        }
+
+    });
+
+    $("input[name='sTargetaCredito']").click(function() {
+        if ($("input[name='sTargetaCredito']:checked").val() == "S") {
+            $("#sCualTargeta").show();
+
+        }
+        else {
+            $("#sCualTargeta").hide();
+
+        }
+
+    });
+
+    $("input[name='sCreditoActual']").click(function() {
+        if ($("input[name='sCreditoActual']:checked").val() == "S") {
+            $("#sCualCredito").show();
+        }
+        else {
+            $("#sCualCredito").hide();
+        }
+
+    });
+
+   
+
+
+
+   $("#ValidEstu").click( function() {
         $(".error").fadeOut().remove();
+
+
+
 
              if ($("#TipoSolicitud").val() == "" ) {
          $("#TipoSolicitud").focus().after('<span class="error">Campo Obligatorio</span>');  
          return false; 
          }
 
+
              if ($("#Nacionalidad").val() == "" ) {
          $("#Nacionalidad").focus().after('<span class="error">Campo Obligatorio</span>');  
          return false;   
          }
+
 
         if ($("#sLugarNac").val() == "") {
             $("#sLugarNac").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -32,6 +122,7 @@ $(function() {
          return false;  
          
          }  
+
         if ($("#sLugarExped").val() == "") {
             $("#sLugarExped").focus().after('<span class="error">Campo Obligatorio</span>');
             return false;
@@ -60,15 +151,18 @@ $(function() {
          }
 
 
+
         if ($("#paisRes").val() == "") {  
          $("#paisRes").focus().after('<span class="error">Campo Obligatorio</span>');   
          return false;  
          }  
 
+
          if ($("#CiudadRes").val() == "") {  
          $("#CiudadRes").focus().after('<span class="error">Campo Obligatorio</span>');   
          return false;  
          }     
+
 
         if ($("#sBarrioResidencia").val() == "") {
             $("#sBarrioResidencia").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -83,6 +177,7 @@ $(function() {
             return false;
 
         }*/
+
 
 
         if ($("#sTelefonoFijo").val() == "") {
@@ -105,6 +200,7 @@ $(function() {
          $("#NivelEduc").focus().after('<span class="error">Campo Obligatorio</span>');   
          return false;  
          } 
+
 
         if ($("#sCiudadNacimiento").val() == "") {
             $("#sCiudadNacimiento").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -171,11 +267,12 @@ $(function() {
 
         }
 
-        if ($("#sSegundoNombre").val() == "") {
+       /* if ($("#sSegundoNombre").val() == "") {
             $("#sSegundoNombre").focus().after('<span class="error">Campo Obligatorio</span>');
             return false;
 
-        }
+        }*/
+
 
 
         if ($("#sSegundoApellido").val() == "") {
@@ -190,10 +287,12 @@ $(function() {
          return false;  
          }   
 
+
         if ($("#DepartamentoRes").val() == "") {  
          $("#DepartamentoRes").focus().after('<span class="error">Campo Obligatorio</span>');   
          return false;  
          }
+
 
         if ($("#sLocalidadResidencia").val() == "") {
             $("#sLocalidadResidencia").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -227,7 +326,9 @@ $(function() {
             $("#sTelefonoMovil").focus().after('<span class="error">Excede el Tamaño</span>');
             return false;
 
+
         }
+
 
         if ($("#GrupoSanguineo").val() == "") {  
          $("#GrupoSanguineo").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -236,28 +337,32 @@ $(function() {
          } 
 
 
+
+
         
          if (calcular() >= 18) {
-       
-        $("#FormularioAcudiente").css("visibility", "hidden");
+			 
+
+		$("#FormularioAcudiente").css("visibility", "hidden");
         $("#FormularioAcudiente").css("height", "2px");
-        $("#ValidAcu").click();
-        
-        $("#enviar").removeAttr('disabled');
-         
-         
-        
-        
+        $("#ValidAcu").unbind("click");
+        $("#ValidAcu").click()();
+		//$("#ValidAcu").show();
+
+
+
     }
     else {
         if (calcular() < 18 && calcular() > 0) {
+
             $("#FormularioAcudiente").css("visibility", "visible");
             $("#FormularioAcudiente").css("height", "100%");
             
+           // $("#ValidAcu").show();
             ////////////////////datos acudiente///////////////////////
             
 
-    $("#ValidAcu").click ( function() {
+    $("#ValidAcu").bind("click", function() {
 
         $(".error").fadeOut().remove();
 
@@ -266,10 +371,12 @@ $(function() {
          return false;  
          }
 
+
         if ($("#sFechaExpedicionAcu").val() == "") {  
          $("#sFechaExpedicionAcu").focus().after('<span class="error">Campo Obligatorio</span>');   
          return false;  
          }
+
 
         if ($("#sPrimerNombreA").val() == "") {
             $("#sPrimerNombreA").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -286,10 +393,12 @@ $(function() {
          return false;  
          }
 
+
         if ($("#CiudadA").val() == "") {  
          $("#CiudadA").focus().after('<span class="error">Campo Obligatorio</span>');   
          return false;  
          }
+
 
         if ($("#sTelefonoFijoA").val() == "") {
             $("#sTelefonoFijoA").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -311,10 +420,12 @@ $(function() {
          return false;  
          }
 
-        if ($("#sSegundoNombreA").val() == "") {
+
+        /*if ($("#sSegundoNombreA").val() == "") {
             $("#sSegundoNombreA").focus().after('<span class="error">Campo Obligatorio</span>');
             return false;
-        }
+        }*/
+
 
         if ($("#sSegundoApellidoA").val() == "") {
             $("#sSegundoApellidoA").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -325,6 +436,7 @@ $(function() {
          $("#DepartamentoResiAc").focus().after('<span class="error">Campo Obligatorio</span>');   
          return false;  
          }
+
 
         if ($("#sDireccionResidenciaA").val() == "") {
             $("#sDireccionResidenciaA").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -359,6 +471,7 @@ $(function() {
          $("#TipoVivienda").focus().after('<span class="error">Campo Obligatorio</span>');   
          return false;  
          }
+
 
         if (!$("input[name='sVehiculo']").is(':checked')) {
             $("#sVehiculo").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -430,6 +543,7 @@ $(function() {
 
 
 
+
   
 
     
@@ -440,6 +554,7 @@ $(function() {
             
             
         }
+
     }
 
 
@@ -469,6 +584,8 @@ $(function() {
 
 
     /////////////////////Datos academicos/////////////////////////////
+
+
 
 
 

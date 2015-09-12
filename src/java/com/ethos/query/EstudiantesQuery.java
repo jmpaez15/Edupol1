@@ -27,7 +27,10 @@ public class EstudiantesQuery {
        + " ID_PAIS_ESTUDIO,"
        + " ID_DEPARTAMENTO_ESTUDIO,"
        + " ID_CIUDAD_ESTUDIO,"
-       + " ESTRATO)" +
-       " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+       + " ESTRATO,"
+       + "ID_TIPO_SOLICITUD,"
+            + "Ciudad_Nacimiento,"
+            + "Lugar_Nacimiento)" +
+       " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
 }

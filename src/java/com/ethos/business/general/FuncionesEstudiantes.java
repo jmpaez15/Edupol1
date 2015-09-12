@@ -95,6 +95,9 @@ public class FuncionesEstudiantes {
         JsonObject departamentoResAcuJsonObject;
         JsonObject ciudadResAcuJsonObject;
         
+        JsonObject paisEstJsonObject;
+        JsonObject departamentoEstJsonObject;
+        JsonObject ciudadEstJsonObject;
         JsonObject universidadJsonObject;
         JsonObject nivelFormacionJsonObject;
         JsonObject tipoEstudioJsonObject;
@@ -136,6 +139,10 @@ public class FuncionesEstudiantes {
         grupoProgramaJsonObject=informacionUniversidadJsonObject.getAsJsonObject("GrupoProgramaAcademico");
         programaJsonObject=informacionUniversidadJsonObject.getAsJsonObject("ProgramaAcademico");
         centroAsociadoJsonObject=estudianteJObject.getAsJsonObject("centroAsociado");
+        paisEstJsonObject=estudianteJObject.getAsJsonObject("paisEstudio");
+        departamentoEstJsonObject=estudianteJObject.getAsJsonObject("depEstudio");
+        ciudadEstJsonObject=estudianteJObject.getAsJsonObject("ciudadEstudio");
+        
         
         personaAcudienteModel=(PersonaModel) personasDAO.select(estudianteJObject.get("NumIdentificacion").getAsString());           
         if(personaAcudienteModel.getsIden()!=null){
@@ -185,7 +192,11 @@ public class FuncionesEstudiantes {
         if(estudianteJObject.has("LibretaMilitar")==true){
         estudianteModel.setiLibretaMilitar(estudianteJObject.get("LibretaMilitar").getAsInt());
         }
+        estudianteModel.setiLibretaMilitar(0);
         estudianteModel.setiGrupoSaniguineo(grupoSanquineoJsonObject.get("iCodigoTipoSangre").getAsInt());
+        estudianteModel.setiPaisEstudio(paisEstJsonObject.get("sCodigo").getAsInt());
+        estudianteModel.setiDepartamentoEstudio(paisEstJsonObject.get("sCodigo").getAsInt());
+        estudianteModel.setiCiudadEstudio(ciudadEstJsonObject.get("sCodigo").getAsInt());
          
         direccionesModel= new DireccionesModel();
         direccionesModel.setsTipoDir("2");
