@@ -163,32 +163,32 @@ public class FuncionesEstudiantes {
         personaEstudianteModel.setsIden(estudianteJObject.get("NumIdentificacion").getAsString());
         if(estudianteJObject.has("segNombre")==true){
         String nombre=(estudianteJObject.get("segNombre").getAsString().equals(""))?estudianteJObject.get("PriNombre").getAsString():estudianteJObject.get("PriNombre").getAsString()+" "+estudianteJObject.get("segNombre").getAsString();
-        personaEstudianteModel.setsNombre(nombre);
+        personaEstudianteModel.setsNombre(nombre.toUpperCase());
         }else{
-         personaEstudianteModel.setsNombre(estudianteJObject.get("PriNombre").getAsString());
+         personaEstudianteModel.setsNombre(estudianteJObject.get("PriNombre").getAsString().toUpperCase());
         }
         if(estudianteJObject.has("segNombre")==true){
         String apellido=(estudianteJObject.get("PriApellido").getAsString().equals(""))?estudianteJObject.get("PriApellido").getAsString():estudianteJObject.get("PriApellido").getAsString()+" "+estudianteJObject.get("SegApellido").getAsString();
-         personaEstudianteModel.setsApellido(apellido);
+         personaEstudianteModel.setsApellido(apellido.toUpperCase());
         }else{
-          personaEstudianteModel.setsApellido(estudianteJObject.get("PriApellido").getAsString());  
+          personaEstudianteModel.setsApellido(estudianteJObject.get("PriApellido").getAsString().toUpperCase());  
         }
-        personaEstudianteModel.setsGenero(generoJsonObject.get("sInicial").getAsString());
+        personaEstudianteModel.setsGenero(generoJsonObject.get("sInicial").getAsString().toUpperCase());
         personaEstudianteModel.setsCodEstadoCivil(estadoCivilJsonObject.get("sCodigoEstadoCivil").getAsString());
         personaEstudianteModel.setiNivelEst(nivelEducativoObject.get("sCodigo").getAsInt());
        
         
         estudianteModel.setiTipoSolicitud(tipoSolJObject.get("iId_tipoSolicitud").getAsInt());
         estudianteModel.setiNacionalidad(nacionalidadObject.get("sCodigo").getAsInt());
-        estudianteModel.setsCiudadNacimiento(estudianteJObject.get("ciudadNacimiento").getAsString());
-        estudianteModel.setsLugarNacimiento(estudianteJObject.get("lugarNacimiento").getAsString());       
-        estudianteModel.setsLugarExpedicion(estudianteJObject.get("LugarExp").getAsString());        
+        estudianteModel.setsCiudadNacimiento(estudianteJObject.get("ciudadNacimiento").getAsString().toUpperCase());
+   //     estudianteModel.setsLugarNacimiento(estudianteJObject.get("lugarNacimiento").getAsString().toUpperCase());       
+        estudianteModel.setsLugarExpedicion(estudianteJObject.get("LugarExp").getAsString().toUpperCase());        
         estudianteModel.setiCategoriaSisben(categoriaSisbenJsonObject.get("iIdCategoriaSisben").getAsInt());
         estudianteModel.setiPaisResidencia(paisResJsonObject.get("sCodigo").getAsInt());
         estudianteModel.setiDepartamentoResidencia(departamentoResJsonObject.get("sCodigo").getAsInt());
         estudianteModel.setiCiudadResidencia(ciudadResJsonObject.get("sCodigo").getAsInt());
-        estudianteModel.setsLocalidadResidencia(estudianteJObject.get("locRes").getAsString());
-        estudianteModel.setsBarrioResidencia(estudianteJObject.get("BarrioRes").getAsString());
+        estudianteModel.setsLocalidadResidencia(estudianteJObject.get("locRes").getAsString().toUpperCase());
+        estudianteModel.setsBarrioResidencia(estudianteJObject.get("BarrioRes").getAsString().toUpperCase());
         if(estudianteJObject.has("LibretaMilitar")==true){
         estudianteModel.setiLibretaMilitar(estudianteJObject.get("LibretaMilitar").getAsInt());
         }
@@ -247,30 +247,30 @@ public class FuncionesEstudiantes {
         personaAcudienteModel.setsGenero(generoAcudienteJsonObject.get("iIdGenero").getAsString());
         if(acudienteObject.has("segNombre")==true){
         String nombre=(acudienteObject.get("segNombre").getAsString().equals(""))?acudienteObject.get("priNombre").getAsString():acudienteObject.get("priNombre").getAsString()+" "+acudienteObject.get("segNombre").getAsString();
-        personaAcudienteModel.setsNombre(nombre);
+        personaAcudienteModel.setsNombre(nombre.toUpperCase());
         }else{
-        personaAcudienteModel.setsNombre(acudienteObject.get("priNombre").getAsString()); 
+        personaAcudienteModel.setsNombre(acudienteObject.get("priNombre").getAsString().toUpperCase()); 
         }
         if(acudienteObject.has("segApellido")==true){
          String apellido=(acudienteObject.get("segApellido").getAsString().equals(""))?acudienteObject.get("priApellido").getAsString():acudienteObject.get("priApellido").getAsString()+" "+acudienteObject.get("segApellido").getAsString();
-         personaAcudienteModel.setsApellido(apellido);
+         personaAcudienteModel.setsApellido(apellido.toUpperCase());
         }else{
-          personaAcudienteModel.setsApellido(acudienteObject.get("priApellido").getAsString());  
+          personaAcudienteModel.setsApellido(acudienteObject.get("priApellido").getAsString().toUpperCase());  
         }           
         
         acudienteModel = new AcudienteModel();
         acudienteModel.setsPaisResidencia(paisResAcuJsonObject.get("sCodigo").getAsString());
         acudienteModel.setsCiudadResidencia(ciudadResAcuJsonObject.get("sCodigo").getAsString());
         acudienteModel.setsDepartamento(departamentoResAcuJsonObject.get("sCodigo").getAsString());
-        acudienteModel.setsTrabajaActual(acudienteObject.get("tipTrabajo").getAsString());
+        acudienteModel.setsTrabajaActual(acudienteObject.get("tipTrabajo").getAsString().toUpperCase());
         acudienteModel.setsTiempoTrabajando(acudienteObject.get("tiempoTrabajo").getAsString());
-        acudienteModel.setsNombreEmpresa(acudienteObject.get("nomEmpresa").getAsString());
-        acudienteModel.setsTipoContrato(acudienteObject.get("tipContrato").getAsString());
-        acudienteModel.setsOcupacion(acudienteObject.get("ocupacion").getAsString());
-        acudienteModel.setsTipoVivienda(acudienteObject.get("tipVivienda").getAsString());
+        acudienteModel.setsNombreEmpresa(acudienteObject.get("nomEmpresa").getAsString().toUpperCase());
+        acudienteModel.setsTipoContrato(acudienteObject.get("tipContrato").getAsString().toUpperCase());
+        acudienteModel.setsOcupacion(acudienteObject.get("ocupacion").getAsString().toUpperCase());
+        acudienteModel.setsTipoVivienda(acudienteObject.get("tipVivienda").getAsString().toUpperCase());
         acudienteModel.setdSalario(acudienteObject.get("salario").getAsDouble());
         if(acudienteObject.has("vehiculo")==true){
-           acudienteModel.setsVehiculo(acudienteObject.get("vehiculo").getAsString()); 
+           acudienteModel.setsVehiculo(acudienteObject.get("vehiculo").getAsString().toUpperCase()); 
         }
         if(acudienteObject.has("IngresosArr")==true){
            acudienteModel.setdIngArrendamiento(acudienteObject.get("IngresosArr").getAsDouble());
@@ -283,15 +283,15 @@ public class FuncionesEstudiantes {
         }
      
          if(acudienteObject.has("nombreIngresos")==true){
-          acudienteModel.setsNombreOtrosIngresos(acudienteObject.get("nombreIngresos").getAsString());
+          acudienteModel.setsNombreOtrosIngresos(acudienteObject.get("nombreIngresos").getAsString().toUpperCase());
         }
          
         if(acudienteObject.has("nomTarjeta")==true){
-           acudienteModel.setsTarjetaCredito(acudienteObject.get("nomTarjeta").getAsString());
+           acudienteModel.setsTarjetaCredito(acudienteObject.get("nomTarjeta").getAsString().toUpperCase());
         }
      
         if(acudienteObject.has("nomCredito")==true){
-           acudienteModel.setsCreditoActual(acudienteObject.get("nomCredito").getAsString());
+           acudienteModel.setsCreditoActual(acudienteObject.get("nomCredito").getAsString().toUpperCase());
         }
         if(acudienteObject.has("valorObli")==true){
            acudienteModel.setdValorObligaciones(acudienteObject.get("valorObli").getAsDouble());

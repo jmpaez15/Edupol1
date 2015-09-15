@@ -11,13 +11,13 @@ $(function() {
 
     $(".calendario").datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-60:+30'});
 
-    $("#sCualVehiculo").hide();
-    $("#sCuantoSalario").hide();
-    $("#sPensioSalario").hide();
-    $("#sOtroIngresoCu").hide();
-    $("#sCuantoIngreso").hide();
-    $("#sCualTargeta").hide();
-    $("#sCualCredito").hide();
+    $("#sCualVehiculo1").hide();
+    $("#sCuantoSalario1").hide();
+    $("#sPensioSalario1").hide();
+    $("#sOtroIngresoCu1").hide();
+    $("#sCuantoIngreso1").hide();
+    $("#sCualTargeta1").hide();
+    $("#sCualCredito1").hide();
    // $("#ValidAcu").hide();
 
 
@@ -25,53 +25,61 @@ $(function() {
 
     $("input[name='sVehiculo']").click(function() {
         if ($("input[name='sVehiculo']:checked").val() == "S") {
-            $("#sCualVehiculo").show();
+            $("#sCualVehiculo1").show();
+            
         }
         else {
-            $("#sCualVehiculo").hide();
+            $("#sCualVehiculo1").hide();
+            
         }
 
     });
 
     $("input[name='sIngresoArrendamiento']").click(function() {
         if ($("input[name='sIngresoArrendamiento']:checked").val() == "S") {
-            $("#sCuantoSalario").show();
+            $("#sCuantoSalario1").show();
+            
         }
         else {
-            $("#sCuantoSalario").hide();
+            $("#sCuantoSalario1").hide();
+            
         }
 
     });
 
     $("input[name='sIngresoPension']").click(function() {
         if ($("input[name='sIngresoPension']:checked").val() == "S") {
-            $("#sPensioSalario").show();
+            $("#sPensioSalario1").show();
+            $("#sPensioSalario").validate();
         }
         else {
-            $("#sPensioSalario").hide();
+            $("#sPensioSalario1").hide();
+            
         }
 
     });
 
     $("input[name='sOtrosIngresos']").click(function() {
         if ($("input[name='sOtrosIngresos']:checked").val() == "S") {
-            $("#sOtroIngresoCu").show();
-            $("#sCuantoIngreso").show();
-        }
+            $("#sOtroIngresoCu1").show();
+            $("#sCuantoIngreso1").show();
+            }
         else {
-            $("#sOtroIngresoCu").hide();
-            $("#sCuantoIngreso").hide();
-        }
+            $("#sOtroIngresoCu1").hide();
+            $("#sCuantoIngreso1").hide();
+          }
 
     });
 
     $("input[name='sTargetaCredito']").click(function() {
         if ($("input[name='sTargetaCredito']:checked").val() == "S") {
-            $("#sCualTargeta").show();
+            $("#sCualTargeta1").show();
+           
 
         }
         else {
-            $("#sCualTargeta").hide();
+            $("#sCualTargeta1").hide();
+          
 
         }
 
@@ -79,9 +87,11 @@ $(function() {
 
     $("input[name='sCreditoActual']").click(function() {
         if ($("input[name='sCreditoActual']:checked").val() == "S") {
-            $("#sCualCredito").show();
+            $("#sCualCredito1").show();
+            
         }
         else {
+            $("#sCualCredito1").hide();
             $("#sCualCredito").hide();
         }
 

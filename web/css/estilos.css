@@ -43,5 +43,30 @@
      margin-left: 180px;
     } 
 
+.contact_form input, .contact_form textarea,.contact_form select {
+    padding-right:30px;
+    text-transform: uppercase;
+    
+}
+
+.Encabezado{
+    background: #fff url(../images/encabezado.png)  ;
+    width: 296px;
+    height: 35px;
+    color: white;
+    text-align: -webkit-left;
+    border-top-left-radius: -192px;
+    border-top-right-radius: -130px; 
+    border-bottom-right-radius: 625px;
+    border-style: outset;
+    border-color: #2980b9;
+    padding-top: 8px;
+    padding-bottom: -2px;
+    text-transform: uppercase;
+ }
+ .DatosAlum,.DatosAcud,.DatAcade{
+     text-transform: uppercase;
+     
+ }
 
 
