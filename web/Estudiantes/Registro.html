@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="es" data-ng-app="appEdupol">
+    <head>
+        <title>..::Portal Cygnus::..</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-animate.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+        <script src="../js/ui-bootstrap-tpls-0.13.0.js"></script>
+        <script src="../libs/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../libs/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+        <script src="../libs/prettyphoto/jquery.prettyphoto.js"></script>
+        <script src="../libs/jquery.easing.min.js"></script>
+        <script src="../libs/jquery.scrollto-1.4.3.1-min.js"></script>
+        <script src="../libs/custom.js"></script>
+        <script src="../libs/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+        <script src="../js/controlNav.js"></script>
+        <script src="../js/layout.js"></script>
+        <script src="../js/Registro.js"></script>
+        <script src="../js/datapicker.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.css" />
+        <link rel="stylesheet" type="text/css" href="../css/mastersheet.css" />
+        <link rel="stylesheet" type="text/css" href="../css/themes/theme1.css" />
+        <link rel="stylesheet" type="text/css" href="../css/themes/login.css" />
+        <link rel="stylesheet" type="text/css" href="../css/webfonts/unicons.css" />
+        <link rel="stylesheet" type="text/css" href="../css/revolution-slider.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="../libs/rs-plugin/css/settings.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="../libs/prettyphoto/css/prettyphoto.css" />
+
+
+    </head>
+    <body>
+        <div class="wrapper" >
+            <header id="menu" data-ng-controller="navegaController as navega" ng-include="'MenuIn.html'"></header>
+
+            <section class="section main-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <header>
+                                <h1>Registro</h1>
+                            </header>
+
+                            <ul class="breadcrumb">
+                                <li>Estas aquí:</li>
+                                <li><a href="../Estudiantes/Registro.html">Registro</a></li>
+                                <li>Columns</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="includeLayout" class="section">
+                <div class="container">
+
+                    <div class="panel-group" id="accordion">
+
+                        <div class="panel panel-Registro">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">DATOS COMPLEMENTARIOS DEL ESTUDIANTE</a>
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <fieldset>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Periodo Académico:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="registro.person.datosEstudiante.periodoAcademico" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <option value="">Seleccione el periodo academico</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Pais Escuela Secundaria:</label>
+                                                <select ng-model="registro.person.datosEstuddiante.paisEscuelaSecundaria" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione un País</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Departamento Escuela Secundaria:</label>
+                                                <select ng-model="registro.person.datosEstuddiante.departamentoEscuelaSecundaria" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione un Departamento</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Ciudad Escuela Secundaria:</label>
+                                                <select ng-model="registro.person.datosEstuddiante.ciudadEscuelaSecundaria" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione una Ciudad</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Entidad Promotora de Salud</label>
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.eps" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
+                                                    <option value="">Seleccione una EPS</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Fondo Pensiones y Cesantias</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sFondoPensionesCesantias" name="sFondoPensionesCesantias" ng-model="actualiza.person.PreRegistro.acudiente.sFondoPensionesCesantias" ng-disabled="edit" placeholder="Fondo de Pensiones y Cesantias" >
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Categoria del Sisben:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="number" id="sCategoriaSisben" name="sCategoriaSisben" ng-model="actualiza.person.PreRegistro.acudiente.segNombre" ng-disabled="edit" placeholder="Categoria Sisben">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Nombre Escuela Secundaria:</label>
+                                                <div class="col-sm-6">
+                                                    <div class="col-sm-6">
+                                                        <input type="text" id="sNombreEscuela" name="sNombreEscuela" ng-model="actualiza.person.PreRegistro.acudiente.telFij" ng-disabled="edit" placeholder="Nombre escuela">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Fecha de Graduación Escundaria:</label>
+                                                <div class="col-sm-6" data-ng-controller="DatepickerCtrl as datepicker">
+                                                    <p class="input-group">
+                                                        <input type="text" class="form-control" datepicker-popup="dd.MM.yyyy" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                        </span>
+                                                    </p> 
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="panel panel-Registro">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">DATOS SOCIOECONOMICOS</a>
+                                </h4>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <fieldset>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Grupo o Comunidad:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <option value="">Seleccione una comunidad</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Modo de Costeo de Estudios:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sFechaExpedicion" name="sFechaExpedicion" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="Modo de Costeo" >
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Requiere ayuda financiera:</label>
+                                                <div class="col-sm-6">
+                                                    <label class="radio-inline col-sm-6"><input type="radio" id="sTrabajaActual" name="sTrabajaActual" ng-model="actualiza.person.PreRegistro.acudiente.trabaja" ng-disabled="edit" value="S">Si</label>
+                                                    <label class="radio-inline col-sm-6"><input type="radio" id="sNoTrabajaActual" name="sTrabajaActual" ng-model="actualiza.person.PreRegistro.acudiente.trabaja" ng-disabled="edit" value="N">No</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Tipo de Solicitud del Aspirante:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                        <option value="">Seleccione un tipo de solicitud</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Padece alguna enfermedad cronica o permanente para la que necesite atención especializada:</label>
+                                                <div class="col-sm-6">
+                                                    <label class="radio-inline col-sm-6"><input type="radio" id="sTrabajaActual" name="sTrabajaActual" ng-model="actualiza.person.PreRegistro.acudiente.trabaja" ng-disabled="edit" value="S">Si</label>
+                                                    <label class="radio-inline col-sm-6"><input type="radio" id="sNoTrabajaActual" name="sTrabajaActual" ng-model="actualiza.person.PreRegistro.acudiente.trabaja" ng-disabled="edit" value="N">No</label>
+                                                </div>
+                                            </div>  
+
+                                        </div>
+
+                                        <div class="col-sm-6">
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Forma de  pago</label>
+                                                <select ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                    <option value="">Selecc ione una forma de pago</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Cargue de fotografia:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <option value="">Seleccione una fotografia</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Tiene alguna limitación fisica:</label>
+                                                <div class="col-sm-6">
+                                                    <label class="radio-inline col-sm-6"><input type="radio" id="sTrabajaActual" name="sTrabajaActual" ng-model="actualiza.person.PreRegistro.acudiente.trabaja" ng-disabled="edit" value="S">Si</label>
+                                                    <label class="radio-inline col-sm-6"><input type="radio" id="sNoTrabajaActual" name="sTrabajaActual" ng-model="actualiza.person.PreRegistro.acudiente.trabaja" ng-disabled="edit" value="N">No</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Nombre Asesor Comercial:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sPrimerNombre" name="sGastosCosteados" ng-model="actualiza.person.PreRegistro.acudiente.priNombre" ng-disabled="edit" placeholder="Costeo Gastos">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">De los siguientes gastos cuales son costeados por recursos propios y cuales por la famila:</label>
+                                                <div class="col-sm-6">
+                                                    <label class="radio-inline col-sm-6"><input type="radio" id="sTrabajaActual" name="sTrabajaActual" ng-model="actualiza.person.PreRegistro.acudiente.trabaja" ng-disabled="edit" value="S">PROPIO</label>
+                                                    <label class="radio-inline col-sm-6"><input type="radio" id="sNoTrabajaActual" name="sTrabajaActual" ng-model="actualiza.person.PreRegistro.acudiente.trabaja" ng-disabled="edit" value="N">FAMILIA</label>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="panel panel-Registro">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">DATOS ICFES</a>
+                                </h4>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <fieldset>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Número de Registro ICFES:</label>
+                                                <div class="col-sm-6">
+                                                    <div class="col-sm-6">
+                                                        <input type="text" id="sNumeroRegistro" name="sNumeroRegistro" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="Número de Registro " >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Fecha Presentación ICFES:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sFechaIcfes" name="sFechaIcfes" ng-model="actualiza.person.PreRegistro.acudiente.fechIcfes" ng-disabled="edit" placeholder="dd/mm/yyyy" >
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </fieldset>
+                                </div>
+
+                                <fieldset>
+                                    <legend>Areas de Conocimineto</legend>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Lenguaje:</label>
+                                            <div class="col-sm-6">
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sNumeroRegistro" name="sNumeroRegistro" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="Número de Registro " >
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Ciencias Solciales:</label>
+                                            <div class="col-sm-6">
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sNumeroRegistro" name="sNumeroRegistro" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="Número de Registro " >
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Biología:</label>
+                                            <div class="col-sm-6">
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sNumeroRegistro" name="sNumeroRegistro" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="Número de Registro " >
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Física:</label>
+                                            <div class="col-sm-6">
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sNumeroRegistro" name="sNumeroRegistro" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="Número de Registro " >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Matemáticas:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sFechaIcfes" name="sFechaIcfes" ng-model="actualiza.person.PreRegistro.acudiente.fechIcfes" ng-disabled="edit" placeholder="dd/mm/yyyy" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Filosofía:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sFechaIcfes" name="sFechaIcfes" ng-model="actualiza.person.PreRegistro.acudiente.fechIcfes" ng-disabled="edit" placeholder="dd/mm/yyyy" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Química:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sFechaIcfes" name="sFechaIcfes" ng-model="actualiza.person.PreRegistro.acudiente.fechIcfes" ng-disabled="edit" placeholder="dd/mm/yyyy" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-5">Promedio Areas de Conocimineto:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="sFechaIcfes" name="sFechaIcfes" ng-model="actualiza.person.PreRegistro.acudiente.fechIcfes" ng-disabled="edit" placeholder="dd/mm/yyyy" >
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </fieldset>
+                            </div>
+                        </div>
+
+
+
+                        <div class="panel panel-Registro">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">DATOS UNIVERSIDADES</a>
+                                </h4>
+                            </div>
+                            <div id="collapse4" class="panel-collapse collapse">
+                                <div class="panel-body">
+
+                                    <fieldset>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Ciudad donde ha vivido la mayor parte de la vida:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <option value="">Seleccione tipo de identificacion</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div class="form-group">
+                                                <label class="col-sm-5">¿Recibio orientación profesional?:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sPrimerNombre" name="sPrimerNombre" ng-model="actualiza.person.PreRegistro.acudiente.priNombre" ng-disabled="edit" placeholder="Primer Nombre">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">¿Está admitido?:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sPrimerApellido" name="sPrimerApellido" ng-model="actualiza.person.PreRegistro.acudiente.priApellido" ng-disabled="edit" placeholder="Primer Apellido"  >
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Explique brevemente la razón por la cual quizo presentarse a iniciar estudios superiores:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <option value="">Seleccione una Ciudad</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <br/>
+                                            <br/>   
+                                            <div class="form-group">
+                                                <label class="col-sm-5">¿Porque medio se entero de la universidad?:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoFijo" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.acudiente.telFij" ng-disabled="edit" placeholder="Teléfono Fijo">
+                                                </div>
+                                            </div>
+                                            <br/>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Ha recibido atención psiquiatrica:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sSegundoNombre" name="sSegundoNombre" ng-model="actualiza.person.PreRegistro.acudiente.segNombre" ng-disabled="edit" placeholder="Segundo Nombre" >
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">¿Le han formulado medicamentos psiquiatricos?:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.depRes" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
+                                                        <option value="">Seleccione un Departamento</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <br/>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Recibió apoyo financiero</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Entidad que ofrece el apoyo:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Nivel de satifaccion de otro tipo de ayuda:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">¿Tiene Acceso a Internet?:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">¿Tiene Computador Portatil?:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Número de aportantes del grupo familiar:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Níumero de hermanos:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Personas a cargo:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <br/>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">¿Mientras realiza los estuidos convivira con?:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">¿Inscripción aprobada?:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">País de residencia de los padres:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Ciudad de residencia de los padres:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Barrio de residencia de los padres:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Breve Autobiografía:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="col-sm-6">
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">¿A que otra Universidad se ha presentado?:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sFechaExpedicion" name="sFechaExpedicion" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="dd/mm/yyyy" >
+                                                </div>
+                                            </div>
+                                            <br/>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Valor pagado por la matricula:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.genero" ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero">
+                                                        <option value="">Seleccione Genero</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Puntaje de Admisión:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                        <option value="">Seleccione su Nacionalidad</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Seleccione un aspecto importante al escoger la carrera:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sNumeroIdentificacion" name="sNumeroIdentificacion" ng-model="actualiza.person.PreRegistro.acudiente.numIden" ng-disabled="edit" placeholder="Número Identifiación" >
+                                                </div>
+                                            </div>
+                                            <br/>  
+                                            <br/>  
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">¿Por cuál medio se informó del programa al que aspira?:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sEmail" name="sTelefonoFijo" ng-model="actualiza.person.PreRegistro.acudiente.email" ng-disabled="edit" placeholder="Email">
+                                                </div>
+                                            </div>
+
+                                            <br/>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Motivo de la consulta:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sSegundoApellido" name="sSegundoApellido" ng-model="actualiza.person.PreRegistro.acudiente.segApellido" ng-disabled="edit" placeholder="Segundo Apellido">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Requiere ayuda académica:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sDireccionResidencia" name="sDireccionResidencia" ng-model="actualiza.person.PreRegistro.acudiente.dirRes" ng-disabled="edit" placeholder="Direccion Residencia">
+                                                </div>
+                                            </div>
+
+                                            <br/>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Recibió otro tipo de apoyo:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Nivel de satisfacción de la ayuda académica:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">¿Tiene Computador?:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">¿Tiene Email?:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Número de personas del grupo familiar:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">¿Tiene deuda la vivienda?:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Lugar que ocupa entre sus Hermanos:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Número de hermanos con titulo de educación superior:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <br/>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Fecha de entrevista:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Familiar egresado de nuestra universidad:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Departamento de residencia de los padres:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Dirección de residencia de los padres:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Teléfono de residencia de los padres:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Razones de su interés por la universidad y la carrera a la cual aspirá:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sTelefonoMovil" name="sTelefonoMovil" ng-model="actualiza.person.PreRegistro.acudiente.telMovil" ng-disabled="edit" placeholder="Teléfono Móvil">
+                                                </div>
+                                            </div>
+
+                                        </div> 
+                                    </fieldset>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="panel panel-Registro">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">DATOS DEL CODEUDOR</a>
+                                </h4>
+                            </div>
+                            <div id="collapse5" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <fieldset>
+                                        <legend>Datos Básicos</legend>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Tipo Identificacion:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <option value="">Seleccione tipo de identificacion</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Nombre Completo:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sFechaExpedicion" name="sFechaExpedicion" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="dd/mm/yyyy" >
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">País de Nacimiento:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sPrimerNombre" name="sPrimerNombre" ng-model="actualiza.person.PreRegistro.acudiente.priNombre" ng-disabled="edit" placeholder="Primer Nombre">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Ciudad de Nacimiento:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sPrimerApellido" name="sPrimerApellido" ng-model="actualiza.person.PreRegistro.acudiente.priApellido" ng-disabled="edit" placeholder="Primer Apellido"  >
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Género:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                        <option value="">Seleccione su Nacionalidad</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Estado:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <option value="">Seleccione una Ciudad</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Número de identificación:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sNumeroIdentificacion" name="sNumeroIdentificacion" ng-model="actualiza.person.PreRegistro.acudiente.numIden" ng-disabled="edit" placeholder="Número Identifiación" >
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Fecha de Nacimiento:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.genero" ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero">
+                                                        <option value="">Seleccione Genero</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Departamento de Nacimiento:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sSegundoNombre" name="sSegundoNombre" ng-model="actualiza.person.PreRegistro.acudiente.segNombre" ng-disabled="edit" placeholder="Segundo Nombre" >
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Fecha de expedición documento:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sSegundoApellido" name="sSegundoApellido" ng-model="actualiza.person.PreRegistro.acudiente.segApellido" ng-disabled="edit" placeholder="Segundo Apellido">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Estado Civil:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.depRes" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
+                                                        <option value="">Seleccione un Departamento</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Parentesco con el estudiante:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sDireccionResidencia" name="sDireccionResidencia" ng-model="actualiza.person.PreRegistro.acudiente.dirRes" ng-disabled="edit" placeholder="Direccion Residencia">
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <legend>Datos de Ubicación y Contacto</legend>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Teléfono fijo:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <option value="">Seleccione tipo de identificacion</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Correo Electronico:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sFechaExpedicion" name="sFechaExpedicion" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="dd/mm/yyyy" >
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Departamento de Residencia:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sPrimerNombre" name="sPrimerNombre" ng-model="actualiza.person.PreRegistro.acudiente.priNombre" ng-disabled="edit" placeholder="Primer Nombre">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Dirección de Residencia:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sPrimerApellido" name="sPrimerApellido" ng-model="actualiza.person.PreRegistro.acudiente.priApellido" ng-disabled="edit" placeholder="Primer Apellido"  >
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Teléfono Móvil:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sNumeroIdentificacion" name="sNumeroIdentificacion" ng-model="actualiza.person.PreRegistro.acudiente.numIden" ng-disabled="edit" placeholder="Número Identifiación" >
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">País de Residencia:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.genero" ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero">
+                                                        <option value="">Seleccione Genero</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Ciudad de Residencia:</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" id="sSegundoNombre" name="sSegundoNombre" ng-model="actualiza.person.PreRegistro.acudiente.segNombre" ng-disabled="edit" placeholder="Segundo Nombre" >
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="panel panel-Registro">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">INFORMACION DE HOMOLOGACIONES</a>
+                                </h4>
+                            </div>
+                            <div id="collapse6" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <fieldset>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Tipo Homologación:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <option value="">Seleccione tipo de Homologación</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Homologación Especial:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <option value="">Seleccione tipo de Homologación</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="panel panel-Registro">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">INFORMACIÓN DE MODALIDAD DE PAGO</a>
+                                </h4>
+                            </div>
+                            <div id="collapse7" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <fieldset>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Forma de Pago:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <option value="">Seleccione una forma de pago</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Créditos Especiales:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <option value="">Seleccione un crédito</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="panel panel-Registro">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">SIMULADOR DE CREDITO</a>
+                                </h4>
+                            </div>
+                            <div id="collapse8" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <fieldset>
+                                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>UNIVERSIDAD</th>
+                                                    <th>PROGRAMA</th>
+                                                    <th>PERIODO ACADEMICO</th>
+                                                    <th>FECHA INICIO</th>
+                                                    <th>FECHA FIN</th>
+                                                    <th>PLAZO</th>
+                                                    <th>ESTADO ESTUDIANTE</th>
+                                                    <th>PERIODO CURSADO</th>
+                                                    <th>PRECIO PROGRAMA</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tfoot>
+                                                <tr>
+                                                    <th>UNIVERSIDAD</th>
+                                                    <th>PROGRAMA</th>
+                                                    <th>PERIODO ACADEMICO</th>
+                                                    <th>FECHA INICIO</th>
+                                                    <th>FECHA FIN</th>
+                                                    <th>PLAZO</th>
+                                                    <th>ESTADO ESTUDIANTE</th>
+                                                    <th>PERIODO CURSADO</th>
+                                                    <th>PRECIO PROGRAMA</th>
+                                                </tr>
+                                            </tfoot>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                            <option value="">Seleccionar Universidad</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                            <option value="">Seleccionar Programa</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>Edinburgh</td>
+                                                    <td>2011/04/25</td>
+                                                    <td>2011/04/25</td>
+                                                    <td>1</td>
+                                                    <td>24</td>
+                                                    <td>1</td>
+                                                    <td>$320,800</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="panel panel-Registro">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse9">DOCUMENTOS DE RESPALDO DEL CREDITO</a>
+                                </h4>
+                            </div>
+                            <div id="collapse9" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <fieldset>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Descargar Garantías:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <option value="">Seleccione tipo de garantía</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                        </div> 
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="panel panel-Registro">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse10">FINALIZACION DE SOLICITUD DEL CREDITO</a>
+                                </h4>
+                            </div>
+                            <div id="collapse10" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <fieldset>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Linea de Crédito:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <option value="">Seleccione una linea de crédito</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-5">Estado Crédito:</label>
+                                                <div class="col-sm-6">
+                                                    <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <option value="">Seleccione un estado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div> 
+                </div>
+            </section>
+            <section id="prefooter" class="section" ng-include="'PreFooter.html'"></section>
+            <footer id="footer" class="section" data-spacing="none" ng-include="'Footer.html'"></footer>
+        </div>
+        <!--<script src="../js/layout.js"></script>-->
+    </body>
+</html>
