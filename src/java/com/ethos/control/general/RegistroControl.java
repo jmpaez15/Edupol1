@@ -5,11 +5,18 @@
  */
 package com.ethos.control.general;
 
+import com.ethos.DAO.AbstractDAO;
+import com.ethos.DAO.EstudiantesDAO;
 import com.ethos.business.general.FuncionesGenerales;
 import com.ethos.model.ListasGeneralesModel;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import static java.util.Collections.list;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,9 +28,10 @@ import javax.servlet.http.HttpSession;
  * @author Operaciones-GerenteC
  */
 public class RegistroControl extends HttpServlet {
-    
+
     private FuncionesGenerales funcionesGenerales;
     private ListasGeneralesModel listasGenerales;
+    AbstractDAO estudianteDAO;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,7 +50,7 @@ public class RegistroControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegistroControl</title>");            
+            out.println("<title>Servlet RegistroControl</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet RegistroControl at " + request.getContextPath() + "</h1>");
@@ -63,22 +71,21 @@ public class RegistroControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession sesion=request.getSession();
-        String json="";
+        HttpSession sesion = request.getSession();
+        String json = "";
         funcionesGenerales = new FuncionesGenerales();
+        estudianteDAO = new EstudiantesDAO();
         try {
-            if(!sesion.getAttribute("codUser").equals(null)){
-                listasGenerales=funcionesGenerales.obtenerDatosActualizar();
-                json = new Gson().toJson(listasGenerales);
-            }
-        
-        }catch (Exception e) {
-                System.out.println("Exception in Registro "+e);
+            //  if(!sesion.getAttribute("codUser").equals(null)){
+            json = new Gson().toJson(estudianteDAO.queryAll(null));
+          // }
+
+        } catch (Exception e) {
+            System.out.println("Exception in Registro " + e);
         }
         response.setContentType("application/json;charset=Utf-8");
         response.getWriter().write(json);
-        }
-    
+    }
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -91,7 +98,21 @@ public class RegistroControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String json = "";
+        FuncionesGenerales funcion = new FuncionesGenerales();
+        estudianteDAO = new EstudiantesDAO();
+        try {
+            BufferedReader reader = request.getReader();
+            JsonObject dataJson = funcion.recibirDatos(reader);
+            List<Object>listObjects=new ArrayList<>();
+            listObjects.add(dataJson.get("").getAsString());
+            json = new Gson().toJson(estudianteDAO.queryAll(listObjects));
+
+        } catch (Exception e) {
+            System.err.println("Exception :" + e);
+        }
+        response.setContentType("application/json;charset=Utf-8");
+        response.getWriter().write(json);
     }
 
     /**

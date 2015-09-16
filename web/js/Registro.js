@@ -11,9 +11,7 @@ function getDataFromServer($http) {
         url: "../RegistroControl",
         headers: {'Content-Type': 'application/json'}
     }).success(function (data, status, headers, config) {
-        actualiza.person = data;
-        
-
+    actualiza.person = data;
     }).error(function (data, status, headers, config) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
@@ -22,5 +20,28 @@ function getDataFromServer($http) {
     $(document).ready(function () {
         $('#example').DataTable();
     });
+
+    actualiza.filtro = function () {
+        
+            actualiza.datos = actualiza.person;
+            alert("Por favor espere un momento");
+            $http({
+                method: 'POST',
+                url: "../RegistroControl",
+                headers: {'Content-Type': 'application/json;charset=Utf-8'},
+                data: actualiza.datos
+            }).success(function (data, status, headers, config) {
+               actualiza.person = data;
+            }).error(function (data, status, headers, config) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
+
+       
+
+
+    };
+
+
 
 };

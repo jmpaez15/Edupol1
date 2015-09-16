@@ -233,7 +233,7 @@ public class PersonasDAO extends AbstractDAO<PersonaModel> {
 
     @Override
     public List<Object> queryAll(List<Object> parameters) {
-
+        
         return null;
     }
     

@@ -1345,13 +1345,13 @@ legend + .control-group {
 }
 table {
     max-width: 100%;
-    background-color: transparent;
+    background-color: rgba(12, 12, 12, 0.98);
     border-collapse: collapse;
-    border-spacing: 0;
+    border-spacing: 0px;
 }
 .table {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 51px;
 }
 .table th,
 .table td {
@@ -1359,7 +1359,7 @@ table {
     line-height: 20px;
     text-align: left;
     vertical-align: top;
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid #131212;
 }
 .table th {
     font-weight: bold;
@@ -1387,8 +1387,7 @@ table {
 }
 .table-bordered {
     border: 1px solid #dddddd;
-    border-collapse: separate;
-    *border-collapse: collapse;
+    border-collapse: collapse;
     border-left: 0;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
