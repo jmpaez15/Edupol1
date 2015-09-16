@@ -105,7 +105,7 @@ public class RegistroControl extends HttpServlet {
             BufferedReader reader = request.getReader();
             JsonObject dataJson = funcion.recibirDatos(reader);
             List<Object>listObjects=new ArrayList<>();
-            listObjects.add(dataJson.get("").getAsString());
+            listObjects.add(dataJson.get("cedula").getAsInt());
             json = new Gson().toJson(estudianteDAO.queryAll(listObjects));
 
         } catch (Exception e) {

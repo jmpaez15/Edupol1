@@ -23,7 +23,7 @@ function getDataFromServer($http) {
 
     actualiza.filtro = function () {
         
-            actualiza.datos = actualiza.person;
+            actualiza.datos = actualiza.person.filtro;
             alert("Por favor espere un momento");
             $http({
                 method: 'POST',
