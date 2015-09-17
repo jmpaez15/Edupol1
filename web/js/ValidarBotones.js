@@ -92,7 +92,7 @@ $(function() {
         }
         else {
             $("#sCualCredito1").hide();
-            
+            $("#sCualCredito").hide();
         }
 
     });

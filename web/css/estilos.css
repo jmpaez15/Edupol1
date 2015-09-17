@@ -9,16 +9,6 @@
     padding: 6px 12px;
     position: absolute;
 }
-message{
-  background-color: #BC1010;
-    border-radius: 4px 4px 4px 4px;
-    color: white;
-    font-weight: bold;
-    margin-left: 16px;
-    margin-top: 6px;
-    padding: 6px 12px;
-    position: absolute;  
-}
 .error:before{
     border-color: transparent #BC1010 transparent transparent;
     border-style: solid;
@@ -55,11 +45,25 @@ message{
 
 .contact_form input, .contact_form textarea,.contact_form select {
     padding-right:30px;
+    text-transform: uppercase;
     
 }
 
-div#required  {
-    background: #fff url(../images/red_asterisk.png) no-repeat 8% center ;
-}
-
-
+.Encabezado{
+    background: #fff url(../images/encabezado.png)  ;
+    width: 296px;
+    height: 35px;
+    color: white;
+    text-align: -webkit-left;
+    border-top-left-radius: -192px;
+    border-top-right-radius: -130px; 
+    border-bottom-right-radius: 625px;
+    border-style: outset;
+    border-color: #2980b9;
+    padding-top: 8px;
+    padding-bottom: -2px;
+    text-transform: uppercase;
+ }
+ .DatosAlum,.DatosAcud,.DatAcade{
+     text-transform: uppercase;
+ }

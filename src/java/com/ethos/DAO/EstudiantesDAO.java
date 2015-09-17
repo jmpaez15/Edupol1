@@ -4,6 +4,7 @@ package com.ethos.DAO;
 import com.ethos.model.EstudianteModel;
 import com.ethos.query.EstudiantesQuery;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
@@ -98,7 +99,39 @@ public class EstudiantesDAO extends AbstractDAO<EstudianteModel>{
 
     @Override
     public List<Object> queryAll(List<Object> parameters) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String query;
+        List<Object> Estudiantes= new ArrayList<>();
+        List<Object> objectEstudiante;
+        
+        try {
+            conn=getConnectionDB().getConnection();
+            if(parameters!=null){
+               query=EstudiantesQuery.QUERY_FILTRAR_ESTUDIANTES;
+               psQuery=conn.prepareStatement(query);
+               psQuery.setInt(1,(int)parameters.get(0));
+               rsT=psQuery.executeQuery();
+            }else{
+            
+            query=EstudiantesQuery.QUERY_LISTAR_ESTUDIANTES_PREREGISTRO;
+            psQuery=conn.prepareStatement(query);
+            rsT=psQuery.executeQuery();
+            }
+            while (rsT.next()) {
+                objectEstudiante=new ArrayList<>();
+                objectEstudiante.add(rsT.getInt(1));
+                objectEstudiante.add(rsT.getString(2));
+                objectEstudiante.add(rsT.getString(3));
+                objectEstudiante.add(rsT.getString(4));
+                objectEstudiante.add(rsT.getString(5));
+            Estudiantes.add(objectEstudiante);
+            }
+        } catch (SQLException ex) {
+            System.out.println("SqlException: "+ex);
+        }finally{
+            closeConnection();
+        }
+        
+    return Estudiantes;    
     }
 
     @Override

@@ -13,18 +13,20 @@ function getDataFromServer($http) {
         // or server returns response with an error status.
     });
 
-    $(document).ready(function () {
-        $('#example').DataTable();
-    });
+    actualiza.esMenor = false;
+    actualiza.obtenerEdad = function () {
+        var edad = calcular();
+        var mayorEdad = (edad >= 18) ? true : false;
+        actualiza.esMenor = mayorEdad;
+    };
 
     actualiza.save = function () {
         var edad = calcular();
         var mayorEdad = (edad >= 18) ? true : false;
-
         var validacion = actualiza.validaCampos();
         if (validacion) {
 
-            if (!document.getElementById("sFechaExpedicionAcu").value == "") {
+            if (!mayorEdad) {
                 actualiza.person.PreRegistro.acudiente.fechExp = document.getElementById("sFechaExpedicionAcu").value;
             }
             actualiza.person.PreRegistro.estudiante.fechaExp = document.getElementById("sFechaExpedicionEst").value;
@@ -203,8 +205,6 @@ function getDataFromServer($http) {
         var mayorEdad = (edad >= 18) ? true : false;
         var emailreg = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-
-
         $(".error").fadeOut().remove();
 
         var pass = document.getElementById("sContraseña").value;
@@ -226,7 +226,6 @@ function getDataFromServer($http) {
             $('#princi').trigger('click');
             return false;
         }
-
 
         if ($("#Nacionalidad").val() == "") {
             //$("#Nacionalidad").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -318,19 +317,12 @@ function getDataFromServer($http) {
 
         }
 
-
-
-
         if ($("#sPrimerNombre").val() == "") {
             //  $("#sPrimerNombre").focus().after('<span class="error">Campo Obligatorio</span>');
             $('#princi').trigger('click');
             return false;
 
         }
-
-
-
-
 
         if ($("#sPrimerApellido").val() == "") {
             //  $("#sPrimerApellido").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -346,16 +338,11 @@ function getDataFromServer($http) {
 
         }
 
-
-
-
         if ($("#Genero").val() == "") {
             //  $("#Genero").focus().after('<span class="error">Campo Obligatorio</span>');   
             $('#princi').trigger('click');
             return false;
         }
-
-
 
         if ($("#CategoriaSisben").val() == "") {
             //  $("#CategoriaSisben").focus().after('<span class="error">Campo Obligatorio</span>');  
@@ -363,15 +350,11 @@ function getDataFromServer($http) {
             return false;
         }
 
-
-
         if ($("#paisRes").val() == "") {
             //   $("#paisRes").focus().after('<span class="error">Campo Obligatorio</span>');   
             $('#princi').trigger('click');
             return false;
         }
-
-
 
         if ($("#DepartamentoRes").val() == "") {
             //  $("#DepartamentoRes").focus().after('<span class="error">Campo Obligatorio</span>');   
@@ -379,59 +362,40 @@ function getDataFromServer($http) {
             return false;
         }
 
-
-
-
-
         if ($("#CiudadRes").val() == "") {
             //   $("#CiudadRes").focus().after('<span class="error">Campo Obligatorio</span>'); 
             $('#princi').trigger('click');
             return false;
         }
 
-
-
-
         if ($("#sDireccionResidencia").val() == "") {
             //  $("#sDireccionResidencia").focus().after('<span class="error">Campo Obligatorio</span>');
             $('#princi').trigger('click');
             return false;
-
         }
-
 
         if ($("#EstadoCivil").val() == "") {
             //  $("#EstadoCivil").focus().after('<span class="error">Campo Obligatorio</span>');
             $('#princi').trigger('click');
             return false;
-
         }
-
-
-
 
         if ($("#sTelefonoFijo").val() == "") {
             //   $("#sTelefonoFijo").focus().after('<span class="error">Campo Obligatorio</span>');
             $('#princi').trigger('click');
             return false;
-
         }
-
-
-
 
         if ($("#sTelefonoMovil").val() == "") {
             //   $("#sTelefonoMovil").focus().after('<span class="error">Campo Obligatorio</span>');
             $('#princi').trigger('click');
             return false;
-
         }
 
         if ($("#sTelefonoMovil").val().length > 15) {
             //   $("#sTelefonoMovil").focus().after('<span class="error">Excede el Tamaño</span>');
             $('#princi').trigger('click');
             return false;
-
         }
 
 
@@ -439,20 +403,13 @@ function getDataFromServer($http) {
             //  $("#sEmail").focus().after('<span class="error">Campo Obligatorio</span>');
             $('#princi').trigger('click');
             return false;
-
         }
-
-
-
-
 
         if ($("#GrupoSanguineo").val() == "") {
             //  $("#GrupoSanguineo").focus().after('<span class="error">Campo Obligatorio</span>');   
             $('#princi').trigger('click');
             return false;
-
         }
-
 
         if (!mayorEdad) {
             if ($("#TipoIdAcu").val() == "") {
@@ -490,6 +447,7 @@ function getDataFromServer($http) {
                 $('#ValidEstu').trigger('click');
                 return false;
             }
+
             if ($("#sSegundoApellidoA").val() == "") {
                 // $("#sSegundoApellidoA").focus().after('<span class="error">Campo Obligatorio</span>');
                 $('#ValidEstu').trigger('click');
@@ -507,8 +465,6 @@ function getDataFromServer($http) {
                 $('#ValidEstu').trigger('click');
                 return false;
             }
-
-
 
             if ($("#CiudadA").val() == "") {
                 //$("#CiudadA").focus().after('<span class="error">Campo Obligatorio</span>'); 
@@ -540,13 +496,12 @@ function getDataFromServer($http) {
                 $('#ValidEstu').trigger('click');
                 return false;
             }
+
             if (!emailreg.test($("#sEmailA").val())) {
                 //  $("#sEmailA").focus().after('<span class="error">Utiliza un formato que coincida con el solicitado</span>');
                 $('#ValidEstu').trigger('click');
                 return false;
             }
-
-
 
             if (!$("input[name='sTrabajaActual']").is(':checked')) {
                 // $("#sTrabajaActual").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -579,8 +534,6 @@ function getDataFromServer($http) {
                 $('#ValidEstu').trigger('click');
                 return false;
             }
-
-
 
             if ($("#sOcupacion").val() == "") {
                 //   $("#sOcupacion").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -615,8 +568,7 @@ function getDataFromServer($http) {
 
             }
 
-
-            if ($("input[name='sOtrosIngresos']:checked").val()=="S" &&  $("sPensioSalario").val()=="") {
+            if ($("input[name='sOtrosIngresos']:checked").val() == "S" && $("sPensioSalario").val() == "") {
                 //  $("#sIngresoPension").focus().after('<span class="error">Campo Obligatorio</span>');
                 $('#ValidEstu').trigger('click');
                 return false;
@@ -644,16 +596,11 @@ function getDataFromServer($http) {
 
             }
 
-
             if ($("#sObligacionesFinan").val() == "") {
                 //   $("#sObligacionesFinan").focus().after('<span class="error">Campo Obligatorio</span>');
                 $('#ValidEstu').trigger('click');
                 return false;
             }
-
-
-
-
 
             if ($("#ConocimientoEdupol").val() == "") {
                 // $("#ConocimientoEdupol").focus().after('<span class="error">Campo Obligatorio</span>');  
@@ -663,16 +610,6 @@ function getDataFromServer($http) {
 
 
         }
-
-
-
-
-
-
-
-
-
-
 
         if ($("#PaisEStudiar").val() == "") {
             //  $("#PaisEStudiar").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -696,9 +633,6 @@ function getDataFromServer($http) {
             return false;
         }
 
-
-
-
         if ($("#Universidad").val() == "") {
             //  $("#Universidad").focus().after('<span class="error">Campo Obligatorio</span>');
             $('#ValidAcu').trigger('click');
@@ -711,21 +645,18 @@ function getDataFromServer($http) {
             return false;
         }
 
-
         if ($("#TipoEStudio").val() == "") {
             //   $("#TipoEStudio").focus().after('<span class="error">Campo Obligatorio</span>');
             $('#ValidAcu').trigger('click');
             return false;
         }
 
-
-
-
         if ($("#GrupoProgramaAcademico").val() == "") {
             //  $("#GrupoProgramaAcademico").focus().after('<span class="error">Campo Obligatorio</span>');
             $('#ValidAcu').trigger('click');
             return false;
         }
+
         if ($("#ProgramaAcademico").val() == "") {
             //  $("#ProgramaAcademico").focus().after('<span class="error">Campo Obligatorio</span>');
             $('#ValidAcu').trigger('click');
@@ -738,14 +669,11 @@ function getDataFromServer($http) {
             return false;
         }
 
-
         if ($("#sContraseña").val() == "") {
             //  $("#sContraseña").focus().after('<span class="error">Campo Obligatorio</span>');
             $('#ValidAcu').trigger('click');
             return false;
         }
-
-
 
         if ($("#sconfContraseña").val() == "") {
             // $("#sconfContraseña").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -753,25 +681,11 @@ function getDataFromServer($http) {
             return false;
         }
 
-
-
-
-
-
-
-
-
-
         if ($("#ConocimientoEdupol").val() == "") {
             //  $("#ConocimientoEdupol").focus().after('<span class="error">Campo Obligatorio</span>');
             $('#ValidAcu').trigger('click');
             return false;
         }
-
-
-
-
-
 
         /*if ($("#sNumeroLibretaMilitar").val() == "") {
          $("#sNumeroLibretaMilitar").focus().after('<span class="error">Campo Obligatorio</span>');
@@ -779,32 +693,91 @@ function getDataFromServer($http) {
          
          }*/
 
-
-
         /*if ($("#sSegundoNombre").val() == "") {
          $("#sSegundoNombre").focus().after('<span class="error">Campo Obligatorio</span>');
          return false;
          
          }*/
 
-
         /* if ($("#sSegundoNombreA").val() == "") {
          $("#sSegundoNombreA").focus().after('<span class="error">Campo Obligatorio</span>');
          return false;
          }*/
-
-
-
-
-
-
         return true;
-
     };
 
+    actualiza.validaBotones = function () {
 
 
+        $(".calendario").datepicker({dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true, yearRange: '-60:+30'});
 
+        $("#sCualVehiculo1").hide();
+        $("#sCuantoSalario1").hide();
+        $("#sPensioSalario1").hide();
+        $("#sOtroIngresoCu1").hide();
+        $("#sCuantoIngreso1").hide();
+        $("#sCualTargeta1").hide();
+        $("#sCualCredito1").hide();
+        // $("#ValidAcu").hide();
 
+        $("input[name='sVehiculo']").click(function () {
+            if ($("input[name='sVehiculo']:checked").val() == "S") {
+                $("#sCualVehiculo1").show();
+            }
+            else {
+                $("#sCualVehiculo1").hide();
+            }
+        });
+
+        $("input[name='sIngresoArrendamiento']").click(function () {
+            if ($("input[name='sIngresoArrendamiento']:checked").val() == "S") {
+                $("#sCuantoSalario1").show();
+            }
+            else {
+                $("#sCuantoSalario1").hide();
+            }
+        });
+
+        $("input[name='sIngresoPension']").click(function () {
+            if ($("input[name='sIngresoPension']:checked").val() == "S") {
+                $("#sPensioSalario1").show();
+                $("#sPensioSalario").validate();
+            }
+            else {
+                $("#sPensioSalario1").hide();
+            }
+        });
+
+        $("input[name='sOtrosIngresos']").click(function () {
+            if ($("input[name='sOtrosIngresos']:checked").val() == "S") {
+                $("#sOtroIngresoCu1").show();
+                $("#sCuantoIngreso1").show();
+            }
+            else {
+                $("#sOtroIngresoCu1").hide();
+                $("#sCuantoIngreso1").hide();
+            }
+        });
+
+        $("input[name='sTargetaCredito']").click(function () {
+            if ($("input[name='sTargetaCredito']:checked").val() == "S") {
+                $("#sCualTargeta1").show();
+            }
+            else {
+                $("#sCualTargeta1").hide();
+            }
+        });
+
+        $("input[name='sCreditoActual']").click(function () {
+            if ($("input[name='sCreditoActual']:checked").val() == "S") {
+                $("#sCualCredito1").show();
+            }
+            else {
+                $("#sCualCredito1").hide();
+                $("#sCualCredito").hide();
+            }
+        });
+
+    };
 }
 ;
