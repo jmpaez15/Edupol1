@@ -13,6 +13,10 @@ function getDataFromServer($http) {
         // or server returns response with an error status.
     });
 
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+
     actualiza.esMenor = false;
     actualiza.obtenerEdad = function () {
         var edad = calcular();
