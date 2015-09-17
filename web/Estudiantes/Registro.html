@@ -65,8 +65,8 @@
 
             <section id="includeLayout" class="section">
                 <div class="container">
-                    <div id="formInclude" data-ng-controller="RegistroController as actualiza">
-                        <form class="form-horizontal" ng-class="" name="myForm" data-ng-init="getDataFromServer()"  >
+                    <div id="formInclude" >
+                        <form class="form-horizontal" ng-class="" name="myForm"  >
                             <div class="panel-group" id="accordion"> 
                                 <div class="panel panel-Registro">
                                     <div class="panel-heading">
@@ -74,23 +74,39 @@
                                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">ESTUDIANTES INSCRITOS</a>
                                         </h4>
                                     </div>
-                                    <div id="collapse1" class="panel-collapse collapse in">
+                                    <div id="collapse1" class="panel-collapse collapse in" data-ng-controller="RegistroController as registro"  data-ng-init="getDataFromServer()"  >
                                         <div class="panel-body">
                                             <fieldset>
                                                 <div> 
+                                                    
+                                                    
+                                                   
                                                   <div>
+                                                      
+                                                        <label class="col-sm-2">Filtro:</label>
+                                                        <div class="col-sm-9">
+                                                        <select ng-model="registro.person.filtro.tipFiltro" convert-to-number>
+                                                            <option value="">Seleccione un Filtro</option>
+                                                            <option value="1">Cedula</option>
+                                                            <option value="2">todos</option>
+                                                        </select>
+                                                    </div>
+                                                        <br/>
+                                                        <br/>
+                                                        <br/>
+                                                        
                                                     <label class="col-sm-2">Numero de Cedula:</label>
-                                                    <div class="col-sm-5">  
-                                                        <input type="text" id="filtroCedula" name="filtroCedula" ng-model="actualiza.person.filtro.cedula" ng-disabled="edit" placeholder="Filtro de Búsqueda " convert-to-number>
-                                                    </div>   
                                                     <div class="col-sm-3">  
-                                                        <button type="submit" id="enviar" class="btn btn-success " ng-click="actualiza.filtro()" >
-                                                            Registrar Datos
+                                                        <input type="text" id="filtroCedula" name="filtroCedula" ng-model="registro.person.filtro.cedula" ng-disabled="edit" placeholder="Filtro de Búsqueda " convert-to-number>
+                                                    </div>   
+                                                    <div class="col-sm-1">  
+                                                        <button type="submit" id="enviar" class="btn btn-success " ng-click="registro.filtro()" >
+                                                           Consultar
                                                         </button>
                                                     </div>
                                                   </div>
-                                                  
-                                                  <table class="table table-striped">
+                                                  <br/>
+                                                   <table class="table table-striped">
                                                         <thead class="table-bordered">
                                                             <tr>
                                                                 <th>Cedula</th>
@@ -101,12 +117,12 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody> 
-                                                            <tr ng-repeat="person in actualiza.person">
+                                                            <tr ng-repeat="person in registro.person">
                                                                 <td ng-repeat="(key, val) in person">{{val}}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                    <a href="" class="btn btn-primary btn-xs" ng-click="book.$edit = false; save(book)">Guardar</a>
+                                                    <a class="btn btn-primary btn-xs"></a>
                                                 </div>
                                             </fieldset>
                                         </div>

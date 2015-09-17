@@ -7,6 +7,7 @@ package com.ethos.control.general;
 
 import com.ethos.DAO.AbstractDAO;
 import com.ethos.DAO.EstudiantesDAO;
+import com.ethos.business.general.ActualizarDatos;
 import com.ethos.business.general.FuncionesGenerales;
 import com.ethos.model.ListasGeneralesModel;
 import com.google.gson.Gson;
@@ -99,14 +100,13 @@ public class RegistroControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String json = "";
-        FuncionesGenerales funcion = new FuncionesGenerales();
-        estudianteDAO = new EstudiantesDAO();
+        funcionesGenerales = new FuncionesGenerales();
+        ActualizarDatos actualizarDatos = new ActualizarDatos();
+        
         try {
             BufferedReader reader = request.getReader();
-            JsonObject dataJson = funcion.recibirDatos(reader);
-            List<Object>listObjects=new ArrayList<>();
-            listObjects.add(dataJson.get("cedula").getAsInt());
-            json = new Gson().toJson(estudianteDAO.queryAll(listObjects));
+            JsonObject dataJson = funcionesGenerales.recibirDatos(reader);
+            json = new Gson().toJson(actualizarDatos.filtroEstudiantes(dataJson));
 
         } catch (Exception e) {
             System.err.println("Exception :" + e);

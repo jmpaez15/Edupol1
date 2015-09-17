@@ -5,13 +5,13 @@
  */
 appEdupol.controller('RegistroController', ['$http', getDataFromServer]);
 function getDataFromServer($http) {
-    var actualiza = this;
+    var registro = this;
     $http({
         method: 'GET',
         url: "../RegistroControl",
         headers: {'Content-Type': 'application/json'}
     }).success(function (data, status, headers, config) {
-    actualiza.person = data;
+    registro.person = data;
     }).error(function (data, status, headers, config) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
@@ -21,17 +21,23 @@ function getDataFromServer($http) {
         $('#example').DataTable();
     });
 
-    actualiza.filtro = function () {
+    registro.filtro = function () {
         
-            actualiza.datos = actualiza.person.filtro;
+            registro.datos = registro.person.filtro;
             alert("Por favor espere un momento");
             $http({
                 method: 'POST',
                 url: "../RegistroControl",
                 headers: {'Content-Type': 'application/json;charset=Utf-8'},
-                data: actualiza.datos
+                data: registro.datos
             }).success(function (data, status, headers, config) {
-               actualiza.person = data;
+               if(data.length>0){
+                   
+                   registro.person = data;  
+               }else{
+                  alert("El aspirante no existe");
+               }  
+           
             }).error(function (data, status, headers, config) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.

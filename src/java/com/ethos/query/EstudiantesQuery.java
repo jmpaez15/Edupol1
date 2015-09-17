@@ -34,11 +34,6 @@ public class EstudiantesQuery {
        " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
     public static final String QUERY_LISTAR_ESTUDIANTES_PREREGISTRO="select p.C_IDENTIFICACION,p.c_nombres,p.C_APELLIDOS,u.C_DESCRIPCION,e.FECHA_INSCRIPCION from personas p  inner join REGISTRO_ESTUDIANTE e on p.I_CODIGO=e.ID_ESTUDIANTE inner join UNIVERSIDAD_PROGRAMA u_p on e.ID_UNIVERSIDAD_PROGRAMA=u_p.ID_COD_UNI_PRO inner join UNIVERSIDAD u on u_p.I_COD_UNIV=u.I_COD_UNIV";
-    public static final String QUERY_FILTRAR_ESTUDIANTES="select p.C_IDENTIFICACION,p.c_nombres,p.C_APELLIDOS,u.C_DESCRIPCION,e.FECHA_INSCRIPCION"
-            +"from personas p"
-            +"inner join REGISTRO_ESTUDIANTE e on p.I_CODIGO=e.ID_ESTUDIANTE "
-            +"inner join UNIVERSIDAD_PROGRAMA u_p on e.ID_UNIVERSIDAD_PROGRAMA=u_p.ID_COD_UNI_PRO"
-            +"inner join UNIVERSIDAD u on u_p.I_COD_UNIV=u.I_COD_UNIV"
-            + "where p.C_IDENTIFICACION=?";
+    public static final String QUERY_FILTRAR_ESTUDIANTES="select p.C_IDENTIFICACION,p.c_nombres,p.C_APELLIDOS,u.C_DESCRIPCION,e.FECHA_INSCRIPCION from personas p  inner join REGISTRO_ESTUDIANTE e on p.I_CODIGO=e.ID_ESTUDIANTE inner join UNIVERSIDAD_PROGRAMA u_p on e.ID_UNIVERSIDAD_PROGRAMA=u_p.ID_COD_UNI_PRO inner join UNIVERSIDAD u on u_p.I_COD_UNIV=u.I_COD_UNIV where p.C_IDENTIFICACION like '%?%'";
     
 }
