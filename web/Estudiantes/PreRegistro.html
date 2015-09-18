@@ -101,7 +101,15 @@
                                                     </div>
                                                     <img alt="imgObligatorio" src="../images/red_asterisk.png">
                                                 </div>
+                                                
+                                                  <div class="form-group">
+                                                    <label class="col-sm-5">Fecha Nacimiento:</label>
+                                                    <div class="col-sm-6">
+                                                        <input  type="text" class="calendario" id="sFechaNacimiento" name="sFechaNacimiento" data-ng-model="actualiza.person.PreRegistro.estudiante.FechaNac" data-ng-disabled="edit" placeholder="dd/mm/yyyy" required>
 
+                                                    </div> 
+                                                    <img alt="imgObligatorio" src="../images/red_asterisk.png">
+                                                </div>
                                                 <!-- <div class="form-group">
                                                      <label class="col-sm-5">Lugar de Nacimiento:</label>
                                                      <div class="col-sm-6" >
@@ -148,15 +156,7 @@
                                                     <img alt="imgObligatorio" src="../images/red_asterisk.png">
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Género:</label>
-                                                    <div class="col-sm-6">
-                                                        <select id="Genero" name="Genero" class="DatosAlum" data-ng-model="actualiza.person.PreRegistro.estudiante.genero" data-ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero" required>
-                                                            <option value="">Seleccione Género</option>
-                                                        </select>
-                                                    </div>
-                                                    <img alt="imgObligatorio" src="../images/red_asterisk.png">
-                                                </div>
+                                               
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Categoría Sisben:</label>
                                                     <div class="col-sm-6">
@@ -190,12 +190,13 @@
                                                     <img alt="imgObligatorio" src="../images/red_asterisk.png">
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-sm-5">Fecha Nacimiento:</label>
+                                               <div class="form-group">
+                                                    <label class="col-sm-5">Género:</label>
                                                     <div class="col-sm-6">
-                                                        <input  type="text" class="calendario" id="sFechaNacimiento" name="sFechaNacimiento" data-ng-model="actualiza.person.PreRegistro.estudiante.FechaNac" data-ng-disabled="edit" placeholder="dd/mm/yyyy" required>
-
-                                                    </div> 
+                                                        <select id="Genero" name="Genero" class="DatosAlum" data-ng-model="actualiza.person.PreRegistro.estudiante.genero" data-ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero" required>
+                                                            <option value="">Seleccione Género</option>
+                                                        </select>
+                                                    </div>
                                                     <img alt="imgObligatorio" src="../images/red_asterisk.png">
                                                 </div>
 
@@ -271,7 +272,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Libreta Militar:</label>
                                                     <div class="col-sm-6">
-                                                        <input class="DatosAlum" type="text" id="sNumeroLibretaMilitar" name="sNumeroLibretaMilitar" data-ng-model="actualiza.person.PreRegistro.estudiante.LibretaMilitar" data-ng-disabled="edit" placeholder="Ingrese libreta Tarjeta" onkeypress="return isNumberKey(event)" maxlength="15" >
+                                                        <input class="DatosAlum" type="text" id="sNumeroLibretaMilitar" name="sNumeroLibretaMilitar" data-ng-model="actualiza.person.PreRegistro.estudiante.LibretaMilitar" data-ng-disabled="edit" placeholder="Numero libreta Militar" onkeypress="return isNumberKey(event)" maxlength="15" >
                                                     </div>
                                                 </div>
 

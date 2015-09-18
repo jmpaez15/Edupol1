@@ -44,7 +44,7 @@
                     $("#divdatosSocioEconomicos").hide();
                     $("#divDatosIcfes").hide();
                     $("#divDatosUniversidad").hide();
-                    $("#divDatosCodeudor").hide();
+                  //  $("#divDatosCodeudor").hide();
                     $("#disDatosHomologacion").hide();
                     $("#divDatosPagos").hide();
                     $("#divSimulador").hide();
@@ -152,7 +152,7 @@
                     <div class="panel-group" id="accordion"> 
                         
                         
-                        <div class="panel panel-Registro">
+                        <div id="divFiltroEstudiantes" class="panel panel-Registro">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a  id="linkFiltroEstudiantes" data-toggle="collapse" data-parent="#accordion" href="#FiltroEstudiantes">ESTUDIANTES INSCRITOS</a>
@@ -224,7 +224,7 @@
                                     <a  id="linkEstudiante" data-toggle="collapse" data-parent="#accordion" href="#datosComplementarios">DATOS COMPLEMENTARIOS DEL ESTUDIANTE</a>
                                 </h4>
                             </div>
-                            <div id="datosComplementarios" class="panel-collapse collapse in" ng-controller="DatosComplementariosController as registro">
+                            <div id="datosComplementarios" class="panel-collapse collapse" ng-controller="DatosComplementariosController as registro">
                                 <form name="formulario1" id="formulario1">
 
                                     <div class="panel-body">

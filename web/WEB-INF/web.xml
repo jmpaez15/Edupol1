@@ -44,6 +44,10 @@
         <servlet-name>RegistroControl</servlet-name>
         <servlet-class>com.ethos.control.general.RegistroControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistroDatosCodeudor</servlet-name>
+        <servlet-class>com.ethos.control.general.RegistroDatosCodeudorControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginControl</servlet-name>
         <url-pattern>/LoginControl</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>RegistroControl</servlet-name>
         <url-pattern>/RegistroControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroDatosCodeudor</servlet-name>
+        <url-pattern>/RegistroDatosCodeudor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

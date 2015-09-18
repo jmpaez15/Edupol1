@@ -6,12 +6,20 @@
 appEdupol.controller('RegistroController', ['$http', getDataFromServer]);
 function getDataFromServer($http) {
     var registro = this;
+    var estudiante;
     $http({
         method: 'GET',
         url: "../RegistroControl",
         headers: {'Content-Type': 'application/json'}
     }).success(function (data, status, headers, config) {
-        registro.person = data;
+        registro.rol = data;
+        if(registro.rol=="acudiente"){
+           $("#divDatosComplementariosEstudian").hide(); 
+         }else{
+           estudiante=registro.rol;
+           $("#divFiltroEstudiantes").hide();
+           $("#datosComplementarios").addClass("panel-collapse collapse in");
+           }
     }).error(function (data, status, headers, config) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
@@ -45,10 +53,12 @@ function getDataFromServer($http) {
     };
 
     registro.guardarFiltro = function (estudiante) {
-        var estudiante = estudiante;
+        estudiante = estudiante;
         if (estudiante) {
             $("#FiltroEstudiantes").collapse();
             $("#datosComplementarios").collapse();
+            $("#divDatosComplementariosEstudian").show();
+            
         }
     };
 }
