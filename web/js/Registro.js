@@ -5,34 +5,61 @@
  */
 appEdupol.controller('RegistroController', ['$http', getDataFromServer]);
 function getDataFromServer($http) {
-
-    var actualiza = this;
+    var registro = this;
+    var estudiante;
     $http({
         method: 'GET',
         url: "../RegistroControl",
         headers: {'Content-Type': 'application/json'}
     }).success(function (data, status, headers, config) {
-        actualiza.person = data;
+        registro.rol = data;
+        if (registro.rol == "acudiente") {
+            $("#divDatosComplementariosEstudian").hide();
+        } else {
+            estudiante = registro.rol;
+            $("#divFiltroEstudiantes").hide();
+            $("#datosComplementarios").addClass("panel-collapse collapse in");
+        }
     }).error(function (data, status, headers, config) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
     });
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
 
-    actualiza.filtro = function () {
+    registro.filtro = function () {
+        if ($("#tipFiltro").val() != "") {
+            if ($("#filtroCedula").val() != "") {
+                registro.datos = registro.estudiante.filtro;
+                alert("Por favor espere un momento");
+                $http({
+                    method: 'POST',
+                    url: "../RegistroControl",
+                    headers: {'Content-Type': 'application/json;charset=Utf-8'},
+                    data: registro.datos
+                }).success(function (data, status, headers, config) {
+                    if (data.length > 0) {
+                        registro.person = data;
+                    } else {
+                        alert("El aspirante no existe");
+                    }
+                }).error(function (data, status, headers, config) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                });
+            }
+        }
+    };
 
-        actualiza.datos = actualiza.person.filtro;
-        alert("Por favor espere un momento");
-        $http({
-            method: 'POST',
-            url: "../RegistroControl",
-            headers: {'Content-Type': 'application/json;charset=Utf-8'},
-            data: actualiza.datos
-        }).success(function (data, status, headers, config) {
-            actualiza.person = data;
-        }).error(function (data, status, headers, config) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-        });
+    registro.guardarFiltro = function (estudiante) {
+        estudiante = estudiante;
+        if (estudiante) {
+            $("#FiltroEstudiantes").collapse();
+            $("#datosComplementarios").collapse();
+            $("#divDatosComplementariosEstudian").show();
+
+        }
     };
 }
 ;
