@@ -47,7 +47,7 @@ function getDatosComplementarios($http) {
             alert("entra en if");
             $("#datosComplementarios").collapse("toggle");
             $("#datosSocioEconomicos").collapse("toggle");
-            $("#da").show();
+            $("#divdatosSocioEconomicos").show();
         }
 
     };
@@ -58,6 +58,7 @@ function getDatosComplementarios($http) {
             alert("entra en if");
             $("#datosSocioEconomicos").collapse("toggle");
             $("#icfes").collapse("toggle");
+            $("#divDatosIcfes").show();
         }
     };
 
@@ -67,6 +68,7 @@ function getDatosComplementarios($http) {
             alert("entra en if");
             $("#icfes").collapse("toggle");
             $("#univerdidad").collapse("toggle");
+            $("#divDatosUniversidad").show();
         }
     };
 
@@ -76,6 +78,7 @@ function getDatosComplementarios($http) {
         alert("entra en if");
         $("#univerdidad").collapse("toggle");
         $("#codeudorDatos").collapse("toggle");
+        $("#divDatosCodeudor").show();
 
 
     };
@@ -86,6 +89,7 @@ function getDatosComplementarios($http) {
         alert("entra en if");
         $("#codeudorDatos").collapse("toggle");
         $("#homologacion").collapse("toggle");
+        $("#disDatosHomologacion").show();
 
 
     };
@@ -96,6 +100,7 @@ function getDatosComplementarios($http) {
         alert("entra en if");
         $("#homologacion").collapse("toggle");
         $("#ModaPago").collapse("toggle");
+         $("#divDatosPagos").show();
 
 
     };
@@ -106,6 +111,7 @@ function getDatosComplementarios($http) {
         alert("entra en if");
         $("#ModaPago").collapse("toggle");
         $("#simulador").collapse("toggle");
+        $("#divSimulador").show();
 
 
     };
@@ -116,6 +122,7 @@ function getDatosComplementarios($http) {
         alert("entra en if");
         $("#simulador").collapse("toggle");
         $("#respalCredito").collapse("toggle");
+        $("#divDocumentosRespaldo").show();
 
 
     };
@@ -126,6 +133,7 @@ function getDatosComplementarios($http) {
         alert("entra en if");
         $("#respalCredito").collapse("toggle");
         $("#solicitudCre").collapse("toggle");
+        $("#divFinalizacionSolicitud").show();
 
 
     };
@@ -238,9 +246,19 @@ function getDatosComplementarios($http) {
             $("#fechaIcfes").focus();
             return false;
         }
-
+        return true;
     }
 
-
+    registro.DatosUniversidad = function(){
+        if ($("#ciudadMayorVivir").val() == "") {
+            $("#ciudadMayorVivir").focus();
+            return false;
+        }
+        if ($("#otrasUniversidades").val() == "") {
+            $("#otrasUniversidades").focus();
+            return false;
+        }
+        return true;
+    }
 
 };
