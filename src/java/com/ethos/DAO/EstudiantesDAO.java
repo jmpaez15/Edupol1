@@ -108,7 +108,7 @@ public class EstudiantesDAO extends AbstractDAO<EstudianteModel>{
             if(parameters!=null){
                query=EstudiantesQuery.QUERY_FILTRAR_ESTUDIANTES;
                psQuery=conn.prepareStatement(query);
-               psQuery.setInt(1,(int)parameters.get(0));
+               psQuery.setString(1,parameters.get(0).toString());
                rsT=psQuery.executeQuery();
             }else{
             

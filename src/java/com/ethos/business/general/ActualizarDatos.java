@@ -9,6 +9,7 @@ import com.ethos.DAO.AbstractDAO;
 import com.ethos.DAO.CiudadesDAO;
 import com.ethos.DAO.DireccionesDAO;
 import com.ethos.DAO.EstadoCivilDAO;
+import com.ethos.DAO.EstudiantesDAO;
 import com.ethos.DAO.NivelEstudiosDAO;
 import com.ethos.DAO.PersonasDAO;
 import com.ethos.DAO.TelefonosDAO;
@@ -16,10 +17,12 @@ import com.ethos.model.ActualizaModel;
 import com.ethos.model.CiudadModel;
 import com.ethos.model.DireccionesModel;
 import com.ethos.model.EstadoCivilModel;
+import com.ethos.model.EstudianteModel;
 import com.ethos.model.NivelEstudiosModel;
 import com.ethos.model.PersonaModel;
 import com.ethos.model.TelefonosModel;
 import com.google.gson.JsonObject;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,12 +37,13 @@ public class ActualizarDatos {
     AbstractDAO telefonosDAO;
     AbstractDAO estadoCivilDao;
     AbstractDAO nivelEstudiosDao;
+    AbstractDAO estudianteDAO;
 
     PersonaModel personaModel;
     TelefonosModel telefonoModel;
     ActualizaModel actualizaModel;
     DireccionesModel direccionesModel;
-
+    EstudianteModel estudianteModel;
     /**
      *
      * @param idPersona
@@ -168,6 +172,24 @@ public class ActualizarDatos {
         } catch (Exception e) {
             System.out.println("Error durante actualizacion de datos: " + e);
         }
+        return resultado;
+    }
+    
+    public List<Object> filtroEstudiantes(JsonObject json){
+        
+        List<Object>listObjects=new ArrayList<>();
+        List<Object>resultado=new ArrayList<>();
+        estudianteDAO=new EstudiantesDAO();
+        switch(json.get("tipFiltro").getAsInt()){
+            case 1:
+                listObjects.add(json.get("cedula").getAsInt());
+                resultado=(estudianteDAO.queryAll(listObjects));
+                break;
+            case 2:
+                resultado=(estudianteDAO.queryAll(null));
+                break;
+        }
+        
         return resultado;
     }
 }
