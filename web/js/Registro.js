@@ -114,7 +114,7 @@ function getDatosSocioeconomicos($http) {
         if (validar) {
             alert("entra en if");
             $("#datosSocioEconomicos").collapse("toggle");
-            $("#icfes").collapse("toggle");
+            $("#divIcfes").collapse("toggle");
             $("#divDatosIcfes").show();
             socioeconomico.esconder = true;
         }
@@ -176,10 +176,9 @@ function getDatosIcfes($http) {
         var validar = icfes.DatosIcfes();
         if (validar) {
             alert("entra en if");
-            $("#icfes").collapse("toggle");
-            $("#univerdidad").collapse("toggle");
+            $("#divIcfes").collapse("toggle");
+            $("#universidad").collapse("toggle");
             $("#divDatosUniversidad").show();
-            icfes.esconder = true;
         }
     };
     //metodos de validaciones
@@ -192,8 +191,8 @@ function getDatosIcfes($http) {
             $("#fechaIcfes").focus();
             return false;
         }
+        return true;
     };
-    icfes.esconder = true;
 }
 ;
 
@@ -203,7 +202,7 @@ function getDatosUniversidades($http) {
     univeridades.secuenciaModulosUniversidades = function () {
 
         alert("entra en if");
-        $("#univerdidad").collapse("toggle");
+        $("#universidad").collapse("toggle");
         $("#codeudorDatos").collapse("toggle");
         $("#divDatosCodeudor").show();
     };
@@ -218,8 +217,8 @@ function getCodeudor($http) {
 
         alert("entra en if");
         $("#codeudorDatos").collapse("toggle");
-        $("#homologacion").collapse("toggle");
-        $("#divDatosCodeudor").show();
+        $("#divHomologacion").collapse("toggle");
+        $("#divDatosHomologacion").show();
     };
     codeudor.esconder = true;
 }
@@ -231,7 +230,7 @@ function getDatosHomologaciones($http) {
     homologacion.secuenciaModulosHomologaciones = function () {
 
         alert("entra en if");
-        $("#homologacion").collapse("toggle");
+        $("#divHomologacion").collapse("toggle");
         $("#ModaPago").collapse("toggle");
         $("#divDatosPagos").show();
     };

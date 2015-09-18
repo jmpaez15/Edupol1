@@ -23,7 +23,6 @@
         <script src="../libs/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
         <script src="../js/controlNav.js"></script>
         <script src="../js/layout.js"></script>
-        <script src="../js/VAlidarTextoNumeros.js"></script>
         <script src="../js/Registro.js"></script>
 
         <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
@@ -41,7 +40,7 @@
                     $("#divDatosIcfes").hide();
                     $("#divDatosUniversidad").hide();
                     $("#divDatosCodeudor").hide();
-                    $("#disDatosHomologacion").hide();
+                    $("#divDatosHomologacion").hide();
                     $("#divDatosPagos").hide();
                     $("#divSimulador").hide();
                     $("#divDocumentosRespaldo").hide();
@@ -191,17 +190,14 @@
                             </div>
                         </div>
 
-
-
-
-                        <div id="divDatosComplementariosEstudian" class="panel panel-Registro" >
+                        <div  id="divDatosComplementariosEstudian" class="panel panel-Registro" ng-controller="DatosComplementariosController as complementarios">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a  id="linkEstudiante" data-toggle="collapse" data-parent="#accordion" href="#datosComplementarios">DATOS COMPLEMENTARIOS DEL ESTUDIANTE</a>
                                 </h4>
                             </div>
-                            <div id="datosComplementarios" class="panel-collapse collapse in" ng-controller="DatosComplementariosController as registro">
-                                <form name="formulario1" id="formulario1">
+                            <div id="datosComplementarios" class="panel-collapse collapse in">
+                                <form name="formulario1" id="formulario1" >
 
                                     <div class="panel-body">
                                         <fieldset>
@@ -209,7 +205,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Periodo Académico:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="pAcademico" ng-model="registro.person.datosEstudiante.periodoAcademico" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number required>
+                                                        <select id="pAcademico" ng-model="complementarios.person.datosEstudiante.periodoAcademico" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number required>
                                                             <option value="1">Seleccione el periodo academico</option>
                                                         </select>
                                                     </div>
@@ -218,7 +214,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Pais Escuela Secundaria:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="paisEscuSecundaria" ng-model="registro.person.datosEstuddiante.paisEscuelaSecundaria" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" required>
+                                                        <select id="paisEscuSecundaria" ng-model="complementarios.person.datosEstuddiante.paisEscuelaSecundaria" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" required>
                                                             <option value="1">Seleccione un País</option>
                                                         </select>
                                                     </div>
@@ -227,7 +223,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Departamento Escuela Secundaria:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="DepEscusecu" ng-model="registro.person.datosEstuddiante.departamentoEscuelaSecundaria" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number required>
+                                                        <select id="DepEscusecu" ng-model="complementarios.person.datosEstuddiante.departamentoEscuelaSecundaria" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number required>
                                                             <option value="1">Seleccione un Departamento</option>
                                                         </select>
                                                     </div>
@@ -236,7 +232,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Ciudad Escuela Secundaria:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="CiudadEscuSecu" ng-model="registro.person.datosEstuddiante.ciudadEscuelaSecundaria" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number required>
+                                                        <select id="CiudadEscuSecu" ng-model="complementarios.person.datosEstuddiante.ciudadEscuelaSecundaria" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number required>
                                                             <option value="1">Seleccione una Ciudad</option>
                                                         </select>
                                                     </div>
@@ -246,7 +242,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Entidad Promotora de Salud</label>
                                                     <div class="col-sm-6">
-                                                        <select id="EntidadPromotoraS" ng-model="actualiza.person.PreRegistro.acudiente.eps"  ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number >
+                                                        <select id="EntidadPromotoraS" ng-model="complementarios.person.PreRegistro.acudiente.eps" ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number >
                                                             <option value="1">Seleccione una EPS</option>
                                                         </select>
                                                     </div>
@@ -259,7 +255,7 @@
                                                     <label class="col-sm-5">Fondo Pensiones y Cesantias</label>
                                                     <div class="form-group">
                                                         <div class="col-sm-6">
-                                                            <input type="text" id="sFondoPensionesCesantias" name="sFondoPensionesCesantias"  onkeypress="return soloLetras(event)" ng-model="actualiza.person.PreRegistro.acudiente.sFondoPensionesCesantias" ng-disabled="edit" placeholder="Fondo de Pensiones y Cesantias" >
+                                                            <input type="text" id="sFondoPensionesCesantias" name="sFondoPensionesCesantias" ng-model="complementarios.person.PreRegistro.acudiente.sFondoPensionesCesantias" ng-disabled="edit" placeholder="Fondo de Pensiones y Cesantias" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -267,7 +263,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Categoria del Sisben:</label>
                                                     <div class="col-sm-6">
-                                                        <input type="text" id="sCategoriaSisben" name="sCategoriaSisben" ng-model="actualiza.person.PreRegistro.acudiente.segNombre" onkeypress="return isNumberKey(event)" ng-disabled="edit" placeholder="Categoria Sisben" maxlength="1">
+                                                        <input type="text" id="sCategoriaSisben" name="sCategoriaSisben" ng-model="complementarios.person.PreRegistro.acudiente.segNombre" ng-disabled="edit" placeholder="Categoria Sisben" >
                                                     </div>
                                                 </div>
 
@@ -275,7 +271,7 @@
                                                     <label class="col-sm-5">Nombre Escuela Secundaria:</label>
                                                     <div class="col-sm-6">
                                                         <div class="col-sm-6">
-                                                            <input type="text" id="sNombreEscuela" name="sNombreEscuela" ng-model="actualiza.person.PreRegistro.acudiente.telFij" onkeypress="return soloLetras(event)" ng-disabled="edit" placeholder="Nombre escuela" maxlength="40" required>
+                                                            <input type="text" id="sNombreEscuela" name="sNombreEscuela" ng-model="complementarios.person.PreRegistro.acudiente.telFij" ng-disabled="edit" placeholder="Nombre escuela" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -283,27 +279,26 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Fecha de Graduación Escundaria:</label>
                                                     <div class="col-sm-6">
-                                                        <input id="fechaGraduacion" type="text" name="fechaGraduacion" onkeypress="return isNumberKey(event)" maxlength="10" required>
+                                                        <input id="fechaGraduacion" type="text" name="fechaGraduacion" required>
                                                     </div>
                                                 </div>
                                             </div> 
 
                                         </fieldset>
                                     </div>
-                                    <button   class="btn btn-success" ng-click="registro.secuenciaModulos()">Siguiente</button> 
+                                    <button   class="btn btn-success" ng-click="complementarios.secuenciaModulos()">Siguiente</button> 
                                 </form>
                             </div>
                         </div>
 
 
-
-                        <div id="divdatosSocioEconomicos" class="panel panel-Registro" >
+                        <div id="divdatosSocioEconomicos" class="panel panel-Registro" ng-controller="DatosSocioeconomicosController as socioeconomico">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a id="linkEconomico" data-toggle="collapse" data-parent="#accordion" href="#datosSocioEconomicos" >DATOS SOCIOECONOMICOS</a>
                                 </h4>
                             </div>
-                            <div id="datosSocioEconomicos" class="panel-collapse collapse" ng-controller="DatosComplementariosController as registro">
+                            <div id="datosSocioEconomicos" class="panel-collapse collapse" >
                                 <form> 
                                     <div class="panel-body">
                                         <fieldset>
@@ -311,7 +306,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Grupo o Comunidad:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="comunidad" ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <select id="comunidad" ng-model="socioeconomico.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
                                                             <option value="">Seleccione una comunidad</option>
                                                         </select>
                                                     </div>
@@ -320,22 +315,22 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Modo de Costeo de Estudios:</label>
                                                     <div class="col-sm-6">
-                                                        <input type="text" id="costeoEstudios" name="costeoEstudios" ng-model="actualiza.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="Modo de Costeo" required >
+                                                        <input type="text" id="costeoEstudios" name="costeoEstudios" ng-model="socioeconomico.person.PreRegistro.acudiente.fechExp" ng-disabled="edit" placeholder="Modo de Costeo" required >
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Requiere ayuda financiera:</label>
                                                     <div class="col-sm-6">
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="SiayudaFinaciera" name="ayudaFinaciera" ng-disabled="edit" value="S">Si</label>
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="NoAyudaFinanciera" name="ayudaFinaciera"  ng-disabled="edit" ng-checked="true" value="N">No</label>
+                                                        <label class="radio-inline labelRadio col-sm-6"><input type="radio" id="SiayudaFinaciera" name="ayudaFinaciera" ng-disabled="edit" value="S">Si</label>
+                                                        <label class="radio-inline labelRadio col-sm-6"><input type="radio" id="NoAyudaFinanciera" name="ayudaFinaciera"  ng-disabled="edit" ng-checked="true" value="N">No</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Tipo de Solicitud del Aspirante:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="tipoSolicitud" ng-model="actualiza.person.PreRegistro.acudiente.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number required>
+                                                        <select id="tipoSolicitud" ng-model="socioeconomico.person.PreRegistro.acudiente.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number required>
                                                             <option value="1">Seleccione un tipo de solicitud</option>
                                                         </select>
                                                     </div>
@@ -343,18 +338,18 @@
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Padece alguna enfermedad cronica o permanente para la que necesite atención especializada:</label>
+                                                    <br/>
+                                                    <br/>
                                                     <div class="col-sm-6">
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="SiEnfermedadC" name="EnfermedadC"  ng-disabled="edit" value="S">Si</label>
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="NoEnfermedadC" name="EnfermedadC"  ng-disabled="edit" ng-checked="true" value="N">No</label>
+                                                        <label class="radio-inline labelRadio col-sm-6"><input type="radio" id="SiEnfermedadC" name="EnfermedadC"  ng-disabled="edit" value="S">Si</label>
+                                                        <label class="radio-inline labelRadio col-sm-6"><input type="radio" id="NoEnfermedadC" name="EnfermedadC"  ng-disabled="edit" ng-checked="true" value="N">No</label>
                                                     </div>
                                                 </div>  
-
-                                            </div>
-
-                                            <div class="col-sm-6">
-
+                                                <br/>
+                                                <br/>
+                                                <br/>
                                                 <div class="form-group">
-                                                    <label class="col-sm-5">Forma de  pago</label>
+                                                    <label class="col-sm-5">Forma de  pago:</label>
                                                     <select id="formaPago"  ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number required>
                                                         <option value="">Seleccione una forma de pago</option>
                                                         <option value="credito">Credito</option>
@@ -362,10 +357,14 @@
                                                     </select>
                                                 </div>
 
+                                            </div>
+
+                                            <div class="col-sm-6">
+
                                                 <div id="divCredito" class="form-group">
                                                     <label class="col-sm-5">Pago a Credito</label>
                                                     <div class="col-sm-6">
-                                                        <select id="pagoCredito" ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number required>
+                                                        <select id="pagoCredito" ng-model="socioeconomico.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number required>
                                                             <option value="">Seleccione una fotografia</option>
                                                             <option value="icetex">icetex</option>
                                                         </select>
@@ -375,17 +374,22 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Cargue de fotografia:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="cargueFoto" ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
-                                                            <option value="">Seleccione una fotografia</option>
-                                                        </select>
+                                                        <input type="file" id="cargueFoto" name="cargueFoto" ng-model="socioeconomico.person.PreRegistro.acudiente.cargueFoto" placeholder="Examinar" required>
                                                     </div>
                                                 </div>
 
+                                                <div class="form-group">
+                                                    <label class="col-sm-5">Tiene alguna limitación fisica:</label>
+                                                    <div class="col-sm-6">
+                                                        <label class="radio-inline labelRadio col-sm-6"><input type="radio" id="SiLimitacionFisica" name="LimitacionFisica"  ng-disabled="edit" value="S">Si</label>
+                                                        <label class="radio-inline labelRadio col-sm-6"><input type="radio" id="NoLimitacionFisica" name="LimitacionFisica"  ng-checked="true" ng-disabled="edit" value="N">No</label>
+                                                    </div>
+                                                </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Nombre Asesor Comercial:</label>
                                                     <div class="col-sm-6">
-                                                        <input type="text" id="nombreAsesor" name="nombreAsesor" ng-model="actualiza.person.PreRegistro.acudiente.priNombre" ng-disabled="edit" placeholder="Costeo Gastos" required>
+                                                        <input type="text" id="nombreAsesor" name="nombreAsesor" ng-model="socioeconomico.person.PreRegistro.acudiente.priNombre" ng-disabled="edit" placeholder="Asesor Comercial" required>
                                                     </div>
                                                 </div>
 
@@ -394,8 +398,8 @@
                                                     <label class="radio-inline col-sm-6">Servicios Publicos:</label>
                                                     <div class="col-sm-6">
 
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="Pservicios" name="servicios"  ng-disabled="edit" value="P">PROPIO</label>
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="Foservicios" name="servicios"  ng-disabled="edit" ng-checked="true" value="F">FAMILIA</label>
+                                                        <label class="radio-inline labelRadio col-sm-6"><input type="radio" id="Pservicios" name="servicios"  ng-disabled="edit" value="P">PROPIO</label>
+                                                        <label class="radio-inline labelRadio col-sm-6"><input type="radio" id="Foservicios" name="servicios"  ng-disabled="edit" ng-checked="true" value="F">FAMILIA</label>
 
                                                     </div>
                                                     <br>
@@ -405,28 +409,28 @@
                                                     <label class="radio-inline col-sm-6">Arrendamiento:</label>
                                                     <div class="col-sm-6">
 
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="Parrendamiento" name="arrendamiento"  ng-disabled="edit" value="P">PROPIO</label>
-                                                        <label class="radio-inline col-sm-6"><input type="radio" id="Farrendamiento" name="arrendamiento"  ng-disabled="edit" ng-checked="true" value="F">FAMILIA</label>
+                                                        <label class="radio-inline labelRadio col-sm-6"><input type="radio" id="Parrendamiento" name="arrendamiento"  ng-disabled="edit" value="P">PROPIO</label>
+                                                        <label class="radio-inline labelRadio col-sm-6"><input type="radio" id="Farrendamiento" name="arrendamiento"  ng-disabled="edit" ng-checked="true" value="F">FAMILIA</label>
 
                                                     </div>
                                                 </div>
                                             </div> 
                                         </fieldset>
                                     </div>
-                                    <button  class="btn btn-success"  ng-click="registro.secuenciaModulosEconomico()">Siguiente</button>
+                                    <button  class="btn btn-success"  ng-click="socioeconomico.secuenciaModulosEconomico()">Siguiente</button>
                                 </form>    
                             </div>
                         </div>
 
 
 
-                        <div id="divDatosIcfes" class="panel panel-Registro">
+                        <div id="divDatosIcfes" class="panel panel-Registro" ng-controller="DatosIcfesController as icfes">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#icfes">DATOS ICFES</a>
                                 </h4>
                             </div>
-                            <div id="icfes" class="panel-collapse collapse" ng-controller="DatosComplementariosController as registro">
+                            <div id="divIcfes" class="panel-collapse collapse" >
                                 <form>
                                     <div class="panel-body">
                                         <fieldset>
@@ -461,7 +465,7 @@
                                                 <label class="col-sm-5">Lenguaje:</label>
                                                 <div class="col-sm-6">
                                                     <div class="col-sm-6">
-                                                        <input type="text" id="icLenguaje" name="icLenguaje"  ng-disabled="edit">
+                                                        <input type="text" id="icLenguaje" name="icLenguaje"  ng-disabled="edit" placeholder="Número de Registro " >
                                                     </div>
                                                 </div>
                                             </div>
@@ -470,7 +474,7 @@
                                                 <label class="col-sm-5">Ciencias Solciales:</label>
                                                 <div class="col-sm-6">
                                                     <div class="col-sm-6">
-                                                        <input type="text" id="icCienciasSoc" name="icCienciasSoc"  ng-disabled="edit" >
+                                                        <input type="text" id="icCienciasSoc" name="icCienciasSoc"  ng-disabled="edit" placeholder="Número de Registro " >
                                                     </div>
                                                 </div>
                                             </div>
@@ -479,7 +483,7 @@
                                                 <label class="col-sm-5">Biología:</label>
                                                 <div class="col-sm-6">
                                                     <div class="col-sm-6">
-                                                        <input type="text" id="icBiologia" name="icBiologia" ng-disabled="edit">
+                                                        <input type="text" id="icBiologia" name="icBiologia" ng-disabled="edit" placeholder="Número de Registro " >
                                                     </div>
                                                 </div>
                                             </div>
@@ -488,7 +492,7 @@
                                                 <label class="col-sm-5">Física:</label>
                                                 <div class="col-sm-6">
                                                     <div class="col-sm-6">
-                                                        <input type="text" id="icFisica" name="icFisica"  ng-disabled="edit"  >
+                                                        <input type="text" id="icFisica" name="icFisica"  ng-disabled="edit" placeholder="Número de Registro " >
                                                     </div>
                                                 </div>
                                             </div>
@@ -498,46 +502,46 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5">Matemáticas:</label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" id="icMatematicas" name="icMatematicas"  ng-disabled="edit"  >
+                                                    <input type="text" id="icMatematicas" name="icMatematicas"  ng-disabled="edit" placeholder="dd/mm/yyyy" >
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-5">Filosofía:</label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" id="icFilosofia" name="icFilosofia"  ng-disabled="edit" >
+                                                    <input type="text" id="icFilosofia" name="icFilosofia"  ng-disabled="edit" placeholder="dd/mm/yyyy" >
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-5">Química:</label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" id="icQuimica" name="icQuimica"  ng-disabled="edit" >
+                                                    <input type="text" id="icQuimica" name="icQuimica"  ng-disabled="edit" placeholder="dd/mm/yyyy" >
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-5">Promedio Areas de Conocimineto:</label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" id="icPromedio" name="icPromedio"  ng-disabled="edit" >
+                                                    <input type="text" id="icPromedio" name="icPromedio"  ng-disabled="edit" placeholder="dd/mm/yyyy" >
                                                 </div>
                                             </div>
                                         </div>  
                                     </fieldset>
-                                    <button  ng-click="registro.secuenciaModulosIcfes()" class="btn btn-success">Siguiente</button>
+                                    <button class="btn btn-success"  ng-click="icfes.secuenciaModulosIcfes()">Siguiente</button>
                                 </form>    
                             </div>
                         </div>
 
 
 
-                        <div id="divDatosUniversidad" class="panel panel-Registro">
+                        <div id="divDatosUniversidad" class="panel panel-Registro" ng-controller="DatosUniversidadesController as universidades">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#univerdidad">DATOS UNIVERSIDADES</a>
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#universidad">DATOS UNIVERSIDADES</a>
                                 </h4>
                             </div>
-                            <div id="univerdidad" class="panel-collapse collapse" ng-controller="DatosComplementariosController as registro">
+                            <div id="universidad" class="panel-collapse collapse" >
                                 <form>
                                     <div class="panel-body">
 
@@ -912,20 +916,20 @@
                                             </div> 
                                         </fieldset>
                                     </div>
-                                    <button  ng-click="registro.secuenciaModulosUniversidades()" class="btn btn-success">Siguiente</button>
+                                    <button  ng-click="universidades.secuenciaModulosUniversidades()" class="btn btn-success">Siguiente</button>
                                 </form>     
                             </div>
                         </div>
 
 
 
-                        <div id="divDatosCodeudor" class="panel panel-Registro">
+                        <div id="divDatosCodeudor" class="panel panel-Registro" ng-controller="DatosCodeudorController as codeudor">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#codeudorDatos">DATOS DEL CODEUDOR</a>
                                 </h4>
                             </div>
-                            <div id="codeudorDatos" class="panel-collapse collapse"  ng-controller="DatosComplementariosController as registro">
+                            <div id="codeudorDatos" class="panel-collapse collapse">
                                 <form>
                                     <div class="panel-body">
                                         <fieldset>
@@ -1395,20 +1399,20 @@
                                         
                                         
                                     </div>
-                                    <button ng-click="registro.secuenciaModulosCodeudor()" class="btn btn-success">Siguiente</button>
+                                    <button ng-click="codeudor.secuenciaModulosCodeudor()" class="btn btn-success">Siguiente</button>
                                 </form>    
                             </div>
                         </div>
 
 
 
-                        <div id="disDatosHomologacion" class="panel panel-Registro">
+                        <div id="divDatosHomologacion" class="panel panel-Registro" ng-controller="DatosHomologacionesController as homologacion">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#homologacion">INFORMACION DE HOMOLOGACIONES</a>
                                 </h4>
                             </div>
-                            <div id="homologacion" class="panel-collapse collapse" ng-controller="DatosComplementariosController as registro">
+                            <div id="divHomologacion" class="panel-collapse collapse">
                                 <form>
                                     <div class="panel-body">
                                         <fieldset>
@@ -1416,7 +1420,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Tipo Homologación:</label>
                                                     <div class="col-sm-6">
-                                                        <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <select ng-model="homologacion.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
                                                             <option value="">Seleccione tipo de Homologación</option>
                                                         </select>
                                                     </div>
@@ -1427,7 +1431,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Homologación Especial:</label>
                                                     <div class="col-sm-6">
-                                                        <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <select ng-model="homologacion.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
                                                             <option value="">Seleccione tipo de Homologación</option>
                                                         </select>
                                                     </div>
@@ -1435,20 +1439,20 @@
                                             </div> 
                                         </fieldset>
                                     </div>
-                                    <button  ng-click="registro.secuenciaModulosHomologaciones()" class="btn btn-success">Siguiente</button>
+                                    <button  ng-click="homologacion.secuenciaModulosHomologaciones()" class="btn btn-success">Siguiente</button>
                                 </form>
                             </div>
                         </div>
 
 
 
-                        <div id="divDatosPagos" class="panel panel-Registro">
+                        <div id="divDatosPagos"  class="panel panel-Registro" ng-controller="DatosModalidadPagoController as modalidaPago">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#ModaPago">INFORMACIÓN DE MODALIDAD DE PAGO</a>
                                 </h4>
                             </div>
-                            <div id="ModaPago" class="panel-collapse collapse" ng-controller="DatosComplementariosController as registro">
+                            <div id="ModaPago" class="panel-collapse collapse">
                                 <form>
                                     <div class="panel-body">
                                         <fieldset>
@@ -1456,7 +1460,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Forma de Pago:</label>
                                                     <div class="col-sm-6">
-                                                        <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <select ng-model="modalidaPago.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
                                                             <option value="">Seleccione una forma de pago</option>
                                                         </select>
                                                     </div>
@@ -1467,7 +1471,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Créditos Especiales:</label>
                                                     <div class="col-sm-6">
-                                                        <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <select ng-model="modalidaPago.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
                                                             <option value="">Seleccione un crédito</option>
                                                         </select>
                                                     </div>
@@ -1475,20 +1479,20 @@
                                             </div>
                                         </fieldset>
                                     </div>
-                                    <button  ng-click="registro.secuenciaModulosPago()" class="btn btn-success">Siguiente</button>  
+                                    <button  ng-click="modalidaPago.secuenciaModulosPago()" class="btn btn-success">Siguiente</button>  
                                 </form>   
                             </div>
                         </div>
 
 
 
-                        <div id="divSimulador" class="panel panel-Registro">
+                        <div id="divSimulador" class="panel panel-Registro" ng-controller="DatosSimuladorController as simulador">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#simulador">SIMULADOR DE CREDITO</a>
                                 </h4>
                             </div>
-                            <div id="simulador" class="panel-collapse collapse" ng-controller="DatosComplementariosController as registro">
+                            <div id="simulador" class="panel-collapse collapse" >
                                 <form>
                                     <div class="panel-body">
                                         <fieldset>
@@ -1545,20 +1549,20 @@
                                             </table>
                                         </fieldset>
                                     </div>
-                                    <button  ng-click="registro.secuenciaModulosSimuladorCredito()" class="btn btn-success">Siguiente</button>     
+                                    <button  ng-click="simulador.secuenciaModulosSimuladorCredito()" class="btn btn-success">Siguiente</button>     
                                 </form>     
                             </div>
                         </div>
 
 
 
-                        <div id="divDocumentosRespaldo" class="panel panel-Registro">
+                        <div id="divDocumentosRespaldo" class="panel panel-Registro" ng-controller="DatosDocumentosController as documentos">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#respalCredito">DOCUMENTOS DE RESPALDO DEL CREDITO</a>
                                 </h4>
                             </div>
-                            <div id="respalCredito" class="panel-collapse collapse" ng-controller="DatosComplementariosController as registro">
+                            <div id="respalCredito" class="panel-collapse collapse" >
                                 <form>
                                     <div class="panel-body">
                                         <fieldset>
@@ -1566,7 +1570,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Descargar Garantías:</label>
                                                     <div class="col-sm-6">
-                                                        <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <select ng-model="documentos.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
                                                             <option value="">Seleccione tipo de garantía</option>
                                                         </select>
                                                     </div>
@@ -1577,21 +1581,21 @@
                                             </div> 
                                         </fieldset>
                                     </div>
-                                    <button  ng-click="registro.secuenciaModulosRespaldoCredito()" class="btn btn-success">Siguiente</button>    
+                                    <button  ng-click="documentos.secuenciaModulosRespaldoCredito()" class="btn btn-success">Siguiente</button>    
                                 </form>    
                             </div>
                         </div>
 
 
 
-                        <div id="divFinalizacionSolicitud" class="panel panel-Registro">
+                        <div id="divFinalizacionSolicitud" class="panel panel-Registro" ng-controller="DatosFinalizacionController as final">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#solicitudCre">FINALIZACION DE SOLICITUD DEL CREDITO</a>
+                                    <a data-toggle="collapse" data-parent="#accordion"  href="#solicitudCre">FINALIZACION DE SOLICITUD DEL CREDITO</a>
                                 </h4>
                             </div>
-                            <div id="solicitudCre" class="panel-collapse collapse" ng-controller="DatosComplementariosController as registro">
-                                <form>
+                            <div id="solicitudCre" class="panel-collapse collapse">
+                                <form class="collapse in">
                                     <div class="panel-body">
                                         <fieldset>
 
@@ -1599,7 +1603,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Linea de Crédito:</label>
                                                     <div class="col-sm-6">
-                                                        <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <select ng-model="final.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
                                                             <option value="">Seleccione una linea de crédito</option>
                                                         </select>
                                                     </div>
@@ -1610,7 +1614,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Estado Crédito:</label>
                                                     <div class="col-sm-6">
-                                                        <select ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
+                                                        <select ng-model="final.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number>
                                                             <option value="">Seleccione un estado</option>
                                                         </select>
                                                     </div>
@@ -1618,7 +1622,7 @@
                                             </div> 
                                         </fieldset>
                                     </div>
-                                    <button  ng-click="registro.secuenciaModulosSolicitudCredito()" class="btn btn-success">Siguiente</button>   
+                                    <button  ng-click="final.secuenciaModulosSolicitudCredito()" class="btn btn-success">Siguiente</button>   
                                 </form>     
                             </div>
                         </div>
