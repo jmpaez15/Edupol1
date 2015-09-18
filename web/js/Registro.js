@@ -58,9 +58,8 @@ function getDatosComplementarios($http) {
             $("#datosComplementarios").collapse("toggle");
             complementarios.esconder = true;
             $("#datosSocioEconomicos").collapse("toggle");
-            $("#da").show();
+            $("#divdatosSocioEconomicos").show();
         }
-
     };
     //metodos de validaciones
     complementarios.DatosComplementariosEstudiantes = function () {
@@ -104,8 +103,6 @@ function getDatosComplementarios($http) {
         return true;
     }
     complementarios.esconder = false;
-
-
 }
 ;
 
@@ -118,6 +115,7 @@ function getDatosSocioeconomicos($http) {
             alert("entra en if");
             $("#datosSocioEconomicos").collapse("toggle");
             $("#icfes").collapse("toggle");
+            $("#divDatosIcfes").show();
             socioeconomico.esconder = true;
         }
     };
@@ -180,6 +178,7 @@ function getDatosIcfes($http) {
             alert("entra en if");
             $("#icfes").collapse("toggle");
             $("#univerdidad").collapse("toggle");
+            $("#divDatosUniversidad").show();
             icfes.esconder = true;
         }
     };
@@ -193,7 +192,6 @@ function getDatosIcfes($http) {
             $("#fechaIcfes").focus();
             return false;
         }
-
     };
     icfes.esconder = true;
 }
@@ -207,8 +205,7 @@ function getDatosUniversidades($http) {
         alert("entra en if");
         $("#univerdidad").collapse("toggle");
         $("#codeudorDatos").collapse("toggle");
-
-
+        $("#divDatosCodeudor").show();
     };
     univeridades.esconder = true;
 }
@@ -219,12 +216,10 @@ function getCodeudor($http) {
 
     codeudor.secuenciaModulosCodeudor = function () {
 
-
         alert("entra en if");
         $("#codeudorDatos").collapse("toggle");
         $("#homologacion").collapse("toggle");
-
-
+        $("#divDatosCodeudor").show();
     };
     codeudor.esconder = true;
 }
@@ -235,12 +230,10 @@ function getDatosHomologaciones($http) {
 
     homologacion.secuenciaModulosHomologaciones = function () {
 
-
         alert("entra en if");
         $("#homologacion").collapse("toggle");
         $("#ModaPago").collapse("toggle");
-
-
+        $("#divDatosPagos").show();
     };
     homologacion.esconder = true;
 }
@@ -251,12 +244,10 @@ function getDatosModalidadPago($http) {
 
     modalidaPago.secuenciaModulosPago = function () {
 
-
         alert("entra en if");
         $("#ModaPago").collapse("toggle");
         $("#simulador").collapse("toggle");
-
-
+        $("#divSimulador").show();
     };
     modalidaPago.esconder = true;
 }
@@ -267,12 +258,10 @@ function getDatosSimulador($http) {
 
     simulador.secuenciaModulosSimuladorCredito = function () {
 
-
         alert("entra en if");
         $("#simulador").collapse("toggle");
         $("#respalCredito").collapse("toggle");
-
-
+        $("#divDocumentosRespaldo").show();
     };
     simulador.esconder = true;
 }
@@ -283,12 +272,10 @@ function getDatosDocumentos($http) {
 
     documentos.secuenciaModulosRespaldoCredito = function () {
 
-
         alert("entra en if");
         $("#respalCredito").collapse("toggle");
         $("#solicitudCre").collapse("toggle");
-
-
+        $("#divFinalizacionSolicitud").show();
     };
     documentos.esconder = true;
 }
