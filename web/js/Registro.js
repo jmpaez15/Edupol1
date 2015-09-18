@@ -5,43 +5,62 @@
  */
 appEdupol.controller('RegistroController', ['$http', getDataFromServer]);
 function getDataFromServer($http) {
-    var actualiza = this;
+    var registro = this;
     $http({
         method: 'GET',
         url: "../RegistroControl",
         headers: {'Content-Type': 'application/json'}
-    }).success(function(data, status, headers, config) {
-        actualiza.person = data;
-    }).error(function(data, status, headers, config) {
+    }).success(function (data, status, headers, config) {
+        registro.person = data;
+    }).error(function (data, status, headers, config) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
     });
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
 
-    actualiza.filtro = function() {
+    registro.filtro = function () {
+        if ($("#tipFiltro").val() != "") {
+            if ($("#filtroCedula").val() != "") {
+                registro.datos = registro.estudiante.filtro;
+                alert("Por favor espere un momento");
+                $http({
+                    method: 'POST',
+                    url: "../RegistroControl",
+                    headers: {'Content-Type': 'application/json;charset=Utf-8'},
+                    data: registro.datos
+                }).success(function (data, status, headers, config) {
+                    if (data.length > 0) {
+                        registro.person = data;
+                    } else {
+                        alert("El aspirante no existe");
+                    }
+                }).error(function (data, status, headers, config) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                });
+            }
+        }
+    };
 
-        actualiza.datos = actualiza.person.filtro;
-        alert("Por favor espere un momento");
-        $http({
-            method: 'POST',
-            url: "../RegistroControl",
-            headers: {'Content-Type': 'application/json;charset=Utf-8'},
-            data: actualiza.datos
-        }).success(function(data, status, headers, config) {
-            actualiza.person = data;
-        }).error(function(data, status, headers, config) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-        });
+    registro.guardarFiltro = function (estudiante) {
+        var estudiante = estudiante;
+        if (estudiante) {
+            $("#FiltroEstudiantes").collapse();
+            $("#datosComplementarios").collapse();
+        }
     };
 }
 ;
+
 
 appEdupol.controller('DatosComplementariosController', ['$http', getDatosComplementarios]);
 
 function getDatosComplementarios($http) {
     var registro = this;
 
-    registro.secuenciaModulos = function() {
+    registro.secuenciaModulos = function () {
         var validar = registro.DatosComplementariosEstudiantes();
         if (validar) {
             alert("entra en if");
@@ -52,7 +71,7 @@ function getDatosComplementarios($http) {
 
     };
 
-    registro.secuenciaModulosEconomico = function() {
+    registro.secuenciaModulosEconomico = function () {
         var validar = registro.DatosSocioEconomicos();
         if (validar) {
             alert("entra en if");
@@ -62,7 +81,7 @@ function getDatosComplementarios($http) {
         }
     };
 
-    registro.secuenciaModulosIcfes = function() {
+    registro.secuenciaModulosIcfes = function () {
         var validar = registro.DatosIcfes();
         if (validar) {
             alert("entra en if");
@@ -72,7 +91,7 @@ function getDatosComplementarios($http) {
         }
     };
 
-    registro.secuenciaModulosUniversidades = function() {
+    registro.secuenciaModulosUniversidades = function () {
 
 
         alert("entra en if");
@@ -83,7 +102,7 @@ function getDatosComplementarios($http) {
 
     };
 
-    registro.secuenciaModulosCodeudor = function() {
+    registro.secuenciaModulosCodeudor = function () {
 
 
         alert("entra en if");
@@ -94,18 +113,18 @@ function getDatosComplementarios($http) {
 
     };
 
-    registro.secuenciaModulosHomologaciones = function() {
+    registro.secuenciaModulosHomologaciones = function () {
 
 
         alert("entra en if");
         $("#homologacion").collapse("toggle");
         $("#ModaPago").collapse("toggle");
-         $("#divDatosPagos").show();
+        $("#divDatosPagos").show();
 
 
     };
 
-    registro.secuenciaModulosPago = function() {
+    registro.secuenciaModulosPago = function () {
 
 
         alert("entra en if");
@@ -116,7 +135,7 @@ function getDatosComplementarios($http) {
 
     };
 
-    registro.secuenciaModulosSimuladorCredito = function() {
+    registro.secuenciaModulosSimuladorCredito = function () {
 
 
         alert("entra en if");
@@ -127,7 +146,7 @@ function getDatosComplementarios($http) {
 
     };
 
-    registro.secuenciaModulosRespaldoCredito = function() {
+    registro.secuenciaModulosRespaldoCredito = function () {
 
 
         alert("entra en if");
@@ -138,7 +157,7 @@ function getDatosComplementarios($http) {
 
     };
 
-    registro.secuenciaModulosSolicitudCredito = function() {
+    registro.secuenciaModulosSolicitudCredito = function () {
 
 
         alert("entra en if");
@@ -150,7 +169,7 @@ function getDatosComplementarios($http) {
 
     ////////////////////////////metodos de validaciones////////////
 
-    registro.DatosComplementariosEstudiantes = function() {
+    registro.DatosComplementariosEstudiantes = function () {
 
         if ($("#pAcademico").val() == "") {
             $("#pAcademico").focus();
@@ -191,7 +210,7 @@ function getDatosComplementarios($http) {
         return true;
     }
 
-    registro.DatosSocioEconomicos = function() {
+    registro.DatosSocioEconomicos = function () {
 
         /*if ($("#comunidad").val() == "") {
          $("#comunidad").focus();
@@ -237,7 +256,7 @@ function getDatosComplementarios($http) {
         return true;
     }
 
-    registro.DatosIcfes = function() {
+    registro.DatosIcfes = function () {
         if ($("#numRegIcfes").val() == "") {
             $("#numRegIcfes").focus();
             return false;
@@ -249,7 +268,7 @@ function getDatosComplementarios($http) {
         return true;
     }
 
-    registro.DatosUniversidad = function(){
+    registro.DatosUniversidad = function () {
         if ($("#ciudadMayorVivir").val() == "") {
             $("#ciudadMayorVivir").focus();
             return false;
@@ -261,4 +280,5 @@ function getDatosComplementarios($http) {
         return true;
     }
 
-};
+}
+;

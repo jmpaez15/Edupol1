@@ -9,6 +9,7 @@
         <meta name="author" content="" />
 
 
+
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-animate.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
@@ -25,6 +26,9 @@
         <script src="../js/layout.js"></script>
         <script src="../js/VAlidarTextoNumeros.js"></script>
         <script src="../js/Registro.js"></script>
+        <script src="../js/datapicker.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/ValidacionRegistro.js"></script>
 
         <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
         <link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.css" />
@@ -146,54 +150,74 @@
             <section id="includeLayout" class="section">
                 <div class="container">
                     <div class="panel-group" id="accordion"> 
+                        
+                        
                         <div class="panel panel-Registro">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">ESTUDIANTES INSCRITOS</a>
+                                    <a  id="linkFiltroEstudiantes" data-toggle="collapse" data-parent="#accordion" href="#FiltroEstudiantes">ESTUDIANTES INSCRITOS</a>
                                 </h4>
                             </div>
-                            <div id="collapse1" class="panel-collapse collapse in" data-ng-controller="RegistroController as actualiza" data-ng-init="getDataFromServer()">
-                                <div class="panel-body">
-                                    <fieldset>
-                                        <div> 
+                            <div id="FiltroEstudiantes" class="panel-collapse collapse in" data-ng-controller="RegistroController as registro"  data-ng-init="getDataFromServer()"  >
+                                <form name="formularioFiltro" id="formularioFiltro">
+                                    <div class="panel-body">
+                                        <fieldset>
                                             <div>
-                                                <label class="col-sm-2">Numero de Cedula:</label>
-                                                <div class="col-sm-5">  
-                                                    <input type="text" id="filtroCedula" name="filtroCedula" ng-model="actualiza.person.filtro.cedula" ng-disabled="edit" placeholder="Filtro de Búsqueda " convert-to-number>
-                                                </div>   
-                                                <div class="col-sm-3">  
-                                                    <button type="submit" id="enviar" class="btn btn-success " ng-click="actualiza.filtro()" >
-                                                        Registrar Datos
-                                                    </button>
+                                                <div>
+                                                    <label class="col-sm-2">Filtro:</label>
+                                                    <div id="divTipFiltro">
+                                                        <select id="tipFiltro" ng-model="registro.estudiante.filtro.tipFiltro" convert-to-number required>
+                                                            <option value="">Seleccione un Filtro</option>
+                                                            <option value="1">Cedula</option>
+                                                            <option value="2">todos</option>
+                                                        </select>
+                                                    </div>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <label id="labelFiltroCedula" class="col-sm-2">Numero de Cedula:</label>
+                                                    <div id="divFiltroCedula" class="col-sm-3">  
+                                                        <input id="filtroCedula" type="text"  name="filtroCedula" ng-model="registro.estudiante.filtro.cedula" ng-disabled="edit" placeholder="Filtro de Búsqueda " convert-to-number title="Ingrese un Numero de Cedula" required>
+                                                    </div>   
+                                                    <div class="col-sm-3">
+                                                        <button type="submit" id="enviar" class="btn btn-success " ng-click="registro.filtro()" >
+                                                            Consultar
+                                                        </button>
+                                                    </div>
                                                 </div>
+                                                <br/>
+                                                <table class="table table-striped">
+                                                    <thead class="table-bordered">
+                                                        <tr>
+                                                            <th>Cedula</th>
+                                                            <th>Apellidos Estudiante</th>
+                                                            <th>Nombres Estudiante</th>
+                                                            <th>Apellidos Estudiante</th>
+                                                            <th>Universidad</th>
+                                                            <th>Fecha Incripcion</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody> 
+                                                        <tr  ng-repeat="person in registro.person">
+                                                            <td ng-repeat="(key, val) in person">{{val}}</td>
+                                                            <td>
+                                                                <button type="button" ng-click="registro.guardarFiltro(person)" class="btn btn-primary btn-xs">
+                                                                    <i class="glyphicon glyphicon-pencil">
+                                                                    </i>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <a class="btn btn-primary btn-xs"></a>
                                             </div>
-
-                                            <table class="table table-striped">
-                                                <thead class="table-bordered">
-                                                    <tr>
-                                                        <th>Cedula</th>
-                                                        <th>Nombres Estudiante</th>
-                                                        <th>Apellidos Estudiante</th>
-                                                        <th>Universidad</th>
-                                                        <th>Fecha Incripcion</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody> 
-                                                    <tr ng-repeat="person in actualiza.person">
-                                                        <td ng-repeat="(key, val) in person">{{val}}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <a href="" class="btn btn-primary btn-xs" ng-click="book.$edit = false; save(book)">Guardar</a>
-                                        </div>
-                                    </fieldset>
-                                </div>
+                                        </fieldset>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-
-
-
-
+                        
+                        
                         <div id="divDatosComplementariosEstudian" class="panel panel-Registro" >
                             <div class="panel-heading">
                                 <h4 class="panel-title">
