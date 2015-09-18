@@ -645,7 +645,7 @@ input[type="color"]:focus,
 }
 input[type="radio"],
 input[type="checkbox"] {
-    margin: 4px 0 0;
+    margin: 0px 7px 0px;
     *margin-top: 0;
     /* IE7 */
 
@@ -710,15 +710,15 @@ input[type="checkbox"]:focus {
 }
 input:-moz-placeholder,
 textarea:-moz-placeholder {
-    color: #999999;
+    color: #C7C1C1;
 }
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
-    color: #999999;
+    color: #C7C1C1;
 }
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
-    color: #999999;
+    color: #C7C1C1;
 }
 .radio,
 .checkbox {
@@ -1799,10 +1799,10 @@ table th[class*="span"],
     position: relative;
     height: 0;
     overflow: hidden;
-    -webkit-transition: height 0.35s ease;
-    -moz-transition: height 0.35s ease;
-    -o-transition: height 0.35s ease;
-    transition: height 0.35s ease;
+    -webkit-transition: height 5.65s ease;
+    -moz-transition: height 5.65s ease;
+    -o-transition: height 5.65s ease;
+    transition: height 5.65s ease;
 }
 .collapse.in {
     height: auto;
