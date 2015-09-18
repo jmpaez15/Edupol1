@@ -5,19 +5,20 @@
  */
 appEdupol.controller('RegistroController', ['$http', getDataFromServer]);
 function getDataFromServer($http) {
+
     var actualiza = this;
     $http({
         method: 'GET',
         url: "../RegistroControl",
         headers: {'Content-Type': 'application/json'}
-    }).success(function(data, status, headers, config) {
+    }).success(function (data, status, headers, config) {
         actualiza.person = data;
-    }).error(function(data, status, headers, config) {
+    }).error(function (data, status, headers, config) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
     });
 
-    actualiza.filtro = function() {
+    actualiza.filtro = function () {
 
         actualiza.datos = actualiza.person.filtro;
         alert("Por favor espere un momento");
@@ -26,9 +27,9 @@ function getDataFromServer($http) {
             url: "../RegistroControl",
             headers: {'Content-Type': 'application/json;charset=Utf-8'},
             data: actualiza.datos
-        }).success(function(data, status, headers, config) {
+        }).success(function (data, status, headers, config) {
             actualiza.person = data;
-        }).error(function(data, status, headers, config) {
+        }).error(function (data, status, headers, config) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
         });
@@ -37,112 +38,32 @@ function getDataFromServer($http) {
 ;
 
 appEdupol.controller('DatosComplementariosController', ['$http', getDatosComplementarios]);
+appEdupol.controller('DatosSocioeconomicosController', ['$http', getDatosSocioeconomicos]);
+appEdupol.controller('DatosIcfesController', ['$http', getDatosIcfes]);
+appEdupol.controller('DatosUniversidadesController', ['$http', getDatosUniversidades]);
+appEdupol.controller('DatosCodeudorController', ['$http', getCodeudor]);
+appEdupol.controller('DatosHomologacionesController', ['$http', getDatosHomologaciones]);
+appEdupol.controller('DatosModalidadPagoController', ['$http', getDatosModalidadPago]);
+appEdupol.controller('DatosSimuladorController', ['$http', getDatosSimulador]);
+appEdupol.controller('DatosDocumentosController', ['$http', getDatosDocumentos]);
+appEdupol.controller('DatosFinalizacionController', ['$http', getDatosFinalizacion]);
 
 function getDatosComplementarios($http) {
-    var registro = this;
+    var complementarios = this;
 
-    registro.secuenciaModulos = function() {
-        var validar = registro.DatosComplementariosEstudiantes();
+    complementarios.secuenciaModulos = function () {
+        var validar = complementarios.DatosComplementariosEstudiantes();
         if (validar) {
             alert("entra en if");
             $("#datosComplementarios").collapse("toggle");
+            complementarios.esconder = true;
             $("#datosSocioEconomicos").collapse("toggle");
             $("#da").show();
         }
 
     };
-
-    registro.secuenciaModulosEconomico = function() {
-        var validar = registro.DatosSocioEconomicos();
-        if (validar) {
-            alert("entra en if");
-            $("#datosSocioEconomicos").collapse("toggle");
-            $("#icfes").collapse("toggle");
-        }
-    };
-
-    registro.secuenciaModulosIcfes = function() {
-        var validar = registro.DatosIcfes();
-        if (validar) {
-            alert("entra en if");
-            $("#icfes").collapse("toggle");
-            $("#univerdidad").collapse("toggle");
-        }
-    };
-
-    registro.secuenciaModulosUniversidades = function() {
-
-
-        alert("entra en if");
-        $("#univerdidad").collapse("toggle");
-        $("#codeudorDatos").collapse("toggle");
-
-
-    };
-
-    registro.secuenciaModulosCodeudor = function() {
-
-
-        alert("entra en if");
-        $("#codeudorDatos").collapse("toggle");
-        $("#homologacion").collapse("toggle");
-
-
-    };
-
-    registro.secuenciaModulosHomologaciones = function() {
-
-
-        alert("entra en if");
-        $("#homologacion").collapse("toggle");
-        $("#ModaPago").collapse("toggle");
-
-
-    };
-
-    registro.secuenciaModulosPago = function() {
-
-
-        alert("entra en if");
-        $("#ModaPago").collapse("toggle");
-        $("#simulador").collapse("toggle");
-
-
-    };
-
-    registro.secuenciaModulosSimuladorCredito = function() {
-
-
-        alert("entra en if");
-        $("#simulador").collapse("toggle");
-        $("#respalCredito").collapse("toggle");
-
-
-    };
-
-    registro.secuenciaModulosRespaldoCredito = function() {
-
-
-        alert("entra en if");
-        $("#respalCredito").collapse("toggle");
-        $("#solicitudCre").collapse("toggle");
-
-
-    };
-
-    registro.secuenciaModulosSolicitudCredito = function() {
-
-
-        alert("entra en if");
-        $("#solicitudCre").collapse("toggle");
-
-
-
-    };
-
-    ////////////////////////////metodos de validaciones////////////
-
-    registro.DatosComplementariosEstudiantes = function() {
+    //metodos de validaciones
+    complementarios.DatosComplementariosEstudiantes = function () {
 
         if ($("#pAcademico").val() == "") {
             $("#pAcademico").focus();
@@ -182,8 +103,26 @@ function getDatosComplementarios($http) {
          }*/
         return true;
     }
+    complementarios.esconder = false;
 
-    registro.DatosSocioEconomicos = function() {
+
+}
+;
+
+function getDatosSocioeconomicos($http) {
+    var socioeconomico = this;
+
+    socioeconomico.secuenciaModulosEconomico = function () {
+        var validar = socioeconomico.DatosSocioEconomicos();
+        if (validar) {
+            alert("entra en if");
+            $("#datosSocioEconomicos").collapse("toggle");
+            $("#icfes").collapse("toggle");
+            socioeconomico.esconder = true;
+        }
+    };
+    //metodos de validaciones
+    socioeconomico.DatosSocioEconomicos = function () {
 
         /*if ($("#comunidad").val() == "") {
          $("#comunidad").focus();
@@ -228,8 +167,24 @@ function getDatosComplementarios($http) {
          }*/
         return true;
     }
+    socioeconomico.esconder = false;
+}
+;
 
-    registro.DatosIcfes = function() {
+function getDatosIcfes($http) {
+    var icfes = this;
+
+    icfes.secuenciaModulosIcfes = function () {
+        var validar = icfes.DatosIcfes();
+        if (validar) {
+            alert("entra en if");
+            $("#icfes").collapse("toggle");
+            $("#univerdidad").collapse("toggle");
+            icfes.esconder = true;
+        }
+    };
+    //metodos de validaciones
+    icfes.DatosIcfes = function () {
         if ($("#numRegIcfes").val() == "") {
             $("#numRegIcfes").focus();
             return false;
@@ -239,8 +194,113 @@ function getDatosComplementarios($http) {
             return false;
         }
 
-    }
+    };
+    icfes.esconder = true;
+}
+;
+
+function getDatosUniversidades($http) {
+    var univeridades = this;
+
+    univeridades.secuenciaModulosUniversidades = function () {
+
+        alert("entra en if");
+        $("#univerdidad").collapse("toggle");
+        $("#codeudorDatos").collapse("toggle");
 
 
+    };
+    univeridades.esconder = true;
+}
+;
 
-};
+function getCodeudor($http) {
+    var codeudor = this;
+
+    codeudor.secuenciaModulosCodeudor = function () {
+
+
+        alert("entra en if");
+        $("#codeudorDatos").collapse("toggle");
+        $("#homologacion").collapse("toggle");
+
+
+    };
+    codeudor.esconder = true;
+}
+;
+
+function getDatosHomologaciones($http) {
+    var homologacion = this;
+
+    homologacion.secuenciaModulosHomologaciones = function () {
+
+
+        alert("entra en if");
+        $("#homologacion").collapse("toggle");
+        $("#ModaPago").collapse("toggle");
+
+
+    };
+    homologacion.esconder = true;
+}
+;
+
+function getDatosModalidadPago($http) {
+    var modalidaPago = this;
+
+    modalidaPago.secuenciaModulosPago = function () {
+
+
+        alert("entra en if");
+        $("#ModaPago").collapse("toggle");
+        $("#simulador").collapse("toggle");
+
+
+    };
+    modalidaPago.esconder = true;
+}
+;
+
+function getDatosSimulador($http) {
+    var simulador = this;
+
+    simulador.secuenciaModulosSimuladorCredito = function () {
+
+
+        alert("entra en if");
+        $("#simulador").collapse("toggle");
+        $("#respalCredito").collapse("toggle");
+
+
+    };
+    simulador.esconder = true;
+}
+;
+
+function getDatosDocumentos($http) {
+    var documentos = this;
+
+    documentos.secuenciaModulosRespaldoCredito = function () {
+
+
+        alert("entra en if");
+        $("#respalCredito").collapse("toggle");
+        $("#solicitudCre").collapse("toggle");
+
+
+    };
+    documentos.esconder = true;
+}
+;
+
+function getDatosFinalizacion($http) {
+    var final = this;
+
+    final.secuenciaModulosSolicitudCredito = function () {
+        alert("entra en if");
+        $("#solicitudCre").collapse("toggle");
+    };
+    final.esconder = true;
+}
+;

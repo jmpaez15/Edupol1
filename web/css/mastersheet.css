@@ -16,7 +16,8 @@ h5,
 h6 {
     padding: 0;
     margin: 0;
-    font-weight: normal;
+    font-size: medium;
+    font-weight: 600;
     vertical-align: middle;
 }
 ul,
@@ -1531,7 +1532,7 @@ textarea,
 select,
 input[type="text"] {
     font-family: "Open Sans", sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     -webkit-border-radius: reset !important;
     -moz-border-radius: reset !important;
     border-radius: reset !important;
@@ -1549,17 +1550,17 @@ input[type="text"] {
 input::-moz-placeholder,
 textarea::-moz-placeholder,
 input[type="text"]::-moz-placeholder {
-    color: #343434;
+    color: #C7C1C1;
 }
 input::-ms-input-placeholder,
 textarea::-ms-input-placeholder,
 input[type="text"]::-ms-input-placeholder {
-    color: #343434;
+    color: #C7C1C1;
 }
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder,
 input[type="text"]::-webkit-input-placeholder {
-    color: #343434;
+    color: #C7C1C1;
 }
 form.search fieldset {
     font-size: 16px;
