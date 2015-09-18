@@ -75,10 +75,12 @@ public class RegistroControl extends HttpServlet {
         HttpSession sesion = request.getSession();
         String json = "";
         funcionesGenerales = new FuncionesGenerales();
-        estudianteDAO = new EstudiantesDAO();
+         ActualizarDatos actualizarDatos = new ActualizarDatos();
         try {
             //  if(!sesion.getAttribute("codUser").equals(null)){
-            json = new Gson().toJson(estudianteDAO.queryAll(null));
+             BufferedReader reader = request.getReader();
+            JsonObject dataJson = funcionesGenerales.recibirDatos(reader);
+            json = new Gson().toJson(actualizarDatos.filtroEstudiantes(dataJson));
           // }
 
         } catch (Exception e) {
@@ -107,7 +109,7 @@ public class RegistroControl extends HttpServlet {
             BufferedReader reader = request.getReader();
             JsonObject dataJson = funcionesGenerales.recibirDatos(reader);
             json = new Gson().toJson(actualizarDatos.filtroEstudiantes(dataJson));
-
+            System.out.println("json:" + json);    
         } catch (Exception e) {
             System.err.println("Exception :" + e);
         }

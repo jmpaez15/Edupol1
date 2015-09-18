@@ -1,45 +1,71 @@
+$(function () {
+    $("#divFiltroCedula").hide();
+    $("#labelFiltroCedula").hide();
+    $("#divTipFiltro").addClass("col-sm-5");
+    $("br").hide();
 
 
-function DatosComplementariosEstudiantes(){
-     $(".error").fadeOut().remove();
+    $("#tipFiltro").change(function () {
+        if ($("#tipFiltro").val() == "1") {
+            $("#divFiltroCedula").show();
+            $("#labelFiltroCedula").show();
+            $("br").show();
+        } else {
+            $("#divFiltroCedula").hide();
+            $("#labelFiltroCedula").hide();
+            $("br").hide();
+            $("#divTipFiltro").removeClass("col-sm-9");
+            $("#divTipFiltro").addClass("col-sm-5");
+        }
+
+    });
+
+
+
+
+
+});
+
+function DatosComplementariosEstudiantes() {
+    $(".error").fadeOut().remove();
     if ($("#pAcademico").val() == "") {
-            $("#pAcademico").focus().after('<span class="error">Campo Obligatorio</span>');
-            return false;
-        }
-        
+        $("#pAcademico").focus().after('<span class="error">Campo Obligatorio</span>');
+        return false;
+    }
+
     if ($("#paisEscuSecundaria").val() == "") {
-            $("#paisEscuSecundaria").focus().after('<span class="error">Campo Obligatorio</span>');
-            return false;
-        }    
-        
+        $("#paisEscuSecundaria").focus().after('<span class="error">Campo Obligatorio</span>');
+        return false;
+    }
+
     if ($("#DepEscusecu").val() == "") {
-            $("#DepEscusecu").focus().after('<span class="error">Campo Obligatorio</span>');
-            return false;
-        }
+        $("#DepEscusecu").focus().after('<span class="error">Campo Obligatorio</span>');
+        return false;
+    }
     if ($("#CiudadEscuSecu").val() == "") {
-            $("#CiudadEscuSecu").focus().after('<span class="error">Campo Obligatorio</span>');
-            return false;
-        }
+        $("#CiudadEscuSecu").focus().after('<span class="error">Campo Obligatorio</span>');
+        return false;
+    }
     if ($("#EntidadPromotoraS").val() == "") {
-            $("#EntidadPromotoraS").focus().after('<span class="error">Campo Obligatorio</span>');
-            return false;
-        } 
+        $("#EntidadPromotoraS").focus().after('<span class="error">Campo Obligatorio</span>');
+        return false;
+    }
     if ($("#sFondoPensionesCesantias").val() == "") {
-            $("#sFondoPensionesCesantias").focus().after('<span class="error">Campo Obligatorio</span>');
-            return false;
-        }
+        $("#sFondoPensionesCesantias").focus().after('<span class="error">Campo Obligatorio</span>');
+        return false;
+    }
     if ($("#sCategoriaSisben").val() == "") {
-            $("#sCategoriaSisben").focus().after('<span class="error">Campo Obligatorio</span>');
-            return false;
-        }
+        $("#sCategoriaSisben").focus().after('<span class="error">Campo Obligatorio</span>');
+        return false;
+    }
     if ($("#sNombreEscuela").val() == "") {
-            $("#sNombreEscuela").focus().after('<span class="error">Campo Obligatorio</span>');
-            return false;
-        }
+        $("#sNombreEscuela").focus().after('<span class="error">Campo Obligatorio</span>');
+        return false;
+    }
     if ($("#fechaGraduacion").val() == "") {
-            $("#fechaGraduacion").focus().after('<span class="error">Campo Obligatorio</span>');
-            return false;
-        }
-        return true;
-        
+        $("#fechaGraduacion").focus().after('<span class="error">Campo Obligatorio</span>');
+        return false;
+    }
+    return true;
+
 }
