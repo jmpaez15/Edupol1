@@ -14,4 +14,7 @@ import com.ethos.DAO.AbstractDAO;
 public class RegistroDatosCodeudor {
     AbstractDAO AcudienteDAO;
     AbstractDAO telefonoDAO;
+    AbstractDAO dirreccionDAO;
+    AbstractDAO personaDAO;
+    
 }
