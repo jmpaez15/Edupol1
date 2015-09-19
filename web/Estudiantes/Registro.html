@@ -976,7 +976,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">País de Nacimiento:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="paisNacimiento" ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number placeholder="Tipo Identificacion">
+                                                        <select id="paisNacimiento" ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in codeudor.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number placeholder="Tipo Identificacion">
                                                             <option value="">Seleccione tipo de identificacion</option>
                                                         </select>
                                                     </div>
@@ -985,7 +985,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Ciudad de Nacimiento:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="ciudadNacimiento" ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number placeholder="Tipo Identificacion">
+                                                        <select id="ciudadNacimiento" ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in codeudor.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number placeholder="Tipo Identificacion">
                                                             <option value="">Seleccione tipo de identificacion</option>
                                                         </select>
                                                     </div>
@@ -994,7 +994,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Género:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="generoDeudor" ng-model="actualiza.person.PreRegistro.acudiente.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in actualiza.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
+                                                        <select id="generoDeudor" ng-model="actualiza.person.PreRegistro.acudiente.paisRes" ng-options="ciudad as ciudad.sNombre for ciudad in codeudor.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
                                                             <option value="">Seleccione su Nacionalidad</option>
                                                         </select>
                                                     </div>
@@ -1003,7 +1003,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Estado:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="estadoCodeudor" ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <select id="estadoCodeudor" ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in codeudor.person.listPaisModel track by pais.sCodigo" convert-to-number>
                                                             <option value="">Seleccione una Opcion</option>
                                                         </select>
                                                     </div>
@@ -1028,7 +1028,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Departamento de Nacimiento:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="departamentoCodeudor" ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in estudiantes.estudiante.listPaisModel track by pais.sCodigo" convert-to-number>
+                                                        <select id="departamentoCodeudor" ng-model="actualiza.person.PreRegistro.acudiente.ciudRes" ng-options="pais as pais.sNombre for pais in codeudor.person.listPaisModel track by pais.sCodigo" convert-to-number>
                                                             <option value="">Seleccione una Opcion</option>
                                                         </select>
                                                     </div>
