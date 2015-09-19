@@ -1044,7 +1044,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Estado Civil:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="estadoCivilCodeudor"  ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
+                                                        <select id="estadoCivilCodeudor"  ng-options="estado as estado.sDescripcionEstCivil for estado in codeudor.person.lisEstadoCivilModels track by estado.sCodigoEstadoCivil" convert-to-number>
                                                             <option value="">Seleccione un Departamento</option>
                                                         </select>
                                                     </div>
@@ -1080,7 +1080,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Departamento de Residencia:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="departaResidenciaCodeu"  ng-options="depto as depto.sNombre for depto in estudiantes.estudianteModel.sPaisResidencia.listDeptoModel track by depto.sCodigo" convert-to-number>
+                                                        <select id="departaResidenciaCodeu"  ng-options="ciudad as ciudad.sNombre for ciudad in codeudor.person.lisCiudadModels track by ciudad.sCodigo" convert-to-number>
                                                             <option value="">Seleccione un Departamento</option>
                                                         </select>
                                                     </div>
@@ -1105,7 +1105,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">País de Residencia:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="paisResidenCodeud" ng-model="actualiza.person.PreRegistro.acudiente.genero" ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero">
+                                                        <select id="paisResidenCodeud" ng-model="actualiza.person.PreRegistro.acudiente.genero" ng-options="ciudad as ciudad.sNombre for ciudad in codeudor.person.lisCiudadModels track by ciudad.sCodigo">
                                                             <option value="">Seleccione Genero</option>
                                                         </select>
                                                     </div>
@@ -1114,7 +1114,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Ciudad de Residencia:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="ciudadResidenCodeud"  ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero">
+                                                        <select id="ciudadResidenCodeud"  ng-options="ciudad as ciudad.sNombre for ciudad in codeudor.person.lisCiudadModels track by ciudad.sCodigo">
                                                             <option value="">Seleccione Genero</option>
                                                         </select>
                                                     </div>
@@ -1304,7 +1304,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Estudios Realizados:</label>
-                                                    <select id="estudioscodeudor"  ng-options="genero as genero.sDescripcion for genero in actualiza.person.lisGeneroModels track by genero.iIdGenero">
+                                                    <select id="estudioscodeudor"  ng-options="nivelEstudios as nivelEstudios.sDescripcion for nivelEstudios in codeudor.person.lisNivelEstudiosModels track by nivelEstudios.sCodigo">
                                                             <option value="">Seleccione Estudios</option>
                                                     </select>
                                                 </div>

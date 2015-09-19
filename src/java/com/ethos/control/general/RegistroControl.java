@@ -77,7 +77,7 @@ public class RegistroControl extends HttpServlet {
         funcionesGenerales = new FuncionesGenerales();
         ActualizarDatos actualizarDatos = new ActualizarDatos();
         try {
-            if (!sesion.getAttribute("codUser").equals(null)) {
+           // if (!sesion.getAttribute("codUser").equals(null)) {
 
                 int modulo = Integer.parseInt(request.getParameter("modulo"));
                 System.out.println("gdhasd" + modulo);
@@ -108,7 +108,7 @@ public class RegistroControl extends HttpServlet {
                         break;
                 }
 
-            }
+          //  }
 
         } catch (Exception e) {
             System.out.println("Exception in Registro " + e);
