@@ -27,4 +27,14 @@ public class GeneralQuery {
                                                           "FROM PERSONAS where I_TIPO_CLIENTE=7 and I_CIUDAD_RES=? ORDER BY  I_CODIGO ASC";
     public static final String QUERY_GET_COMUNIDAD="SELECT*FROM COMUNIDAD";    
     public static final String QUERY_GET_TIPO_TRABAJO="SELECT * FROM TIPO_TRABAJO";    
+    
+    
+    /**-----------------------------------------------------------------------------------------------
+     * Query's DavMen
+     * -----------------------------------------------------------------------------------------------
+    */
+    public static final String QUERY_GET_REGISTRO_IDICFES="SELECT ID_ICFES FROM REGISTRO_ESTUDIANTE WHERE ID_ESTUDIANTE = ?";    
+    public static final String QUERY_GET_ICFES="SELECT * FROM ICFES WHERE ID_ICFES = ?";    
+    
+    /**-----------------------------------------------------------------------------------------------*/
 }

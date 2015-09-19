@@ -2,18 +2,18 @@ $(function () {
     $("#divFiltroCedula").hide();
     $("#labelFiltroCedula").hide();
     $("#divTipFiltro").addClass("col-sm-5");
-    $("br").hide();
+//    $("br").hide();
 
 
     $("#tipFiltro").change(function () {
         if ($("#tipFiltro").val() == "1") {
             $("#divFiltroCedula").show();
             $("#labelFiltroCedula").show();
-            $("br").show();
+//            $("br").show();
         } else {
             $("#divFiltroCedula").hide();
             $("#labelFiltroCedula").hide();
-            $("br").hide();
+//            $("br").hide();
             $("#divTipFiltro").removeClass("col-sm-9");
             $("#divTipFiltro").addClass("col-sm-5");
         }

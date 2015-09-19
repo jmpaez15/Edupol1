@@ -9,6 +9,8 @@ import com.ethos.DAO.AbstractDAO;
 import com.ethos.DAO.EstudiantesDAO;
 import com.ethos.business.general.ActualizarDatos;
 import com.ethos.business.general.FuncionesGenerales;
+import com.ethos.business.general.Registro;
+import com.ethos.model.IcfesModel;
 import com.ethos.model.ListasGeneralesModel;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -73,43 +75,60 @@ public class RegistroControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
+
         String json = "";
+        Registro registroBussines = new Registro();
         funcionesGenerales = new FuncionesGenerales();
-        ActualizarDatos actualizarDatos = new ActualizarDatos();
         try {
-           // if (!sesion.getAttribute("codUser").equals(null)) {
+            // if (!sesion.getAttribute("codUser").equals(null)) {
 
-                int modulo = Integer.parseInt(request.getParameter("modulo"));
-                System.out.println("gdhasd" + modulo);
-                switch (6) {
-                    case 1:
-                        if (sesion.getAttribute("idPerfil").equals("7")) {
-                            json = new Gson().toJson("acudiente");
-                        } else {
-                            json = new Gson().toJson(sesion.getAttribute("codUser"));
+            int modulo = Integer.parseInt(request.getParameter("modulo"));
+            System.out.println("Modulo: " + modulo);
+            switch (modulo) {
+                case 1:
+//                        if (sesion.getAttribute("idPerfil").equals("7")) {
+//                            json = new Gson().toJson("acudiente");
+//                        } else {
+//                            json = new Gson().toJson(sesion.getAttribute("codUser"));
+//                        }
+                    System.out.println("Caso 1");
+                    break;
+
+                case 2:
+                    System.out.println("Caso 2");
+                    break;
+                case 3:
+                    System.out.println("Caso 3");
+                    break;
+                case 4:
+                    System.out.println("Caso 4");
+                    System.out.println("sesion: " + sesion);
+                    if (sesion != null) {
+                        String idPersona = sesion.getAttribute("codUser").toString();
+                        System.out.println("Etro!!: " + idPersona);
+                        int moduloActual = 4;
+                        if (moduloActual >= 4) {
+                            try {
+                                IcfesModel icfesModel = registroBussines.getIcfes(idPersona);
+                                json = new Gson().toJson(icfesModel);
+                                System.out.println("Json Caso 4: " + json);
+
+                            } catch (Exception e) {
+                                System.out.println("Ecception in RegistroControl case 4: " + e);
+                            }
                         }
-                        break;
+                    }
+                    break;
+                case 5:
+                    System.out.println("Caso 5");
+                    break;
+                case 6:
+                    listasGenerales = funcionesGenerales.obtenerDatosActualizar();
+                    json = new Gson().toJson(listasGenerales);
+                    break;
+            }
 
-                    case 2:
-                        System.out.println("gdhasd" + modulo);
-                        break;
-                    case 3:
-                        System.out.println("gdhasd" + modulo);
-                        break;
-                    case 4:
-                        System.out.println("gdhasd" + modulo);
-                        break;
-                    case 5:
-                        
-                        break;
-                    case 6:
-                        listasGenerales=funcionesGenerales.obtenerDatosActualizar();
-                        json=new Gson().toJson(listasGenerales);
-                        break;
-                }
-
-          //  }
-
+            //  }
         } catch (Exception e) {
             System.out.println("Exception in Registro " + e);
         }
@@ -128,15 +147,64 @@ public class RegistroControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+         HttpSession sesion = request.getSession();
+        int modulo;
         String json = "";
+        Registro registroBussines = new Registro();
         funcionesGenerales = new FuncionesGenerales();
         ActualizarDatos actualizarDatos = new ActualizarDatos();
 
         try {
+
             BufferedReader reader = request.getReader();
             JsonObject dataJson = funcionesGenerales.recibirDatos(reader);
             json = new Gson().toJson(actualizarDatos.filtroEstudiantes(dataJson));
             System.out.println("json:" + json);
+            modulo= dataJson.get("modulo").getAsInt();
+
+            switch (modulo) {
+                case 1:
+//                        if (sesion.getAttribute("idPerfil").equals("7")) {
+//                            json = new Gson().toJson("acudiente");
+//                        } else {
+//                            json = new Gson().toJson(sesion.getAttribute("codUser"));
+//                        }
+                    System.out.println("Caso 1");
+                    break;
+                case 2:
+                    System.out.println("Caso 2");
+                    break;
+                case 3:
+                    System.out.println("Caso 3");
+                    break;
+                case 4:
+                    System.out.println("Caso 4");
+                    if (sesion != null) {
+                        String idPersona = sesion.getAttribute("codUser").toString();
+                        System.out.println("Etro!!: " + idPersona);
+                        int moduloActual = 4;
+                        if (moduloActual >= 4) {
+                            try {
+                                IcfesModel icfesModel = registroBussines.getIcfes(idPersona);
+                                json = new Gson().toJson(icfesModel);
+                                System.out.println("Json Caso 4: " + json);
+
+                            } catch (Exception e) {
+                                System.out.println("Ecception in RegistroControl case 4: " + e);
+                            }
+                        }
+                    }
+                    break;
+                case 5:
+                    System.out.println("Caso 5");
+                    break;
+                case 6:
+                    listasGenerales = funcionesGenerales.obtenerDatosActualizar();
+                    json = new Gson().toJson(listasGenerales);
+                    break;
+            }
+
         } catch (Exception e) {
             System.err.println("Exception :" + e);
         }

@@ -195,13 +195,13 @@ function getDatosSocioeconomicos($http) {
 
 function getDatosIcfes($http) {
     var icfes = this;
-
+    alert('Entro DatosIcfes');
     $http({
         method: 'GET',
-        url: "../RegistroControl?modulo=3",
+        url: "../RegistroControl?modulo=4",
         headers: {'Content-Type': 'application/json'}
     }).success(function (data, status, headers, config) {
-        
+        icfes.estudiante = data;
     }).error(function (data, status, headers, config) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
