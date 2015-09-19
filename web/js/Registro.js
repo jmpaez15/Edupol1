@@ -24,9 +24,6 @@ function getDataFromServer($http) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
     });
-    $(document).ready(function () {
-        $('#example').DataTable();
-    });
 
     registro.filtro = function () {
         if ($("#tipFiltro").val() != "") {
@@ -198,6 +195,17 @@ function getDatosSocioeconomicos($http) {
 
 function getDatosIcfes($http) {
     var icfes = this;
+
+    $http({
+        method: 'GET',
+        url: "../RegistroControl?modulo=3",
+        headers: {'Content-Type': 'application/json'}
+    }).success(function (data, status, headers, config) {
+        
+    }).error(function (data, status, headers, config) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+    });
 
     icfes.secuenciaModulosIcfes = function () {
         var validar = icfes.DatosIcfes();
