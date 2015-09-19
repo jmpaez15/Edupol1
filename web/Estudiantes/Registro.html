@@ -39,7 +39,7 @@
                     $("#divdatosSocioEconomicos").hide();
                     $("#divDatosIcfes").hide();
                     $("#divDatosUniversidad").hide();
-                    $("#divDatosCodeudor").hide();
+                    //$("#divDatosCodeudor").hide();
                     $("#divDatosHomologacion").hide();
                     $("#divDatosPagos").hide();
                     $("#divSimulador").hide();
@@ -960,7 +960,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-5">Tipo Identificacion:</label>
                                                     <div class="col-sm-6">
-                                                        <select id="tipoId" ng-model="actualiza.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in actualiza.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number placeholder="Tipo Identificacion">
+                                                        <select id="tipoId" ng-model="codeudor.person.PreRegistro.acudiente.tipIden" ng-options="TipoIden as TipoIden.sDescripcion for TipoIden in codeudor.person.lisTipoIdentificacionModels track by TipoIden.iId_Identificacion" convert-to-number placeholder="Tipo Identificacion">
                                                             <option value="">Seleccione tipo de identificacion</option>
                                                         </select>
                                                     </div>
