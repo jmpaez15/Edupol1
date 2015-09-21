@@ -118,7 +118,7 @@ public class EstudiantesDAO extends AbstractDAO<EstudianteModel>{
             }
             while (rsT.next()) {
                 objectEstudiante=new ArrayList<>();
-                objectEstudiante.add(rsT.getInt(1));
+                objectEstudiante.add(rsT.getString(1));
                 objectEstudiante.add(rsT.getString(2));
                 objectEstudiante.add(rsT.getString(3));
                 objectEstudiante.add(rsT.getString(4));

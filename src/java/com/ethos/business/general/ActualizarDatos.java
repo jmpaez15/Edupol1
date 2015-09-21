@@ -182,7 +182,7 @@ public class ActualizarDatos {
         estudianteDAO=new EstudiantesDAO();
         switch(json.get("tipFiltro").getAsInt()){
             case 1:
-                listObjects.add(json.get("cedula").getAsInt());
+                listObjects.add(json.get("cedula").getAsString());
                 resultado=(estudianteDAO.queryAll(listObjects));
                 break;
             case 2:
