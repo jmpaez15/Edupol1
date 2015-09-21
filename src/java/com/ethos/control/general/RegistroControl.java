@@ -87,7 +87,7 @@ public class RegistroControl extends HttpServlet {
 
             int modulo = Integer.parseInt(request.getParameter("modulo"));
             System.out.println("Modulo: " + modulo);
-            switch (modulo) {
+            switch (6) {
                 case 1:
 //                        if (sesion.getAttribute("idPerfil").equals("7")) {
 //                            json = new Gson().toJson("acudiente");

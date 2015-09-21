@@ -645,7 +645,7 @@ input[type="color"]:focus,
 }
 input[type="radio"],
 input[type="checkbox"] {
-    margin: 0px 7px 0px;
+    margin: 0px 1px 0px;
     *margin-top: 0;
     /* IE7 */
 

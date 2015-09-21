@@ -6,9 +6,9 @@
 
 $(function () {
     $("#divdatosSocioEconomicos").hide();
-//    $("#divDatosIcfes").hide();
-//    $("#divDatosUniversidad").hide();
-    $("#divDatosCodeudor").hide();
+    $("#divDatosIcfes").hide();
+    $("#divDatosUniversidad").hide();
+   // $("#divDatosCodeudor").hide();
     $("#divDatosHomologacion").hide();
     $("#divDatosPagos").hide();
     $("#divSimulador").hide();

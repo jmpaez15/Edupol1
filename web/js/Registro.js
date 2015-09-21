@@ -258,15 +258,16 @@ function getCodeudor($http) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
     });
-    $(document).ready(function () {
+    
+   /* $(document).ready(function () {
         $('#example').DataTable();
-    });
+    });*/
 
 
 
     codeudor.save = function () {
         codeudor.person = condicion = 6;
-        codeudor.datos = codeudor.person;
+       /* codeudor.datos = codeudor.person;
         alert("Por favor espere un momento");
         $http({
             method: 'POST',
@@ -274,16 +275,14 @@ function getCodeudor($http) {
             headers: {'Content-Type': 'application/json;charset=Utf-8'},
             data: codeudor.datos
         }).success(function (data, status, headers, config) {
-            if (data.length > 0) {
+            
                 codeudor.person = data;
-            } else {
-                alert("El aspirante no existe");
-            }
+            
         }).error(function (data, status, headers, config) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
         });
-
+*/
 
     };
 
